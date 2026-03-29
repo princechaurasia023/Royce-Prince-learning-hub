@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
-  <div style="text-align:center;margin:30px;">
 
 <body>
 
@@ -68,42 +67,27 @@
       </div>
       <div class="category-grid">
         <button class="cat-btn active" data-cat="all">All</button>
-        <button class="cat-btn" data-cat="tax">
-          <span class="cat-icon">📊</span> Tax
-        </button>
-        <button class="cat-btn" data-cat="law">
-          <span class="cat-icon">⚖️</span> Law
-        </button>
-        <button class="cat-btn" data-cat="accounts">
-          <span class="cat-icon">🧾</span> Accounts
-        </button>
-        <button class="cat-btn" data-cat="gst">
-          <span class="cat-icon">📋</span> GST
-        </button>
+        <button class="cat-btn" data-cat="tax"><span class="cat-icon">📊</span> Tax</button>
+        <button class="cat-btn" data-cat="law"><span class="cat-icon">⚖️</span> Law</button>
+        <button class="cat-btn" data-cat="accounts"><span class="cat-icon">🧾</span> Accounts</button>
+        <button class="cat-btn" data-cat="gst"><span class="cat-icon">📋</span> GST</button>
       </div>
     </div>
   </section>
 
   <!-- ══════════════ FLASHCARDS ══════════════ -->
   <section class="section" id="flashcards">
-  <div style="text-align:center;margin:20px;">
-<a href="tax-flashcard.html"
-style="padding:15px 25px;background:#007bff;color:white;
-text-decoration:none;border-radius:8px;">
-📚 Tax Flashcards
-</a>
-</div>
-📚 Tax Flashcards
-</a>
-</div>
+    <div style="text-align:center;margin:20px;">
+      <a href="tax-flashcard.html" style="padding:15px 25px;background:#007bff;color:white;text-decoration:none;border-radius:8px;">
+        📚 Tax Flashcards
+      </a>
+    </div>
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">Flashcards</h2>
         <p class="section-sub">Click a card to reveal the answer</p>
       </div>
-      <div class="flashcard-grid" id="flashcardGrid">
-        <!-- Populated by JS -->
-      </div>
+      <div class="flashcard-grid" id="flashcardGrid"></div>
       <p class="empty-state" id="noCards" style="display:none">No flashcards found. Upload HTML files or try a different category.</p>
     </div>
   </section>
@@ -143,6 +127,21 @@ text-decoration:none;border-radius:8px;">
         <h2 class="section-title">AI Assistant</h2>
         <p class="section-sub">Ask any question about Tax, Law, Accounts or GST</p>
       </div>
+
+      <!-- ── API Key Setup ── -->
+      <div class="ai-key-setup" id="aiKeySetup">
+        <p>🔑 <strong>Enter your free Gemini API key to activate the AI.</strong>
+          Get one free at <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a>
+          → Sign in → Create API Key → Copy & paste below.
+        </p>
+        <div class="ai-key-row">
+          <input type="password" id="geminiKeyInput" placeholder="Paste Gemini API key (AIza…)" autocomplete="off" />
+          <button onclick="saveGeminiKey()">Save & Connect</button>
+        </div>
+        <p id="aiKeyStatus" class="ai-key-status"></p>
+      </div>
+
+      <!-- ── Chat Box ── -->
       <div class="ai-chat-box">
         <div class="ai-messages" id="aiMessages">
           <div class="ai-msg bot">
@@ -154,7 +153,7 @@ text-decoration:none;border-radius:8px;">
           <input type="text" id="aiInput" class="ai-input" placeholder="Ask a question…" autocomplete="off" />
           <button class="btn-primary ai-send" id="aiSend" onclick="sendAI()">Send ↗</button>
         </div>
-        <p class="ai-disclaimer">Powered by Claude AI · Responses are educational, not legal advice.</p>
+        <p class="ai-disclaimer">Powered by Google Gemini (free) · Responses are educational, not legal advice.</p>
       </div>
     </div>
   </section>
@@ -162,9 +161,7 @@ text-decoration:none;border-radius:8px;">
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="logo-icon">◈</span> Prince Learning Hub
-      </div>
+      <div class="footer-brand"><span class="logo-icon">◈</span> Prince Learning Hub</div>
       <p class="footer-copy">© 2025 Prince Learning Hub · Built for learners, by learners.</p>
       <div class="footer-links">
         <a href="#flashcards">Flashcards</a>
@@ -174,7 +171,7 @@ text-decoration:none;border-radius:8px;">
     </div>
   </footer>
 
-  <!-- ══════════════ MODAL (file viewer) ══════════════ -->
+  <!-- ══════════════ MODAL ══════════════ -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
     <div class="modal" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -187,12 +184,230 @@ text-decoration:none;border-radius:8px;">
 
   <script src="script.js"></script>
 
-  <div style="margin:20px;">
-  <a href="tax-flashcard.html" 
-     style="padding:12px 20px;background:#007bff;color:white;text-decoration:none;border-radius:8px;">
-     📚 Tax Flashcards
-  </a>
-</div>
-  
+  <!-- ══════════════ AI FIX — GEMINI API ══════════════ -->
+  <script>
+    // ── Inline styles for the key setup box (no style.css changes needed) ──
+    const aiStyle = document.createElement('style');
+    aiStyle.textContent = `
+      .ai-key-setup {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-bottom: 18px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: inherit;
+      }
+      .ai-key-setup a { color: #f0c050; }
+      .ai-key-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .ai-key-row input {
+        flex: 1;
+        min-width: 220px;
+        padding: 9px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(0,0,0,0.3);
+        color: inherit;
+        font-size: 13px;
+        font-family: monospace;
+        outline: none;
+      }
+      .ai-key-row input:focus { border-color: #f0c050; }
+      .ai-key-row button {
+        padding: 9px 18px;
+        border-radius: 10px;
+        border: none;
+        background: #f0c050;
+        color: #111;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .ai-key-row button:hover { opacity: 0.85; }
+      .ai-key-status { margin-top: 8px; font-size: 13px; }
+      .ai-key-status.ok  { color: #5dde8b; }
+      .ai-key-status.err { color: #f07070; }
+      .ai-typing-dots span {
+        display: inline-block;
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0.6;
+        margin: 0 2px;
+        animation: aiDot 1.2s infinite;
+      }
+      .ai-typing-dots span:nth-child(2) { animation-delay:.2s }
+      .ai-typing-dots span:nth-child(3) { animation-delay:.4s }
+      @keyframes aiDot {
+        0%,60%,100% { transform:translateY(0) }
+        30% { transform:translateY(-6px) }
+      }
+    `;
+    document.head.appendChild(aiStyle);
+
+    // ── Gemini system prompt ──
+    const GEMINI_SYSTEM = `You are a knowledgeable CA (Chartered Accountant) study assistant for Indian CA students.
+You specialise in: Income Tax, GST, Company Law, Indian Contract Act, Partnership Act, Accounting Standards, Journal Entries, CA Inter and CA Final syllabus.
+Give clear, structured, concise answers. Use bullet points and examples where helpful.
+Responses are for study purposes only — not personal legal or financial advice.`;
+
+    // ── Save / load key ──
+    function saveGeminiKey() {
+      const key = document.getElementById('geminiKeyInput').value.trim();
+      const status = document.getElementById('aiKeyStatus');
+      if (!key) {
+        status.className = 'ai-key-status err';
+        status.textContent = '❌ Please paste your API key first.';
+        return;
+      }
+      if (!key.startsWith('AI')) {
+        status.className = 'ai-key-status err';
+        status.textContent = '❌ Key looks wrong — Gemini keys start with "AIza…". Try again.';
+        return;
+      }
+      localStorage.setItem('plh_gemini_key', key);
+      status.className = 'ai-key-status ok';
+      status.textContent = '✅ Connected! You can now ask questions below.';
+    }
+
+    // Load saved key on page load
+    window.addEventListener('load', function () {
+      const saved = localStorage.getItem('plh_gemini_key');
+      if (saved) {
+        document.getElementById('geminiKeyInput').value = saved;
+        const status = document.getElementById('aiKeyStatus');
+        status.className = 'ai-key-status ok';
+        status.textContent = '✅ API key loaded. AI is ready!';
+      }
+    });
+
+    // ── Enter key to send ──
+    document.getElementById('aiInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') sendAI();
+    });
+
+    // ── Helper: append message ──
+    function appendAIMsg(role, html) {
+      const box = document.getElementById('aiMessages');
+      const wrap = document.createElement('div');
+      wrap.className = 'ai-msg ' + role;
+      const av = document.createElement('div');
+      av.className = 'ai-avatar';
+      av.textContent = role === 'bot' ? '◈' : 'U';
+      const bub = document.createElement('div');
+      bub.className = 'ai-bubble';
+      bub.innerHTML = html;
+      wrap.appendChild(av);
+      wrap.appendChild(bub);
+      box.appendChild(wrap);
+      box.scrollTop = box.scrollHeight;
+      return bub;
+    }
+
+    function showTyping() {
+      const box = document.getElementById('aiMessages');
+      const wrap = document.createElement('div');
+      wrap.className = 'ai-msg bot';
+      wrap.id = 'aiTyping';
+      const av = document.createElement('div');
+      av.className = 'ai-avatar';
+      av.textContent = '◈';
+      const bub = document.createElement('div');
+      bub.className = 'ai-bubble ai-typing-dots';
+      bub.innerHTML = '<span></span><span></span><span></span>';
+      wrap.appendChild(av);
+      wrap.appendChild(bub);
+      box.appendChild(wrap);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function removeTyping() {
+      const t = document.getElementById('aiTyping');
+      if (t) t.remove();
+    }
+
+    function formatAI(text) {
+      text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      text = text.replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>');
+      text = text.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
+      text = text.replace(/\n\n/g, '<br/><br/>');
+      text = text.replace(/\n/g, '<br/>');
+      return text;
+    }
+
+    // ── Main send function (overrides script.js sendAI if any) ──
+    async function sendAI() {
+      const inputEl = document.getElementById('aiInput');
+      const sendBtn = document.getElementById('aiSend');
+      const text = inputEl.value.trim();
+      if (!text) return;
+
+      const apiKey = localStorage.getItem('plh_gemini_key') ||
+                     document.getElementById('geminiKeyInput').value.trim();
+
+      if (!apiKey) {
+        const status = document.getElementById('aiKeyStatus');
+        status.className = 'ai-key-status err';
+        status.textContent = '❌ Please enter and save your Gemini API key above first!';
+        document.getElementById('geminiKeyInput').focus();
+        return;
+      }
+
+      appendAIMsg('user', text);
+      inputEl.value = '';
+      sendBtn.disabled = true;
+      showTyping();
+
+      try {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              system_instruction: { parts: [{ text: GEMINI_SYSTEM }] },
+              contents: [{ role: 'user', parts: [{ text }] }],
+              generationConfig: { temperature: 0.7, maxOutputTokens: 800 }
+            })
+          }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          removeTyping();
+          const errMsg = data?.error?.message || 'Unknown error';
+          appendAIMsg('bot',
+            `❌ <strong>Error:</strong> ${errMsg}<br/>
+            <small style="opacity:.7">Fix: Get a fresh key from
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#f0c050">aistudio.google.com</a>
+            and re-paste it above.</small>`
+          );
+          sendBtn.disabled = false;
+          return;
+        }
+
+        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+                      || 'Sorry, no response generated. Try again.';
+        removeTyping();
+        appendAIMsg('bot', formatAI(reply));
+
+      } catch (err) {
+        removeTyping();
+        appendAIMsg('bot', `❌ <strong>Network error:</strong> ${err.message}<br/><small style="opacity:.7">Check your internet and try again.</small>`);
+      }
+
+      sendBtn.disabled = false;
+    }
+  </script>
+
 </body>
 </html>
