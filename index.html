@@ -1,381 +1,553 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Prince Learning Hub — Master Tax, Law, Accounts & GST with AI-powered flashcards" />
-  <title>Prince Learning Hub</title>
+  <title>Prince Learning Hub — CA Inter Study Dashboard</title>
+  <meta name="description" content="Master CA Inter Tax, Law, Accounts & GST with smart flashcards, AI assistance, and structured study tools." />
+  <meta name="theme-color" content="#F7F6F3" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><text y='22' x='6' font-size='18' fill='white'>◈</text></svg>" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- ══════════════ SKIP LINK ══════════════ -->
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo" aria-label="Prince Learning Hub">
+      <div class="nav__logo-icon">◈</div>
+      <span class="nav__logo-text">Prince <span>Learning Hub</span></span>
+    </a>
 
-  <!-- ══════════════ HEADER ══════════════ -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a href="#" class="logo" aria-label="Prince Learning Hub home">
-        <div class="logo-mark">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <polygon points="14,7 21,11 21,17 14,21 7,17 7,11" fill="currentColor" opacity="0.3"/>
-            <circle cx="14" cy="14" r="3" fill="currentColor"/>
-          </svg>
-        </div>
-        <div class="logo-text-wrap">
-          <span class="logo-name">Prince</span>
-          <span class="logo-sub">Learning Hub</span>
-        </div>
+    <div class="nav__links" role="list">
+      <a href="#categories" class="nav__link" role="listitem">Categories</a>
+      <a href="#flashcards" class="nav__link" role="listitem">Flashcards</a>
+      <a href="#quick-ref" class="nav__link" role="listitem">Quick Ref</a>
+      <a href="#upload" class="nav__link" role="listitem">Upload</a>
+      <a href="#ai" class="nav__link" role="listitem">AI Assistant</a>
+    </div>
+
+    <div class="nav__right">
+      <button class="nav__search-btn" data-search-open aria-label="Search (Ctrl+K)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="https://princechaurasia023.github.io/Royce-Prince-learning-hub/tax-flashcard.html" class="nav__cta" target="_blank" rel="noopener">
+        Tax Flashcards →
       </a>
-
-      <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main navigation">
-        <a href="#flashcards" class="nav-link" onclick="closeNav()">
-          <span class="nav-icon">⬡</span> Flashcards
-        </a>
-        <a href="#upload" class="nav-link" onclick="closeNav()">
-          <span class="nav-icon">⬡</span> Upload
-        </a>
-        <a href="#ai" class="nav-link" onclick="closeNav()">
-          <span class="nav-icon">⬡</span> AI Assistant
-        </a>
-        <a href="#categories" class="nav-link" onclick="closeNav()">
-          <span class="nav-icon">⬡</span> Categories
-        </a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
-          <span class="theme-icon" aria-hidden="true">☽</span>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main id="main-content">
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+  <nav class="mobile-nav__links">
+    <a href="#categories" class="mobile-nav__link">📚 Categories</a>
+    <a href="#flashcards" class="mobile-nav__link">🃏 Flashcards</a>
+    <a href="#quick-ref" class="mobile-nav__link">⚡ Quick Reference</a>
+    <a href="#upload" class="mobile-nav__link">⬆️ Upload Notes</a>
+    <a href="#ai" class="mobile-nav__link">🤖 AI Assistant</a>
+  </nav>
+</div>
 
-  <!-- ══════════════ HERO ══════════════ -->
-  <section class="hero" aria-label="Welcome section">
-    <div class="hero-backdrop">
-      <div class="hero-grid-overlay"></div>
-      <div class="hero-glow hero-glow-1"></div>
-      <div class="hero-glow hero-glow-2"></div>
+<!-- ═══════════════════════════════════════════
+     SEARCH OVERLAY
+═══════════════════════════════════════════ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search" aria-modal="true">
+  <div class="search-box">
+    <div class="search-box__input-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-box__input" id="searchInput" placeholder="Search flashcards, topics, chapters…" autocomplete="off" />
+      <kbd class="search-box__shortcut">ESC</kbd>
     </div>
+    <div class="search-box__results" id="searchResults"></div>
+    <div class="search-box__hint">
+      <span><kbd>↵</kbd> to select</span>
+      <span><kbd>ESC</kbd> to close</span>
+      <span><kbd>⌘K</kbd> to open</span>
+    </div>
+  </div>
+</div>
 
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>CA Inter · May 2026 Preparation</span>
-      </div>
+<!-- ═══════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════ -->
+<main class="main-wrapper">
 
-      <h1 class="hero-title">
-        <span class="title-line">Master Tax, Law,</span>
-        <span class="title-line title-accent">Accounts & GST</span>
-      </h1>
-
-      <p class="hero-subtitle">
-        Upload flashcards, study smarter, and get AI-powered help —<br class="br-hide"/>
-        all in one beautiful hub.
-      </p>
-
-      <div class="hero-search" role="search">
-        <label for="globalSearch" class="sr-only">Search flashcards and topics</label>
-        <div class="search-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-        </div>
-        <input type="text" id="globalSearch" class="search-input"
-               placeholder="Search flashcards, topics…"
-               autocomplete="off"
-               aria-label="Search flashcards and topics" />
-        <button class="search-btn" onclick="runSearch()" aria-label="Run search">Search</button>
-      </div>
-
-      <div class="hero-stats" role="region" aria-label="Statistics">
-        <div class="stat-item">
-          <span class="stat-num" id="statCards">0</span>
-          <span class="stat-label">Flashcards</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item">
-          <span class="stat-num" id="statFiles">0</span>
-          <span class="stat-label">Files</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item">
-          <span class="stat-num">4</span>
-          <span class="stat-label">Categories</span>
-        </div>
-      </div>
-
-      <!-- ── Quick Access Buttons ── -->
-      <div class="hero-quick-links">
-        <a href="gst-flashcard.html" class="quick-link quick-link-gst">
-          <span class="ql-icon">📋</span>
-          <span class="ql-text">
-            <strong>GST Flashcards</strong>
-            <small>Full chapter coverage</small>
-          </span>
-          <span class="ql-arrow">→</span>
-        </a>
-        <a href="tax-flashcard.html" class="quick-link quick-link-tax">
-          <span class="ql-icon">📊</span>
-          <span class="ql-text">
-            <strong>Direct Tax Flashcards</strong>
-            <small>CA Inter DT · All chapters</small>
-          </span>
-          <span class="ql-arrow">→</span>
-        </a>
-      </div>
+  <!-- ── HERO ────────────────────────────────── -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero__bg">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
     </div>
 
-    <div class="hero-scroll-hint" aria-hidden="true">
-      <span>Scroll to explore</span>
-      <div class="scroll-line"></div>
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>
+      CA Inter · May 2026
     </div>
-  </section>
 
-  <!-- ══════════════ CATEGORIES ══════════════ -->
-  <section class="section" id="categories" aria-labelledby="cat-title">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-eyebrow">Browse by Subject</div>
-        <h2 class="section-title" id="cat-title">Categories</h2>
-        <p class="section-sub">Filter your study material by subject area</p>
+    <h1 class="hero__title" id="heroTitle">
+      Master Tax, Law,<br>
+      <em>Accounts & GST</em>
+    </h1>
+    <p class="hero__subtitle">
+      Your personal study dashboard for CA Inter Group 1. Smart flashcards, AI-powered assistance, and structured revision — all in one place.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#flashcards" class="btn btn--primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        Start Studying
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <button class="btn btn--secondary" data-search-open>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Quick Search
+        <kbd style="font-size:10px;opacity:.5;font-family:var(--font-mono);margin-left:2px">⌘K</kbd>
+      </button>
+      <a href="https://princechaurasia023.github.io/Royce-Prince-learning-hub/tax-flashcard.html" class="btn btn--ghost" target="_blank" rel="noopener">
+        📊 Full Tax Deck →
+      </a>
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-num" id="heroFlashcards">12</div>
+        <div class="hero__stat-label">Flashcards</div>
       </div>
-
-      <div class="category-grid" role="group" aria-label="Category filters">
-        <button class="cat-btn active" data-cat="all">
-          <span class="cat-icon-wrap" aria-hidden="true">⬡</span>
-          <span>All Subjects</span>
-        </button>
-        <button class="cat-btn" data-cat="tax">
-          <span class="cat-icon-wrap" aria-hidden="true">📊</span>
-          <span>Direct Tax</span>
-        </button>
-        <button class="cat-btn" data-cat="law">
-          <span class="cat-icon-wrap" aria-hidden="true">⚖️</span>
-          <span>Law</span>
-        </button>
-        <button class="cat-btn" data-cat="accounts">
-          <span class="cat-icon-wrap" aria-hidden="true">🧾</span>
-          <span>Accounts</span>
-        </button>
-        <button class="cat-btn" data-cat="gst">
-          <span class="cat-icon-wrap" aria-hidden="true">📋</span>
-          <span>GST</span>
-        </button>
+      <div class="hero__stat">
+        <div class="hero__stat-num" id="heroFiles">0</div>
+        <div class="hero__stat-label">Uploaded Files</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-num">4</div>
+        <div class="hero__stat-label">Subjects</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-num" id="streakCount">1</div>
+        <div class="hero__stat-label">Day Streak 🔥</div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ FLASHCARDS ══════════════ -->
-  <section class="section section-dark" id="flashcards" aria-labelledby="flash-title">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-eyebrow">Interactive Study</div>
-        <h2 class="section-title" id="flash-title">Flashcards</h2>
-        <p class="section-sub">Click a card to reveal the answer · Use keyboard ← → to navigate</p>
+  <!-- ── STATS STRIP ───────────────────────── -->
+  <div class="stats-strip" role="region" aria-label="Study statistics">
+    <div class="stat-card">
+      <div class="stat-card__icon stat-card__icon--blue">🃏</div>
+      <div class="stat-card__body">
+        <div class="stat-card__num" id="statFlashcards" data-count="12">12</div>
+        <div class="stat-card__label">Total Flashcards</div>
       </div>
-
-      <div class="flashcard-toolbar">
-        <div class="fc-count" id="fcCount" aria-live="polite">Loading cards…</div>
-        <button class="fc-shuffle-btn" onclick="shuffleCards()" title="Shuffle cards">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
-            <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
-          </svg>
-          Shuffle
-        </button>
-      </div>
-
-      <div class="flashcard-grid" id="flashcardGrid" role="list" aria-label="Flashcards"></div>
-
-      <p class="empty-state" id="noCards" style="display:none" role="alert">
-        <span class="empty-icon" aria-hidden="true">🔍</span>
-        <strong>No flashcards found.</strong>
-        <span>Upload HTML files or try a different category.</span>
-      </p>
+      <span class="stat-card__delta stat-card__delta--up">+12</span>
     </div>
-  </section>
-
-  <!-- ══════════════ UPLOAD ══════════════ -->
-  <section class="section" id="upload" aria-labelledby="upload-title">
-    <div class="container container-narrow">
-      <div class="section-head">
-        <div class="section-eyebrow">Your Content</div>
-        <h2 class="section-title" id="upload-title">Upload Flashcards</h2>
-        <p class="section-sub">Upload your HTML flashcard files — stored locally in your browser</p>
-      </div>
-
-      <div class="upload-card">
-        <div class="upload-area" id="uploadArea" role="button" tabindex="0"
-             aria-label="Upload area — drag and drop HTML files or click to browse">
-          <input type="file" id="fileInput" accept=".html" multiple hidden aria-hidden="true" />
-          <div class="upload-icon" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="17 8 12 3 7 8"/>
-              <line x1="12" y1="3" x2="12" y2="15"/>
-            </svg>
-          </div>
-          <p class="upload-label">Drag & drop <strong>.html</strong> flashcard files here</p>
-          <p class="upload-hint">or</p>
-          <button class="btn-primary" type="button" onclick="document.getElementById('fileInput').click()">
-            Browse Files
-          </button>
-          <p class="upload-formats">Accepted format: <code>.html</code> flashcard files only</p>
-        </div>
-
-        <div class="upload-options">
-          <label class="upload-option-label" for="uploadCategory">Assign category:</label>
-          <select id="uploadCategory" aria-label="Category for uploaded files">
-            <option value="tax">📊 Direct Tax</option>
-            <option value="law">⚖️ Law</option>
-            <option value="accounts">🧾 Accounts</option>
-            <option value="gst">📋 GST</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="uploaded-list" id="uploadedList" aria-label="Uploaded files"></div>
-    </div>
-  </section>
-
-  <!-- ══════════════ AI ASSISTANT ══════════════ -->
-  <section class="section section-dark" id="ai" aria-labelledby="ai-title">
-    <div class="container container-narrow">
-      <div class="section-head">
-        <div class="section-eyebrow">Powered by Gemini</div>
-        <h2 class="section-title" id="ai-title">AI Study Assistant</h2>
-        <p class="section-sub">Ask any question about Tax, Law, Accounts or GST</p>
-      </div>
-
-      <!-- ── API Key Setup ── -->
-      <div class="ai-key-panel" id="aiKeySetup">
-        <div class="ai-key-header">
-          <span class="key-icon" aria-hidden="true">🔑</span>
-          <div>
-            <strong>Connect Gemini AI (Free)</strong>
-            <p>Get a free key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com</a> → Sign in → Create API Key</p>
-          </div>
-        </div>
-        <div class="ai-key-row">
-          <input type="password" id="geminiKeyInput"
-                 placeholder="Paste your Gemini API key (AIza…)"
-                 autocomplete="off"
-                 aria-label="Gemini API key input" />
-          <button class="btn-primary" onclick="saveGeminiKey()" type="button">Save & Connect</button>
-        </div>
-        <p id="aiKeyStatus" class="ai-key-status" role="status" aria-live="polite"></p>
-      </div>
-
-      <!-- ── Chat Box ── -->
-      <div class="ai-chat-box" aria-label="AI Chat interface">
-        <div class="ai-chat-header">
-          <div class="ai-status-dot"></div>
-          <span>CA Study Assistant</span>
-          <span class="ai-model-tag">Gemini 1.5 Flash</span>
-        </div>
-
-        <div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-label="Chat messages">
-          <div class="ai-msg bot">
-            <div class="ai-avatar" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 28 28" fill="none">
-                <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="14" cy="14" r="3" fill="currentColor"/>
-              </svg>
-            </div>
-            <div class="ai-bubble">
-              Hi! I'm your CA study assistant. Ask me anything about <strong>Tax, Law, Accounts,</strong> or <strong>GST</strong> 📚
-            </div>
-          </div>
-        </div>
-
-        <div class="ai-input-row">
-          <label for="aiInput" class="sr-only">Your question</label>
-          <input type="text" id="aiInput" class="ai-input"
-                 placeholder="Ask a question about Tax, Law, GST…"
-                 autocomplete="off"
-                 aria-label="Ask AI assistant a question" />
-          <button class="ai-send-btn" id="aiSend" onclick="sendAI()" type="button" aria-label="Send message">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-          </button>
-        </div>
-        <p class="ai-disclaimer">Powered by Google Gemini (free) · Responses are for educational purposes only, not legal or financial advice.</p>
+    <div class="stat-card">
+      <div class="stat-card__icon stat-card__icon--green">📄</div>
+      <div class="stat-card__body">
+        <div class="stat-card__num" id="statFiles" data-count="0">0</div>
+        <div class="stat-card__label">Study Files</div>
       </div>
     </div>
-  </section>
-
-  </main>
-
-  <!-- ══════════════ FOOTER ══════════════ -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo-mark" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-              <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="14" cy="14" r="3" fill="currentColor"/>
-            </svg>
-          </div>
-          <div>
-            <div class="footer-brand-name">Prince Learning Hub</div>
-            <div class="footer-brand-sub">CA Inter · May 2026</div>
-          </div>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="#flashcards">Flashcards</a>
-          <a href="#upload">Upload</a>
-          <a href="#ai">AI Help</a>
-          <a href="#categories">Categories</a>
-        </nav>
+    <div class="stat-card">
+      <div class="stat-card__icon stat-card__icon--amber">📚</div>
+      <div class="stat-card__body">
+        <div class="stat-card__num" data-count="4">4</div>
+        <div class="stat-card__label">Subjects</div>
       </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Prince Learning Hub · Built for learners, by learners.</p>
-        <p class="footer-tech">Tax · Law · Accounts · GST</p>
-      </div>
+      <span class="stat-card__delta stat-card__delta--up">All</span>
     </div>
-  </footer>
-
-  <!-- ══════════════ MODAL ══════════════ -->
-  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Flashcard viewer">
-    <div class="modal" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <span class="modal-title">Flashcard Viewer</span>
-        <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+    <div class="stat-card">
+      <div class="stat-card__icon stat-card__icon--purple">🎯</div>
+      <div class="stat-card__body">
+        <div class="stat-card__num" id="statCategories" data-count="4">4</div>
+        <div class="stat-card__label">Categories</div>
       </div>
-      <iframe id="modalFrame" src="" title="Flashcard Viewer" loading="lazy"></iframe>
     </div>
   </div>
 
-  <!-- ══════════════ TOAST ══════════════ -->
-  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+  <!-- ── CATEGORIES ───────────────────────── -->
+  <section class="section" id="categories" aria-labelledby="catTitle">
+    <div class="section__header">
+      <h2 class="section__title" id="catTitle">
+        <span class="section__title-dot"></span>
+        Study Categories
+      </h2>
+      <span class="section__subtitle">Filter your material by subject</span>
+    </div>
 
-  <!-- ══════════════ BACK TO TOP ══════════════ -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polyline points="18 15 12 9 6 15"/>
-    </svg>
-  </button>
+    <div class="categories-grid">
+      <div class="category-card category-card--all active" data-cat="all" role="button" tabindex="0" aria-pressed="true">
+        <div class="category-card__emoji">📖</div>
+        <div class="category-card__name">All Subjects</div>
+        <div class="category-card__count">12 flashcards</div>
+        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="category-card category-card--tax" data-cat="tax" role="button" tabindex="0" aria-pressed="false">
+        <div class="category-card__emoji">📊</div>
+        <div class="category-card__name">Income Tax</div>
+        <div class="category-card__count">5 flashcards · Direct Tax</div>
+        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:42%"></div></div>
+      </div>
+      <div class="category-card category-card--gst" data-cat="gst" role="button" tabindex="0" aria-pressed="false">
+        <div class="category-card__emoji">🧾</div>
+        <div class="category-card__name">GST</div>
+        <div class="category-card__count">3 flashcards · Indirect Tax</div>
+        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:25%"></div></div>
+      </div>
+      <div class="category-card category-card--law" data-cat="law" role="button" tabindex="0" aria-pressed="false">
+        <div class="category-card__emoji">⚖️</div>
+        <div class="category-card__name">Law</div>
+        <div class="category-card__count">2 flashcards · Company Law</div>
+        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:17%"></div></div>
+      </div>
+      <div class="category-card category-card--acc" data-cat="acc" role="button" tabindex="0" aria-pressed="false">
+        <div class="category-card__emoji">🧮</div>
+        <div class="category-card__name">Accounts</div>
+        <div class="category-card__count">2 flashcards · Adv. Accounts</div>
+        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:17%"></div></div>
+      </div>
+      <a href="https://princechaurasia023.github.io/Royce-Prince-learning-hub/tax-flashcard.html"
+         class="category-card category-card--tax"
+         style="text-decoration:none; display:block"
+         target="_blank" rel="noopener">
+        <div class="category-card__emoji">🚀</div>
+        <div class="category-card__name">Full Tax Deck</div>
+        <div class="category-card__count">Complete chapter-wise flashcards ↗</div>
+        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:100%"></div></div>
+      </a>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
-  <script src="ai.js"></script>
+  <!-- ── FLASHCARDS ────────────────────────── -->
+  <section class="section" id="flashcards" aria-labelledby="fcTitle">
+    <div class="section__header">
+      <h2 class="section__title" id="fcTitle">
+        <span class="section__title-dot"></span>
+        Flashcards
+      </h2>
+      <a href="#" class="section__action">
+        View All
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <div class="filter-tabs" role="tablist" aria-label="Filter by category">
+      <button class="filter-tab active" data-cat="all" role="tab" aria-selected="true">All</button>
+      <button class="filter-tab" data-cat="tax" role="tab" aria-selected="false">📊 Income Tax</button>
+      <button class="filter-tab" data-cat="gst" role="tab" aria-selected="false">🧾 GST</button>
+      <button class="filter-tab" data-cat="law" role="tab" aria-selected="false">⚖️ Law</button>
+      <button class="filter-tab" data-cat="acc" role="tab" aria-selected="false">🧮 Accounts</button>
+    </div>
+
+    <div class="flashcard-grid" id="flashcardGrid" role="list" aria-label="Flashcards">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ── QUICK REFERENCE ───────────────────── -->
+  <section class="section" id="quick-ref" aria-labelledby="qrTitle">
+    <div class="section__header">
+      <h2 class="section__title" id="qrTitle">
+        <span class="section__title-dot" style="background:var(--amber)"></span>
+        Quick Reference
+      </h2>
+      <span class="section__subtitle">Key rates & limits at a glance</span>
+    </div>
+
+    <div class="quick-ref-grid">
+      <!-- Tax Slabs -->
+      <div class="quick-ref-card">
+        <div class="quick-ref-card__header">
+          <div class="quick-ref-card__icon" style="background:var(--accent-soft)">📊</div>
+          <div>
+            <div class="quick-ref-card__title">Income Tax Slabs (New Regime)</div>
+            <div class="quick-ref-card__sub">AY 2025-26 · Individual</div>
+          </div>
+        </div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Up to ₹3,00,000</span><span class="quick-ref-item__val">NIL</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">₹3L – ₹7L</span><span class="quick-ref-item__val">5%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">₹7L – ₹10L</span><span class="quick-ref-item__val">10%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">₹10L – ₹12L</span><span class="quick-ref-item__val">15%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">₹12L – ₹15L</span><span class="quick-ref-item__val">20%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Above ₹15L</span><span class="quick-ref-item__val">30%</span></div>
+      </div>
+
+      <!-- GST Rates -->
+      <div class="quick-ref-card">
+        <div class="quick-ref-card__header">
+          <div class="quick-ref-card__icon" style="background:var(--purple-soft)">🧾</div>
+          <div>
+            <div class="quick-ref-card__title">GST Key Limits</div>
+            <div class="quick-ref-card__sub">Registration & Composition</div>
+          </div>
+        </div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Goods Registration</span><span class="quick-ref-item__val">₹40L</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Services Registration</span><span class="quick-ref-item__val">₹20L</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Composition Limit</span><span class="quick-ref-item__val">₹1.5 Cr</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Composition (Mfr/Trader)</span><span class="quick-ref-item__val">1%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Composition (Restaurant)</span><span class="quick-ref-item__val">5%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">GSTR-3B Due Date</span><span class="quick-ref-item__val">20th</span></div>
+      </div>
+
+      <!-- Company Law -->
+      <div class="quick-ref-card">
+        <div class="quick-ref-card__header">
+          <div class="quick-ref-card__icon" style="background:var(--green-soft)">⚖️</div>
+          <div>
+            <div class="quick-ref-card__title">Company Law Key Facts</div>
+            <div class="quick-ref-card__sub">Companies Act 2013</div>
+          </div>
+        </div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Pvt Ltd Min Members</span><span class="quick-ref-item__val">2</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Pvt Ltd Max Members</span><span class="quick-ref-item__val">200</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Public Ltd Min Members</span><span class="quick-ref-item__val">7</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">First AGM (months)</span><span class="quick-ref-item__val">9 months</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">AGM Gap (max)</span><span class="quick-ref-item__val">15 months</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">First Auditor (days)</span><span class="quick-ref-item__val">30 days</span></div>
+      </div>
+
+      <!-- Depreciation -->
+      <div class="quick-ref-card">
+        <div class="quick-ref-card__header">
+          <div class="quick-ref-card__icon" style="background:var(--amber-soft)">📉</div>
+          <div>
+            <div class="quick-ref-card__title">Depreciation Rates (IT Act)</div>
+            <div class="quick-ref-card__sub">WDV Method</div>
+          </div>
+        </div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Buildings (RCC)</span><span class="quick-ref-item__val">10%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Furniture & Fittings</span><span class="quick-ref-item__val">10%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Motor Car (non-hire)</span><span class="quick-ref-item__val">15%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Plant & Machinery</span><span class="quick-ref-item__val">15%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Computers</span><span class="quick-ref-item__val">40%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Intangibles (know-how)</span><span class="quick-ref-item__val">25%</span></div>
+      </div>
+
+      <!-- TDS Rates -->
+      <div class="quick-ref-card">
+        <div class="quick-ref-card__header">
+          <div class="quick-ref-card__icon" style="background:var(--red-soft)">📋</div>
+          <div>
+            <div class="quick-ref-card__title">TDS Key Sections</div>
+            <div class="quick-ref-card__sub">Common TDS Rates</div>
+          </div>
+        </div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 192 · Salary</span><span class="quick-ref-item__val">Slab Rate</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194A · Interest</span><span class="quick-ref-item__val">10%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194C · Contractor</span><span class="quick-ref-item__val">1%/2%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194H · Commission</span><span class="quick-ref-item__val">5%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194I · Rent</span><span class="quick-ref-item__val">10%</span></div>
+        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194J · Prof. Fees</span><span class="quick-ref-item__val">10%</span></div>
+      </div>
+
+      <!-- Study Streak Widget -->
+      <div class="streak-widget" aria-label="Study streak">
+        <div class="streak-widget__label">🔥 Study Streak</div>
+        <div class="streak-widget__num" id="streakCountWidget">1</div>
+        <div class="streak-widget__sub">Days in a row — keep it up!</div>
+        <div class="streak-days">
+          <div class="streak-day done" aria-label="Monday done">M</div>
+          <div class="streak-day done" aria-label="Tuesday done">T</div>
+          <div class="streak-day done" aria-label="Wednesday done">W</div>
+          <div class="streak-day today" aria-label="Thursday today">T</div>
+          <div class="streak-day" aria-label="Friday">F</div>
+          <div class="streak-day" aria-label="Saturday">S</div>
+          <div class="streak-day" aria-label="Sunday">S</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESOURCES / LINKS ─────────────────── -->
+  <section class="section" id="resources" aria-labelledby="resTitle">
+    <div class="section__header">
+      <h2 class="section__title" id="resTitle">
+        <span class="section__title-dot" style="background:var(--green)"></span>
+        Study Resources
+      </h2>
+      <span class="section__subtitle">Curated links for CA Inter prep</span>
+    </div>
+    <div class="resource-list">
+      <a href="https://princechaurasia023.github.io/Royce-Prince-learning-hub/tax-flashcard.html"
+         class="resource-card" style="--rc-color:#2563EB" target="_blank" rel="noopener">
+        <div class="resource-card__icon">📊</div>
+        <div class="resource-card__body">
+          <div class="resource-card__title">Full Tax Flashcard Deck</div>
+          <div class="resource-card__desc">Complete chapter-wise Direct Tax flashcards based on CA Bhanwar Borana notes</div>
+        </div>
+        <svg class="resource-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <a href="https://www.icai.org/" class="resource-card" style="--rc-color:#16A34A" target="_blank" rel="noopener">
+        <div class="resource-card__icon">🏛️</div>
+        <div class="resource-card__body">
+          <div class="resource-card__title">ICAI Official Website</div>
+          <div class="resource-card__desc">Study materials, RTPs, MTPs, and official exam resources</div>
+        </div>
+        <svg class="resource-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <a href="#ai" class="resource-card" style="--rc-color:#7C3AED">
+        <div class="resource-card__icon">🤖</div>
+        <div class="resource-card__body">
+          <div class="resource-card__title">AI Study Assistant</div>
+          <div class="resource-card__desc">Ask any question on Tax, GST, Law or Accounts — powered by Claude AI</div>
+        </div>
+        <svg class="resource-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── UPLOAD ────────────────────────────── -->
+  <section class="section" id="upload" aria-labelledby="uploadTitle">
+    <div class="section__header">
+      <h2 class="section__title" id="uploadTitle">
+        <span class="section__title-dot" style="background:var(--amber)"></span>
+        Upload Study Notes
+      </h2>
+      <span class="section__subtitle">Upload HTML flashcard files — stored in your browser</span>
+    </div>
+
+    <div class="upload-area" id="uploadArea" role="button" tabindex="0" aria-label="Upload flashcard files">
+      <input type="file" id="fileInput" accept=".html" multiple aria-label="Choose flashcard files" />
+      <div class="upload-area__icon">⬆️</div>
+      <div class="upload-area__title">Drag & drop your flashcard files here</div>
+      <div class="upload-area__sub">or click to browse · Supports <strong>.html</strong> flashcard files</div>
+      <button class="btn btn--secondary" onclick="document.getElementById('fileInput').click()">
+        Browse Files
+      </button>
+    </div>
+
+    <div class="upload-category-select">
+      <label for="uploadCategory">Assign category:</label>
+      <select class="select-styled" id="uploadCategory">
+        <option value="tax">📊 Income Tax</option>
+        <option value="gst">🧾 GST</option>
+        <option value="law">⚖️ Law</option>
+        <option value="acc">🧮 Accounts</option>
+      </select>
+    </div>
+
+    <div id="uploadedFileList" class="uploaded-files-list" aria-label="Uploaded files" aria-live="polite">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ── AI ASSISTANT ──────────────────────── -->
+  <section class="section" id="ai" aria-labelledby="aiTitle">
+    <div class="section__header">
+      <h2 class="section__title" id="aiTitle">
+        <span class="section__title-dot" style="background:var(--purple)"></span>
+        AI Study Assistant
+      </h2>
+      <span class="section__subtitle">Powered by Claude · Ask anything about CA Inter</span>
+    </div>
+
+    <div class="ai-section">
+      <!-- Chat Window -->
+      <div class="chat-window" role="region" aria-label="Chat with AI assistant">
+        <div class="chat-window__header">
+          <div class="chat-window__avatar" aria-hidden="true">◈</div>
+          <div>
+            <div class="chat-window__name">CA Study Assistant</div>
+            <div class="chat-window__status">Online</div>
+          </div>
+          <div class="chat-window__actions">
+            <button title="Clear chat" onclick="document.getElementById('chatMessages').innerHTML=''" aria-label="Clear chat history">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages">
+          <div class="chat-msg chat-msg--ai">
+            <div class="chat-msg__avatar" aria-hidden="true">◈</div>
+            <div>
+              <div class="chat-msg__bubble">
+                Namaste! 🙏 Main aapka CA Inter study assistant hoon. Tax, GST, Law, ya Accounts — kuch bhi poochho!<br><br>
+                <strong>Try asking:</strong> "Section 80C ki limit kya hai?" or "GST ITC ke conditions?"
+              </div>
+              <div class="chat-msg__time">Now</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-row">
+          <textarea
+            class="chat-input"
+            id="chatInput"
+            placeholder="Ask about Tax, GST, Law, Accounts…"
+            rows="1"
+            aria-label="Type your question"
+          ></textarea>
+          <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Side Panel -->
+      <div class="ai-section__side">
+        <div class="ai-tip-card">
+          <div class="ai-tip-card__title"><span class="ai-tip-card__title-icon">⚡</span> Quick Prompts</div>
+          <div class="ai-prompt-suggestions">
+            <button class="ai-prompt-btn">Section 80C mein kya kya aata hai?</button>
+            <button class="ai-prompt-btn">GST mein Input Tax Credit ke 6 conditions kya hain?</button>
+            <button class="ai-prompt-btn">Company Law mein AGM ki requirements explain karo</button>
+            <button class="ai-prompt-btn">Capital Gains ka short/long term period kya hai?</button>
+            <button class="ai-prompt-btn">TDS deduction ka time of deduction kab hota hai?</button>
+            <button class="ai-prompt-btn">Partnership firm mein interest on capital ka treatment?</button>
+          </div>
+        </div>
+
+        <div class="ai-tip-card">
+          <div class="ai-tip-card__title"><span class="ai-tip-card__title-icon">📌</span> Exam Tips</div>
+          <div class="ai-prompt-suggestions">
+            <button class="ai-prompt-btn">May 2026 exam ke liye important topics suggest karo</button>
+            <button class="ai-prompt-btn">Last minute revision strategy for Tax</button>
+            <button class="ai-prompt-btn">Previous year question patterns for GST</button>
+          </div>
+        </div>
+
+        <div class="ai-disclaimer">
+          <strong>📢 Disclaimer:</strong> AI responses are educational summaries for CA Inter exam preparation. Always verify from ICAI Study Material, RTPs, and official notifications. Not a substitute for professional tax or legal advice.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div>
+      <strong style="color:var(--text-1)">◈ Prince Learning Hub</strong>
+      &nbsp;·&nbsp; © 2025 · Built for CA Inter May 2026
+    </div>
+    <div style="display:flex;gap:16px;align-items:center">
+      <a href="#flashcards">Flashcards</a>
+      <a href="#quick-ref">Quick Ref</a>
+      <a href="#upload">Upload</a>
+      <a href="#ai">AI Help</a>
+      <a href="https://princechaurasia023.github.io/Royce-Prince-learning-hub/tax-flashcard.html" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">Tax Deck ↗</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     TOAST CONTAINER
+═══════════════════════════════════════════ -->
+<div id="toastContainer" class="toast-container" aria-live="polite" role="status"></div>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
