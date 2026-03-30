@@ -171,6 +171,134 @@
   <button class="btn-ch3" id="btnNext" onclick="next()">Next &#8594;</button>
 </div>
 <div class="fc" id="fc" onclick="next()"></div>
+ <!-- ================= QUICK REFERENCE ALL CHAPTER ================= -->
+
+<!-- CH 1 -->
+<div class="summary-section" id="quick-ch1" style="display:none">
+<h2>📋 Basics Quick Reference</h2>
+<ul>
+<li>Old Regime Slab: 2.5L / 5L / 10L</li>
+<li>New Regime: Default</li>
+<li>Rebate 87A: 12L</li>
+<li>Surcharge applicable above 50L</li>
+</ul>
+</div>
+
+<!-- CH 2 -->
+<div class="summary-section" id="quick-ch2" style="display:none">
+<h2>📋 Residential Status</h2>
+<ul>
+<li>Resident = 182 days</li>
+<li>RNOR rules</li>
+<li>Scope of total income</li>
+<li>Foreign income rules</li>
+</ul>
+</div>
+
+<!-- CH 3 -->
+<div class="summary-section" id="quick-ch3" style="display:none">
+<h2>📋 Salary Quick Reference</h2>
+<ul>
+<li>HRA formula</li>
+<li>Standard deduction 75,000</li>
+<li>Gratuity exemption</li>
+<li>Leave encashment</li>
+</ul>
+</div>
+
+<!-- CH 4 -->
+<div class="summary-section" id="quick-hp" style="display:none">
+<h2>📋 House Property</h2>
+<ul>
+<li>GAV calculation</li>
+<li>Interest deduction</li>
+<li>30% standard deduction</li>
+<li>2 SOP allowed</li>
+</ul>
+</div>
+
+<!-- CH 5 -->
+<div class="summary-section" id="quick-ch4" style="display:none">
+<h2>📋 PGBP</h2>
+<ul>
+<li>Depreciation rates</li>
+<li>Presumptive taxation</li>
+<li>Business expenses</li>
+<li>Disallowed expenses</li>
+</ul>
+</div>
+
+<!-- CH 6 -->
+<div class="summary-section" id="quick-ch6" style="display:none">
+<h2>📋 Capital Gain</h2>
+<ul>
+<li>STCG / LTCG period</li>
+<li>Indexation</li>
+<li>Exemption 54 / 54F</li>
+<li>CG tax rate</li>
+</ul>
+</div>
+
+<!-- CH 7 -->
+<div class="summary-section" id="quick-ifos" style="display:none">
+<h2>📋 IFOS</h2>
+<ul>
+<li>Lottery 30%</li>
+<li>Gift rules</li>
+<li>Dividend income</li>
+<li>Family pension</li>
+</ul>
+</div>
+
+<!-- CH 8 -->
+<div class="summary-section" id="quick-club" style="display:none">
+<h2>📋 Clubbing</h2>
+<ul>
+<li>Spouse income</li>
+<li>Minor income</li>
+<li>Transfer of asset</li>
+</ul>
+</div>
+
+<!-- CH 9 -->
+<div class="summary-section" id="quick-setoff" style="display:none">
+<h2>📋 Setoff</h2>
+<ul>
+<li>Intra head</li>
+<li>Inter head</li>
+<li>Carry forward</li>
+</ul>
+</div>
+
+<!-- CH 10 -->
+<div class="summary-section" id="quick-via" style="display:none">
+<h2>📋 Deduction</h2>
+<ul>
+<li>80C 1.5L</li>
+<li>80D medical</li>
+<li>80G donation</li>
+</ul>
+</div>
+
+<!-- CH 11 -->
+<div class="summary-section" id="quick-ch11" style="display:none">
+<h2>📋 TDS</h2>
+<ul>
+<li>Advance tax</li>
+<li>TDS sections</li>
+<li>234A/B/C</li>
+</ul>
+</div>
+
+<!-- CH 12 -->
+<div class="summary-section" id="quick-rtn" style="display:none">
+<h2>📋 Return Filing</h2>
+<ul>
+<li>139(1)</li>
+<li>Belated return</li>
+<li>Revised return</li>
+</ul>
+</div>
  <!-- Quick Reference Salary -->
 <div class="summary-section" id="quick-ch3" style="display:none">
 <h2>📋 Salary Quick Reference</h2>
@@ -873,6 +1001,18 @@
 <div class="footer">Made for <span>CA Inter May 2026</span> — Ch 1 Basics · Ch 2 Residence · Ch 3 Salaries · Ch 4 HP · Ch 5 PGBP · Ch 6 Capital Gain · Ch 7 IFOS · Ch 8 Clubbing · Ch 9 Set-Off · Ch 10 Deductions · Ch 11 TDS/TCS · <span style="color:#378ADD">Ch 12 Return Filing</span> | 🎯 Complete DT Flashcard Set | Price Learning Hub</div>
 
 <script>
+ function showQuickReference(ch){
+
+document.querySelectorAll('.summary-section')
+.forEach(el => el.style.display="none");
+
+const el = document.getElementById("quick-"+ch);
+
+if(el){
+el.style.display="block";
+}
+
+}
 
 const CH1=[
 {tp:"Sources of Tax Law",ch:1,col:"orange",star:true,title:"Sources of Income Tax Law — 5 sources",bullets:["Income Tax Act 1961: MAIN source — determines Total Income, Tax Liability & Procedure | Applicable to whole India w.e.f. 1st April 1962","Income Tax Rules 1962: IT Act empowers CBDT to frame rules | All Forms, Depreciation rates, Valuation of perquisites = here","Annual Finance Act: Every year FM presents Finance Bill in Parliament | Contains amendments to DT & IDT | Finance Bill 2025 presented by Nirmala Sitharaman on 1 Feb 2025 | Became Finance Act 2025 on 29 March 2025","Circulars/Notifications from CBDT: Circulars = clarify meaning & scope of provisions | Notifications = give effect to provisions | Circulars BINDING on AO but NOT on Assessee & Courts | Assessee CAN take benefit of favorable circulars","Supreme Court & High Court Decisions: SC = Apex Court = Law of the land everywhere | HC decisions apply in respective state jurisdiction only"],trick:"Trick: 'IARCS = IT Act, Annual Finance Act, Rules 1962, Circulars/Notifications, SC/HC | Circulars = AO baadh (binding) but Assessee FREE (not bound) | SC = India ka BOSS!'"},
@@ -1885,7 +2025,16 @@ const CM={
   red:   {bg:"#3B0A0A",border:"#CC3333",title:"#FDE8E8",sub:"#F5AAAA",dot:"#E87070",trick:"#5C1212",trickTxt:"#F5AAAA",topicBg:"#CC3333",topicTxt:"#3B0A0A"}
 };
 
-function switchChapter(ch){showQuickReference(ch);
+function switchChapter(ch){
+
+currentChapter = ch;
+currentIndex = 0;
+
+showQuickReference(ch);
+
+renderCard();
+
+}
   activeCh=ch;
   fil="All";
   cur=0;
