@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prince Learning Hub</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+</style>
+
 </head>
 
 <body>
@@ -118,6 +125,23 @@
 
 <!-- ══════════════ FLASHCARDS ══════════════ -->
 <section class="section" id="flashcards">
+  <div style="text-align:center;margin:20px 0;">
+  <button onclick="scrollToFlashcard()" 
+  style="
+  padding:14px 28px;
+  background:linear-gradient(45deg,#007bff,#00c6ff);
+  color:white;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  animation: pulse 1.5s infinite;
+  ">
+  👇 Click Here to Open Flashcards
+  </button>
+</div>
   <div class="container">
     
     <div class="section-head">
@@ -450,6 +474,12 @@ Responses are for study purposes only — not personal legal or financial advice
 
       sendBtn.disabled = false;
     }
+    <script>
+function scrollToFlashcard(){
+document.getElementById("flashcardGrid")
+.scrollIntoView({behavior:"smooth"});
+}
+</script>
   </script>
 
 </body>
