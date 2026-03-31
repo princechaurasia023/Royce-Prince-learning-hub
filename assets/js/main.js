@@ -18,7 +18,7 @@
 
   /* ─── SAMPLE FLASHCARDS DATA ─────────────── */
   const SAMPLE_FLASHCARDS = [
-    { id: 1, chapter: 'Income Tax Basics', q: 'What is the basic exemption limit for an Individual below 60 years for AY 2025-26?', a: 'The basic exemption limit is ₹2,50,000 per year under the old tax regime. Under the new tax regime, the rebate u/s 87A makes income up to ₹7,00,000 effectively tax-free.', cat: 'tax', tag: 'Slab Rates' },
+    { id: 1, chapter: 'Income Tax Basics', q: 'What is the basic exemption limit for an Individual below 60 years for AY 2025-26?', a: 'The basic exemption limit is ₹2,50,000 per year under the old tax regime. Under the new tax regime, the rebate u/s 87A makes income up to ₹12,00,000 effectively tax-free.', cat: 'tax', tag: 'Slab Rates' },
     { id: 2, chapter: 'Income Tax Basics', q: 'What is the surcharge rate applicable when total income exceeds ₹50 lakhs but does not exceed ₹1 crore?', a: 'Surcharge rate is 10% of tax payable when income exceeds ₹50L but ≤ ₹1 Cr. For income > ₹1 Cr but ≤ ₹2 Cr: 15%. Marginal relief is available.', cat: 'tax', tag: 'Surcharge' },
     { id: 3, chapter: 'Heads of Income', q: 'Name the five heads of income under the Income Tax Act, 1961.', a: '1. Salaries (Sec 15-17)\n2. House Property (Sec 22-27)\n3. Business/Profession (Sec 28-44)\n4. Capital Gains (Sec 45-55A)\n5. Other Sources (Sec 56-59)', cat: 'tax', tag: 'Basics' },
     { id: 4, chapter: 'GST Fundamentals', q: 'What is the threshold limit for GST registration for a normal taxpayer (goods)?', a: 'For supply of goods: ₹40 lakhs aggregate turnover (₹20 lakhs for special category states). For services: ₹20 lakhs (₹10 lakhs for special category states).', cat: 'gst', tag: 'Registration' },
