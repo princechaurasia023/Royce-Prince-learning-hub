@@ -3,918 +3,712 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CA Inter Audit — Ch 1 & 2 Flashcards | Prince Learning Hub</title>
+<title>CA Inter Audit — Ch 1, 2 & 3 Flashcards | Prince Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0e1a;color:#f0f0f0;min-height:100vh;padding:16px}
-  .app-header{background:linear-gradient(135deg,#0d1f3c,#1a3a5c,#0d2640);border-radius:14px;padding:18px 22px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #1e3a5c}
-  .app-header h1{font-size:17px;font-weight:700;color:#B8D4F0;letter-spacing:0.3px}
-  .app-header .badges{display:flex;gap:8px;flex-wrap:wrap}
-  .app-header .badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
-  .b-ch1{background:#1C3B5C;color:#A8D4F5;border:1px solid #2E6EA6}
-  .b-ch2{background:#1A3D2B;color:#8FD4A8;border:1px solid #2E8A56}
+:root{
+  --bg:#0f1117;
+  --surface:#171b26;
+  --surface2:#1e2435;
+  --border:#252d42;
 
-  .chapter-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-  .ch-tab{padding:9px 18px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:2px solid #1e3a5c;background:#0d1a2e;color:#6a8aaa;transition:all 0.2s}
-  .ch-tab.active-ch1{background:#0d2640;color:#A8D4F5;border-color:#3A8FCC}
-  .ch-tab.active-ch2{background:#0d2e1a;color:#8FD4A8;border-color:#2E8A56}
-  .ch-tab.active-mega{background:#2a1a40;color:#C8A8F5;border-color:#7744CC}
+  --ch1:#3B9EFF;   --ch1bg:#0a1e3a; --ch1soft:#0d2448; --ch1text:#93C5FD;
+  --ch2:#22D3A0;   --ch2bg:#052a1f; --ch2soft:#073d2d; --ch2text:#6EE7C7;
+  --ch3:#F59E0B;   --ch3bg:#2a1800; --ch3soft:#3b2200; --ch3text:#FCD34D;
+  --mega:#C084FC;  --megabg:#1a0a2e; --megasoft:#251040; --megatext:#E9D5FF;
 
-  .topic-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-  .tpill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;cursor:pointer;border:1.5px solid #1e3a5c;background:#0d1a2e;color:#6a8aaa;transition:all 0.2s}
-  .tpill.active-ch1{background:#0d2640;color:#A8D4F5;border-color:#3A8FCC}
-  .tpill.active-ch2{background:#0d2e1a;color:#8FD4A8;border-color:#2E8A56}
-  .tpill.active-mega{background:#2a1a40;color:#C8A8F5;border-color:#7744CC}
+  --text:#E8EDF5;
+  --muted:#6B7A99;
+  --faint:#2a3350;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:14px;background-image:radial-gradient(ellipse at 20% 10%, #1a1f35 0%,transparent 60%),radial-gradient(ellipse at 80% 90%, #1a1200 0%,transparent 60%)}
 
-  .pbar{height:7px;background:#0d1a2e;border-radius:4px;margin-bottom:14px;overflow:hidden;border:1px solid #1e3a5c}
-  .pfill{height:100%;border-radius:4px;transition:width 0.4s}
-  .pfill-ch1{background:linear-gradient(90deg,#1A6EA6,#3AAAF0)}
-  .pfill-ch2{background:linear-gradient(90deg,#1A7A3C,#2ECC6E)}
-  .pfill-mega{background:linear-gradient(90deg,#6644AA,#9966EE)}
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#141929,#1c2540,#141929);border-radius:16px;padding:16px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid var(--border);position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,#3B9EFF18,transparent 70%)}
+.hdr-title{font-size:16px;font-weight:800;color:#CBD5E1;letter-spacing:0.2px;font-family:'Outfit',sans-serif}
+.hdr-title span{color:#3B9EFF}
+.badges{display:flex;gap:7px;flex-wrap:wrap}
+.badge{font-size:10.5px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.3px}
+.b1{background:#0a1e3a;color:#93C5FD;border:1px solid #1e4080}
+.b2{background:#052a1f;color:#6EE7C7;border:1px solid #0e5a3a}
+.b3{background:#2a1800;color:#FCD34D;border:1px solid #5c3800}
 
-  .cnav{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
-  .cnav button{border:none;border-radius:8px;padding:9px 22px;font-size:13px;font-weight:700;cursor:pointer;color:#fff;transition:all 0.2s}
-  .cnav button:hover{opacity:0.85;transform:translateY(-1px)}
-  .btn-ch1{background:#1A5E8C}
-  .btn-ch2{background:#1A6A3C}
-  .btn-mega{background:#5533AA}
-  .ctr{font-size:14px;font-weight:700;color:#8aa8cc;min-width:80px;text-align:center}
+/* TABS */
+.tabs{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+.tab{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all .2s;font-family:'Outfit',sans-serif}
+.tab:hover{border-color:var(--faint);color:#9aaabb}
+.tab.a1{background:var(--ch1bg);color:var(--ch1text);border-color:var(--ch1)}
+.tab.a2{background:var(--ch2bg);color:var(--ch2text);border-color:var(--ch2)}
+.tab.a3{background:var(--ch3bg);color:var(--ch3text);border-color:var(--ch3)}
+.tab.am{background:var(--megabg);color:var(--megatext);border-color:var(--mega)}
 
-  .fc{border-radius:14px;padding:22px 24px;min-height:320px;border-width:2px;border-style:solid;cursor:pointer;position:relative;transition:all 0.15s;margin-bottom:6px}
-  .fc:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.5)}
-  .fc:active{opacity:0.9;transform:translateY(0)}
-  .fc-topic{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:10px;letter-spacing:0.4px}
-  .fc-sa-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;margin-left:6px;background:#1A1A3A;color:#9999FF;border:1px solid #3333AA}
-  .fc-title{font-size:18px;font-weight:700;margin-bottom:14px;line-height:1.35}
-  .fc-subtitle{font-size:12px;font-weight:600;opacity:0.75;margin-bottom:10px;margin-top:-10px;font-style:italic}
-  .fc-bullets{list-style:none;padding:0;margin:0 0 12px}
-  .fc-bullets li{font-size:13px;font-weight:600;padding:3px 0;display:flex;gap:9px;line-height:1.6;align-items:flex-start}
-  .fc-bullets li .dot{flex-shrink:0;margin-top:7px;width:7px;height:7px;border-radius:50%;display:inline-block}
-  .fc-bullets li .num{flex-shrink:0;font-size:11px;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:3px}
-  .fc-def{border-radius:8px;padding:11px 14px;margin-bottom:12px;font-size:13px;font-weight:600;line-height:1.6;border-left:3px solid;font-style:italic}
-  .fc-formula{border-radius:8px;padding:12px 14px;margin:8px 0;font-size:13px;font-weight:700;text-align:center;letter-spacing:0.3px}
-  .fc-trick{border-radius:8px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;line-height:1.5}
-  .fc-trick-label{font-size:10px;font-weight:800;letter-spacing:0.8px;margin-bottom:4px;opacity:0.8}
-  .fc-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
-  .fc-compare-col{border-radius:8px;padding:10px 12px}
-  .fc-compare-col h4{font-size:11px;font-weight:800;margin-bottom:6px;letter-spacing:0.3px}
-  .fc-compare-col li{font-size:11.5px;padding:2px 0;list-style:none;line-height:1.5}
-  .fc-compare-col li::before{content:"▸ ";opacity:0.7}
-  .fc-star{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
-  .fc-tag{position:absolute;top:14px;right:16px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;background:#0d2e1a;color:#4CAF80;border:1px solid #2E6E4A}
-  .hint{font-size:12px;color:#3a5a7a;text-align:center;margin-top:6px;margin-bottom:20px}
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all .15s;font-family:'Outfit',sans-serif}
+.pill:hover{filter:brightness(1.2)}
+.pill.a1{background:var(--ch1bg);color:var(--ch1text);border-color:var(--ch1)}
+.pill.a2{background:var(--ch2bg);color:var(--ch2text);border-color:var(--ch2)}
+.pill.a3{background:var(--ch3bg);color:var(--ch3text);border-color:var(--ch3)}
+.pill.am{background:var(--megabg);color:var(--megatext);border-color:var(--mega)}
 
-  /* Summary / Quick Reference */
-  .summary-section{background:#060d1a;border-radius:12px;padding:18px;margin-top:20px;border:1px solid #1e3a5c}
-  .summary-section h2{font-size:15px;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #1e3a5c;color:#5AA0D4}
-  .qr-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
-  .qr-btn{padding:8px 15px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;border:2px solid #1e3a5c;background:#0d1a2e;color:#6a8aaa;transition:all 0.22s ease;letter-spacing:0.2px}
-  .qr-btn:hover{filter:brightness(1.25);transform:translateY(-1px)}
-  .qr-btn.qr-active{color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.5)}
-  .qr-btn[data-ch="1"].qr-active{background:#0d2640;border-color:#3A8FCC;color:#A8D4F5}
-  .qr-btn[data-ch="2"].qr-active{background:#0d2e1a;border-color:#2E8A56;color:#8FD4A8}
-  .qr-btn[data-ch="sa"].qr-active{background:#1a1a3a;border-color:#6644CC;color:#C8A8F5}
-  .qr-panel{display:none;animation:qrFadeIn 0.28s ease}
-  .qr-panel.qr-open{display:block}
-  @keyframes qrFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-  .qr-chapter{background:#0d1420;border-radius:12px;padding:16px 18px;margin-bottom:18px;border-left:4px solid #3A8FCC}
-  .qr-ch-head{font-size:13px;font-weight:800;padding:8px 14px;border-radius:8px;margin-bottom:12px;letter-spacing:0.4px}
-  .qr-sub{font-size:12px;font-weight:800;margin-bottom:6px;margin-top:10px;letter-spacing:0.3px}
-  .qr-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .qr-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
-  .qr-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:14px;line-height:1.5}
-  .rate-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
-  .rate-table th{background:#0d1a2e;padding:7px 10px;text-align:left;font-weight:700;color:#8aa8cc;border-bottom:1px solid #1e3a5c}
-  .rate-table td{padding:6px 10px;border-bottom:1px solid #0d1a2e;color:#a0b8cc}
-  .rate-table tr:hover td{background:#0d1a2e}
+/* PROGRESS */
+.pbar{height:6px;background:var(--surface2);border-radius:4px;margin-bottom:12px;overflow:hidden}
+.pfill{height:100%;border-radius:4px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.pf1{background:linear-gradient(90deg,#1A5ECC,#3B9EFF)}
+.pf2{background:linear-gradient(90deg,#0a7a52,#22D3A0)}
+.pf3{background:linear-gradient(90deg,#b36000,#F59E0B)}
+.pfm{background:linear-gradient(90deg,#7733CC,#C084FC)}
 
-  .footer{text-align:center;margin-top:24px;font-size:12px;color:#2a4a6a;padding-bottom:10px}
-  .footer span{color:#5AA0D4;font-weight:700}
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.nav button{border:none;border-radius:9px;padding:9px 24px;font-size:13px;font-weight:800;cursor:pointer;color:#fff;transition:all .18s;font-family:'Outfit',sans-serif;letter-spacing:0.3px}
+.nav button:hover{opacity:.85;transform:translateY(-1px)}
+.nb1{background:#1A5ECC}
+.nb2{background:#0a7a52}
+.nb3{background:#b36000}
+.nbm{background:#7733CC}
+.ctr{font-size:13px;font-weight:800;color:var(--muted);min-width:70px;text-align:center;font-family:'JetBrains Mono',monospace}
 
-  @media(max-width:700px){.qr-grid2{grid-template-columns:1fr}.fc-compare{grid-template-columns:1fr}}
-  @media(max-width:500px){.app-header h1{font-size:13px}.fc-title{font-size:15px}.fc-bullets li{font-size:12px}.ch-tab{padding:7px 12px;font-size:11px}}
+/* CARD */
+.card{border-radius:16px;padding:22px 24px;min-height:310px;border-width:1.5px;border-style:solid;cursor:pointer;position:relative;transition:transform .15s,box-shadow .15s;margin-bottom:6px}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.55)}
+.card:active{opacity:.92;transform:translateY(0)}
+.c-topic{font-size:10.5px;font-weight:800;padding:3px 11px;border-radius:20px;display:inline-block;margin-bottom:9px;letter-spacing:.5px;font-family:'JetBrains Mono',monospace}
+.c-sa{font-size:9.5px;font-weight:700;padding:2px 9px;border-radius:20px;display:inline-block;margin-left:6px;background:#171b26;color:#8888CC;border:1px solid #333366;font-family:'JetBrains Mono',monospace}
+.c-imp{position:absolute;top:14px;right:16px;font-size:10.5px;font-weight:800;padding:3px 11px;border-radius:20px;letter-spacing:.3px}
+.c-title{font-size:18px;font-weight:800;margin-bottom:12px;line-height:1.3;letter-spacing:-0.2px}
+.c-sub{font-size:12px;font-weight:600;opacity:.65;margin-bottom:8px;margin-top:-8px;font-style:italic}
+.c-def{border-radius:9px;padding:11px 14px;margin-bottom:11px;font-size:12.5px;font-weight:600;line-height:1.65;border-left:3px solid;font-style:italic}
+.c-bullets{list-style:none;padding:0;margin:0 0 10px}
+.c-bullets li{font-size:12.5px;font-weight:600;padding:2px 0;display:flex;gap:9px;line-height:1.65;align-items:flex-start}
+.c-bullets li .dot{flex-shrink:0;margin-top:8px;width:6px;height:6px;border-radius:50%;display:inline-block}
+.c-formula{border-radius:9px;padding:11px 14px;margin:8px 0;font-size:13px;font-weight:800;text-align:center;letter-spacing:.3px;font-family:'JetBrains Mono',monospace}
+.c-trick{border-radius:9px;padding:12px 14px;margin-top:10px}
+.c-trick-lbl{font-size:10px;font-weight:800;letter-spacing:.8px;margin-bottom:4px;opacity:.8;text-transform:uppercase}
+.c-trick pre{white-space:pre-wrap;font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:600;color:#ccc;line-height:1.6}
+.c-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.c-compare-col{border-radius:9px;padding:10px 12px}
+.c-compare-col h4{font-size:11px;font-weight:800;margin-bottom:6px;letter-spacing:.3px}
+.c-compare-col li{font-size:11.5px;padding:2px 0;list-style:none;line-height:1.5;color:#bbb}
+.c-compare-col li::before{content:"▸ ";opacity:.6}
+.hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:5px;margin-bottom:18px}
+
+/* QUICK REF */
+.qr-wrap{background:#0c0f1a;border-radius:14px;padding:18px;margin-top:18px;border:1px solid var(--border)}
+.qr-wrap h2{font-size:14px;font-weight:800;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);color:#5AA0D4;letter-spacing:.3px}
+.qr-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.qr-btn{padding:8px 14px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all .2s;font-family:'Outfit',sans-serif}
+.qr-btn:hover{filter:brightness(1.25);transform:translateY(-1px)}
+.qr-btn.qa[data-ch="1"]{background:var(--ch1bg);border-color:var(--ch1);color:var(--ch1text)}
+.qr-btn.qa[data-ch="2"]{background:var(--ch2bg);border-color:var(--ch2);color:var(--ch2text)}
+.qr-btn.qa[data-ch="3"]{background:var(--ch3bg);border-color:var(--ch3);color:var(--ch3text)}
+.qr-btn.qa[data-ch="sa"]{background:var(--megabg);border-color:var(--mega);color:var(--megatext)}
+.qr-panel{display:none;animation:fadeUp .25s ease}
+.qr-panel.open{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.qr-ch{background:#0d1020;border-radius:12px;padding:15px 17px;margin-bottom:16px}
+.qr-head{font-size:13px;font-weight:800;padding:8px 14px;border-radius:8px;margin-bottom:12px;letter-spacing:.3px}
+.qr-sub{font-size:11.5px;font-weight:800;margin-bottom:5px;margin-top:10px;letter-spacing:.3px}
+.qr-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qr-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.qr-pill{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:12px;line-height:1.5}
+.rt{width:100%;border-collapse:collapse;margin-top:8px;font-size:11.5px}
+.rt th{background:#0d1420;padding:6px 10px;text-align:left;font-weight:700;color:#8aa8cc;border-bottom:1px solid var(--border)}
+.rt td{padding:5px 10px;border-bottom:1px solid #0d1420;color:#a0b8cc}
+.rt tr:hover td{background:#0d1420}
+
+.footer{text-align:center;margin-top:22px;font-size:12px;color:#2a4060;padding-bottom:10px}
+.footer span{color:#3B9EFF;font-weight:700}
+
+@media(max-width:700px){.qr-2{grid-template-columns:1fr}.c-compare{grid-template-columns:1fr}}
+@media(max-width:500px){.hdr-title{font-size:13px}.c-title{font-size:15px}.tab{padding:7px 11px;font-size:11px}}
 </style>
 </head>
 <body>
 
-<div class="app-header">
-  <h1>📘 CA Inter Audit — Ch 1 & 2 Flashcards | Prince Learning Hub</h1>
+<div class="hdr">
+  <div class="hdr-title">📘 CA Inter Audit — <span>Ch 1, 2 & 3</span> Flashcards | Prince Learning Hub</div>
   <div class="badges">
-    <span class="badge b-ch1">Ch 1 — Nature, Objective & Scope</span>
-    <span class="badge b-ch2">Ch 2 — Audit Strategy, Planning & Programme</span>
+    <span class="badge b1">Ch 1 — Nature & Scope</span>
+    <span class="badge b2">Ch 2 — Audit Planning</span>
+    <span class="badge b3">Ch 3 — Risk & Internal Control</span>
   </div>
 </div>
 
-<div class="chapter-tabs">
-  <button class="ch-tab active-ch1" id="tab-ch1" onclick="switchChapter('ch1')">Ch 1 — Nature & Scope</button>
-  <button class="ch-tab" id="tab-ch2" onclick="switchChapter('ch2')">Ch 2 — Planning & Programme</button>
-  <button class="ch-tab" id="tab-mega" onclick="switchChapter('mega')">🔀 ALL Cards</button>
+<div class="tabs">
+  <button class="tab a1" id="tab-ch1" onclick="switchChapter('ch1')">Ch 1 — Nature & Scope</button>
+  <button class="tab" id="tab-ch2" onclick="switchChapter('ch2')">Ch 2 — Planning</button>
+  <button class="tab" id="tab-ch3" onclick="switchChapter('ch3')">Ch 3 — Risk & IC</button>
+  <button class="tab" id="tab-mega" onclick="switchChapter('mega')">🔀 ALL Cards</button>
 </div>
 
-<div class="topic-pills" id="tpills"></div>
-<div class="pbar"><div class="pfill pfill-ch1" id="pf" style="width:4%"></div></div>
-<div class="cnav">
-  <button class="btn-ch1" id="btnPrev" onclick="prev()">← Prev</button>
+<div class="pills" id="tpills"></div>
+<div class="pbar"><div class="pfill pf1" id="pf" style="width:4%"></div></div>
+<div class="nav">
+  <button class="nb1" id="btnPrev" onclick="prev()">← Prev</button>
   <span class="ctr" id="ctr">1 / ?</span>
-  <button class="btn-ch1" id="btnNext" onclick="next()">Next →</button>
+  <button class="nb1" id="btnNext" onclick="next()">Next →</button>
 </div>
-<div class="fc" id="fc" onclick="next()"></div>
-<div class="hint">Click card / Arrow keys to navigate &nbsp;|&nbsp; Topic pills to filter &nbsp;|&nbsp; ★ = Exam Important</div>
+<div class="card" id="card" onclick="next()"></div>
+<div class="hint">Click card / Arrow keys to navigate &nbsp;|&nbsp; Filter by topic pill &nbsp;|&nbsp; ★ = Exam Important</div>
 
-<div class="summary-section">
-  <h2>📋 QUICK REFERENCE — Ch 1 & 2 | CA Inter Audit</h2>
+<!-- QUICK REF -->
+<div class="qr-wrap">
+  <h2>📋 QUICK REFERENCE — Ch 1, 2 & 3 | CA Inter Audit</h2>
   <div class="qr-nav">
-    <button class="qr-btn" data-ch="1" onclick="showQR('1')">Ch 1 — Nature, Objective & Scope</button>
-    <button class="qr-btn" data-ch="2" onclick="showQR('2')">Ch 2 — Audit Strategy & Planning</button>
-    <button class="qr-btn" data-ch="sa" onclick="showQR('sa')">⚡ SA Standards & Memory Tricks</button>
+    <button class="qr-btn" data-ch="1" onclick="showQR('1')">Ch 1 — Nature & Scope</button>
+    <button class="qr-btn" data-ch="2" onclick="showQR('2')">Ch 2 — Audit Strategy</button>
+    <button class="qr-btn" data-ch="3" onclick="showQR('3')">Ch 3 — Risk & Internal Control</button>
+    <button class="qr-btn" data-ch="sa" onclick="showQR('sa')">⚡ SA Standards & Tricks</button>
   </div>
 
+  <!-- QR PANEL 1 -->
   <div class="qr-panel" id="qr-panel-1">
-    <div class="qr-chapter" style="border-left-color:#3A8FCC">
-      <div class="qr-ch-head" style="background:#0d2640;color:#A8D4F5">Ch 1 — Nature, Objective & Scope of Audit</div>
-      <div class="qr-grid2">
+    <div class="qr-ch" style="border-left:4px solid var(--ch1)">
+      <div class="qr-head" style="background:var(--ch1bg);color:var(--ch1text)">Ch 1 — Nature, Objective & Scope of Audit</div>
+      <div class="qr-2">
         <div>
-          <div class="qr-sub" style="color:#3A8FCC">Definition of Audit</div>
-          <table class="rate-table">
-            <tr><th>Element</th><th>Detail</th></tr>
+          <div class="qr-sub" style="color:var(--ch1)">Definition of Audit</div>
+          <table class="rt"><tr><th>Element</th><th>Detail</th></tr>
             <tr><td>Nature</td><td>Independent examination of financial information</td></tr>
             <tr><td>Applies to</td><td>Any entity — profit/non-profit, any size/form</td></tr>
             <tr><td>Purpose</td><td>Express an opinion on FS</td></tr>
             <tr><td>Responsibility</td><td>Management prepares FS; Auditor examines</td></tr>
           </table>
-          <div class="qr-sub" style="color:#3A8FCC">Objective of Audit (SA 200)</div>
-          <table class="rate-table">
-            <tr><th>Objective</th><th>Detail</th></tr>
-            <tr><td>Primary</td><td>Obtain Reasonable Assurance — FS free from material misstatement</td></tr>
-            <tr><td>Secondary</td><td>Report on FS as per auditor's findings</td></tr>
+          <div class="qr-sub" style="color:var(--ch1)">Objective (SA 200)</div>
+          <table class="rt"><tr><th>Objective</th><th>Detail</th></tr>
+            <tr><td>Primary</td><td>Reasonable Assurance — FS free from material misstatement</td></tr>
+            <tr><td>Secondary</td><td>Report on FS per auditor's findings</td></tr>
             <tr><td>Misstatement</td><td>Due to Fraud OR Error or Both</td></tr>
-            <tr><td>Assurance level</td><td>High level (Reasonable) — NOT Absolute</td></tr>
+            <tr><td>Assurance level</td><td>High (Reasonable) — NOT Absolute</td></tr>
           </table>
         </div>
         <div>
-          <div class="qr-sub" style="color:#3A8FCC">Scope of Audit — Includes</div>
-          <table class="rate-table">
-            <tr><th>#</th><th>Coverage</th></tr>
-            <tr><td>1</td><td>Coverage of all entity aspects relevant to FS</td></tr>
-            <tr><td>2</td><td>Reliability & sufficiency of financial information</td></tr>
-            <tr><td>3</td><td>Proper disclosure of financial information</td></tr>
+          <div class="qr-sub" style="color:var(--ch1)">Scope Includes</div>
+          <table class="rt"><tr><th>#</th><th>Coverage</th></tr>
+            <tr><td>1</td><td>All aspects of entity relevant to FS</td></tr>
+            <tr><td>2</td><td>Reliability & sufficiency of financial info</td></tr>
+            <tr><td>3</td><td>Proper disclosure of financial info</td></tr>
           </table>
-          <div class="qr-sub" style="color:#3A8FCC">Scope — Does NOT Include</div>
-          <table class="rate-table">
-            <tr><th>Excluded</th><th>Reason</th></tr>
-            <tr><td>Civil structure suitability</td><td>Needs engineer expertise</td></tr>
-            <tr><td>Document authentication</td><td>Auditor NOT an expert</td></tr>
-            <tr><td>Official investigation</td><td>No legal powers of search/oath</td></tr>
-            <tr><td>Outside competence duties</td><td>Not expected</td></tr>
+          <div class="qr-sub" style="color:var(--ch1)">Engagement Standards</div>
+          <table class="rt"><tr><th>Standard</th><th>Applies to</th></tr>
+            <tr><td>SA's</td><td>Audit of historical FI</td></tr>
+            <tr><td>SRE's</td><td>Review of historical FI</td></tr>
+            <tr><td>SAE's</td><td>Other assurance (prospective FI)</td></tr>
+            <tr><td>SRS's</td><td>Agreed upon, compilation</td></tr>
+            <tr><td>SQC's</td><td>Firm-level quality control</td></tr>
           </table>
         </div>
-      </div>
-      <div class="qr-sub" style="color:#3A8FCC">Engagement Standards — 4 Types + 1 Quality</div>
-      <table class="rate-table">
-        <tr><th>Standard</th><th>Full Name</th><th>Applies to</th></tr>
-        <tr><td>SA's</td><td>Standards on Auditing</td><td>Audit of historical financial information</td></tr>
-        <tr><td>SRE's</td><td>Standards on Review Engagements</td><td>Review of historical financial information</td></tr>
-        <tr><td>SAE's</td><td>Standards on Assurance Engagements</td><td>Assurance other than audit/review — e.g. prospective FI</td></tr>
-        <tr><td>SRS's</td><td>Standards on Related Services</td><td>Agreed upon procedures, compilation engagements</td></tr>
-        <tr><td>SQC's</td><td>Standards on Quality Control</td><td>Firm-level quality control — all engagements</td></tr>
-      </table>
-      <div class="qr-pills" style="margin-top:10px">
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">SA 200 = Overall Objectives of Independent Auditor</span>
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">Reasonable ≠ Absolute Assurance</span>
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">Sufficient = Quantity | Appropriate = Quality</span>
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">SQC 1 = Firm Quality Control Standard</span>
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">SAEs: 3400 (PFI) | 3420 (Pro Forma)</span>
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">SREs: 2400 | 2410</span>
-        <span class="qr-pill" style="background:#0d2640;color:#A8D4F5">SRS 4400 (Agreed upon) | SRS 4410 (Compilation)</span>
       </div>
     </div>
   </div>
 
+  <!-- QR PANEL 2 -->
   <div class="qr-panel" id="qr-panel-2">
-    <div class="qr-chapter" style="border-left-color:#2E8A56">
-      <div class="qr-ch-head" style="background:#0d2e1a;color:#8FD4A8">Ch 2 — Audit Strategy, Audit Planning & Audit Programme (SA 300)</div>
-      <div class="qr-grid2">
+    <div class="qr-ch" style="border-left:4px solid var(--ch2)">
+      <div class="qr-head" style="background:var(--ch2bg);color:var(--ch2text)">Ch 2 — Audit Strategy, Planning & Programme (SA 300)</div>
+      <div class="qr-2">
         <div>
-          <div class="qr-sub" style="color:#2E8A56">Elements of Planning</div>
-          <table class="rate-table">
-            <tr><th>Phase</th><th>Sub-elements</th></tr>
-            <tr><td>I. Preliminary Engagement</td><td>A) Client continuance | B) Ethical requirements | C) Engagement letter</td></tr>
+          <div class="qr-sub" style="color:var(--ch2)">Elements of Planning</div>
+          <table class="rt"><tr><th>Phase</th><th>Sub-elements</th></tr>
+            <tr><td>I. Preliminary Engagement</td><td>A) Client continuance | B) Ethical req | C) Engagement letter</td></tr>
             <tr><td>II. Planning Activities</td><td>A) Overall Audit Strategy | B) Audit Plan</td></tr>
           </table>
-          <div class="qr-sub" style="color:#2E8A56">Overall Audit Strategy (5 Factors)</div>
-          <table class="rate-table">
-            <tr><th>Note</th><th>Factor</th></tr>
-            <tr><td>Note 1</td><td>Characteristics of engagement (define Scope)</td></tr>
-            <tr><td>Note 2</td><td>Reporting objectives (plan Timing + Communications)</td></tr>
-            <tr><td>Note 3</td><td>Factors significant in directing team's efforts</td></tr>
-            <tr><td>Note 4</td><td>Results of preliminary activities + knowledge from other engagements</td></tr>
-            <tr><td>Note 5</td><td>Nature, timing & extent of resources</td></tr>
+          <div class="qr-sub" style="color:var(--ch2)">Audit Strategy — 5 Factors</div>
+          <table class="rt"><tr><th>Note</th><th>Factor</th></tr>
+            <tr><td>1</td><td>Characteristics of engagement (define Scope)</td></tr>
+            <tr><td>2</td><td>Reporting objectives (plan Timing)</td></tr>
+            <tr><td>3</td><td>Factors directing team's efforts</td></tr>
+            <tr><td>4</td><td>Results of preliminary activities</td></tr>
+            <tr><td>5</td><td>Nature, timing & extent of resources</td></tr>
           </table>
         </div>
         <div>
-          <div class="qr-sub" style="color:#2E8A56">Audit Plan — Content (3 Elements)</div>
-          <table class="rate-table">
-            <tr><th>Element</th><th>SA Reference</th></tr>
-            <tr><td>Nature, timing & extent of planned RISK ASSESSMENT procedures</td><td>SA 315</td></tr>
-            <tr><td>Nature, timing & extent of planned FURTHER AUDIT procedures</td><td>SA 330</td></tr>
-            <tr><td>Other planned audit procedures to comply with SAs</td><td>—</td></tr>
+          <div class="qr-sub" style="color:var(--ch2)">Audit Plan — 3 Elements</div>
+          <table class="rt"><tr><th>Element</th><th>SA Ref</th></tr>
+            <tr><td>Planned risk assessment procedures</td><td>SA 315</td></tr>
+            <tr><td>Planned further audit procedures</td><td>SA 330</td></tr>
+            <tr><td>Other planned audit procedures</td><td>—</td></tr>
           </table>
-          <div class="qr-sub" style="color:#2E8A56">Strategy vs Plan</div>
-          <table class="rate-table">
-            <tr><th>Strategy</th><th>Plan</th></tr>
-            <tr><td>Sets broad overall approach</td><td>Addresses matters identified in strategy</td></tr>
-            <tr><td>Determines scope, timing, direction</td><td>Describes HOW strategy will be implemented</td></tr>
+          <div class="qr-sub" style="color:var(--ch2)">Strategy vs Plan</div>
+          <table class="rt"><tr><th>Strategy</th><th>Plan</th></tr>
+            <tr><td>Broad overall approach</td><td>Addresses strategy matters</td></tr>
+            <tr><td>Sets scope, timing, direction</td><td>Describes HOW to implement</td></tr>
             <tr><td>High-level</td><td>More detailed</td></tr>
           </table>
         </div>
       </div>
-      <div class="qr-sub" style="color:#2E8A56">Audit Programme — Key Points</div>
-      <table class="rate-table">
-        <tr><th>Feature</th><th>Detail</th></tr>
-        <tr><td>Definition</td><td>Detailed plan of applying audit procedures in given circumstances</td></tr>
-        <tr><td>Purpose</td><td>Obtain sufficient evidence to enable auditor to express informed opinion</td></tr>
-        <tr><td>Types of Evidence</td><td>Documentary, Physical, Statements (mgmt/3rd party), Arithmetic calculations, Internal controls, Inter-relationship data, Minutes, Subsidiary records</td></tr>
-        <tr><td>Documentation required</td><td>Overall audit strategy + Audit plan + Significant changes & reasons</td></tr>
+    </div>
+  </div>
+
+  <!-- QR PANEL 3 — NEW CHAPTER 3 -->
+  <div class="qr-panel" id="qr-panel-3">
+    <div class="qr-ch" style="border-left:4px solid var(--ch3)">
+      <div class="qr-head" style="background:var(--ch3bg);color:var(--ch3text)">Ch 3 — Risk Assessment & Internal Control (SA 315, 320, 330)</div>
+      <div class="qr-2">
+        <div>
+          <div class="qr-sub" style="color:var(--ch3)">Audit Risk Formula</div>
+          <table class="rt"><tr><th>Formula</th><th>Components</th></tr>
+            <tr><td>Audit Risk</td><td>= Risk of Material Misstatement × Detection Risk</td></tr>
+            <tr><td>RMM</td><td>= Inherent Risk × Control Risk</td></tr>
+            <tr><td>∴ Audit Risk</td><td>= IR × CR × DR</td></tr>
+          </table>
+          <div class="qr-sub" style="color:var(--ch3)">Risk Assessment Procedures (SA 315)</div>
+          <table class="rt"><tr><th>#</th><th>Procedure</th></tr>
+            <tr><td>a</td><td>Inquiries of management & others</td></tr>
+            <tr><td>b</td><td>Analytical procedures</td></tr>
+            <tr><td>c</td><td>Observation and inspection</td></tr>
+          </table>
+          <div class="qr-sub" style="color:var(--ch3)">Materiality (SA 320) — Benchmarks</div>
+          <table class="rt"><tr><th>Benchmark</th><th>Example %</th></tr>
+            <tr><td>Profit Before Tax</td><td>5%–10%</td></tr>
+            <tr><td>Total Revenue</td><td>0.5%–1%</td></tr>
+            <tr><td>Total Assets</td><td>0.5%–2%</td></tr>
+            <tr><td>Net Assets / Equity</td><td>1%–5%</td></tr>
+          </table>
+        </div>
+        <div>
+          <div class="qr-sub" style="color:var(--ch3)">5 Components of Internal Control</div>
+          <table class="rt"><tr><th>Component</th><th>Key Element</th></tr>
+            <tr><td>A) Control Environment</td><td>Tone at top; ethics & integrity</td></tr>
+            <tr><td>B) Risk Assessment Process</td><td>Entity identifies business risks</td></tr>
+            <tr><td>C) Information System</td><td>Transactions recorded & reported</td></tr>
+            <tr><td>D) Control Activities</td><td>Policies & procedures; segregation</td></tr>
+            <tr><td>E) Monitoring of Controls</td><td>Ongoing assessment of effectiveness</td></tr>
+          </table>
+          <div class="qr-sub" style="color:var(--ch3)">Auditor Responses (SA 330)</div>
+          <table class="rt"><tr><th>Response Type</th><th>Sub-types</th></tr>
+            <tr><td>Tests of Controls</td><td>Operating effectiveness of controls</td></tr>
+            <tr><td>Substantive Procedures</td><td>Tests of Details + Substantive Analytical</td></tr>
+            <tr><td>Tests of Details</td><td>Vouching (transactions) + Verification (balances)</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="qr-sub" style="color:var(--ch3)">IT Controls in Automated Environment</div>
+      <table class="rt"><tr><th>Type</th><th>Description</th></tr>
+        <tr><td>General IT Controls</td><td>Pervasive / indirect controls — data centre, program change, access security</td></tr>
+        <tr><td>Application Controls</td><td>Embedded in IT applications (ERPs); ensure completeness & accuracy of data</td></tr>
+        <tr><td>IT Dependent Controls</td><td>Manual controls that rely on IT-generated reports or data</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:10px">
-        <span class="qr-pill" style="background:#0d2e1a;color:#8FD4A8">SA 300 = Planning an Audit of FS</span>
-        <span class="qr-pill" style="background:#0d2e1a;color:#8FD4A8">Planning = Continuous & Iterative (not one-time)</span>
-        <span class="qr-pill" style="background:#0d2e1a;color:#8FD4A8">Audit programme = standard + alterable</span>
-        <span class="qr-pill" style="background:#0d2e1a;color:#8FD4A8">Auditor's responsibility: establish strategy + develop plan</span>
-        <span class="qr-pill" style="background:#0d2e1a;color:#8FD4A8">Periodic review of audit programme = essential</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">SA 315 = Identifying & Assessing RMM</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">SA 320 = Materiality in Planning & Performing</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">SA 330 = Auditor's Responses to Assessed Risks</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">Audit Risk ≠ Auditor's Business Risk</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">Control Risk ∝ 1/Effectiveness of IC</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">Performance Materiality < Overall Materiality</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">Inquiry alone NOT sufficient as test of controls</span>
+        <span class="qr-pill" style="background:var(--ch3bg);color:var(--ch3text)">CAATs = Computer Assisted Auditing Techniques</span>
       </div>
     </div>
   </div>
 
+  <!-- QR PANEL SA -->
   <div class="qr-panel" id="qr-panel-sa">
-    <div class="qr-chapter" style="border-left-color:#6644CC">
-      <div class="qr-ch-head" style="background:#1a1a3a;color:#C8A8F5">⚡ SA Standards & Memory Tricks — Ch 1 & 2</div>
-      <div class="qr-grid2">
+    <div class="qr-ch" style="border-left:4px solid var(--mega)">
+      <div class="qr-head" style="background:var(--megabg);color:var(--megatext)">⚡ SA Standards & Memory Tricks — Ch 1, 2 & 3</div>
+      <div class="qr-2">
         <div>
-          <div class="qr-sub" style="color:#9966EE">Key SA Numbers to Remember</div>
-          <table class="rate-table">
-            <tr><th>SA Number</th><th>Topic</th></tr>
+          <div class="qr-sub" style="color:var(--mega)">Key SA Numbers</div>
+          <table class="rt"><tr><th>SA</th><th>Topic</th></tr>
             <tr><td>SA 200</td><td>Overall Objectives of Independent Auditor</td></tr>
             <tr><td>SA 230</td><td>Audit Documentation</td></tr>
             <tr><td>SA 300</td><td>Planning an Audit of FS</td></tr>
-            <tr><td>SA 315</td><td>Identifying & Assessing Risks of Material Misstatement</td></tr>
+            <tr><td>SA 315</td><td>Identifying & Assessing Risks of MM</td></tr>
+            <tr><td>SA 320</td><td>Materiality in Planning & Performing</td></tr>
             <tr><td>SA 330</td><td>Auditor's Responses to Assessed Risks</td></tr>
             <tr><td>SA 500</td><td>Audit Evidence</td></tr>
             <tr><td>SQC 1</td><td>Quality Control for Firms</td></tr>
-            <tr><td>SAE 3400</td><td>Examination of Prospective Financial Information</td></tr>
-            <tr><td>SAE 3420</td><td>Assurance on Pro Forma FI in Prospectus</td></tr>
-            <tr><td>SRE 2400</td><td>Engagements to Review Historical FS</td></tr>
-            <tr><td>SRE 2410</td><td>Review of Interim Financial Information</td></tr>
-            <tr><td>SRS 4400</td><td>Agreed-upon Procedures</td></tr>
-            <tr><td>SRS 4410</td><td>Compilation Engagements</td></tr>
+            <tr><td>SAE 3400</td><td>Prospective Financial Information</td></tr>
           </table>
         </div>
         <div>
-          <div class="qr-sub" style="color:#9966EE">5 Elements of Assurance Engagement</div>
-          <table class="rate-table">
-            <tr><th>Element</th><th>Example</th></tr>
-            <tr><td>3-party relationship</td><td>Practitioner + Responsible Party + Intended Users</td></tr>
-            <tr><td>Appropriate subject matter</td><td>Financial information in FS</td></tr>
-            <tr><td>Suitable criteria</td><td>Standards, laws, regulations</td></tr>
-            <tr><td>Sufficient appropriate evidence</td><td>Sufficient=Qty | Appropriate=Quality</td></tr>
-            <tr><td>Written assurance report</td><td>Audit report with opinion</td></tr>
-          </table>
-          <div class="qr-sub" style="color:#9966EE">Inherent Limitations — 5 Categories</div>
-          <table class="rate-table">
-            <tr><th>Category</th><th>Key Point</th></tr>
-            <tr><td>a) Nature of financial reporting</td><td>Subjective judgments by management</td></tr>
-            <tr><td>b) Nature of audit procedures</td><td>Sampling + legal/practical limitations</td></tr>
-            <tr><td>c) Not an investigation</td><td>No legal powers</td></tr>
-            <tr><td>d) Timeliness & relevance</td><td>Balance cost vs reliability</td></tr>
-            <tr><td>e) Future events</td><td>Cannot predict/guarantee future</td></tr>
+          <div class="qr-sub" style="color:var(--mega)">Memory Mnemonics — Ch 3</div>
+          <table class="rt"><tr><th>Mnemonic</th><th>Meaning</th></tr>
+            <tr><td>PIAO (Risk Procedures)</td><td>Prior experience | Inquiries | Analytical | Observation</td></tr>
+            <tr><td>CRICE (IC Components)</td><td>Control env | Risk assessment | Info system | Control activities | Environment monitoring</td></tr>
+            <tr><td>IR × CR × DR</td><td>Audit Risk formula</td></tr>
+            <tr><td>FRAC (Significant Risks)</td><td>Fraud | Related parties | Accounts estimates | Complexity</td></tr>
+            <tr><td>GIC vs AIC</td><td>General IT Controls (pervasive) vs Application Controls (specific)</td></tr>
           </table>
         </div>
       </div>
-      <div class="qr-sub" style="color:#9966EE">Memory Mnemonics</div>
-      <div class="qr-pills">
-        <span class="qr-pill" style="background:#1a1a3a;color:#C8A8F5">🧠 RAID = Reasonable Assurance | Independent | FS as a whole | Detect fraud/error</span>
-        <span class="qr-pill" style="background:#1a1a3a;color:#C8A8F5">🧠 5 Elements of Assurance = 3P + SM + SC + SAE + WAR (3 Party, Subject Matter, Suitable Criteria, Sufficient Appropriate Evidence, Written Assurance Report)</span>
-        <span class="qr-pill" style="background:#1a1a3a;color:#C8A8F5">🧠 Benefits of Audit = HIGH CREAM (High quality info, Interest safeguard, Government tax, Help lenders, Check fraud, Review controls, Employee moral check, Audit mandated)</span>
-        <span class="qr-pill" style="background:#1a1a3a;color:#C8A8F5">🧠 Planning Benefits = DAP-DSC (Devote attention, Address problems, Proper organization, Direct team, Supervise work, Coordinate experts)</span>
-        <span class="qr-pill" style="background:#1a1a3a;color:#C8A8F5">🧠 Audit vs Review = Audit=Reasonable (High) | Review=Limited (Moderate) | Both = Historical FI</span>
-        <span class="qr-pill" style="background:#1a1a3a;color:#C8A8F5">🧠 Scope NOT include = I-ADE (Investigation powers, Authenticate documents, Determine civil structure life, External expertise needed)</span>
+      <div class="qr-pills" style="margin-top:10px">
+        <span class="qr-pill" style="background:var(--megabg);color:var(--megatext)">🧠 RAID = Reasonable Assurance | Independent | FS whole | Detect fraud/error</span>
+        <span class="qr-pill" style="background:var(--megabg);color:var(--megatext)">🧠 DAP-DSC = Planning benefits (Ch 2)</span>
+        <span class="qr-pill" style="background:var(--megabg);color:var(--megatext)">🧠 Audit Risk = IR × CR × DR</span>
+        <span class="qr-pill" style="background:var(--megabg);color:var(--megatext)">🧠 Detection Risk is the ONLY risk auditor can CONTROL</span>
+        <span class="qr-pill" style="background:var(--megabg);color:var(--megatext)">🧠 Performance Materiality < Overall Materiality (always set lower)</span>
+        <span class="qr-pill" style="background:var(--megabg);color:var(--megatext)">🧠 IC 5 COMPONENTS = CRIMC (Control env, Risk assess, Info system, Monitoring, Control activities)</span>
       </div>
     </div>
   </div>
-
 </div>
 
 <div class="footer">Made with 💙 for <span>Prince Learning Hub</span> | CA Inter Audit May 2026</div>
 
 <script>
-// ═══════════════════════════════════════════
-// FLASHCARD DATA
-// ═══════════════════════════════════════════
 const cards = [
 
-// ─────────── CHAPTER 1 ───────────
-{ch:'ch1', topic:'Meaning of Audit', sa:'', imp:true, data:{
-  title:'Meaning & Nature of Auditing',
-  subtitle:'Foundation Definition',
-  def:'"An audit is independent examination of financial information of any entity, whether profit oriented or not, and irrespective of its size or legal form, when such an examination is conducted with a view to expressing an opinion thereon."',
-  bullets:[
-    'Auditor = INDEPENDENT — opinion without any external influence',
-    'Applicable to ALL entities: proprietary, partnership, LLP, pvt co, public co, society, trust',
-    'Management is RESPONSIBLE to prepare and present FS',
-    'PURPOSE = Express an opinion on the FS',
-    'Accounts drawn up from books of account — no omissions',
-    'All entries supported by sufficient & appropriate evidence',
-    'FS presents TRUE AND FAIR picture',
-    'Amounts properly classified, described, disclosed per AS',
-    'Information in FS = clear and unambiguous',
-  ],
-  trick:{label:'MNEMONIC — Analysis of Definition (AIMS+T)',text:'A = Applicable to all entities\nI = Independent auditor\nM = Management responsible for FS\nS = Subject matter = FS\n+ T = True & fair view opinion'}
+// ══════════════ CHAPTER 1 ══════════════
+{ch:'ch1',topic:'Meaning of Audit',sa:'',imp:true,data:{
+  title:'Meaning & Nature of Auditing',subtitle:'Foundation Definition',
+  def:'\"An audit is independent examination of financial information of any entity, whether profit oriented or not, and irrespective of its size or legal form, when such an examination is conducted with a view to expressing an opinion thereon.\"',
+  bullets:['Auditor = INDEPENDENT — opinion without external influence','Applicable to ALL entities: proprietary, partnership, LLP, pvt co, public co, trust','Management RESPONSIBLE to prepare and present FS','PURPOSE = Express an opinion on the FS','Accounts drawn up from books of account — no omissions','All entries supported by sufficient & appropriate evidence','FS presents TRUE AND FAIR picture','Amounts properly classified, described, disclosed per AS'],
+  trick:{label:'MNEMONIC — AIMS+T',text:'A = Applicable to all entities\nI = Independent auditor\nM = Management responsible for FS\nS = Subject matter = FS\n+ T = True & fair view opinion'}
 }},
 
-{ch:'ch1', topic:'Objective of Audit', sa:'SA 200', imp:true, data:{
-  title:'Objective of Audit — SA 200',
-  subtitle:'Overall Objectives of Independent Auditor',
-  def:'SA-200: "Overall Objectives of the Independent auditor and the conduct of an audit in accordance with SAs"',
-  bullets:[
-    '(a) Obtain REASONABLE ASSURANCE — FS as a whole free from MATERIAL MISSTATEMENT due to FRAUD OR ERROR',
-    '(b) To REPORT on FS and communicate as required by SAs per auditor\'s findings',
-    'Reasonable assurance = HIGH level ≠ Absolute (complete) assurance',
-    'Auditor CANNOT give guarantee FS are free from misstatements',
-    'Audit carried out with PROFESSIONAL COMPETENCE per SAs',
-    'Conclusions drawn → Opinion formed → Written Report issued',
-  ],
-  trick:{label:'KEY FORMULA',text:'Objective = Reasonable Assurance (High) + Report/Communicate\nMisstatement = Fraud OR Error OR Both\nAssurance: Reasonable (Audit) > Limited (Review)'}
+{ch:'ch1',topic:'Objective of Audit',sa:'SA 200',imp:true,data:{
+  title:'Objective of Audit — SA 200',subtitle:'Overall Objectives of Independent Auditor',
+  def:'SA 200: Overall Objectives of the Independent Auditor. Objective = Obtain REASONABLE ASSURANCE — FS free from MATERIAL MISSTATEMENT due to FRAUD OR ERROR.',
+  bullets:['(a) Obtain REASONABLE ASSURANCE on FS as a whole','(b) To REPORT & COMMUNICATE per auditor\'s findings','Reasonable assurance = HIGH level ≠ Absolute assurance','Auditor CANNOT guarantee FS are free from misstatements','Conclusions → Opinion formed → Written Report issued'],
+  trick:{label:'KEY FORMULA',text:'Objective = Reasonable Assurance (High) + Report\nMisstatement = Fraud OR Error OR Both\nAssurance: Reasonable (Audit) > Limited (Review)'}
 }},
 
-{ch:'ch1', topic:'Scope of Audit', sa:'', imp:true, data:{
-  title:'Scope of Audit — What It Includes',
-  subtitle:'3 Key Areas Covered',
-  bullets:[
-    '1️⃣ COVERAGE — All aspects of entity RELEVANT to FS being audited',
-    '2️⃣ RELIABILITY & SUFFICIENCY of financial information:',
-    '   → Auditor satisfied that accounting records & source data (bills, vouchers, documents) are reliable & sufficient',
-    '   → Judgment made by study of accounting systems, internal controls, tests, enquiries, procedures',
-    '3️⃣ PROPER DISCLOSURE of financial information:',
-    '   → Relevant info properly disclosed per statutory requirements',
-    '   → FS properly summarize transactions & events recorded',
-    '   → Auditor evaluates SELECTION & CONSISTENT APPLICATION of accounting policies',
-    '   → FS based on HISTORICAL financial information',
-  ],
+{ch:'ch1',topic:'Scope of Audit',sa:'',imp:true,data:{
+  title:'Scope of Audit — What It Includes',subtitle:'3 Key Areas Covered',
+  bullets:['1️⃣ COVERAGE — All aspects relevant to FS being audited','2️⃣ RELIABILITY & SUFFICIENCY of financial information:','   → Study of accounting systems, internal controls, tests, enquiries','3️⃣ PROPER DISCLOSURE of financial information:','   → Relevant info properly disclosed per statutory requirements','   → FS properly summarize transactions & events','   → Evaluation of SELECTION & CONSISTENT APPLICATION of accounting policies'],
   trick:{label:'3 PILLARS OF SCOPE',text:'Coverage → Reliability & Sufficiency → Proper Disclosure\n(CRD — Can\'t Refuse Disclosure 😄)'}
 }},
 
-{ch:'ch1', topic:'Scope of Audit', sa:'', imp:false, data:{
-  title:'Scope of Audit — What It Does NOT Include',
-  subtitle:'Important Exclusions',
-  bullets:[
-    '❌ Duties OUTSIDE auditor\'s domain of competence',
-    '❌ Determining suitability & life of CIVIL STRUCTURES (buildings) — needs qualified engineers',
-    '❌ AUTHENTICATION of documents — auditor not an expert in detecting forged documents',
-    '❌ OFFICIAL INVESTIGATION — audit is NOT official investigation; auditor has NO legal powers of:',
-    '   → Search',
-    '   → Recording statements of witness on oath',
-    '❌ Not expected to act like a law enforcement authority',
-  ],
-  trick:{label:'NOT IN SCOPE — Mnemonic: I-ADE',text:'I = Investigation (no legal powers)\nA = Authentication of docs (not expert)\nD = Determine civil structure life (not engineer)\nE = External competence required duties'}
+{ch:'ch1',topic:'Scope of Audit',sa:'',imp:false,data:{
+  title:'Scope — What it Does NOT Include',subtitle:'Important Exclusions',
+  bullets:['❌ Duties OUTSIDE auditor\'s domain of competence','❌ Suitability & life of CIVIL STRUCTURES — needs engineers','❌ AUTHENTICATION of documents — auditor not an expert','❌ OFFICIAL INVESTIGATION — no legal powers of search or oath recording'],
+  trick:{label:'NOT IN SCOPE — I-ADE',text:'I = Investigation (no legal powers)\nA = Authentication of docs\nD = Determine civil structure life\nE = External competence duties'}
 }},
 
-{ch:'ch1', topic:'Audit vs Investigation', sa:'', imp:true, data:{
-  title:'Auditing vs Investigation',
-  subtitle:'Key Differences',
+{ch:'ch1',topic:'Audit vs Investigation',sa:'',imp:true,data:{
+  title:'Auditing vs Investigation',subtitle:'Key Differences',
   compare:[
-    {head:'Audit',bg:'#0d2640',color:'#A8D4F5',items:['Conducted every year — routine','Objective: Reasonable assurance on FS','General & BROAD scope','Mandatory/voluntary — for all entities','Report submitted to owners/shareholders','Reasonable assurance engagement (High)']},
-    {head:'Investigation',bg:'#2e0d1a',color:'#F5A8C8',items:['Conducted for SPECIAL PURPOSE','Objective: Critical examination for specific purpose','Narrow & specific scope','Usually on suspicion or order','May be conducted by regulator/court','Not an assurance engagement']}
+    {head:'Audit',bg:'#0a1e3a',color:'#93C5FD',items:['Routine, every year','Reasonable assurance on FS','General & broad scope','Mandatory/voluntary','Report to owners/shareholders','High-level assurance']},
+    {head:'Investigation',bg:'#2e0d1a',color:'#FBBF85',items:['Special purpose','Critical examination for specific purpose','Narrow & specific scope','On suspicion or court order','To regulatory/court body','Not an assurance engagement']}
   ],
-  trick:{label:'KEY POINT',text:'Investigation results from PRIMA FACIE findings of auditor\nAudit scope = General & Broad\nInvestigation scope = Specific & Narrow'}
+  trick:{label:'KEY POINT',text:'Audit = General & Broad\nInvestigation = Specific & Narrow\nInvestigation may follow from audit findings'}
 }},
 
-{ch:'ch1', topic:'Benefits of Audit', sa:'', imp:true, data:{
-  title:'Benefits of Audit — Why Audit is Needed',
-  subtitle:'7 Key Benefits',
-  bullets:[
-    '1. HIGH QUALITY information — audited accounts give confidence to users',
-    '2. SHAREHOLDERS\' INTEREST safeguarded — shareholders not involved in daily affairs; audit gives reliable FS',
-    '3. MORAL CHECK on employees — fear of being discovered deters fraud',
-    '4. GOVERNMENT USE — helps determine tax liabilities',
-    '5. LENDERS & BANKERS rely on audited FS for credit decisions',
-    '6. DETECT FRAUD OR ERROR — audit may uncover both',
-    '7. REVIEW of controls — points out deficiencies in internal controls',
-  ],
-  trick:{label:'MNEMONIC — HIGH CREAM',text:'H = High quality info\nI = Interest of shareholders\nG = Government (tax)\nH = Help lenders/banks\nC = Check fraud/error\nR = Review controls\nE = Employee moral check\nA = Audit standards followed\nM = Mandatory for companies'}
+{ch:'ch1',topic:'Benefits of Audit',sa:'',imp:true,data:{
+  title:'Benefits of Audit',subtitle:'7 Key Benefits — HIGH CREAM',
+  bullets:['1. HIGH QUALITY information — audited accounts give confidence','2. SHAREHOLDERS\' INTEREST safeguarded','3. MORAL CHECK on employees — fear of fraud detection','4. GOVERNMENT USE — helps determine tax liabilities','5. LENDERS & BANKERS rely on audited FS','6. DETECT FRAUD OR ERROR — audit uncovers both','7. REVIEW of controls — points out deficiencies'],
+  trick:{label:'MNEMONIC — HIGH CREAM',text:'H = High quality info | I = Interest of shareholders\nG = Government (tax) | H = Help lenders/banks\nC = Check fraud/error | R = Review controls\nE = Employee moral check | A = Audit standards | M = Mandatory'}
 }},
 
-{ch:'ch1', topic:'Auditor Appointment', sa:'', imp:false, data:{
-  title:'Who Appoints & To Whom Report is Submitted',
-  subtitle:'Appointment & Reporting Structure',
-  bullets:[
-    'Generally appointed by OWNERS or constitutional/government authorities',
-    'Companies → Auditor appointed by MEMBERS (shareholders) in AGM',
-    'Government Companies → Auditor appointed by CAG (Comptroller & Auditor General of India)',
-    'Partnership Firm → Auditor appointed by PARTNERS',
-    'Can also be appointed by government authority per specific law/regulation',
-    '',
-    '📊 REPORT SUBMITTED TO:',
-    '→ Person MAKING THE APPOINTMENT (always)',
-    '→ Companies: Shareholders',
-    '→ Firm: Partners',
-  ],
-  trick:{label:'RULE',text:'Appointment ↔ Report Submission\nSame person who appoints = receives the report\nCAG appoints for govt companies → CAG receives report'}
+{ch:'ch1',topic:'Assurance Engagement',sa:'',imp:true,data:{
+  title:'Meaning & Elements of Assurance Engagement',subtitle:'Definition + 5 Elements',
+  def:'Assurance engagement = engagement where practitioner expresses a conclusion designed to ENHANCE DEGREE OF CONFIDENCE of intended users about the outcome of evaluation of subject matter against criteria.',
+  bullets:['1️⃣ THREE PARTY RELATIONSHIP: Practitioner + Responsible Party + Intended Users','2️⃣ APPROPRIATE SUBJECT MATTER — info to be examined (e.g. FS)','3️⃣ SUITABLE CRITERIA — benchmarks: standards, laws, regulations','4️⃣ SUFFICIENT APPROPRIATE EVIDENCE — Sufficient=Qty | Appropriate=Quality','5️⃣ WRITTEN ASSURANCE REPORT — written conclusion'],
+  trick:{label:'5 ELEMENTS — 3P-SSCE-WAR',text:'3P = 3 Party | S = Subject Matter\nSC = Suitable Criteria | E = Evidence\nWAR = Written Assurance Report'}
 }},
 
-{ch:'ch1', topic:'Qualities of Auditor', sa:'', imp:false, data:{
-  title:'Qualities of an Auditor',
-  subtitle:'Personal & Professional Qualities',
-  bullets:[
-    '🎯 PERSONAL QUALITIES: Tact, Caution, Firmness, Good temper, Integrity, Discretion, Industry, Judgment, Patience, Clear-headedness, Reliability',
-    '📌 All qualities of a GOOD BUSINESSMAN = Good auditor',
-    '🔒 HIGHEST degree of INTEGRITY backed by adequate INDEPENDENCE',
-    '📚 EXHAUSTIVE KNOWLEDGE of accounting = SINE QUA NON (essential) of auditing',
-    '⚙️ Must know THOROUGHLY all accounting PRINCIPLES & TECHNIQUES',
-  ],
-  trick:{label:'MEMORY TRICK — TACTIC-PIR',text:'T = Tact | A = Accuracy | C = Caution | T = Truthful\nI = Integrity | C = Clear-headed | P = Patient\nI = Industry | R = Reliable'}
-}},
-
-{ch:'ch1', topic:'Assurance Engagement', sa:'', imp:true, data:{
-  title:'Meaning & Elements of Assurance Engagement',
-  subtitle:'Definition + 5 Elements',
-  def:'"Assurance engagement" = engagement in which a practitioner expresses a conclusion designed to ENHANCE the DEGREE OF CONFIDENCE of intended users (other than responsible party) about the outcome of evaluation/measurement of subject matter against criteria.',
-  bullets:[
-    '1️⃣ THREE PARTY RELATIONSHIP:',
-    '   → PRACTITIONER (broader than auditor — may provide non-historical assurance)',
-    '   → RESPONSIBLE PARTY (prepares subject matter)',
-    '   → INTENDED USERS (use report for decisions)',
-    '2️⃣ APPROPRIATE SUBJECT MATTER — info to be examined (e.g. FS)',
-    '3️⃣ SUITABLE CRITERIA — benchmarks: standards, laws, regulations',
-    '4️⃣ SUFFICIENT APPROPRIATE EVIDENCE — Sufficient=Qty | Appropriate=Quality',
-    '5️⃣ WRITTEN ASSURANCE REPORT — written conclusion on subject matter',
-  ],
-  trick:{label:'5 ELEMENTS MNEMONIC — 3P-SSCE-WAR',text:'3P = 3 Party Relationship\nS = Subject Matter (appropriate)\nSC = Suitable Criteria\nE = Evidence (sufficient appropriate)\nWAR = Written Assurance Report'}
-}},
-
-{ch:'ch1', topic:'Audit vs Review', sa:'', imp:true, data:{
-  title:'Audit vs Review — Reasonable vs Limited Assurance',
-  subtitle:'Comparison Table',
+{ch:'ch1',topic:'Audit vs Review',sa:'',imp:true,data:{
+  title:'Audit vs Review — Reasonable vs Limited Assurance',subtitle:'Comparison Table',
   compare:[
-    {head:'Audit (Reasonable Assurance)',bg:'#0d2640',color:'#A8D4F5',items:['HIGH level of assurance','Elaborate & extensive procedures','Draws reasonable conclusions','Based on historical financial info','Example: SA engagement','Positive expression of opinion']},
-    {head:'Review (Limited Assurance)',bg:'#0d2e1a',color:'#8FD4A8',items:['LOWER level (moderate) of assurance','FEWER procedures','Limited conclusions drawn','Based on historical financial info','Example: SRE engagement','Negative assurance — "nothing came to attention"']}
+    {head:'Audit (Reasonable)',bg:'#0a1e3a',color:'#93C5FD',items:['HIGH assurance','Elaborate procedures','Positive opinion','SA governed','\"In our opinion, FS give true & fair view\"']},
+    {head:'Review (Limited)',bg:'#052a1f',color:'#6EE7C7',items:['MODERATE assurance','Fewer procedures','Negative assurance','SRE governed','\"Nothing came to our attention\"']}
   ],
-  trick:{label:'KEY DISTINCTION',text:'Both = Historical Financial Information\nAudit ≠ Review in → Level of assurance & Procedures performed\nReview = "nothing has come to my attention" type conclusion'}
+  trick:{label:'KEY DISTINCTION',text:'Both apply to Historical Financial Information\nAudit ≠ Review in level of assurance & procedures\nReview = negative assurance conclusion'}
 }},
 
-{ch:'ch1', topic:'Assurance — Other than Historical FI', sa:'', imp:true, data:{
-  title:'Assurance on Other Than Historical Financial Information',
-  subtitle:'Prospective Financial Information',
-  bullets:[
-    '📌 PROSPECTIVE FINANCIAL INFO (PFI) = based on ASSUMPTIONS about FUTURE events & possible actions',
-    '→ Can be FORECAST (single assumption) or PROJECTION (multiple/what-if assumptions) or BOTH',
-    '📌 Historical FI = PAST events | Prospective FI = FUTURE events',
-    '📌 In PFI assurance: Practitioner checks:',
-    '   → Management\'s assumptions are NOT UNREASONABLE',
-    '   → PFI properly prepared on those assumptions',
-    '   → Material assumptions adequately disclosed',
-    '⚠️ Evidence available but FUTURE-ORIENTED → Auditor CANNOT express opinion whether results WILL be achieved',
-    '📋 Report says: "Nothing came to attention to suggest assumptions do NOT provide reasonable basis"',
-    '→ This = MODERATE level of assurance only',
-    '📌 Also includes: Assurance on INTERNAL CONTROLS in an entity',
-  ],
-  trick:{label:'PFI vs HISTORICAL',text:'Historical = PAST (Audit/Review) → High/Moderate assurance\nProspective = FUTURE → Only MODERATE assurance\nSAE 3400 = Examination of Prospective Financial Information'}
+{ch:'ch1',topic:'Engagement Standards',sa:'',imp:true,data:{
+  title:'Engagement & Quality Control Standards',subtitle:'SA | SRE | SAE | SRS | SQC',
+  bullets:['1️⃣ SA → Audit of HISTORICAL FI | SA 200, 230, 315, 330, 500…','2️⃣ SRE → Review of HISTORICAL FI | SRE 2400, 2410','3️⃣ SAE → Assurance OTHER THAN audit/review | SAE 3400, 3420','4️⃣ SRS → Agreed-upon procedures + Compilation | SRS 4400, 4410','5️⃣ SQC → Firm\'s quality system | SQC 1 — applied for ALL services'],
+  trick:{label:'ORDER: SA→SRE→SAE→SRS→SQC',text:'SA = 100-799 | SRE = 2000s | SAE = 3000s | SRS = 4000s\n\"SMART System = SA-SRE-SAE-SRS-SQC\"'}
 }},
 
-{ch:'ch1', topic:'Engagement Standards', sa:'', imp:true, data:{
-  title:'Engagement & Quality Control Standards — Overview',
-  subtitle:'SA | SRE | SAE | SRS | SQC',
-  bullets:[
-    '📌 All issued under authority of ICAI Council',
-    '1️⃣ SA (Standards on Auditing) → Audit of HISTORICAL financial info | SA 200, 230, 315, 500...',
-    '2️⃣ SRE (Standards on Review Engagements) → Review of HISTORICAL FI | SRE 2400, 2410',
-    '3️⃣ SAE (Standards on Assurance Engagements) → Assurance OTHER THAN audit/review | SAE 3400, 3420',
-    '4️⃣ SRS (Standards on Related Services) → Agreed-upon procedures + Compilation | SRS 4400, 4410',
-    '   → In compilation: No assurance | Report must state "no opinion expressed"',
-    '5️⃣ SQC (Standards on Quality Control) → Firm\'s quality system | SQC 1',
-    '   → Requires compliance with professional standards & regulatory requirements',
-    '   → Applied for ALL services covered by engagement standards',
-  ],
-  trick:{label:'ORDER: SA → SRE → SAE → SRS → SQC',text:'SA = 100-799 | SRE = 2000s | SAE = 3000s | SRS = 4000s\n"SMART System = SA-SRE-SAE-SRS-SQC"'}
+{ch:'ch1',topic:'Inherent Limitations',sa:'SA 200',imp:true,data:{
+  title:'Inherent Limitations of Audit (SA 200)',subtitle:'Why Absolute Assurance is NOT possible',
+  bullets:['a) NATURE OF FINANCIAL REPORTING — management uses subjective judgments','b) NATURE OF AUDIT PROCEDURES — sampling used, not all transactions tested','c) NOT AN INVESTIGATION — no legal powers of search/oath','d) TIMELINESS — relevance decreases over time; balance cost vs reliability','e) FUTURE EVENTS — cannot predict; going concern uncertainty'],
+  trick:{label:'5 LIMITATIONS — NNNFT',text:'N = Nature of financial reporting (judgments)\nN = Nature of procedures (sampling)\nN = Not an investigation\nF = Future events (unpredictable)\nT = Timeliness decreases'}
 }},
 
-{ch:'ch1', topic:'Why Standards Needed', sa:'', imp:false, data:{
-  title:'Why Are Standards Needed?',
-  subtitle:'5 Reasons for Engagement Standards',
-  bullets:[
-    '1. Standards ensure carrying out of audit against ESTABLISHED BENCHMARKS at par with GLOBAL PRACTICES',
-    '2. Standards IMPROVE QUALITY of financial reporting → help users make DILIGENT DECISIONS',
-    '3. Standards PROMOTE UNIFORMITY — audit of FS carried out consistently',
-    '4. Standards equip professional accountants with PROFESSIONAL KNOWLEDGE & SKILL',
-    '5. Standards ENSURE AUDIT QUALITY',
-    '',
-    '📋 DUTIES — Engagement & Quality Control Standards:',
-    '→ Duty to FOLLOW standards in engagements',
-    '→ If specific procedure ineffective → DOCUMENT alternative + reason for departure',
-    '→ Report must DRAW ATTENTION to departures',
-    '→ Mere disclosure does NOT absolve from compliance',
-  ],
-  trick:{label:'5 REASONS — GUPQE',text:'G = Global benchmark compliance\nU = Uniformity in auditing\nP = Professional knowledge equipped\nQ = Quality of financial reporting\nE = Ensure audit quality'}
+// ══════════════ CHAPTER 2 ══════════════
+{ch:'ch2',topic:'Why Planning Needed',sa:'SA 300',imp:true,data:{
+  title:'Why Planning is Necessary — SA 300',subtitle:'6 Benefits of Planning',
+  def:'SA 300: Planning is necessary to carry out audit EFFECTIVELY in a TIMELY MANNER.',
+  bullets:['a) Devote APPROPRIATE ATTENTION to important areas','b) IDENTIFY and RESOLVE potential problems timely','c) Properly ORGANIZE and MANAGE the engagement','d) SELECT engagement team with appropriate competence','e) DIRECTION and SUPERVISION of team + review of their work','f) COORDINATION with auditors of components and experts'],
+  trick:{label:'MNEMONIC — DAP-DSC',text:'D = Devote attention | A = Address problems\nP = Proper organization | D = Direction & supervision\nS = Selection of team | C = Coordinate experts'}
 }},
 
-{ch:'ch1', topic:'Inherent Limitations', sa:'SA 200', imp:true, data:{
-  title:'Inherent Limitations of Audit (SA 200)',
-  subtitle:'Why Absolute Assurance is NOT possible',
-  def:'The process of audit suffers from certain INBUILT LIMITATIONS because of which auditor CANNOT obtain absolute assurance on FS or reduce audit risk to ZERO.',
-  bullets:[
-    'a) NATURE OF FINANCIAL REPORTING:',
-    '   → Management uses SUBJECTIVE JUDGMENTS (doubtful debts, warranty, litigation provisions)',
-    '   → Judgments involve uncertainty → can\'t guarantee FS free from misstatements',
-    '   → Internal controls may not operate effectively due to inherent limitations',
-    'b) NATURE OF AUDIT PROCEDURES:',
-    '   → SAMPLING used — not all transactions tested (practical limitation)',
-    '   → Management may NOT provide complete info (legal limitation)',
-    '   → Management may be dishonest → organized fraud schemes hard to detect',
-    '   → Related party transactions — paper transactions may go undetected',
-    'c) NOT AN INVESTIGATION — No legal powers of search/oath',
-    'd) TIMELINESS — relevance decreases over time; balance cost vs reliability; time constraint cannot excuse missing procedures',
-    'e) FUTURE EVENTS — cannot predict; going concern uncertainty; auditor cannot guarantee',
-  ],
-  trick:{label:'5 LIMITATIONS — NNNFT',text:'N = Nature of financial reporting (judgments)\nN = Nature of audit procedures (sampling)\nN = Not an investigation\nF = Future events (unpredictable)\nT = Timeliness & relevance decreases'}
+{ch:'ch2',topic:'Elements of Planning',sa:'SA 300',imp:true,data:{
+  title:'Two Elements of Planning',subtitle:'Preliminary + Planning Activities',
+  bullets:['📌 ELEMENT I: PRELIMINARY ENGAGEMENT ACTIVITIES','   A) Continuance of Client Relationships & Engagements','   B) Evaluating compliance with Ethical Requirements + Independence','   C) Understanding Terms of Engagement (Engagement Letter)','','📌 ELEMENT II: PLANNING ACTIVITIES','   A) Establishing OVERALL AUDIT STRATEGY','   B) Developing an AUDIT PLAN'],
+  trick:{label:'HIERARCHY',text:'Planning\n├── Preliminary Engagement (A+B+C)\n└── Planning Activities (Strategy + Audit Plan)'}
 }},
 
-// ─────────── CHAPTER 2 ───────────
-{ch:'ch2', topic:'Why Planning Needed', sa:'SA 300', imp:true, data:{
-  title:'Why Planning an Audit is Necessary — SA 300',
-  subtitle:'Benefits of Planning (6 Key Benefits)',
-  def:'SA 300: Planning an Audit of Financial Statements. Planning is necessary to carry out audit EFFECTIVELY in a TIMELY MANNER.',
-  bullets:[
-    'a) Devote APPROPRIATE ATTENTION to IMPORTANT AREAS of audit',
-    'b) IDENTIFY and RESOLVE potential problems on timely basis',
-    'c) Properly ORGANIZE and MANAGE the audit engagement',
-    'd) SELECTION of engagement team members with appropriate capabilities & competence',
-    'e) DIRECTION and SUPERVISION of engagement team members & review of their work',
-    'f) COORDINATION of work done by auditors of components and EXPERTS',
-  ],
-  trick:{label:'MNEMONIC — DAP-DSC',text:'D = Devote attention to important areas\nA = Address/resolve potential problems\nP = Proper organization & management\nD = Direction & supervision of team\nS = Selection of right team members\nC = Coordination with experts/components'}
+{ch:'ch2',topic:'Overall Audit Strategy',sa:'SA 300',imp:true,data:{
+  title:'Overall Audit Strategy — 5 Factors',subtitle:'Sets Scope, Timing & Direction',
+  def:'The auditor shall establish an overall audit strategy that sets the SCOPE, TIMING and DIRECTION of the audit, and GUIDES development of the AUDIT PLAN.',
+  bullets:['Note 1: CHARACTERISTICS OF ENGAGEMENT — define scope, applicable FRF, industry requirements','Note 2: REPORTING OBJECTIVES — entity timetable, meetings with management, type of reports','Note 3: Factors directing TEAM\'S EFFORTS — volume of transactions, FRF changes','Note 4: Results of PRELIMINARY ACTIVITIES + knowledge from prior engagements','Note 5: NATURE, TIMING & EXTENT OF RESOURCES — experienced members for high-risk areas'],
+  trick:{label:'5 NOTES — CRTPR',text:'C = Characteristics | R = Reporting objectives\nT = Team direction | P = Preliminary activities\nR = Resources'}
 }},
 
-{ch:'ch2', topic:'Elements of Planning', sa:'SA 300', imp:true, data:{
-  title:'Planning Process — Two Elements of Planning',
-  subtitle:'Preliminary + Planning Activities',
-  bullets:[
-    '📌 ELEMENT I: PRELIMINARY ENGAGEMENT ACTIVITIES',
-    '   A) Continuance of Client Relationships & Engagements',
-    '   B) Evaluating compliance with Ethical Requirements including Independence',
-    '   C) Establishing understanding of Terms of Engagement (Engagement Letter)',
-    '',
-    '📌 ELEMENT II: PLANNING ACTIVITIES',
-    '   A) Establishing OVERALL AUDIT STRATEGY',
-    '   B) Developing an AUDIT PLAN',
-  ],
-  trick:{label:'HIERARCHY',text:'Planning → Preliminary → Planning Activities\n             ↓                    ↓\n        A+B+C           Strategy + Audit Plan\nThink: PEA → Preliminary Engagement Activities'}
+{ch:'ch2',topic:'Audit Plan',sa:'SA 300',imp:true,data:{
+  title:'Development of Audit Plan — 3 Elements',subtitle:'How strategy is implemented',
+  bullets:['(a) Nature, timing & extent of PLANNED RISK ASSESSMENT PROCEDURES → SA 315','(b) Nature, timing & extent of PLANNED FURTHER AUDIT PROCEDURES → SA 330','(c) Other planned audit procedures required to comply with SAs','','Strategy vs Plan:','→ Strategy = WHAT (scope, direction, timing) = HIGH LEVEL','→ Plan = HOW (procedures, nature, extent) = MORE DETAILED','→ Both are CLOSELY INTERRELATED — change in one = change in other'],
+  trick:{label:'STRATEGY vs PLAN',text:'STRATEGY = WHAT | PLAN = HOW\nSA 315 = Risk Assessment\nSA 330 = Responses to risks'}
 }},
 
-{ch:'ch2', topic:'Preliminary Engagement', sa:'', imp:true, data:{
-  title:'Preliminary Engagement Activities — 3 Notes',
-  subtitle:'A, B, C of Preliminary Stage',
-  bullets:[
-    '📌 NOTE 1 — CLIENT CONTINUANCE:',
-    '→ Ensure appropriate procedures for ACCEPTANCE & CONTINUANCE of client relationships followed',
-    '→ Consider: Integrity of principal owners/management | Competence of engagement team | Implications of current & previous audit matters',
-    '→ Initial engagement: Communicate with PREDECESSOR AUDITOR',
-    '',
-    '📌 NOTE 2 — ETHICAL REQUIREMENTS (including Independence):',
-    '→ Engagement partner remains ALERT throughout for evidence of NON-COMPLIANCE by team members',
-    '→ If non-compliance found → determine appropriate action',
-    '→ Actions: Obtain info from firm | Evaluate identified breaches | Eliminate/reduce threats by safeguards or WITHDRAW from engagement',
-    '→ Promptly REPORT to firm any inability to resolve the matter',
-    '',
-    '📌 NOTE 3 — ENGAGEMENT LETTER:',
-    '→ Auditor sends AUDIT ENGAGEMENT LETTER before commencement',
-    '→ Purpose: Avoid misunderstandings | Ensure no confusion on terms',
-  ],
-  trick:{label:'3A\'s of Preliminary',text:'A = Acceptance/Continuance (client)\nA = Adherence to ethical requirements\nA = Agreement terms (engagement letter)'}
-}},
-
-{ch:'ch2', topic:'Overall Audit Strategy', sa:'SA 300', imp:true, data:{
-  title:'Overall Audit Strategy — 5 Factors',
-  subtitle:'Sets Scope, Timing & Direction',
-  def:'The auditor shall establish an overall audit strategy that sets the SCOPE, TIMING and DIRECTION of the audit, and that GUIDES the development of the AUDIT PLAN.',
-  bullets:[
-    'Note 1: Identify CHARACTERISTICS OF ENGAGEMENT (define scope) → Applicable FRF, Nature of business, Industry requirements, Expected use of audit evidence',
-    'Note 2: Ascertain REPORTING OBJECTIVES (plan timing & communications) → Entity\'s timetable | Meetings with management | Type & timing of reports | Status communications',
-    'Note 3: Factors significant in DIRECTING TEAM\'S EFFORTS → Volume of transactions | Industry developments | FRF changes | Other relevant developments',
-    'Note 4: Results of PRELIMINARY ENGAGEMENT ACTIVITIES + knowledge from similar engagements → Results of previous audits | Professional skepticism',
-    'Note 5: NATURE, TIMING & EXTENT OF RESOURCES → Selection of team + assignment of work | Experienced members for HIGH RISK MATERIAL MISSTATEMENT areas',
-  ],
-  trick:{label:'5 NOTES — CRTPR (Scope Timing Resources)',text:'C = Characteristics of engagement\nR = Reporting objectives\nT = Team direction factors\nP = Preliminary activities results\nR = Resources (nature, timing, extent)'}
-}},
-
-{ch:'ch2', topic:'Overall Audit Strategy', sa:'', imp:false, data:{
-  title:'Benefits of Overall Audit Strategy',
-  subtitle:'4 Resource Decisions it Guides',
-  bullets:[
-    '1. EMPLOYMENT OF QUALITATIVE RESOURCES:',
-    '   → Appropriate experienced team members for HIGH RISK areas',
-    '   → Involvement of EXPERTS on complex matters',
-    '2. ALLOCATION OF QUANTITY OF RESOURCES:',
-    '   → No. of team members for inventory count',
-    '   → Review of other auditors\' work',
-    '   → Audit BUDGET in hours for high risk areas',
-    '3. TIMING OF DEPLOYMENT OF RESOURCES:',
-    '   → At INTERIM AUDIT stage OR at key CUT-OFF DATES',
-    '4. MANAGEMENT OF RESOURCES:',
-    '   → How managed, directed, supervised',
-    '   → Team briefing & debriefing meetings',
-    '   → Engagement quality control reviews',
-  ],
-  trick:{label:'4 RESOURCE DECISIONS — EQTM',text:'E = Employment (qualitative)\nQ = Quantity allocation\nT = Timing of deployment\nM = Management of resources'}
-}},
-
-{ch:'ch2', topic:'Audit Plan', sa:'SA 300', imp:true, data:{
-  title:'Development of Audit Plan — Content & Purpose',
-  subtitle:'3 Elements of Audit Plan',
-  def:'Once overall audit strategy is established, audit plan is developed to address the various matters identified, to achieve audit objectives through efficient use of auditor\'s resources.',
-  bullets:[
-    '📌 AUDIT PLAN INCLUDES DESCRIPTION OF:',
-    '(a) Nature, timing & extent of PLANNED RISK ASSESSMENT PROCEDURES → SA 315',
-    '(b) Nature, timing & extent of PLANNED FURTHER AUDIT PROCEDURES at assertion level → SA 330',
-    '(c) Other planned audit procedures required to comply with SAs',
-    '',
-    '📌 STRATEGY vs PLAN:',
-    '→ Strategy = SETS BROAD OVERALL APPROACH',
-    '→ Plan = ADDRESSES matters identified in strategy',
-    '→ Strategy = Determines scope/timing/direction',
-    '→ Plan = Describes HOW strategy will be IMPLEMENTED',
-    '→ Plan is MORE DETAILED than strategy',
-    '→ Both are CLOSELY INTERRELATED — change in one = change in other',
-    '',
-    '🔑 AUDITOR\'S RESPONSIBILITY = Establish strategy + Develop plan',
-  ],
-  trick:{label:'STRATEGY vs PLAN',text:'STRATEGY = WHAT (scope, direction, timing)\nPLAN = HOW (procedures, nature, extent)\nSA 315 = Risk Assessment | SA 330 = Responses to risks'}
-}},
-
-{ch:'ch2', topic:'Audit Programme', sa:'', imp:true, data:{
-  title:'Audit Programme — Meaning & Construction',
-  subtitle:'Detailed Blueprint for Audit Work',
-  bullets:[
-    '📌 DEFINITION: A series of VERIFICATION PROCEDURES to be applied to FS and accounts of a given company for the purpose of obtaining sufficient evidence to enable auditor to express an INFORMED OPINION',
-    '📌 = A detailed plan of applying audit procedures with instructions for appropriate techniques to accomplish audit objectives',
-    '',
-    '📌 CONSTRUCTING AN AUDIT PROGRAMME:',
-    'a) Stay within SCOPE AND LIMITATION of assignment',
-    'b) Prepare a WRITTEN audit programme',
-    'c) Determine REASONABLY AVAILABLE evidence + identify BEST EVIDENCE',
-    'd) Apply only USEFUL steps for verification purpose in specific situation',
-    'e) Include AUDIT OBJECTIVES for each area + sufficient details as instructions',
-    'f) Consider ALL POSSIBILITIES OF ERROR',
-    'g) CO-ORDINATE procedures to be applied to related items',
-  ],
-  trick:{label:'AUDIT PROGRAMME CONSTRUCTION — SWAB-DCC',text:'S = Stay within scope\nW = Write the programme\nA = Available evidence identified\nB = Best evidence used\nD = Determine useful steps only\nC = Consider all error possibilities\nC = Coordinate related procedures'}
-}},
-
-{ch:'ch2', topic:'Audit Programme', sa:'', imp:true, data:{
-  title:'Types of Audit Evidence & Advantages of Audit Programme',
-  subtitle:'Evidence Types + 8 Advantages',
-  bullets:[
-    '📌 TYPES OF EVIDENCE (Audit Programme designed to provide):',
-    'a) Documentary examination | b) Physical examination | c) Statements of management, officials, employees',
-    'd) Statements of third parties | e) Arithmetical calculations | f) State of internal controls',
-    'g) Inter-relationship of accounting data | h) Subsidiary & memorandum records | i) Minutes | j) Subsequent action by client & others',
-    '',
-    '📌 ADVANTAGES of Audit Programme:',
-    'a) Provides CLEAR INSTRUCTIONS to assistants',
-    'b) Gives TOTAL PERSPECTIVE of work',
-    'c) SELECTION of assistants becomes easier',
-    'd) Without it, work done on MENTAL PLAN basis (risky)',
-    'e) Assistants ACCEPT RESPONSIBILITY by signing programme',
-    'f) Principal can CONTROL PROGRESS of various audits',
-    'g) GUIDE for audits to be carried out in succeeding year',
-    'h) SERVES AS EVIDENCE in case of negligence charge against auditor',
-  ],
-  trick:{label:'ADVANTAGES — TOP-CAUSE-G',text:'T = Total perspective | O = Only clear instructions\nP = Progress controlled | C = Control of work\nA = Accept responsibility (sign) | U = Used as evidence\nS = Selection of assistants | E = Each area covered\nG = Guide for next year'}
-}},
-
-{ch:'ch2', topic:'Audit Programme', sa:'', imp:false, data:{
-  title:'Disadvantages of Audit Programme + One Programme Not Practicable',
-  subtitle:'4 Disadvantages + Why Universal Programme Fails',
-  bullets:[
-    '📌 DISADVANTAGES:',
-    'a) Work becomes MECHANICAL — parts carried out without understanding object in whole scheme',
-    'b) Programme becomes RIGID & INFLEXIBLE — follows set grooves; business may change but old programme continues',
-    'c) INEFFICIENT ASSISTANTS may hide behind programme to defend deficiencies',
-    'd) KILLS INITIATIVE of efficient and enterprising assistants',
-    '',
-    '📌 ONE AUDIT PROGRAMME NOT PRACTICABLE FOR ALL BUSINESSES:',
-    '→ Businesses vary in NATURE, SIZE & COMPOSITION',
-    '→ What suits one business may NOT suit others',
-    '→ Universal programme = NOT PRACTICABLE',
-    '→ BUT: Must specify NATURE OF WORK in detail to avoid time wastage',
-    '',
-    '📌 ASSISTANT TO KEEP AN OPEN MIND:',
-    '→ Programme = STANDARD PROGRAMME for minimum essential work',
-    '→ Alter as experience gained | Drop irrelevant work | Note significant matters to seniors',
-  ],
+{ch:'ch2',topic:'Audit Programme',sa:'',imp:true,data:{
+  title:'Audit Programme — Meaning & Purpose',subtitle:'Detailed Blueprint for Audit Work',
+  def:'A series of VERIFICATION PROCEDURES to be applied to FS to obtain sufficient evidence to enable auditor to express an INFORMED OPINION on the FS.',
+  bullets:['📌 Constructing a programme: Stay within scope | Written document | Identify best evidence','📌 ADVANTAGES: Clear instructions | Total perspective | Acceptance of responsibility | Guide for next year | Evidence of work if negligence alleged','📌 DISADVANTAGES: Mechanical work | Rigid & inflexible | Hides inefficiency | Kills initiative of good assistants'],
   trick:{label:'4 DISADVANTAGES — MRIK',text:'M = Mechanical work\nR = Rigid & inflexible\nI = Inefficient assistants hide behind it\nK = Kills initiative of good assistants'}
 }},
 
-{ch:'ch2', topic:'Changes to Planning', sa:'SA 300', imp:false, data:{
-  title:'Changes to Planning During Course of Audit',
-  subtitle:'When & How Plans Change',
-  bullets:[
-    '📌 Auditor shall UPDATE AND CHANGE overall audit strategy & audit plan AS NECESSARY',
-    '📌 Changes arise due to:',
-    '→ a) UNEXPECTED EVENTS',
-    '→ b) CHANGES IN CONDITIONS',
-    '→ c) AUDIT EVIDENCE obtained from results of audit procedures',
-    '📌 Auditor may NEED TO MODIFY overall audit strategy & audit plan → change nature, timing & extent of further audit procedures based on REVISED RISKS',
-    '',
-    '📌 DOCUMENTATION required:',
-    '1. The overall audit strategy',
-    '2. The audit plan',
-    '3. SIGNIFICANT CHANGES made + REASONS for such changes',
-    '',
-    '📌 PLANNING = CONTINUOUS & ITERATIVE PROCESS:',
-    '→ NOT a discrete phase — begins shortly after previous audit completion',
-    '→ Continues until completion of current audit engagement',
-  ],
-  trick:{label:'DOCUMENTATION — 3 ITEMS',text:'1. Overall audit strategy\n2. Audit plan\n3. Significant changes + Reasons\n\n"Plans change when U.C.E. happens:\nUnexpected events | Conditions change | Evidence received"'}
+{ch:'ch2',topic:'Changes to Planning',sa:'SA 300',imp:false,data:{
+  title:'Changes to Planning + Documentation',subtitle:'When Plans Change + What to Document',
+  bullets:['Auditor shall UPDATE AND CHANGE strategy & plan AS NECESSARY during audit','Changes arise from: Unexpected events | Conditions changed | Audit evidence obtained','DOCUMENTATION required:','1. Overall audit strategy','2. Audit plan','3. SIGNIFICANT CHANGES made + REASONS for such changes','Planning = CONTINUOUS & ITERATIVE — not a discrete one-time phase'],
+  trick:{label:'DOCUMENTATION — 3 ITEMS',text:'1. Overall audit strategy\n2. Audit plan\n3. Significant changes + Reasons\n\n\"U.C.E.\" triggers changes:\nUnexpected events | Conditions | Evidence'}
 }},
 
-{ch:'ch2', topic:'Supervision & Review', sa:'SA 300', imp:false, data:{
-  title:'Planning Supervision & Review of Engagement Team + Nature of Planning',
-  subtitle:'Supervision Factors + Continuous Iterative Process',
-  bullets:[
-    '📌 SUPERVISION & REVIEW varies depending on:',
-    'a) SIZE & COMPLEXITY of entity',
-    'b) AREA of audit',
-    'c) ASSESSED RISKS of material misstatement',
-    'd) CAPABILITIES & COMPETENCE of individual team members',
-    '',
-    '📌 NATURE OF AUDIT PLANNING = CONTINUOUS & ITERATIVE:',
-    '→ Planning is NOT a discrete phase but a CONTINUAL process',
-    '→ Begins shortly after (or in connection with) COMPLETION OF PREVIOUS AUDIT',
-    '→ Continues until COMPLETION OF CURRENT AUDIT engagement',
-    '',
-    '📌 Planning includes consideration of TIMING of certain activities PRIOR TO:',
-    'a) Analytical procedures as RISK ASSESSMENT procedures',
-    'b) General understanding of LEGAL & REGULATORY FRAMEWORK',
-    'c) Determination of MATERIALITY',
-    'd) Involvement of EXPERTS',
-    'e) Performance of other RISK ASSESSMENT PROCEDURES',
-  ],
-  trick:{label:'SUPERVISION DEPENDS ON — SARC',text:'S = Size & complexity of entity\nA = Area of audit\nR = Risks assessed (material misstatement)\nC = Capabilities of team members'}
+// ══════════════ CHAPTER 3 ══════════════
+{ch:'ch3',topic:'SA 315 — Objective',sa:'SA 315',imp:true,data:{
+  title:'SA 315 — Identifying & Assessing Risk of Material Misstatement',subtitle:'Objective of the Auditor',
+  def:'Objective of auditor = Identify and assess RISKS OF MATERIAL MISSTATEMENT (whether due to FRAUD OR ERROR) at the FS and assertion levels, through UNDERSTANDING the entity and its environment, including the entity\'s INTERNAL CONTROL.',
+  bullets:['→ Provides basis for designing and implementing RESPONSES to assessed risks','📌 Risk assessment procedures include:','   a) Inquiries of management & others within entity','   b) Analytical procedures','   c) Observation and Inspection','📌 Risk assessment procedures ALONE do NOT provide sufficient appropriate audit evidence'],
+  trick:{label:'SA 315 — 3 RISK PROCEDURES',text:'I = Inquiries of management\nA = Analytical procedures\nO = Observation and Inspection\n\"IAO — I Always Observe!\"'}
 }},
 
-// BONUS SA-SPECIFIC CARDS
-{ch:'ch1', topic:'SA 200 Analysis', sa:'SA 200', imp:true, data:{
-  title:'Deep Dive — SA 200: Overall Objectives',
-  subtitle:'5-Point Analysis of SA 200',
-  bullets:[
-    '1. Auditor\'s objective = obtain REASONABLE ASSURANCE whether FS as a whole are FREE FROM MATERIAL MISSTATEMENT (fraud OR error)',
-    '2. REASONABLE ASSURANCE = HIGH-LEVEL but NOT ABSOLUTE → auditor CANNOT guarantee FS free from misstatements',
-    '3. Audit carried out with PROFESSIONAL COMPETENCE per SAs → audit procedures applied → evidence obtained & evaluated → conclusions drawn → opinion formed',
-    '4. MISSTATEMENTS can occur due to FRAUD or ERROR or BOTH',
-    '5. Opinion REPORTED & COMMUNICATED per audit findings through WRITTEN REPORT as required by SA',
-    '',
-    '⚠️ KEY SA 200 TERMS:',
-    '→ Audit Risk = Risk of giving wrong opinion on materially misstated FS',
-    '→ Materiality = Information is material if its omission/misstatement could influence users\' decisions',
-    '→ Professional Skepticism = Questioning mind + critical assessment of evidence',
-  ],
-  trick:{label:'SA 200 = RPMFW',text:'R = Reasonable assurance\nP = Professional competence\nM = Material misstatement (fraud/error)\nF = Findings communicated in report\nW = Written report as required by SA'}
+{ch:'ch3',topic:'SA 315 — Understanding Entity',sa:'SA 315',imp:true,data:{
+  title:'Required Understanding of Entity & Environment',subtitle:'5 Areas the Auditor Must Understand',
+  bullets:['Auditor shall obtain understanding of:','1️⃣ Relevant INDUSTRY, REGULATORY & other EXTERNAL FACTORS including AFRF','2️⃣ NATURE OF THE ENTITY: Operations | Ownership & governance | Types of investments | Structure & financing','3️⃣ SELECTION & APPLICATION of accounting policies + reasons for changes','4️⃣ ENTITY\'S OBJECTIVES & STRATEGIES + related business risks causing material misstatement','5️⃣ MEASUREMENT & REVIEW of the entity\'s financial performance'],
+  trick:{label:'5 UNDERSTANDING AREAS — INSOM',text:'I = Industry/external factors\nN = Nature of entity\nS = Selection of accounting policies\nO = Objectives & strategies\nM = Measurement & financial review'}
 }},
 
-{ch:'ch1', topic:'Assurance Engagement Types', sa:'', imp:true, data:{
-  title:'Types of Assurance Engagements — Full Diagram',
-  subtitle:'Reasonable vs Limited vs Other',
-  bullets:[
-    '📌 ASSURANCE ENGAGEMENTS split into 3 types:',
-    '',
-    '1️⃣ REASONABLE ASSURANCE ENGAGEMENT (Audit):',
-    '→ HIGH level | Elaborate procedures | SA governed | Positive opinion',
-    '',
-    '2️⃣ LIMITED ASSURANCE ENGAGEMENT (Review):',
-    '→ MODERATE level | Fewer procedures | SRE governed | Negative assurance',
-    '→ "Nothing came to attention" type conclusion',
-    '',
-    '3️⃣ ASSURANCE ON OTHER THAN HISTORICAL FI (SAE):',
-    '→ Examination of PROSPECTIVE FI (SAE 3400)',
-    '→ Assurance on OPERATIONS OF CONTROLS',
-    '→ MODERATE level only (future-oriented = uncertainty)',
-    '',
-    '📌 LEVEL OF ASSURANCE:',
-    '→ Audit (Reasonable) > Review (Limited/Moderate) = Prospective FI (Moderate)',
-  ],
-  trick:{label:'ASSURANCE SPECTRUM',text:'HIGH ←──────────────→ LOW\nAudit    Review   Prospective FI\n(SA)    (SRE)        (SAE 3400)'}
+{ch:'ch3',topic:'Audit Risk',sa:'',imp:true,data:{
+  title:'Audit Risk — Meaning & Components',subtitle:'The Classic AR = IR × CR × DR Formula',
+  def:'Audit Risk = Risk that the auditor gives an INAPPROPRIATE AUDIT OPINION when the FS are MATERIALLY MISSTATED.',
+  bullets:['Audit Risk is a function of RISKS OF MATERIAL MISSTATEMENT and DETECTION RISK','Formula: Audit Risk = RMM × DR','Further: RMM = Inherent Risk × Control Risk','∴ Audit Risk = IR × CR × DR','Assessment of risks = MATTER OF PROFESSIONAL JUDGMENT (not precise measurement)','Audit risk DOES NOT include: Loss from litigation | Adverse publicity | Events arising from audit'],
+  formula:'AR = IR × CR × DR',
+  trick:{label:'AUDIT RISK ≠ BUSINESS RISK',text:'Audit Risk = Technical term = inappropriate audit opinion\nBusiness Risk = Loss from litigation, adverse publicity\nAudit Risk does NOT = Business Risk'}
+}},
+
+{ch:'ch3',topic:'Inherent Risk',sa:'',imp:true,data:{
+  title:'Inherent Risk — Definition & Key Points',subtitle:'Susceptibility BEFORE controls',
+  def:'Inherent Risk = Susceptibility of an assertion about a class of transaction, account balance or disclosure to a misstatement that could be MATERIAL — before consideration of ANY RELATED CONTROLS.',
+  bullets:['→ Risk that exists BEFORE any internal controls are considered','→ Always a risk of misstatements in FS — this is inherent risk','→ Higher for some assertions (e.g. complex calculations, revenue recognition, estimates)','→ Inherent risk factors considered while DESIGNING tests of controls and substantive procedures','→ Significant Risks = Inherent risks with HIGH LIKELIHOOD + HIGH MAGNITUDE of potential misstatement'],
+  trick:{label:'INHERENT RISK ALWAYS EXISTS',text:'Inherent = BEFORE controls\nControl = REDUCED by controls\nDetection = Reduced by AUDITOR\'S procedures\n\"IR is given; CR and DR auditor can influence\"'}
+}},
+
+{ch:'ch3',topic:'Control Risk',sa:'',imp:true,data:{
+  title:'Control Risk — Definition & Inverse Relation',subtitle:'Risk that IC fails to prevent/detect misstatement',
+  def:'Control Risk = Risk that a misstatement could occur in an assertion and that could be material — that will NOT be PREVENTED, or DETECTED AND CORRECTED, on a timely basis by the entity\'s INTERNAL CONTROL.',
+  bullets:['→ Risk that internal control existing & operating in entity would NOT be EFFICIENT enough','→ Misstatement relating to transaction, balance or disclosure would not be caught','→ INVERSE RELATION: Control Risk ∝ 1/Efficiency of Internal Control','→ High IC efficiency → Low control risk | Poor IC → High control risk','→ Auditor CANNOT reduce control risk by performing more procedures — it is given'],
+  trick:{label:'INVERSE RELATION',text:'Strong Internal Control → Low Control Risk\nWeak Internal Control → High Control Risk\nAuditor reduces DETECTION RISK, not IR or CR'}
+}},
+
+{ch:'ch3',topic:'Detection Risk',sa:'',imp:true,data:{
+  title:'Detection Risk — Definition & Components',subtitle:'The only risk auditor can control',
+  def:'Detection Risk = Risk that procedures performed by auditor to REDUCE AUDIT RISK to an acceptably low level will NOT DETECT a misstatement that EXISTS and that COULD BE MATERIAL.',
+  bullets:['Detection risk comprises SAMPLING and NON-SAMPLING risk:','   → Sampling risk: conclusion based on sample may differ from full population test','   → Non-sampling risk: erroneous conclusion for any reason NOT related to sampling','Detection risk may be REDUCED BY:','   → Increasing area of checking','   → Testing larger samples','   → Including competent and experienced persons in engagement team','Detection risk is the ONLY component auditor can DIRECTLY control'],
+  trick:{label:'DETECTION RISK = AUDITOR\'S RESPONSIBILITY',text:'DR ↑ more procedures → DR ↓\nIR and CR are given (entity-level)\nDR is what AUDITOR adjusts to hit target AR'}
+}},
+
+{ch:'ch3',topic:'SA 320 — Materiality',sa:'SA 320',imp:true,data:{
+  title:'SA 320 — Materiality in Planning & Performing an Audit',subtitle:'What is Materiality?',
+  def:'Misstatements, including omissions, are MATERIAL if they, individually or in the aggregate, could REASONABLY BE EXPECTED TO INFLUENCE the ECONOMIC DECISIONS OF USERS taken on the basis of the FS.',
+  bullets:['Materiality is NOT always a matter of relative size — a small fraud can indicate serious IC flaw','Concept of materiality applied in PLANNING + PERFORMING + EVALUATING','Judgments about materiality are made in light of SURROUNDING CIRCUMSTANCES','Judgments affected by SIZE or NATURE of misstatement or BOTH','Auditor must apply PROFESSIONAL JUDGEMENT to determine materiality & benchmark'],
+  trick:{label:'MATERIALITY JUDGMENT FACTORS',text:'1. Size of misstatement\n2. Nature of misstatement\n3. Surrounding circumstances\n4. User needs (as a group, not individual)'}
+}},
+
+{ch:'ch3',topic:'SA 320 — Materiality',sa:'SA 320',imp:true,data:{
+  title:'Performance Materiality & Benchmarks',subtitle:'PM < Overall Materiality | Benchmark Examples',
+  def:'Performance Materiality = Amount set by auditor at LESS THAN overall materiality to reduce probability that aggregate of uncorrected/undetected misstatements exceeds materiality for the FS as a whole.',
+  bullets:['Performance Materiality is set LOWER than overall materiality','→ Reduces risk that sum of small uncorrected misstatements = material in total','Benchmarks used (examples): Profit Before Tax | Total Revenue | Total Assets | Gross Profit | Total Equity','STATUTORY DISCLOSURE requirements are material IRRESPECTIVE of amount:','→ Division I Schedule III, Companies Act 2013: Items exceeding 1% of revenue or ₹1,00,000 (higher)','→ Shareholders holding >5% shares must be disclosed','Documentation must include: Overall materiality | Performance materiality | Specific materiality | Any revisions'],
+  trick:{label:'PM vs OVERALL MATERIALITY',text:'Overall Materiality (OM) = Benchmark × %\nPerformance Materiality (PM) < OM (always)\nPM set to catch small errors that add up\n\"PM acts as a safety net below OM\"'}
+}},
+
+{ch:'ch3',topic:'SA 330 — Auditor Responses',sa:'SA 330',imp:true,data:{
+  title:'SA 330 — The Auditor\'s Responses to Assessed Risks',subtitle:'Tests of Controls + Substantive Procedures',
+  bullets:['SA 330 deals with auditor\'s responsibility to DESIGN & IMPLEMENT responses to risks identified under SA 315','Auditor shall:','a) Design & implement OVERALL RESPONSES at FS level','b) Design & perform FURTHER AUDIT PROCEDURES responsive to assessed RMM at ASSERTION LEVEL','TWO MAIN TYPES OF RESPONSES:','1️⃣ TESTS OF CONTROLS — assess operating effectiveness of controls','2️⃣ SUBSTANTIVE PROCEDURES → Tests of Details + Substantive Analytical Procedures','Tests of Details = Vouching (transactions) + Verification (balances)'],
+  trick:{label:'SA 330 HIERARCHY',text:'Auditor Responses\n├── Tests of Controls\n└── Substantive Procedures\n    ├── Tests of Details\n    │   ├── Vouching (transactions)\n    │   └── Verification (balances)\n    └── Substantive Analytical Procedures'}
+}},
+
+{ch:'ch3',topic:'Tests of Controls',sa:'SA 330',imp:true,data:{
+  title:'When & How to Use Tests of Controls',subtitle:'Operating Effectiveness of Controls',
+  bullets:['Auditor shall perform tests of controls WHEN:','→ Assessment of RMM includes EXPECTATION that controls are operating effectively; OR','→ Substantive procedures ALONE cannot provide sufficient appropriate evidence','In designing & performing tests of controls:','a) Perform other audit procedures IN COMBINATION WITH INQUIRY','b) Test: HOW controls were applied | CONSISTENCY | BY WHOM applied','INQUIRY ALONE IS NOT SUFFICIENT — always combine with other procedures','Factors for extent of testing: Frequency of control | Length of reliance period | Expected deviation rate | Relevance & reliability of evidence'],
+  trick:{label:'WHEN TO TEST CONTROLS',text:'1. Controls expected to operate effectively\n2. Substantive alone cannot give sufficient evidence\n\"Inquiry = Necessary but NOT Sufficient\"'}
+}},
+
+{ch:'ch3',topic:'Significant Risks',sa:'SA 315',imp:true,data:{
+  title:'Significant Risks — Risks Requiring Special Audit Consideration',subtitle:'Factors to Consider',
+  bullets:['In exercising judgment on which risks are significant, auditor considers:','a) Whether risk is a RISK OF FRAUD','b) Whether risk is related to RECENT SIGNIFICANT ECONOMIC/ACCOUNTING developments','c) COMPLEXITY OF TRANSACTIONS','d) Whether risk involves SIGNIFICANT TRANSACTIONS WITH RELATED PARTIES','e) DEGREE OF SUBJECTIVITY in measurement of financial information','f) Whether risk involves significant UNUSUAL TRANSACTIONS','ALWAYS SIGNIFICANT (any audit):','(i) Risks of material misstatement DUE TO FRAUD','(ii) Significant transactions with RELATED PARTIES outside normal course of business'],
+  trick:{label:'SIGNIFICANT RISK FACTORS — FRCSU',text:'F = Fraud risk\nR = Related parties (significant transactions)\nC = Complexity of transactions\nS = Subjectivity in measurement\nU = Unusual transactions'}
+}},
+
+{ch:'ch3',topic:'Internal Control',sa:'SA 315',imp:true,data:{
+  title:'Unit 1 — Internal Control: Meaning, Purpose & Limitations',subtitle:'COSO Framework Overview',
+  def:'Internal Control = Process DESIGNED, IMPLEMENTED AND MAINTAINED by those charged with governance, management and other personnel to provide REASONABLE ASSURANCE about achievement of entity\'s objectives with regard to: Reliability of financial reporting | Effectiveness & efficiency of operations | Compliance with applicable laws | Safeguarding of assets.',
+  bullets:['PURPOSE: Address identified BUSINESS RISKS threatening entity\'s objectives','Benefits of IC to auditor: Identify potential misstatements | Assess RMM | Design further audit procedures','LIMITATIONS of Internal Control:','→ Can only provide REASONABLE assurance (not absolute)','→ Human judgment may be faulty — BREAKDOWNS due to human error','→ COLLUSION of two or more people can circumvent controls','→ MANAGEMENT OVERRIDE of internal controls possible','→ Small entities: LACK OF SEGREGATION OF DUTIES'],
+  trick:{label:'IC LIMITATIONS — H-CMAL',text:'H = Human judgment faulty\nC = Collusion\nM = Management override\nA = Absence of understanding (purpose)\nL = Limitations of small entities (no segregation)'}
+}},
+
+{ch:'ch3',topic:'Components of Internal Control',sa:'',imp:true,data:{
+  title:'5 Components of Internal Control',subtitle:'CRIMC Framework',
+  bullets:['(A) CONTROL ENVIRONMENT — Tone at the top; management\'s culture of honesty & ethical behavior; includes: governance functions, attitudes & awareness, organizational structure, HR policies','(B) ENTITY\'S RISK ASSESSMENT PROCESS — Entity identifies & estimates significance of business risks; decides actions; risks can arise from new technology, products, operating environment changes','(C) INFORMATION SYSTEM — Classes of transactions & how they are initiated, recorded, processed, corrected, transferred; controls surrounding journal entries','(D) CONTROL ACTIVITIES — Policies & procedures helping ensure management directives are carried out; includes: Performance reviews | Information processing | Physical controls | Segregation of duties','(E) MONITORING OF CONTROLS — Process to assess effectiveness of IC performance over time; involves taking remedial actions; ongoing activities or separate evaluations'],
+  trick:{label:'5 COMPONENTS — CRIMC',text:'C = Control Environment\nR = Risk Assessment Process\nI = Information System\nM = Monitoring of Controls\nC = Control Activities\n\"CRIMC\" — Controls Really Involve Monitoring Constantly'}
+}},
+
+{ch:'ch3',topic:'Control Environment',sa:'',imp:true,data:{
+  title:'Control Environment — 7 Elements',subtitle:'The Foundation of Internal Control',
+  bullets:['a) COMMUNICATION & ENFORCEMENT of integrity & ethical values','b) COMMITMENT TO COMPETENCE — considering competence levels for specific jobs','c) PARTICIPATION BY THOSE CHARGED WITH GOVERNANCE — independence, experience, scrutiny','d) MANAGEMENT\'S PHILOSOPHY & OPERATING STYLE — broad range of characteristics','e) ORGANISATIONAL STRUCTURE — framework for achieving objectives','f) ASSIGNMENT OF AUTHORITY & RESPONSIBILITY — reporting relationships & authorisation hierarchies','g) HUMAN RESOURCE POLICIES & PRACTICES — recruitment, training, evaluation, promotion'],
+  trick:{label:'7 ELEMENTS — C-CPMOAH',text:'C = Communication & enforcement of integrity\nC = Commitment to competence\nP = Participation by governance\nM = Management philosophy & style\nO = Organisational structure\nA = Authority & responsibility assignment\nH = HR policies & practices'}
+}},
+
+{ch:'ch3',topic:'Automated Environment',sa:'',imp:true,data:{
+  title:'Unit 2 — Automated Environment',subtitle:'IT Systems in Auditing',
+  def:'Automated environment = Business environment where processes, operations, accounting and decisions are carried out using COMPUTER SYSTEMS — also known as Information Systems (IS) or Information Technology (IT) systems.',
+  bullets:['KEY FEATURES: Faster operations | Accuracy in processing | Process large volumes | Integration | Better security | Less human error | Connectivity','RISKS from IT systems: Inaccurate data processing | Unauthorized access | Direct data changes | Excessive access | Lack of segregation of duties | Unauthorized changes to programs | Loss of data','TYPES OF IT CONTROLS:','(A) GENERAL IT CONTROLS — Pervasive/indirect; apply across many applications (data centre, program change, access security)','(B) APPLICATION CONTROLS — Embedded in IT applications (ERPs); ensure data completeness, accuracy, integrity','(C) IT DEPENDENT CONTROLS — Manual controls that depend on IT-generated reports'],
+  trick:{label:'3 TYPES OF IT CONTROLS — GAD',text:'G = General IT Controls (pervasive)\nA = Application Controls (embedded in apps)\nD = IT Dependent Controls (manual but IT-reliant)'}
+}},
+
+{ch:'ch3',topic:'Automated Environment',sa:'',imp:true,data:{
+  title:'Data Analytics & Digital Audit',subtitle:'CAATs — Computer Assisted Auditing Techniques',
+  bullets:['Data Analytics = combination of processes, tools & techniques to tap vast amounts of electronic data to obtain meaningful information','CAATs = Computer Assisted Auditing Techniques (tools: IDEA, ACL)','Uses of Data Analytics in Audit:','a) CHECK COMPLETENESS of data and population','b) SELECTION OF AUDIT SAMPLES (random, systematic)','c) RE-COMPUTATION OF BALANCES (reconstruct trial balance)','d) REPERFORMANCE of mathematical calculations (depreciation, bank interest)','e) ANALYSIS OF JOURNAL ENTRIES','f) FRAUD INVESTIGATION','g) EVALUATING impact of control deficiencies','DIGITAL AUDIT: AI + data analytics + technology → better risk identification & audit focus'],
+  trick:{label:'CAATs USES — CSRRAFED',text:'C = Check completeness\nS = Sample selection\nR = Re-computation of balances\nR = Reperformance of calculations\nA = Analysis of journal entries\nF = Fraud investigation\nE = Evaluate control deficiencies\nD = Digital/automated processing'}
+}},
+
+{ch:'ch3',topic:'Evaluation of Internal Control',sa:'',imp:false,data:{
+  title:'Evaluation of Internal Control by Auditor',subtitle:'Methods & Tools',
+  bullets:['Benefits of IC evaluation: Know where errors likely | Verify IC operating as planned | Assess adequacy of safeguards | Determine appropriate audit technique','Methods to review IC: Narrative Record | Checklist | Internal Control Questionnaire (ICQ) | Flow Chart','📌 NARRATIVE RECORD — Complete description of system; best for small businesses; disadvantage: difficult to comprehend & identify gaps','📌 INTERNAL CONTROL QUESTIONNAIRE (ICQ) — Most widely used; YES = satisfactory, NO = weakness; issued to client for filling','📌 FLOW CHART — Graphic presentation; most concise; gives bird\'s eye view; minimizes narrative explanation','📌 TEST OF CONTROLS includes: Inspection of documents | Inquiry & Observation | Re-performance | Testing computerised applications'],
+  trick:{label:'IC REVIEW METHODS — NICF',text:'N = Narrative Record\nI = Internal Control Questionnaire\nC = Checklist\nF = Flow Chart\n\"NICF = Now I Check Flow!\"'}
+}},
+
+{ch:'ch3',topic:'Material Weakness & Deficiency',sa:'',imp:true,data:{
+  title:'Material Weakness in Internal Control',subtitle:'Communicating to Management',
+  bullets:['Auditor shall COMMUNICATE material weaknesses in IC identified during audit on a TIMELY BASIS to MANAGEMENT at appropriate level — as required by SA 260 & 265','DEFICIENCY in IC exists if:','→ A control is designed, implemented or operated in a way that it is UNABLE TO PREVENT, or DETECT & CORRECT misstatements in FS on a timely basis; OR','→ A CONTROL IS MISSING','Evaluation of audit findings involves applying PROFESSIONAL JUDGEMENT including quantitative & qualitative measures','Significant deficiency = STRONG INDICATOR of existence of a significant deficiency in IC when material misstatement detected by auditor\'s procedures','Always communicate deficiencies to appropriate level of management in writing'],
+  trick:{label:'DEFICIENCY vs MATERIAL WEAKNESS',text:'Deficiency = Control missing or poorly designed\nMaterial Weakness = Significant deficiency in IC\nCommunication = To management + TCWG (SA 265)\nTiming = Timely basis (during/after audit)'}
+}},
+
+{ch:'ch3',topic:'Internal Financial Controls',sa:'',imp:true,data:{
+  title:'Internal Financial Controls (IFC) — Regulatory Requirements',subtitle:'Companies Act 2013 Obligations',
+  def:'Internal Financial Controls (IFC) = Policies and procedures put in place by companies for ensuring: Reliability of financial reporting | Effectiveness & efficiency of operations | Compliance with applicable laws | Safeguarding of assets | Prevention and detection of frauds.',
+  bullets:['Section 134(5)(e) — Listed Companies: Directors\' responsibility statement must state IFC are adequate & operating effectively','Section 143(3)(i) — Auditor\'s report shall state whether company has adequate IFC & operating effectiveness','Section 177 — Audit Committee: Shall include evaluation of IFC & risk management systems','As per Section 149(8) — Independent directors shall abide by Code for Independent Directors (Schedule IV)'],
+  trick:{label:'IFC — 3 KEY SECTIONS',text:'134(5)(e) = Directors state IFC adequate\n143(3)(i) = Auditor reports on IFC\n177 = Audit Committee evaluates IFC\n\"DAS = Directors, Auditor, Scrutiny by audit committee\"'}
+}},
+
+// ADDITIONAL CHAPTER 3 CARDS
+{ch:'ch3',topic:'SA 315 — Objective',sa:'SA 315',imp:false,data:{
+  title:'Documenting the Risk Assessment (Note 4)',subtitle:'What Must Be Documented',
+  bullets:['Documentation required under SA 315:','a) Discussion among ENGAGEMENT TEAM and SIGNIFICANT DECISIONS reached','b) Key elements of understanding of each aspect of the ENTITY & ITS ENVIRONMENT','c) Identified & assessed RISKS OF MATERIAL MISSTATEMENT at FS level and at assertion level','d) RISKS IDENTIFIED and related CONTROLS about which auditor has obtained understanding','Understanding of entity = CONTINUOUS PROCESS (Note 3):','→ Dynamic process of gathering, updating & analysing information THROUGHOUT AUDIT','→ Establishes frame of reference for professional judgment during audit'],
+  trick:{label:'DOCUMENTATION — 4 ITEMS',text:'a) Engagement team discussion\nb) Key elements of entity understanding\nc) Identified & assessed RMM\nd) Risks & related controls\n\"DECK = Discussion, Entity, Controls, Key risks\"'}
+}},
+
+{ch:'ch3',topic:'SA 320 — Materiality',sa:'SA 320',imp:false,data:{
+  title:'Revision of Materiality During Audit',subtitle:'When & How to Revise Materiality',
+  bullets:['Materiality for FS as a whole may NEED TO BE REVISED:','1) As result of CHANGE IN CIRCUMSTANCES during audit','2) When ACTUAL FINANCIAL RESULTS are likely to be substantially different from anticipated period-end results used to initially determine materiality','3) If auditor concludes a LOWER MATERIALITY is appropriate → determine whether to revise performance materiality and whether nature, timing & extent of further audit procedures remain appropriate','Factors for revision: New information | Change in auditor\'s understanding | Change in entity operations'],
+  trick:{label:'REVISE MATERIALITY WHEN',text:'1. Circumstances change\n2. Actual results differ substantially from anticipated\n3. Lower materiality more appropriate\n\"3C Rule = Change in Circumstances, Clarity, Conclusions\"'}
+}},
+
+{ch:'ch3',topic:'Tests of Controls',sa:'SA 330',imp:false,data:{
+  title:'Using Audit Evidence from Previous Audits',subtitle:'When Prior Audit Evidence Can Be Used',
+  bullets:['Auditor may use evidence about operating effectiveness of controls from PREVIOUS AUDITS','Factors to consider before relying on previous audit evidence:','a) Effectiveness of other elements of IC including control environment','b) Risks arising from characteristics of control — manual or automated','c) Effectiveness of GENERAL IT CONTROLS','d) Effectiveness of control and its application by entity in current period','e) Whether LACK OF CHANGE in control poses risk due to changing circumstances','f) Risks of material misstatement and EXTENT OF RELIANCE on control'],
+  trick:{label:'6 FACTORS FOR PRIOR EVIDENCE',text:'E = Effectiveness of IC elements\nR = Risks from control characteristics\nG = General IT controls effective?\nA = Application by entity (current)\nL = Lack of change (risk?)\nR = RMM and reliance extent'}
 }},
 
 ];
 
-// ═══════════════════════════════════════════
-// STATE & LOGIC
-// ═══════════════════════════════════════════
+// ═══════════ STATE & LOGIC ═══════════
 let activeCh = 'ch1';
 let filtered = [];
 let idx = 0;
 let activeTopic = null;
 
-const chConfig = {
-  ch1: {label:'Ch 1',color:'#A8D4F5',bg:'#0d2640',border:'#3A8FCC',dot:'#3A8FCC',pfill:'pfill-ch1',btn:'btn-ch1',tabActive:'active-ch1'},
-  ch2: {label:'Ch 2',color:'#8FD4A8',bg:'#0d2e1a',border:'#2E8A56',dot:'#2E8A56',pfill:'pfill-ch2',btn:'btn-ch2',tabActive:'active-ch2'},
-  mega:{label:'ALL',color:'#C8A8F5',bg:'#2a1a40',border:'#7744CC',dot:'#7744CC',pfill:'pfill-mega',btn:'btn-mega',tabActive:'active-mega'},
+const cfg = {
+  ch1:{color:'#3B9EFF',bg:'#0a1e3a',border:'#3B9EFF',dot:'#3B9EFF',text:'#93C5FD',pfill:'pf1',btn:'nb1',ta:'a1'},
+  ch2:{color:'#22D3A0',bg:'#052a1f',border:'#22D3A0',dot:'#22D3A0',text:'#6EE7C7',pfill:'pf2',btn:'nb2',ta:'a2'},
+  ch3:{color:'#F59E0B',bg:'#2a1800',border:'#F59E0B',dot:'#F59E0B',text:'#FCD34D',pfill:'pf3',btn:'nb3',ta:'a3'},
+  mega:{color:'#C084FC',bg:'#1a0a2e',border:'#C084FC',dot:'#C084FC',text:'#E9D5FF',pfill:'pfm',btn:'nbm',ta:'am'},
 };
 
 function switchChapter(ch){
   activeCh = ch;
   activeTopic = null;
-  // Update tabs
-  document.querySelectorAll('.ch-tab').forEach(t=>t.className='ch-tab');
-  const cfg = chConfig[ch] || chConfig.ch1;
-  document.getElementById('tab-'+ch).classList.add(cfg.tabActive);
-  // Filter cards
-  filtered = ch === 'mega' ? [...cards] : cards.filter(c=>c.ch===ch);
+  document.querySelectorAll('.tab').forEach(t=>{t.className='tab'});
+  const c = cfg[ch]||cfg.ch1;
+  document.getElementById('tab-'+ch).classList.add(c.ta);
+  filtered = ch==='mega' ? [...cards] : cards.filter(x=>x.ch===ch);
   idx = 0;
-  buildTopicPills();
+  buildPills();
   renderCard();
 }
 
-function buildTopicPills(){
-  const container = document.getElementById('tpills');
-  const topics = [...new Set(filtered.map(c=>c.topic))];
-  const cfg = chConfig[activeCh] || chConfig.ch1;
-  let html = `<span class="tpill ${activeTopic===null?cfg.tabActive:''}" onclick="filterTopic(null)">All (${filtered.length})</span>`;
+function buildPills(){
+  const c = cfg[activeCh]||cfg.ch1;
+  const topics = [...new Set(filtered.map(x=>x.topic))];
+  let html = `<span class="pill ${activeTopic===null?c.ta:''}" onclick="filterTopic(null)">All (${filtered.length})</span>`;
   topics.forEach(t=>{
-    const count = filtered.filter(c=>c.topic===t).length;
-    html += `<span class="tpill ${activeTopic===t?cfg.tabActive:''}" onclick="filterTopic('${t}')">${t} (${count})</span>`;
+    const n = filtered.filter(x=>x.topic===t).length;
+    html += `<span class="pill ${activeTopic===t?c.ta:''}" onclick="filterTopic('${t.replace(/'/g,"\\'")}')"><span style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle">${t}</span> (${n})</span>`;
   });
-  container.innerHTML = html;
+  document.getElementById('tpills').innerHTML = html;
 }
 
 function filterTopic(topic){
   activeTopic = topic;
-  const base = activeCh === 'mega' ? [...cards] : cards.filter(c=>c.ch===activeCh);
-  filtered = topic ? base.filter(c=>c.topic===topic) : base;
+  const base = activeCh==='mega' ? [...cards] : cards.filter(x=>x.ch===activeCh);
+  filtered = topic ? base.filter(x=>x.topic===topic) : base;
   idx = 0;
-  buildTopicPills();
+  buildPills();
   renderCard();
 }
 
 function renderCard(){
-  const cfg = chConfig[activeCh] || chConfig.ch1;
-  const c = filtered[idx];
-  if(!c){document.getElementById('fc').innerHTML='<p style="padding:20px;color:#666">No cards found.</p>';return;}
-  const d = c.data;
+  const c = cfg[activeCh]||cfg.ch1;
+  const card = filtered[idx];
+  if(!card){document.getElementById('card').innerHTML='<p style="padding:20px;color:#555">No cards.</p>';return;}
+  const d = card.data;
 
-  // Update nav UI
   document.getElementById('ctr').textContent = `${idx+1} / ${filtered.length}`;
-  document.getElementById('pf').style.width = `${((idx+1)/filtered.length)*100}%`;
-  document.getElementById('pf').className = `pfill ${cfg.pfill}`;
-  document.getElementById('btnPrev').className = cfg.btn;
-  document.getElementById('btnNext').className = cfg.btn;
+  const pf = document.getElementById('pf');
+  pf.style.width = `${((idx+1)/filtered.length)*100}%`;
+  pf.className = `pfill ${c.pfill}`;
+  ['btnPrev','btnNext'].forEach(id=>document.getElementById(id).className=c.btn);
 
   let html = '';
-  // Topic pill
-  html += `<span class="fc-topic" style="background:${cfg.bg};color:${cfg.color};border:1px solid ${cfg.border}">${c.topic}</span>`;
-  if(c.sa) html += `<span class="fc-sa-badge">${c.sa}</span>`;
-  if(c.imp) html += `<span class="fc-star" style="background:${cfg.border};color:${cfg.color}">★ Exam Important</span>`;
-
-  html += `<div class="fc-title" style="color:${cfg.color}">${d.title}</div>`;
-  if(d.subtitle) html += `<div class="fc-subtitle">${d.subtitle}</div>`;
-
-  if(d.def) html += `<div class="fc-def" style="background:${cfg.bg};border-left-color:${cfg.border};color:#ddd">${d.def}</div>`;
+  html += `<span class="c-topic" style="background:${c.bg};color:${c.text};border:1px solid ${c.border}50">${card.topic}</span>`;
+  if(card.sa) html += `<span class="c-sa">${card.sa}</span>`;
+  if(card.imp) html += `<span class="c-imp" style="background:${c.border};color:#000;font-weight:800">★ Exam Important</span>`;
+  html += `<div class="c-title" style="color:${c.color}">${d.title}</div>`;
+  if(d.subtitle) html += `<div class="c-sub">${d.subtitle}</div>`;
+  if(d.def) html += `<div class="c-def" style="background:${c.bg};border-left-color:${c.border};color:#d0d8e8">${d.def}</div>`;
 
   if(d.compare){
-    html += '<div class="fc-compare">';
+    html += '<div class="c-compare">';
     d.compare.forEach(col=>{
-      html += `<div class="fc-compare-col" style="background:${col.bg};border:1px solid ${col.color}40"><h4 style="color:${col.color}">${col.head}</h4><ul>`;
-      col.items.forEach(item=>{ html += `<li style="color:#ccc">${item}</li>`; });
+      html += `<div class="c-compare-col" style="background:${col.bg};border:1px solid ${col.color}30"><h4 style="color:${col.color}">${col.head}</h4><ul>`;
+      col.items.forEach(item=>{html+=`<li>${item}</li>`;});
       html += '</ul></div>';
     });
     html += '</div>';
   }
 
   if(d.bullets){
-    html += '<ul class="fc-bullets">';
+    html += '<ul class="c-bullets">';
     d.bullets.forEach(b=>{
-      if(!b){html+='<li style="height:6px"></li>';return;}
-      html += `<li><span class="dot" style="background:${cfg.dot}"></span><span>${b}</span></li>`;
+      if(!b){html+='<li style="height:5px"></li>';return;}
+      html += `<li><span class="dot" style="background:${c.dot}"></span><span>${b}</span></li>`;
     });
     html += '</ul>';
   }
 
-  if(d.formula) html += `<div class="fc-formula" style="background:${cfg.bg};color:${cfg.color};border:1px solid ${cfg.border}">${d.formula}</div>`;
+  if(d.formula) html += `<div class="c-formula" style="background:${c.bg};color:${c.color};border:1.5px solid ${c.border}">${d.formula}</div>`;
 
   if(d.trick){
-    html += `<div class="fc-trick" style="background:${cfg.bg};border:1px solid ${cfg.border}40">`;
-    html += `<div class="fc-trick-label" style="color:${cfg.border}">🧠 ${d.trick.label}</div>`;
-    html += `<pre style="color:#ccc;white-space:pre-wrap;font-family:inherit;font-size:12px;font-weight:600">${d.trick.text}</pre>`;
-    html += '</div>';
+    html += `<div class="c-trick" style="background:${c.bg};border:1px solid ${c.border}30">`;
+    html += `<div class="c-trick-lbl" style="color:${c.border}">🧠 ${d.trick.label}</div>`;
+    html += `<pre>${d.trick.text}</pre></div>`;
   }
 
-  const fc = document.getElementById('fc');
-  fc.style.background = cfg.bg + '88';
-  fc.style.borderColor = cfg.border;
-  fc.innerHTML = html;
+  const el = document.getElementById('card');
+  el.style.background = c.bg+'99';
+  el.style.borderColor = c.border+'80';
+  el.innerHTML = html;
 }
 
-function next(){idx = (idx+1)%filtered.length; renderCard();}
-function prev(){idx = (idx-1+filtered.length)%filtered.length; renderCard();}
+function next(){idx=(idx+1)%filtered.length;renderCard();}
+function prev(){idx=(idx-1+filtered.length)%filtered.length;renderCard();}
 
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown') next();
@@ -922,15 +716,14 @@ document.addEventListener('keydown',e=>{
 });
 
 function showQR(ch){
-  document.querySelectorAll('.qr-panel').forEach(p=>p.classList.remove('qr-open'));
-  document.querySelectorAll('.qr-btn').forEach(b=>b.classList.remove('qr-active'));
+  document.querySelectorAll('.qr-panel').forEach(p=>p.classList.remove('open'));
+  document.querySelectorAll('.qr-btn').forEach(b=>b.classList.remove('qa'));
   const panel = document.getElementById('qr-panel-'+ch);
   const btn = document.querySelector(`.qr-btn[data-ch="${ch}"]`);
-  if(panel){ panel.classList.add('qr-open'); }
-  if(btn){ btn.classList.add('qr-active'); }
+  if(panel) panel.classList.add('open');
+  if(btn) btn.classList.add('qa');
 }
 
-// Init
 switchChapter('ch1');
 </script>
 </body>
