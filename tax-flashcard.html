@@ -5,109 +5,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CA Inter Direct Tax — Complete Flashcards May 2026</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f0f;color:#f0f0f0;min-height:100vh;padding:16px}
-  .app-header{background:linear-gradient(135deg,#1a3a2a,#26215C);border-radius:14px;padding:18px 22px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #333}
-  .app-header h1{font-size:18px;font-weight:700;color:#E1F5EE;letter-spacing:0.3px}
-  .app-header .badges{display:flex;gap:8px;flex-wrap:wrap}
-  .app-header .badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
-  .b1{background:#E1F5EE;color:#085041}
-  .b2{background:#EEEDFE;color:#3C3489}
-  .b3{background:#FAEEDA;color:#633806}
-  .b4{background:#EAF3DE;color:#27500A}
+  :root{--bg:#07090d;--surface:#0d1117;--surface2:#111820;--border:#1e2a38;--accent:#0ea5e9;--accent2:#6366f1;--text:#dde6f5;--muted:#4a5a72;--glow:0 0 30px rgba(14,165,233,0.1)}
+  body{font-family:'Sora',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:14px;background-image:radial-gradient(ellipse at 15% 0%,rgba(14,165,233,0.07) 0%,transparent 55%),radial-gradient(ellipse at 85% 100%,rgba(99,102,241,0.06) 0%,transparent 55%)}
+  .app-header{background:linear-gradient(135deg,rgba(14,165,233,0.07),rgba(99,102,241,0.07));border-radius:16px;padding:18px 24px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid rgba(14,165,233,0.18);box-shadow:var(--glow)}
+  .app-header h1{font-size:17px;font-weight:800;color:#e2ecff;letter-spacing:-0.2px}
+  .app-header .badges{display:flex;gap:7px;flex-wrap:wrap}
+  .app-header .badge{font-size:10px;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase}
+  .b1{background:rgba(16,185,129,0.12);color:#6ee7b7;border:1px solid rgba(16,185,129,0.25)}
+  .b2{background:rgba(99,102,241,0.12);color:#a5b4fc;border:1px solid rgba(99,102,241,0.25)}
+  .b3{background:rgba(245,158,11,0.12);color:#fcd34d;border:1px solid rgba(245,158,11,0.25)}
+  .b4{background:rgba(14,165,233,0.12);color:#7dd3fc;border:1px solid rgba(14,165,233,0.25)}
 
-  .chapter-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-  .ch-tab{padding:9px 18px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:2px solid #333;background:#1a1a1a;color:#aaa;transition:all 0.2s}
-  .ch-tab.active-ch1{background:#5C3700;color:#FFF3CD;border-color:#E8A000}
-  .ch-tab.active-ch2{background:#0D3A5C;color:#D9EDF7;border-color:#2980B9}
-  .ch-tab.active-ch3{background:#26215C;color:#EEEDFE;border-color:#7F77DD}
-  .ch-tab.active-ch4{background:#412402;color:#FAEEDA;border-color:#BA7517}
-  .ch-tab.active-ch6{background:#173404;color:#EAF3DE;border-color:#639922}
-  .ch-tab.active-ch11{background:#085041;color:#E1F5EE;border-color:#1D9E75}
+  .chapter-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  .ch-tab{padding:8px 15px;border-radius:10px;font-size:11.5px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all 0.2s;letter-spacing:0.2px}
+  .ch-tab:hover{border-color:#334155;color:#94a3b8}
+  .ch-tab.active-ch1{background:rgba(234,179,8,0.12);color:#fde68a;border-color:rgba(234,179,8,0.4)}
+  .ch-tab.active-ch2{background:rgba(14,165,233,0.12);color:#7dd3fc;border-color:rgba(14,165,233,0.4)}
+  .ch-tab.active-ch3{background:rgba(139,92,246,0.12);color:#c4b5fd;border-color:rgba(139,92,246,0.4)}
+  .ch-tab.active-ch4{background:rgba(249,115,22,0.12);color:#fdba74;border-color:rgba(249,115,22,0.4)}
+  .ch-tab.active-ch6{background:rgba(34,197,94,0.12);color:#86efac;border-color:rgba(34,197,94,0.4)}
+  .ch-tab.active-ch11{background:rgba(20,184,166,0.12);color:#5eead4;border-color:rgba(20,184,166,0.4)}
+  .ch-tab.active-rtn{background:rgba(99,102,241,0.12);color:#a5b4fc;border-color:rgba(99,102,241,0.4)}
 
   .topic-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-  .tpill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;cursor:pointer;border:1.5px solid #444;background:#1e1e1e;color:#aaa;transition:all 0.2s}
-  .tpill.active-ch1{background:#5C3700;color:#FFF3CD;border-color:#E8A000}
-  .tpill.active-ch2{background:#0D3A5C;color:#D9EDF7;border-color:#2980B9}
-  .tpill.active-ch3{background:#26215C;color:#EEEDFE;border-color:#7F77DD}
-  .tpill.active-ch4{background:#412402;color:#FAEEDA;border-color:#BA7517}
-  .tpill.active-ch6{background:#173404;color:#EAF3DE;border-color:#639922}
-  .tpill.active-ch11{background:#085041;color:#E1F5EE;border-color:#1D9E75}
+  .tpill{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:all 0.18s}
+  .tpill:hover{border-color:#334155;color:#94a3b8}
+  .tpill.active-ch1{background:rgba(234,179,8,0.12);color:#fde68a;border-color:rgba(234,179,8,0.35)}
+  .tpill.active-ch2{background:rgba(14,165,233,0.12);color:#7dd3fc;border-color:rgba(14,165,233,0.35)}
+  .tpill.active-ch3{background:rgba(139,92,246,0.12);color:#c4b5fd;border-color:rgba(139,92,246,0.35)}
+  .tpill.active-ch4{background:rgba(249,115,22,0.12);color:#fdba74;border-color:rgba(249,115,22,0.35)}
+  .tpill.active-ch6{background:rgba(34,197,94,0.12);color:#86efac;border-color:rgba(34,197,94,0.35)}
+  .tpill.active-ch11{background:rgba(20,184,166,0.12);color:#5eead4;border-color:rgba(20,184,166,0.35)}
+  .tpill.active-rtn{background:rgba(99,102,241,0.12);color:#a5b4fc;border-color:rgba(99,102,241,0.35)}
 
-  .pbar{height:7px;background:#2a2a2a;border-radius:4px;margin-bottom:14px;overflow:hidden}
-  .pfill{height:100%;border-radius:4px;transition:width 0.4s}
-  .pfill-ch1{background:#E8A000}
-  .pfill-ch2{background:#2980B9}
-  .pfill-ch3{background:#7F77DD}
-  .pfill-ch4{background:#BA7517}
-  .pfill-ch6{background:#639922}
-  .pfill-ch11{background:#1D9E75}
+  .pbar{height:5px;background:rgba(255,255,255,0.05);border-radius:4px;margin-bottom:14px;overflow:hidden}
+  .pfill{height:100%;border-radius:4px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1)}
+  .pfill-ch1{background:linear-gradient(90deg,#b45309,#f59e0b)}
+  .pfill-ch2{background:linear-gradient(90deg,#0369a1,#0ea5e9)}
+  .pfill-ch3{background:linear-gradient(90deg,#6d28d9,#8b5cf6)}
+  .pfill-ch4{background:linear-gradient(90deg,#c2410c,#f97316)}
+  .pfill-ch6{background:linear-gradient(90deg,#15803d,#22c55e)}
+  .pfill-ch11{background:linear-gradient(90deg,#0f766e,#14b8a6)}
+  .pfill-rtn{background:linear-gradient(90deg,#4338ca,#6366f1)}
 
-  .cnav{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
-  .cnav button{border:none;border-radius:8px;padding:9px 22px;font-size:13px;font-weight:700;cursor:pointer;color:#fff;transition:opacity 0.2s}
-  .cnav button:hover{opacity:0.85}
-  .btn-ch1{background:#B07B00}
-  .btn-ch2{background:#1A6A9A}
-  .btn-ch3{background:#534AB7}
-  .btn-ch4{background:#854F0B}
-  .btn-ch6{background:#3A6010}
-  .btn-ch11{background:#0F6E56}
-  .ctr{font-size:14px;font-weight:700;color:#ddd;min-width:80px;text-align:center}
+  .cnav{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .cnav button{border:none;border-radius:10px;padding:9px 24px;font-size:13px;font-weight:700;cursor:pointer;color:#fff;transition:all 0.2s;font-family:'Sora',sans-serif;letter-spacing:0.2px}
+  .cnav button:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+  .cnav button:active{transform:translateY(0)}
+  .btn-ch1{background:linear-gradient(135deg,#92400e,#b45309)}
+  .btn-ch2{background:linear-gradient(135deg,#0369a1,#0284c7)}
+  .btn-ch3{background:linear-gradient(135deg,#5b21b6,#7c3aed)}
+  .btn-ch4{background:linear-gradient(135deg,#9a3412,#c2410c)}
+  .btn-ch6{background:linear-gradient(135deg,#14532d,#15803d)}
+  .btn-ch11{background:linear-gradient(135deg,#134e4a,#0f766e)}
+  .btn-rtn{background:linear-gradient(135deg,#3730a3,#4f46e5)}
+  .ctr{font-size:13px;font-weight:700;color:#94a3b8;min-width:80px;text-align:center;font-family:'JetBrains Mono',monospace}
 
-  .fc{border-radius:14px;padding:22px 24px;min-height:300px;border-width:2px;border-style:solid;cursor:pointer;position:relative;transition:opacity 0.15s;margin-bottom:6px}
-  .fc:active{opacity:0.9}
-  .fc-topic{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:10px;letter-spacing:0.4px}
-  .fc-title{font-size:18px;font-weight:700;margin-bottom:14px;line-height:1.35}
+  .fc{border-radius:16px;padding:22px 24px;min-height:290px;border-width:1.5px;border-style:solid;cursor:pointer;position:relative;transition:transform 0.15s,box-shadow 0.15s;margin-bottom:6px;backdrop-filter:blur(4px)}
+  .fc:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+  .fc:active{transform:translateY(0)}
+  .fc-topic{font-size:10px;font-weight:700;padding:3px 11px;border-radius:20px;display:inline-block;margin-bottom:10px;letter-spacing:0.8px;text-transform:uppercase}
+  .fc-title{font-size:17px;font-weight:800;margin-bottom:14px;line-height:1.35;letter-spacing:-0.2px}
   .fc-bullets{list-style:none;padding:0;margin:0 0 12px}
-  .fc-bullets li{font-size:13px;font-weight:600;padding:3px 0;display:flex;gap:9px;line-height:1.6;align-items:flex-start}
-  .fc-bullets li .dot{flex-shrink:0;margin-top:7px;width:7px;height:7px;border-radius:50%;display:inline-block}
-  .fc-trick{border-radius:8px;padding:12px 14px;margin-top:6px;font-size:13px;font-weight:700;line-height:1.5}
-  .fc-star{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:#BA7517;color:#FAEEDA}
-  .hint{font-size:12px;color:#555;text-align:center;margin-top:6px;margin-bottom:20px}
+  .fc-bullets li{font-size:12.5px;font-weight:500;padding:3px 0;display:flex;gap:9px;line-height:1.65;align-items:flex-start}
+  .fc-bullets li .dot{flex-shrink:0;margin-top:8px;width:6px;height:6px;border-radius:50%;display:inline-block}
+  .fc-trick{border-radius:10px;padding:12px 15px;margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.55;font-family:'JetBrains Mono',monospace;border-left:3px solid currentColor}
+  .fc-star{position:absolute;top:14px;right:16px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase}
+  .hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:6px;margin-bottom:18px}
 
-  .summary-section{background:#161616;border-radius:12px;padding:18px;margin-top:20px;border:1px solid #2a2a2a}
-  .summary-section h2{font-size:15px;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #2a2a2a}
+  .summary-section{background:var(--surface);border-radius:14px;padding:18px;margin-top:20px;border:1px solid var(--border)}
+  .summary-section h2{font-size:14px;font-weight:800;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);letter-spacing:0.2px}
   .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
-  .s-card{border-radius:10px;padding:14px 16px;border-left:4px solid}
-  .s-card h3{font-size:13px;font-weight:700;margin-bottom:8px}
+  .s-card{border-radius:12px;padding:14px 16px;border-left:3px solid}
+  .s-card h3{font-size:12px;font-weight:800;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
   .s-card ul{list-style:none;padding:0}
-  .s-card ul li{font-size:12px;font-weight:500;padding:2px 0;line-height:1.5}
-  .s-card ul li::before{content:"▸ ";opacity:0.7}
+  .s-card ul li{font-size:11.5px;font-weight:500;padding:2px 0;line-height:1.6}
+  .s-card ul li::before{content:"▸ ";opacity:0.6}
 
-  .rate-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
-  .rate-table th{background:#1e1e1e;padding:8px 10px;text-align:left;font-weight:700;color:#ccc;border-bottom:1px solid #333}
-  .rate-table td{padding:7px 10px;border-bottom:1px solid #222;color:#bbb}
-  .rate-table tr:hover td{background:#1a1a1a}
+  .rate-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11.5px}
+  .rate-table th{background:rgba(255,255,255,0.04);padding:8px 10px;text-align:left;font-weight:700;color:#94a3b8;border-bottom:1px solid var(--border);letter-spacing:0.3px;font-size:11px;text-transform:uppercase}
+  .rate-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.04);color:#94a3b8}
+  .rate-table tr:hover td{background:rgba(255,255,255,0.02)}
 
-  .footer{text-align:center;margin-top:24px;font-size:12px;color:#555;padding-bottom:10px}
-  .footer span{color:#7F77DD;font-weight:700}
+  .footer{text-align:center;margin-top:24px;font-size:11px;color:var(--muted);padding-bottom:12px;letter-spacing:0.2px}
+  .footer span{color:#818cf8;font-weight:700}
 
-  /* Quick Reference styles */
-  .qr-chapter{background:#111;border-radius:12px;padding:16px 18px;margin-bottom:18px;border-left:4px solid #444}
-  .qr-ch-head{font-size:13px;font-weight:800;padding:8px 14px;border-radius:8px;margin-bottom:12px;letter-spacing:0.4px}
-  .qr-sub{font-size:12px;font-weight:800;margin-bottom:6px;margin-top:4px;letter-spacing:0.3px}
+  .qr-chapter{background:var(--surface);border-radius:14px;padding:16px 18px;margin-bottom:16px;border:1px solid var(--border)}
+  .qr-ch-head{font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:8px;margin-bottom:12px;letter-spacing:0.4px;text-transform:uppercase}
+  .qr-sub{font-size:11.5px;font-weight:800;margin-bottom:6px;margin-top:4px;letter-spacing:0.4px;text-transform:uppercase;opacity:0.85}
   .qr-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .qr-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
-  .qr-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:14px;line-height:1.5}
+  .qr-pill{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:14px;line-height:1.5;letter-spacing:0.2px}
 
-  @media(max-width:700px){
-    .qr-grid2{grid-template-columns:1fr}
-  }
+  @media(max-width:700px){.qr-grid2{grid-template-columns:1fr}}
   @media(max-width:500px){
-    .app-header h1{font-size:14px}
-    .fc-title{font-size:15px}
-    .fc-bullets li{font-size:12px}
-    .ch-tab{padding:7px 12px;font-size:11px}
+    .app-header h1{font-size:13px}
+    .fc-title{font-size:14px}
+    .fc-bullets li{font-size:11.5px}
+    .ch-tab{padding:6px 11px;font-size:10.5px}
   }
 
-  .ch-tab.active-hp{background:#085041;color:#E1F5EE;border-color:#1D9E75}
-  .ch-tab.active-ifos{background:#26215C;color:#EEEDFE;border-color:#7F77DD}
-  .ch-tab.active-club{background:#5C3700;color:#FFF3CD;border-color:#E8A000}
-  .ch-tab.active-setoff{background:#3B0A0A;color:#FDE8E8;border-color:#CC3333}
-  .tpill.active-hp{background:#085041;color:#E1F5EE;border-color:#1D9E75}
-  .tpill.active-ifos{background:#26215C;color:#EEEDFE;border-color:#7F77DD}
-  .tpill.active-club{background:#5C3700;color:#FFF3CD;border-color:#E8A000}
-  .tpill.active-setoff{background:#3B0A0A;color:#FDE8E8;border-color:#CC3333}
+  .ch-tab.active-hp{background:rgba(20,184,166,0.1);color:#5eead4;border-color:#2dd4bf}
+  .ch-tab.active-ifos{background:rgba(139,92,246,0.1);color:#c4b5fd;border-color:#a78bfa}
+  .ch-tab.active-club{background:rgba(234,179,8,0.1);color:#fde68a;border-color:#fbbf24}
+  .ch-tab.active-setoff{background:rgba(239,68,68,0.1);color:#fca5a5;border-color:#f87171}
+  .tpill.active-hp{background:rgba(20,184,166,0.1);color:#5eead4;border-color:#2dd4bf}
+  .tpill.active-ifos{background:rgba(139,92,246,0.1);color:#c4b5fd;border-color:#a78bfa}
+  .tpill.active-club{background:rgba(234,179,8,0.1);color:#fde68a;border-color:#fbbf24}
+  .tpill.active-setoff{background:rgba(239,68,68,0.1);color:#fca5a5;border-color:#f87171}
   .pfill-hp{background:#1D9E75}
   .pfill-ifos{background:#7F77DD}
   .pfill-club{background:#E8A000}
@@ -117,39 +124,39 @@
   .btn-club{background:#B07B00}
   .btn-setoff{background:#992222}
 
-  .ch-tab.active-via{background:#173404;color:#EAF3DE;border-color:#639922}
-  .ch-tab.active-rtn{background:#042C53;color:#E6F1FB;border-color:#378ADD}
-  .tpill.active-via{background:#173404;color:#EAF3DE;border-color:#639922}
-  .tpill.active-rtn{background:#042C53;color:#E6F1FB;border-color:#378ADD}
-  .pfill-via{background:#639922}
-  .pfill-rtn{background:#378ADD}
-  .btn-via{background:#3A6010}
-  .btn-rtn{background:#1A4E7A}
+  .ch-tab.active-via{background:rgba(34,197,94,0.1);color:#86efac;border-color:#4ade80}
+  .ch-tab.active-rtn{background:rgba(99,102,241,0.12);color:#a5b4fc;border-color:rgba(99,102,241,0.4)}
+  .tpill.active-via{background:rgba(34,197,94,0.1);color:#86efac;border-color:#4ade80}
+  .tpill.active-rtn{background:rgba(99,102,241,0.12);color:#a5b4fc;border-color:rgba(99,102,241,0.35)}
+  .pfill-via{background:linear-gradient(90deg,#166534,#22c55e)}
+  .pfill-rtn{background:linear-gradient(90deg,#4338ca,#6366f1)}
+  .btn-via{background:linear-gradient(135deg,#14532d,#15803d)}
+  .btn-rtn{background:linear-gradient(135deg,#3730a3,#4f46e5)}
 
   /* ── Quick Reference Accordion ── */
-  .qr-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .qr-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
   .qr-btn{
-    padding:8px 15px;border-radius:9px;font-size:11.5px;font-weight:700;
-    cursor:pointer;border:2px solid #333;background:#1a1a1a;color:#aaa;
-    transition:all 0.22s ease;letter-spacing:0.2px;
+    padding:7px 14px;border-radius:9px;font-size:11px;font-weight:700;
+    cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);
+    transition:all 0.2s;letter-spacing:0.3px;text-transform:uppercase;
   }
-  .qr-btn:hover{filter:brightness(1.25);transform:translateY(-1px)}
-  .qr-btn.qr-active{color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.5)}
+  .qr-btn:hover{border-color:#334155;color:#94a3b8;transform:translateY(-1px)}
+  .qr-btn.qr-active{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.4)}
 
   /* per-chapter active colours */
-  .qr-btn[data-ch="1"].qr-active  {background:#5C3700;border-color:#E8A000;color:#FFF3CD}
-  .qr-btn[data-ch="2"].qr-active  {background:#0D3A5C;border-color:#2980B9;color:#D9EDF7}
-  .qr-btn[data-ch="3"].qr-active  {background:#26215C;border-color:#7F77DD;color:#EEEDFE}
-  .qr-btn[data-ch="4"].qr-active  {background:#04342C;border-color:#1D9E75;color:#E1F5EE}
-  .qr-btn[data-ch="5"].qr-active  {background:#412402;border-color:#BA7517;color:#FAEEDA}
-  .qr-btn[data-ch="6"].qr-active  {background:#173404;border-color:#639922;color:#EAF3DE}
-  .qr-btn[data-ch="7"].qr-active  {background:#26215C;border-color:#7F77DD;color:#EEEDFE}
-  .qr-btn[data-ch="8"].qr-active  {background:#5C3700;border-color:#E8A000;color:#FFF3CD}
-  .qr-btn[data-ch="9"].qr-active  {background:#3B0A0A;border-color:#CC3333;color:#FDE8E8}
-  .qr-btn[data-ch="10"].qr-active {background:#173404;border-color:#639922;color:#EAF3DE}
-  .qr-btn[data-ch="11"].qr-active {background:#085041;border-color:#1D9E75;color:#E1F5EE}
-  .qr-btn[data-ch="12"].qr-active {background:#042C53;border-color:#378ADD;color:#E6F1FB}
-  .qr-btn[data-ch="tricks"].qr-active{background:#3D1A00;border-color:#FF8C00;color:#FFD580}
+  .qr-btn[data-ch="1"].qr-active  {background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.4);color:#fde68a}
+  .qr-btn[data-ch="2"].qr-active  {background:rgba(14,165,233,0.12);border-color:rgba(14,165,233,0.4);color:#7dd3fc}
+  .qr-btn[data-ch="3"].qr-active  {background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.4);color:#c4b5fd}
+  .qr-btn[data-ch="4"].qr-active  {background:rgba(20,184,166,0.12);border-color:rgba(20,184,166,0.4);color:#5eead4}
+  .qr-btn[data-ch="5"].qr-active  {background:rgba(249,115,22,0.12);border-color:rgba(249,115,22,0.4);color:#fdba74}
+  .qr-btn[data-ch="6"].qr-active  {background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#86efac}
+  .qr-btn[data-ch="7"].qr-active  {background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.4);color:#c4b5fd}
+  .qr-btn[data-ch="8"].qr-active  {background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.4);color:#fde68a}
+  .qr-btn[data-ch="9"].qr-active  {background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.4);color:#fca5a5}
+  .qr-btn[data-ch="10"].qr-active {background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#86efac}
+  .qr-btn[data-ch="11"].qr-active {background:rgba(20,184,166,0.12);border-color:rgba(20,184,166,0.4);color:#5eead4}
+  .qr-btn[data-ch="12"].qr-active {background:rgba(99,102,241,0.12);border-color:rgba(99,102,241,0.4);color:#a5b4fc}
+  .qr-btn[data-ch="tricks"].qr-active{background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.4);color:#fcd34d}
 
   /* panel wrapper — collapsed */
   .qr-panel{
@@ -211,7 +218,7 @@
 <div class="hint">Click card / Arrow keys to navigate &nbsp;|&nbsp; Topic pills to filter &nbsp;|&nbsp; ★ = Exam Important</div>
 
 <div class="summary-section">
-<h2 style="color:#E8A000;text-align:center;font-size:17px;letter-spacing:0.5px">📋 QUICK REFERENCE — ALL 12 CHAPTERS | CA Inter Direct Tax AY 2026-27</h2>
+<h2 style="color:#fbbf24;text-align:center;font-size:17px;letter-spacing:0.5px">📋 QUICK REFERENCE — ALL 12 CHAPTERS | CA Inter Direct Tax AY 2026-27</h2>
 
 <div class="qr-nav" id="qrNav">
   <button class="qr-btn" data-ch="1" onclick="showQR('1')">Ch 1 — Basics &amp; Tax Rates</button>
@@ -231,11 +238,11 @@
 
 <div class="qr-panel" id="qr-panel-1">
 <!-- ═══ CH 1 ═══ -->
-<div class="qr-chapter" style="border-left-color:#E8A000">
-  <div class="qr-ch-head" style="background:#3D2200;color:#FFF3CD">Ch 1 — Basics &amp; Tax Rates</div>
+<div class="qr-chapter" style="border-left-color:rgba(234,179,8,0.5)">
+  <div class="qr-ch-head" style="background:rgba(234,179,8,0.1);color:#fde68a">Ch 1 — Basics &amp; Tax Rates</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#E8A000">Old Regime Slabs (Individual)</div>
+      <div class="qr-sub" style="color:#fbbf24">Old Regime Slabs (Individual)</div>
       <table class="rate-table">
         <tr><th>Income Slab</th><th>Rate</th></tr>
         <tr><td>Upto ₹2,50,000</td><td>NIL</td></tr>
@@ -248,7 +255,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#E8A000">New Regime 115BAC (Default AY 26-27)</div>
+      <div class="qr-sub" style="color:#fbbf24">New Regime 115BAC (Default AY 26-27)</div>
       <table class="rate-table">
         <tr><th>Income Slab</th><th>Rate</th></tr>
         <tr><td>Upto ₹4,00,000</td><td>NIL</td></tr>
@@ -263,7 +270,7 @@
       </table>
     </div>
   </div>
-  <div class="qr-sub" style="color:#E8A000;margin-top:10px">Surcharge Rates — Individual</div>
+  <div class="qr-sub" style="color:#fbbf24;margin-top:10px">Surcharge Rates — Individual</div>
   <table class="rate-table">
     <tr><th>NTI Range</th><th>Surcharge %</th><th>Note</th></tr>
     <tr><td>Upto ₹50 Lakhs</td><td>NIL</td><td>—</td></tr>
@@ -273,22 +280,22 @@
     <tr><td>Above ₹5Cr</td><td>37%</td><td>NOT under 115BAC | CG/Div still 15%</td></tr>
   </table>
   <div class="qr-pills">
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">H&amp;EC = 4% always</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Domestic Co: 7% &amp; 12%</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Firm/LLP: 12% if &gt;1Cr</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">288A: Round TI to ₹10 | 288B: Round tax to ₹10</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">115BAC = DEFAULT | Opt out = file ITR 139(1)</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">H&amp;EC = 4% always</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Domestic Co: 7% &amp; 12%</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Firm/LLP: 12% if &gt;1Cr</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">288A: Round TI to ₹10 | 288B: Round tax to ₹10</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">115BAC = DEFAULT | Opt out = file ITR 139(1)</span>
   </div>
 </div>
 </div><!-- /qr-panel-1 -->
 
 <div class="qr-panel" id="qr-panel-2">
 <!-- ═══ CH 2 ═══ -->
-<div class="qr-chapter" style="border-left-color:#2980B9">
-  <div class="qr-ch-head" style="background:#0D3A5C;color:#D9EDF7">Ch 2 — Residential Status &amp; Scope of Total Income</div>
+<div class="qr-chapter" style="border-left-color:rgba(59,130,246,0.5)">
+  <div class="qr-ch-head" style="background:rgba(59,130,246,0.1);color:#93c5fd">Ch 2 — Residential Status &amp; Scope of Total Income</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#2980B9">Individual Residential Status</div>
+      <div class="qr-sub" style="color:#60a5fa">Individual Residential Status</div>
       <table class="rate-table">
         <tr><th>Status</th><th>Condition</th></tr>
         <tr><td>Resident (Basic)</td><td>182+ days in India in PY <strong>OR</strong> 60+ days in PY + 365+ days in 4 PYs preceding</td></tr>
@@ -300,7 +307,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#2980B9">Scope of Total Income</div>
+      <div class="qr-sub" style="color:#60a5fa">Scope of Total Income</div>
       <table class="rate-table">
         <tr><th>Income Type</th><th>R&amp;OR</th><th>RNOR</th><th>NR</th></tr>
         <tr><td>Income received in India</td><td>✅</td><td>✅</td><td>✅</td></tr>
@@ -309,9 +316,9 @@
         <tr><td>Foreign income (other)</td><td>✅</td><td>❌</td><td>❌</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#0D3A5C;color:#D9EDF7">HUF/Firm: Resident if control &amp; management wholly/partly in India</span>
-        <span class="qr-pill" style="background:#0D3A5C;color:#D9EDF7">Company: Indian Co = always Resident | Foreign Co = POEM in India = Resident</span>
-        <span class="qr-pill" style="background:#0D3A5C;color:#D9EDF7">Dividend/Interest from India = Always taxable for all</span>
+        <span class="qr-pill" style="background:rgba(59,130,246,0.1);color:#93c5fd">HUF/Firm: Resident if control &amp; management wholly/partly in India</span>
+        <span class="qr-pill" style="background:rgba(59,130,246,0.1);color:#93c5fd">Company: Indian Co = always Resident | Foreign Co = POEM in India = Resident</span>
+        <span class="qr-pill" style="background:rgba(59,130,246,0.1);color:#93c5fd">Dividend/Interest from India = Always taxable for all</span>
       </div>
     </div>
   </div>
@@ -320,11 +327,11 @@
 
 <div class="qr-panel" id="qr-panel-3">
 <!-- ═══ CH 3 ═══ -->
-<div class="qr-chapter" style="border-left-color:#7F77DD">
-  <div class="qr-ch-head" style="background:#26215C;color:#EEEDFE">Ch 3 — Salaries</div>
+<div class="qr-chapter" style="border-left-color:rgba(139,92,246,0.5)">
+  <div class="qr-ch-head" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Ch 3 — Salaries</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#7F77DD">Key Exemptions &amp; Limits</div>
+      <div class="qr-sub" style="color:#a78bfa">Key Exemptions &amp; Limits</div>
       <table class="rate-table">
         <tr><th>Item</th><th>Limit / Formula</th></tr>
         <tr><td>HRA Exemption (10(13A))</td><td>Min of: Actual HRA | Rent paid – 10% salary | 50%/40% of salary</td></tr>
@@ -342,7 +349,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#7F77DD">Perquisites — Valuation Quick Reference</div>
+      <div class="qr-sub" style="color:#a78bfa">Perquisites — Valuation Quick Reference</div>
       <table class="rate-table">
         <tr><th>Perquisite</th><th>Value</th></tr>
         <tr><td>Rent-free accommodation (owned by employer)</td><td>15%/10%/7.5% of salary based on city population</td></tr>
@@ -356,9 +363,9 @@
         <tr><td>Employer NPS contribution 80CCD(2)</td><td>Up to 10%/14% of salary deductible</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Salary for HRA = Basic + DA(terms) + Fixed %commission</span>
-        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Salary for perquisites = All monetary benefits except perquisites</span>
-        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">NPS 80CCD(2): 14% if CG/SG employer | 10% others</span>
+        <span class="qr-pill" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Salary for HRA = Basic + DA(terms) + Fixed %commission</span>
+        <span class="qr-pill" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Salary for perquisites = All monetary benefits except perquisites</span>
+        <span class="qr-pill" style="background:rgba(139,92,246,0.1);color:#c4b5fd">NPS 80CCD(2): 14% if CG/SG employer | 10% others</span>
       </div>
     </div>
   </div>
@@ -367,11 +374,11 @@
 
 <div class="qr-panel" id="qr-panel-4">
 <!-- ═══ CH 4 HP ═══ -->
-<div class="qr-chapter" style="border-left-color:#1D9E75">
-  <div class="qr-ch-head" style="background:#04342C;color:#E1F5EE">Ch 4 — Income from House Property</div>
+<div class="qr-chapter" style="border-left-color:rgba(20,184,166,0.5)">
+  <div class="qr-ch-head" style="background:rgba(20,184,166,0.1);color:#5eead4">Ch 4 — Income from House Property</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#1D9E75">HP Computation Format</div>
+      <div class="qr-sub" style="color:#2dd4bf">HP Computation Format</div>
       <table class="rate-table">
         <tr><th>Particulars</th><th>SOP</th><th>LOP/DLOP</th></tr>
         <tr><td>Municipal Value / Fair Rent / Standard Rent</td><td>—</td><td>Higher of MV&amp;FR, restricted to SR</td></tr>
@@ -386,7 +393,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#1D9E75">Interest on Loan — Key Limits</div>
+      <div class="qr-sub" style="color:#2dd4bf">Interest on Loan — Key Limits</div>
       <table class="rate-table">
         <tr><th>Case</th><th>Limit</th></tr>
         <tr><td>LOP / DLOP</td><td>No limit — full interest</td></tr>
@@ -398,10 +405,10 @@
         <tr><td>Sec 25A: Arrears/Unrealised rent recovery</td><td>70% taxable in year of receipt</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">Max 2 SOP allowed from AY 2020-21</span>
-        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">Municipal taxes: Payment basis only | Owner must pay</span>
-        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">Composite rent: Separable→HP | Inseparable→PGBP</span>
-        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">HP loss C/F: 8 years | Against HP income only after 1st year</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Max 2 SOP allowed from AY 2020-21</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Municipal taxes: Payment basis only | Owner must pay</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Composite rent: Separable→HP | Inseparable→PGBP</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">HP loss C/F: 8 years | Against HP income only after 1st year</span>
       </div>
     </div>
   </div>
@@ -410,11 +417,11 @@
 
 <div class="qr-panel" id="qr-panel-5">
 <!-- ═══ CH 5 PGBP ═══ -->
-<div class="qr-chapter" style="border-left-color:#BA7517">
-  <div class="qr-ch-head" style="background:#412402;color:#FAEEDA">Ch 5 — Profits &amp; Gains from Business or Profession (PGBP)</div>
+<div class="qr-chapter" style="border-left-color:rgba(245,158,11,0.5)">
+  <div class="qr-ch-head" style="background:rgba(245,158,11,0.1);color:#fcd34d">Ch 5 — Profits &amp; Gains from Business or Profession (PGBP)</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#BA7517">Depreciation Rates — Key Assets</div>
+      <div class="qr-sub" style="color:#f59e0b">Depreciation Rates — Key Assets</div>
       <table class="rate-table">
         <tr><th>Asset</th><th>Rate</th></tr>
         <tr><td>Residential Building</td><td>5%</td></tr>
@@ -429,7 +436,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#BA7517">Presumptive Tax — Key Sections</div>
+      <div class="qr-sub" style="color:#f59e0b">Presumptive Tax — Key Sections</div>
       <table class="rate-table">
         <tr><th>Section</th><th>Eligible</th><th>Deemed Income</th></tr>
         <tr><td>44AD</td><td>Resident Individual/HUF/Firm (not LLP) | T/O ≤ ₹3Cr (digital ≤ ₹3Cr)</td><td>6% digital | 8% cash</td></tr>
@@ -440,10 +447,10 @@
         <tr><td>44BBA</td><td>NR airline business</td><td>5% of gross receipts</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#412402;color:#FAEEDA">WDV Block: Half depreciation if asset used &lt;180 days in 1st year</span>
-        <span class="qr-pill" style="background:#412402;color:#FAEEDA">Dep on SLM: Power generating units only | Individual asset tracking</span>
-        <span class="qr-pill" style="background:#412402;color:#FAEEDA">35AD: 100% deduction on capital expenditure for specified businesses</span>
-        <span class="qr-pill" style="background:#412402;color:#FAEEDA">44AB Audit: T/O &gt;₹1Cr (business) | GR &gt;₹50L (profession)</span>
+        <span class="qr-pill" style="background:rgba(245,158,11,0.1);color:#fcd34d">WDV Block: Half depreciation if asset used &lt;180 days in 1st year</span>
+        <span class="qr-pill" style="background:rgba(245,158,11,0.1);color:#fcd34d">Dep on SLM: Power generating units only | Individual asset tracking</span>
+        <span class="qr-pill" style="background:rgba(245,158,11,0.1);color:#fcd34d">35AD: 100% deduction on capital expenditure for specified businesses</span>
+        <span class="qr-pill" style="background:rgba(245,158,11,0.1);color:#fcd34d">44AB Audit: T/O &gt;₹1Cr (business) | GR &gt;₹50L (profession)</span>
       </div>
     </div>
   </div>
@@ -452,11 +459,11 @@
 
 <div class="qr-panel" id="qr-panel-6">
 <!-- ═══ CH 6 CG ═══ -->
-<div class="qr-chapter" style="border-left-color:#639922">
-  <div class="qr-ch-head" style="background:#173404;color:#EAF3DE">Ch 6 — Capital Gains</div>
+<div class="qr-chapter" style="border-left-color:rgba(34,197,94,0.5)">
+  <div class="qr-ch-head" style="background:rgba(34,197,94,0.1);color:#86efac">Ch 6 — Capital Gains</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#639922">Short-Term vs Long-Term Holding Period</div>
+      <div class="qr-sub" style="color:#4ade80">Short-Term vs Long-Term Holding Period</div>
       <table class="rate-table">
         <tr><th>Asset Type</th><th>STCA if held ≤</th><th>LTCA if held &gt;</th></tr>
         <tr><td>Listed shares / equity MF / zero coupon bonds</td><td>12 months</td><td>12 months</td></tr>
@@ -464,7 +471,7 @@
         <tr><td>All other assets</td><td>36 months</td><td>36 months</td></tr>
         <tr><td>Depreciable assets</td><td>Always STCG/STCL</td><td>—</td></tr>
       </table>
-      <div class="qr-sub" style="color:#639922;margin-top:8px">CG Tax Rates</div>
+      <div class="qr-sub" style="color:#4ade80;margin-top:8px">CG Tax Rates</div>
       <table class="rate-table">
         <tr><th>Type</th><th>Section</th><th>Rate</th></tr>
         <tr><td>STCG — Listed equity/equity MF (STT paid)</td><td>111A</td><td>20% (w.e.f. 23.07.2024)</td></tr>
@@ -474,7 +481,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#639922">CG Exemptions — Key Sections</div>
+      <div class="qr-sub" style="color:#4ade80">CG Exemptions — Key Sections</div>
       <table class="rate-table">
         <tr><th>Sec</th><th>Asset</th><th>Invest in</th><th>Lock-in</th></tr>
         <tr><td>54</td><td>Residential HP (Individual/HUF)</td><td>1 Res HP (1yr before / 2yr after)</td><td>3 years</td></tr>
@@ -486,10 +493,10 @@
         <tr><td>54GA</td><td>Industrial undertaking to SEZ</td><td>P&amp;M/land/bldg in SEZ</td><td>3 years</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">CGAS: Deposit if not invested before due date of return</span>
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">Indexation: CII used for LTCG cost calculation</span>
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">Sec 50C: SDV = COA for land/building if SDV &gt; 110% of actual</span>
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">Sec 112A: ₹1.25L LTCG exempt on equity (per year)</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">CGAS: Deposit if not invested before due date of return</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">Indexation: CII used for LTCG cost calculation</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">Sec 50C: SDV = COA for land/building if SDV &gt; 110% of actual</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">Sec 112A: ₹1.25L LTCG exempt on equity (per year)</span>
       </div>
     </div>
   </div>
@@ -498,11 +505,11 @@
 
 <div class="qr-panel" id="qr-panel-7">
 <!-- ═══ CH 7 IFOS ═══ -->
-<div class="qr-chapter" style="border-left-color:#7F77DD">
-  <div class="qr-ch-head" style="background:#26215C;color:#EEEDFE">Ch 7 — Income from Other Sources (IFOS)</div>
+<div class="qr-chapter" style="border-left-color:rgba(139,92,246,0.5)">
+  <div class="qr-ch-head" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Ch 7 — Income from Other Sources (IFOS)</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#7F77DD">Incomes taxable under IFOS</div>
+      <div class="qr-sub" style="color:#a78bfa">Incomes taxable under IFOS</div>
       <table class="rate-table">
         <tr><th>Income Type</th><th>Key Rule</th></tr>
         <tr><td>Dividends</td><td>Taxable at normal rates | 10% TDS if &gt;₹5,000</td></tr>
@@ -516,7 +523,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#7F77DD">Sec 56(2)(x) — Gift Taxation</div>
+      <div class="qr-sub" style="color:#a78bfa">Sec 56(2)(x) — Gift Taxation</div>
       <table class="rate-table">
         <tr><th>Type</th><th>Trigger</th><th>Taxable Amount</th></tr>
         <tr><td>Money (without consideration)</td><td>Aggregate &gt; ₹50,000</td><td>Whole amount</td></tr>
@@ -526,9 +533,9 @@
         <tr><td>Immovable (inadequate consid.)</td><td>(SDV−Consid.) &gt; ₹50,000 AND SDV &gt; 110% of consid.</td><td>SDV − Consideration</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Gift exceptions: Relative | Marriage | Will/Inheritance | Local authority | Trust | Hospital/University</span>
-        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Relative = Spouse, siblings, parents, lineal ascendants/descendants &amp; their spouses</span>
-        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Deductions allowed: Standard dep (machinery) | Interest paid | 57(iii) expenditure</span>
+        <span class="qr-pill" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Gift exceptions: Relative | Marriage | Will/Inheritance | Local authority | Trust | Hospital/University</span>
+        <span class="qr-pill" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Relative = Spouse, siblings, parents, lineal ascendants/descendants &amp; their spouses</span>
+        <span class="qr-pill" style="background:rgba(139,92,246,0.1);color:#c4b5fd">Deductions allowed: Standard dep (machinery) | Interest paid | 57(iii) expenditure</span>
       </div>
     </div>
   </div>
@@ -537,8 +544,8 @@
 
 <div class="qr-panel" id="qr-panel-8">
 <!-- ═══ CH 8 CLUBBING ═══ -->
-<div class="qr-chapter" style="border-left-color:#E8A000">
-  <div class="qr-ch-head" style="background:#5C3700;color:#FFF3CD">Ch 8 — Clubbing of Income</div>
+<div class="qr-chapter" style="border-left-color:rgba(234,179,8,0.5)">
+  <div class="qr-ch-head" style="background:rgba(234,179,8,0.1);color:#fde68a">Ch 8 — Clubbing of Income</div>
   <table class="rate-table">
     <tr><th>Section</th><th>Situation</th><th>Clubbed with whom</th><th>Key Exception</th></tr>
     <tr><td>60</td><td>Transfer of income without transfer of asset</td><td>Transferor always</td><td>No exception</td></tr>
@@ -552,18 +559,18 @@
     <tr><td>64(2)</td><td>HUF member converts self-acquired to HUF property</td><td>Member (transferor)</td><td>—</td></tr>
   </table>
   <div class="qr-pills">
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Substantial interest = 20%+ shareholding in company | 20%+ PSR in firm</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Second generation income (income on income from transferred asset) = NOT clubbed</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Cross gifts: Clubbed only to extent of matching amount</span>
-    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Natural love &amp; affection ≠ adequate consideration</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Substantial interest = 20%+ shareholding in company | 20%+ PSR in firm</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Second generation income (income on income from transferred asset) = NOT clubbed</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Cross gifts: Clubbed only to extent of matching amount</span>
+    <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Natural love &amp; affection ≠ adequate consideration</span>
   </div>
 </div>
 </div><!-- /qr-panel-8 -->
 
 <div class="qr-panel" id="qr-panel-9">
 <!-- ═══ CH 9 SET-OFF ═══ -->
-<div class="qr-chapter" style="border-left-color:#CC3333">
-  <div class="qr-ch-head" style="background:#3B0A0A;color:#FDE8E8">Ch 9 — Set-Off &amp; Carry Forward of Losses</div>
+<div class="qr-chapter" style="border-left-color:rgba(239,68,68,0.5)">
+  <div class="qr-ch-head" style="background:rgba(239,68,68,0.1);color:#fca5a5">Ch 9 — Set-Off &amp; Carry Forward of Losses</div>
   <table class="rate-table">
     <tr><th>Sec</th><th>Loss Type</th><th>Set-Off Against</th><th>C/F Period</th><th>Return on time (Sec 80)?</th></tr>
     <tr><td>70</td><td>Intra-head (same head)</td><td>Same head income only</td><td>—</td><td>—</td></tr>
@@ -577,22 +584,22 @@
     <tr><td>32(2)</td><td>Unabsorbed Depreciation</td><td>Any head EXCEPT Salary</td><td>Unlimited</td><td>❌ NO — can file late</td></tr>
   </table>
   <div class="qr-pills">
-    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Order: Step 1 Intra-head (Sec 70) → Step 2 Inter-head (Sec 71) → Step 3 C/F</span>
-    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Business loss ❌ Salary | HP loss inter-head max ₹2L only</span>
-    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">115BAC: HP loss cannot set-off OR carry forward</span>
-    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Within PGBP order: Current dep → B/F losses → Unabsorbed dep</span>
-    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Speculation loss = PGBP other than specified business loss (Sec 73 deeming)</span>
+    <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Order: Step 1 Intra-head (Sec 70) → Step 2 Inter-head (Sec 71) → Step 3 C/F</span>
+    <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Business loss ❌ Salary | HP loss inter-head max ₹2L only</span>
+    <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">115BAC: HP loss cannot set-off OR carry forward</span>
+    <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Within PGBP order: Current dep → B/F losses → Unabsorbed dep</span>
+    <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Speculation loss = PGBP other than specified business loss (Sec 73 deeming)</span>
   </div>
 </div>
 </div><!-- /qr-panel-9 -->
 
 <div class="qr-panel" id="qr-panel-10">
 <!-- ═══ CH 10 DEDUCTIONS ═══ -->
-<div class="qr-chapter" style="border-left-color:#639922">
-  <div class="qr-ch-head" style="background:#173404;color:#EAF3DE">Ch 10 — Deductions from GTI (Chapter VI-A)</div>
+<div class="qr-chapter" style="border-left-color:rgba(34,197,94,0.5)">
+  <div class="qr-ch-head" style="background:rgba(34,197,94,0.1);color:#86efac">Ch 10 — Deductions from GTI (Chapter VI-A)</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#639922">Payment-based Deductions — Key Limits</div>
+      <div class="qr-sub" style="color:#4ade80">Payment-based Deductions — Key Limits</div>
       <table class="rate-table">
         <tr><th>Section</th><th>Item</th><th>Who</th><th>Max Limit</th></tr>
         <tr><td>80C</td><td>LIP, PPF, EPF, NSC, ELSS, Tuition, Housing loan principal, SSY, FD 5yr etc.</td><td>Ind/HUF</td><td>₹1,50,000</td></tr>
@@ -619,7 +626,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#639922">80G — Donation Categories</div>
+      <div class="qr-sub" style="color:#4ade80">80G — Donation Categories</div>
       <table class="rate-table">
         <tr><th>Category</th><th>%</th><th>Examples</th></tr>
         <tr><td>100% Unlimited</td><td>100%</td><td>National Defence Fund, PM NRF, PM Care Fund, Swachh Bharat Kosh, Clean Ganga Fund, National Children/Sports/Cultural Fund (13 items)</td></tr>
@@ -627,7 +634,7 @@
         <tr><td>100% Limited (10% ATI cap)</td><td>100%</td><td>Family Planning (F), Indian Olympic Association (O)</td></tr>
         <tr><td>50% Limited (10% ATI cap)</td><td>50%</td><td>Housing Dev Authority (H), Temple (T), Public Charitable Trust (C), Minority community (M)</td></tr>
       </table>
-      <div class="qr-sub" style="color:#639922;margin-top:10px">AMT — Alternate Minimum Tax (Sec 115JC)</div>
+      <div class="qr-sub" style="color:#4ade80;margin-top:10px">AMT — Alternate Minimum Tax (Sec 115JC)</div>
       <table class="rate-table">
         <tr><th>Item</th><th>Rule</th></tr>
         <tr><td>Applicable to</td><td>All assessee EXCEPT Company</td></tr>
@@ -638,9 +645,9 @@
         <tr><td>AMT Credit (115JD)</td><td>C/F for 15 AYs | Set off when Normal &gt; AMT</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">VI-A deductions ≤ GTI always | Cannot C/F | Not against special rate income</span>
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">115BAC: Only 80CCD(2) + 80CCH(2) + 80JJAA allowed</span>
-        <span class="qr-pill" style="background:#173404;color:#EAF3DE">ATI = GTI + 10AA + 35AD + 80JJAA/QQB/RRB − Dep (if 35AD not claimed)</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">VI-A deductions ≤ GTI always | Cannot C/F | Not against special rate income</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">115BAC: Only 80CCD(2) + 80CCH(2) + 80JJAA allowed</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">ATI = GTI + 10AA + 35AD + 80JJAA/QQB/RRB − Dep (if 35AD not claimed)</span>
       </div>
     </div>
   </div>
@@ -649,11 +656,11 @@
 
 <div class="qr-panel" id="qr-panel-11">
 <!-- ═══ CH 11 TDS/TCS ═══ -->
-<div class="qr-chapter" style="border-left-color:#1D9E75">
-  <div class="qr-ch-head" style="background:#085041;color:#E1F5EE">Ch 11 — Advance Tax, TDS &amp; TCS</div>
+<div class="qr-chapter" style="border-left-color:rgba(20,184,166,0.5)">
+  <div class="qr-ch-head" style="background:rgba(20,184,166,0.1);color:#5eead4">Ch 11 — Advance Tax, TDS &amp; TCS</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#1D9E75">Advance Tax Instalments</div>
+      <div class="qr-sub" style="color:#2dd4bf">Advance Tax Instalments</div>
       <table class="rate-table">
         <tr><th>Due Date</th><th>Cumulative % Payable</th></tr>
         <tr><td>15th June</td><td>15%</td></tr>
@@ -663,7 +670,7 @@
         <tr><td>44AD/44ADA (presumptive)</td><td>100% by 15th March only</td></tr>
         <tr><td>Senior citizen (no PGBP)</td><td>No advance tax liability</td></tr>
       </table>
-      <div class="qr-sub" style="color:#1D9E75;margin-top:8px">Key TDS Sections &amp; Rates</div>
+      <div class="qr-sub" style="color:#2dd4bf;margin-top:8px">Key TDS Sections &amp; Rates</div>
       <table class="rate-table">
         <tr><th>Sec</th><th>Nature of Payment</th><th>Rate</th><th>Threshold</th></tr>
         <tr><td>192</td><td>Salary</td><td>Avg rate</td><td>Taxable income</td></tr>
@@ -681,7 +688,7 @@
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#1D9E75">Interest on Tax — Sec 234A/B/C</div>
+      <div class="qr-sub" style="color:#2dd4bf">Interest on Tax — Sec 234A/B/C</div>
       <table class="rate-table">
         <tr><th>Section</th><th>Reason</th><th>Rate</th><th>Period</th></tr>
         <tr><td>234A</td><td>Delay in filing return</td><td>1% pm or part</td><td>Due date to actual filing date</td></tr>
@@ -690,7 +697,7 @@
         <tr><td>234F</td><td>Late filing fee</td><td>₹5,000 (NTI &gt;₹5L) | ₹1,000 (NTI ≤₹5L)</td><td>One time fee</td></tr>
         <tr><td>244A</td><td>Interest on refund (excess tax paid)</td><td>6% pa (0.5% pm)</td><td>1st April of AY to date of refund</td></tr>
       </table>
-      <div class="qr-sub" style="color:#1D9E75;margin-top:8px">Key TCS Sections</div>
+      <div class="qr-sub" style="color:#2dd4bf;margin-top:8px">Key TCS Sections</div>
       <table class="rate-table">
         <tr><th>Sec</th><th>Nature</th><th>Rate</th></tr>
         <tr><td>206C(1)</td><td>Scrap, timber, forest produce, alcohol, minerals</td><td>1%–2.5%</td></tr>
@@ -699,10 +706,10 @@
         <tr><td>206C(1G)</td><td>LRS for education (loan from FI)</td><td>0.5%</td></tr>
       </table>
       <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#085041;color:#E1F5EE">TDS deducted at earlier of: Payment OR Credit to account</span>
-        <span class="qr-pill" style="background:#085041;color:#E1F5EE">No PAN = TDS at 20% or prescribed rate whichever is higher</span>
-        <span class="qr-pill" style="background:#085041;color:#E1F5EE">Form 15G/15H: Self-declaration for no TDS (no tax liability)</span>
-        <span class="qr-pill" style="background:#085041;color:#E1F5EE">Lower deduction certificate: Sec 197 application to AO</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">TDS deducted at earlier of: Payment OR Credit to account</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">No PAN = TDS at 20% or prescribed rate whichever is higher</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Form 15G/15H: Self-declaration for no TDS (no tax liability)</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Lower deduction certificate: Sec 197 application to AO</span>
       </div>
     </div>
   </div>
@@ -711,50 +718,69 @@
 
 <div class="qr-panel" id="qr-panel-12">
 <!-- ═══ CH 12 RETURN FILING ═══ -->
-<div class="qr-chapter" style="border-left-color:#378ADD">
-  <div class="qr-ch-head" style="background:#042C53;color:#E6F1FB">Ch 12 — Return Filing &amp; Self Assessment</div>
+<div class="qr-chapter" style="border-left-color:rgba(99,102,241,0.5);border-color:rgba(99,102,241,0.2)">
+  <div class="qr-ch-head" style="background:rgba(99,102,241,0.12);color:#a5b4fc;border:1px solid rgba(99,102,241,0.3)">Ch 12 — Return Filing &amp; Self Assessment</div>
   <div class="qr-grid2">
     <div>
-      <div class="qr-sub" style="color:#378ADD">Who Must File Return — Sec 139(1)</div>
+      <div class="qr-sub" style="color:#818cf8">Who Must File — Sec 139(1)</div>
       <table class="rate-table">
         <tr><th>Assessee</th><th>Condition</th></tr>
         <tr><td>Company / Firm / LLP</td><td>Always compulsory</td></tr>
         <tr><td>Other assessee</td><td>GTI (before 54/54B/54D/54EC/54F exemption) &gt; Basic exemption</td></tr>
         <tr><td>R&amp;OR Individual</td><td>Beneficial owner / beneficiary of foreign asset OR signing authority of foreign bank a/c</td></tr>
-        <tr><td>Any person (high-value)</td><td>Current a/c deposit &gt;₹1Cr | Savings &gt;₹50L | Foreign travel &gt;₹2L | Electricity &gt;₹1L | Biz T/O &gt;₹60L | Profession &gt;₹10L | TDS/TCS ≥₹25K (₹50K senior)</td></tr>
+        <tr><td>Any person (high-value)</td><td>Current a/c &gt;₹1Cr | Savings ≥₹50L | Foreign travel &gt;₹2L | Electricity &gt;₹1L | Biz T/O &gt;₹60L | Prof &gt;₹10L | TDS/TCS ≥₹25K (₹50K senior)</td></tr>
       </table>
-      <div class="qr-sub" style="color:#378ADD;margin-top:8px">Due Dates of Filing</div>
+      <div class="qr-sub" style="color:#818cf8;margin-top:8px">Types of Returns</div>
       <table class="rate-table">
-        <tr><th>Category</th><th>Due Date</th></tr>
-        <tr><td>Company + Audit required + Partner of audited firm</td><td>31st October of AY</td></tr>
-        <tr><td>Transfer Pricing applicable (Sec 92E)</td><td>30th November of AY</td></tr>
-        <tr><td>All other persons</td><td>31st July of AY</td></tr>
-        <tr><td>AY 2026-27 (all categories)</td><td>Oct 31, Nov 30, Jul 31, 2026</td></tr>
+        <tr><th>Return</th><th>Sec</th><th>Deadline</th><th>Key</th></tr>
+        <tr><td>Normal</td><td>139(1)</td><td>Due date</td><td>All benefits</td></tr>
+        <tr><td>Loss Return</td><td>139(3)</td><td>Due date</td><td>File on time to C/F PGBP/CG</td></tr>
+        <tr><td>Belated</td><td>139(4)</td><td>31 Dec AY</td><td>No C/F | No 10AA/80JJAA | 234A+234F</td></tr>
+        <tr><td>Revised</td><td>139(5)</td><td>31 Dec AY</td><td>Unlimited times | Substitutes original</td></tr>
+        <tr><td>Updated (ITR-U)</td><td>139(8A)</td><td>48 mths from AY</td><td>Add income only | 25/50/60/70% extra</td></tr>
+        <tr><td>Defective</td><td>139(9)</td><td>15 days to fix</td><td>VOID if not rectified</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#818cf8;margin-top:8px">Sec 139A — PAN Application Timeline</div>
+      <table class="rate-table">
+        <tr><th>Who</th><th>Deadline</th></tr>
+        <tr><td>Income &gt; basic exemption</td><td>31st May of AY</td></tr>
+        <tr><td>Business/Prof T/O likely &gt; Rs 5L</td><td>End of PY</td></tr>
+        <tr><td>Resident (non-Ind) financial tx ≥ Rs 2.5L</td><td>31st May of AY</td></tr>
+        <tr><td>MD/Director/Partner of above</td><td>31st May of AY</td></tr>
+        <tr><td>Cash deposits/withdrawals ≥ Rs 20L</td><td>7 days before transaction</td></tr>
       </table>
     </div>
     <div>
-      <div class="qr-sub" style="color:#378ADD">Types of Returns &amp; Time Limits</div>
+      <div class="qr-sub" style="color:#818cf8">Sec 140 — Who Verifies Return?</div>
       <table class="rate-table">
-        <tr><th>Return Type</th><th>Section</th><th>Last Date</th><th>Key Points</th></tr>
-        <tr><td>Normal Return</td><td>139(1)</td><td>Due date</td><td>All benefits available</td></tr>
-        <tr><td>Loss Return</td><td>139(3)</td><td>Due date (Sec 80)</td><td>Must file on time to C/F PGBP/CG loss</td></tr>
-        <tr><td>Belated Return</td><td>139(4)</td><td>31st Dec of AY</td><td>No C/F of losses | No 10AA/80JJAA/80QQB/80RRB | 234A interest + 234F fee</td></tr>
-        <tr><td>Revised Return</td><td>139(5)</td><td>31st Dec of AY</td><td>Correct omissions | Unlimited revisions | Substitutes original</td></tr>
-        <tr><td>Updated Return (ITR-U)</td><td>139(8A)</td><td>48 months from AY end</td><td>Only to increase income | 25%/50%/60%/70% extra tax yr 1/2/3/4 | Cannot declare loss</td></tr>
-        <tr><td>Defective Return</td><td>139(9)</td><td>15 days to rectify</td><td>Wrong form / no tax proof / no 44AB report → VOID if not rectified</td></tr>
+        <tr><th>Assessee</th><th>Verifier</th></tr>
+        <tr><td>Individual</td><td>Himself | Competent person if abroad/incapacitated</td></tr>
+        <tr><td>HUF</td><td>Karta | Any adult member if unavailable</td></tr>
+        <tr><td>Partnership Firm</td><td>Managing Partner | Any adult partner</td></tr>
+        <tr><td>LLP</td><td>Designated Partner | Any partner / prescribed person</td></tr>
+        <tr><td>Company</td><td>MD | Any Director | Any prescribed person</td></tr>
+        <tr><td>Liquidation / IBC</td><td>Liquidator / Insolvency Professional</td></tr>
+        <tr><td>Political Party</td><td>CEO</td></tr>
+        <tr><td>Local Authority</td><td>Principal Officer</td></tr>
       </table>
-      <div class="qr-sub" style="color:#378ADD;margin-top:8px">Self Assessment Tax — Sec 140A</div>
+      <div class="qr-sub" style="color:#818cf8;margin-top:8px">139(8A) Updated Return — Additional Tax</div>
       <table class="rate-table">
-        <tr><th>Item</th><th>Rule</th></tr>
-        <tr><td>SAT = Total tax liability MINUS</td><td>TDS + TCS + Advance Tax + Relief u/s 89/90/91 + AMT credit</td></tr>
-        <tr><td>Pay SAT</td><td>BEFORE filing return</td></tr>
-        <tr><td>PAN-Aadhaar Link</td><td>Mandatory w.e.f. 01.07.2017 | Inoperative if not linked by 01.07.2023</td></tr>
+        <tr><th>Period from end of RAY</th><th>Additional Tax</th></tr>
+        <tr><td>Within 12 months</td><td>25% of (Tax + SC + HEC + Interest)</td></tr>
+        <tr><td>12 to 24 months</td><td>50% of (Tax + SC + HEC + Interest)</td></tr>
+        <tr><td>24 to 36 months</td><td>60% of (Tax + SC + HEC + Interest)</td></tr>
+        <tr><td>36 to 48 months</td><td>70% of (Tax + SC + HEC + Interest)</td></tr>
       </table>
-      <div class="qr-pills" style="margin-top:8px">
-        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">HP loss + Unabsorbed dep → C/F even with belated return</span>
-        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">Sec 80 condition applies only in year of loss — not in set-off year</span>
-        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">234F: ₹5,000 if NTI &gt;₹5L | ₹1,000 if NTI ≤₹5L</span>
-        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">Revised return substitutes original from date of original filing</span>
+      <div class="qr-sub" style="color:#818cf8;margin-top:8px">Key Reminders</div>
+      <div class="qr-pills">
+        <span class="qr-pill" style="background:rgba(99,102,241,0.12);color:#a5b4fc">HP loss + Unabsorbed dep → C/F even belated</span>
+        <span class="qr-pill" style="background:rgba(99,102,241,0.12);color:#a5b4fc">Sec 80 = only loss year rule, not set-off year</span>
+        <span class="qr-pill" style="background:rgba(99,102,241,0.12);color:#a5b4fc">234F: ₹5K if NTI&gt;5L | ₹1K if NTI≤5L</span>
+        <span class="qr-pill" style="background:rgba(99,102,241,0.12);color:#a5b4fc">SAT short payment: Fees → Interest → Tax</span>
+        <span class="qr-pill" style="background:rgba(99,102,241,0.12);color:#a5b4fc">Aadhaar exempt: J&amp;K/Assam/Meghalaya + NR + 80yrs + Non-Indian</span>
+        <span class="qr-pill" style="background:rgba(99,102,241,0.12);color:#a5b4fc">TRP: Only Ind/HUF | Not Co/audit | Graduate or CA Inter</span>
+        <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Unverified return = VOID (ab-initio)</span>
+        <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">PAN inoperative from 01/07/2023 if not linked</span>
       </div>
     </div>
   </div>
@@ -763,10 +789,10 @@
 
 <div class="qr-panel" id="qr-panel-tricks">
 <!-- ═══ MEMORY TRICKS GRID ═══ -->
-<div class="qr-sub" style="color:#E8A000;font-size:14px;text-align:center;margin:20px 0 10px">⚡ EXAM MEMORY TRICKS — ALL CHAPTERS</div>
+<div class="qr-sub" style="color:#fbbf24;font-size:14px;text-align:center;margin:20px 0 10px">⚡ EXAM MEMORY TRICKS — ALL CHAPTERS</div>
 <div class="summary-grid">
-  <div class="s-card" style="background:#1E1000;border-color:#E8A000">
-    <h3 style="color:#E8A000">Ch 1 — Tax Rate Tricks</h3>
+  <div class="s-card" style="background:rgba(234,179,8,0.06);border-color:rgba(234,179,8,0.35)">
+    <h3 style="color:#fbbf24">Ch 1 — Tax Rate Tricks</h3>
     <ul>
       <li>Old slab: 0-2.5-5-10L → NIL-5-20-30%</li>
       <li>New slab: 0-4-8-12-16-20-24L → NIL-5-10-15-20-25-30%</li>
@@ -776,8 +802,8 @@
       <li>H&EC = 4% always on (Tax + Surcharge)</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#061021;border-color:#2980B9">
-    <h3 style="color:#2980B9">Ch 2 — Residence Tricks</h3>
+  <div class="s-card" style="background:rgba(59,130,246,0.06);border-color:rgba(59,130,246,0.35)">
+    <h3 style="color:#60a5fa">Ch 2 — Residence Tricks</h3>
     <ul>
       <li>ROR = Resident + 2/10 years + 730/7 years</li>
       <li>RNOR = Resident but fails any above condition</li>
@@ -787,8 +813,8 @@
       <li>Deemed Resident: Indian citizen, India income &gt;15L, not taxed elsewhere</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#0D0B1F;border-color:#7F77DD">
-    <h3 style="color:#7F77DD">Ch 3 — Salary Tricks</h3>
+  <div class="s-card" style="background:rgba(139,92,246,0.06);border-color:rgba(139,92,246,0.35)">
+    <h3 style="color:#a78bfa">Ch 3 — Salary Tricks</h3>
     <ul>
       <li>HRA = Min of 3: Actual | Rent−10%sal | 50%/40%sal</li>
       <li>Gratuity limit = ₹20L (all categories)</li>
@@ -798,8 +824,8 @@
       <li>Perquisite car: ₹1800/₹2400 + ₹900 driver pm</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#061E16;border-color:#1D9E75">
-    <h3 style="color:#1D9E75">Ch 4 — HP Tricks</h3>
+  <div class="s-card" style="background:rgba(20,184,166,0.06);border-color:rgba(20,184,166,0.35)">
+    <h3 style="color:#2dd4bf">Ch 4 — HP Tricks</h3>
     <ul>
       <li>GAV DLOP = ER always (AR irrelevant)</li>
       <li>Municipal taxes: Payment basis | Owner must pay</li>
@@ -809,8 +835,8 @@
       <li>115BAC: 24(b) SOP interest NOT allowed</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#1E1000;border-color:#BA7517">
-    <h3 style="color:#BA7517">Ch 5 — PGBP Tricks</h3>
+  <div class="s-card" style="background:rgba(245,158,11,0.06);border-color:rgba(245,158,11,0.35)">
+    <h3 style="color:#f59e0b">Ch 5 — PGBP Tricks</h3>
     <ul>
       <li>Depreciable asset = ALWAYS STCG (not LTCG)</li>
       <li>Half dep if asset used &lt;180 days in 1st year</li>
@@ -820,8 +846,8 @@
       <li>35AD: 100% capital expenditure deduction</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#0A1A04;border-color:#639922">
-    <h3 style="color:#639922">Ch 6 — Capital Gain Tricks</h3>
+  <div class="s-card" style="background:rgba(34,197,94,0.06);border-color:rgba(34,197,94,0.35)">
+    <h3 style="color:#4ade80">Ch 6 — Capital Gain Tricks</h3>
     <ul>
       <li>Holding: Listed shares/eq MF = 12M | Others = 24M/36M</li>
       <li>STCG 111A = 20% | LTCG 112A = 12.5% (₹1.25L exempt)</li>
@@ -831,8 +857,8 @@
       <li>Bonus shares COA = NIL | Rights shares = Issue price</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#0D0B1F;border-color:#7F77DD">
-    <h3 style="color:#7F77DD">Ch 7 — IFOS Tricks</h3>
+  <div class="s-card" style="background:rgba(139,92,246,0.06);border-color:rgba(139,92,246,0.35)">
+    <h3 style="color:#a78bfa">Ch 7 — IFOS Tricks</h3>
     <ul>
       <li>MRIDHUTLAITC = Gift exceptions (Relative, Marriage etc.)</li>
       <li>Lottery/Games = 30% flat | No deduction | No exemption</li>
@@ -842,8 +868,8 @@
       <li>Dividends: 10% TDS if &gt;₹5,000 from company</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#1E1200;border-color:#E8A000">
-    <h3 style="color:#E8A000">Ch 8 — Clubbing Tricks</h3>
+  <div class="s-card" style="background:rgba(234,179,8,0.06);border-color:rgba(234,179,8,0.3)">
+    <h3 style="color:#fbbf24">Ch 8 — Clubbing Tricks</h3>
     <ul>
       <li>Substantial interest = 20%+ shares/PSR</li>
       <li>Exception: Spouse's technical qualification → no clubbing</li>
@@ -853,8 +879,8 @@
       <li>Natural love ≠ adequate consideration</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#150404;border-color:#CC3333">
-    <h3 style="color:#CC3333">Ch 9 — Set-Off Tricks</h3>
+  <div class="s-card" style="background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.35)">
+    <h3 style="color:#f87171">Ch 9 — Set-Off Tricks</h3>
     <ul>
       <li>Intra → Inter → C/F (always this order)</li>
       <li>HP + Unabsorbed dep → can C/F even if return late</li>
@@ -864,8 +890,8 @@
       <li>115BAC: HP loss cannot set-off or C/F at all</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#0A1A04;border-color:#639922">
-    <h3 style="color:#639922">Ch 10 — Deduction Tricks</h3>
+  <div class="s-card" style="background:rgba(34,197,94,0.06);border-color:rgba(34,197,94,0.35)">
+    <h3 style="color:#4ade80">Ch 10 — Deduction Tricks</h3>
     <ul>
       <li>80CCE = 80C+80CCC+80CCD(1) combined max ₹1.5L</li>
       <li>80CCD(1B) = Extra ₹50K NPS (over 80CCE limit)</li>
@@ -875,8 +901,8 @@
       <li>80G: Cash &gt;₹2,000 → No deduction | In-kind → No deduction</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#061E16;border-color:#1D9E75">
-    <h3 style="color:#1D9E75">Ch 11 — TDS/TCS Tricks</h3>
+  <div class="s-card" style="background:rgba(20,184,166,0.06);border-color:rgba(20,184,166,0.35)">
+    <h3 style="color:#2dd4bf">Ch 11 — TDS/TCS Tricks</h3>
     <ul>
       <li>234A: 1% pm delay in filing | 234B: 1% pm advance tax default</li>
       <li>234C: 1% pm deferment of instalment | 234F: ₹5K/₹1K fee</li>
@@ -886,15 +912,19 @@
       <li>TDS deducted at earlier of: Payment OR Credit to a/c</li>
     </ul>
   </div>
-  <div class="s-card" style="background:#021020;border-color:#378ADD">
-    <h3 style="color:#378ADD">Ch 12 — Return Filing Tricks</h3>
+  <div class="s-card" style="background:rgba(99,102,241,0.06);border-color:rgba(99,102,241,0.35)">
+    <h3 style="color:#a5b4fc">Ch 12 — Return Filing Tricks</h3>
     <ul>
-      <li>Company/Firm = Always file | Others = GTI &gt; Basic exemption</li>
-      <li>Belated = 31st Dec of AY | Revised = same 31st Dec</li>
-      <li>Updated (ITR-U) = 4 years | Only increase income</li>
-      <li>Extra tax: 25-50-60-70% in yr 1-2-3-4</li>
-      <li>HP loss + Unabsorbed dep = C/F even with belated return</li>
+      <li>Company/Firm/LLP = ALWAYS file | Others = GTI &gt; Basic exemption</li>
+      <li>Belated = 31st Dec of AY | Revised = same 31st Dec deadline</li>
+      <li>Updated (ITR-U) = 48 months | Only ADD income | Not REDUCE</li>
+      <li>Extra tax ITR-U: 25-50-60-70% in yr 1-2-3-4 from end of RAY</li>
+      <li>HP loss + Unabsorbed dep = immortal (C/F even with belated return)</li>
       <li>Defective = 15 days to fix or VOID (ab-initio)</li>
+      <li>PAN: 139A | Aadhaar: 139AA | TRP: 139B | Verification: 140 | SAT: 140A</li>
+      <li>TRP: Only Individual+HUF | Cannot: Company/44AB audit assessee</li>
+      <li>Who signs: Ind=Self | HUF=Karta | Firm=Managing Partner | Co=MD</li>
+      <li>Aadhaar exempt: J&amp;K, Meghalaya, Assam + NR + 80yrs+ + Non-Indian</li>
     </ul>
   </div>
 </div>
@@ -904,7 +934,7 @@
 
 
 <div class="footer">
-<div class="footer">Made for <span>CA Inter May 2026</span> — Ch 1 Basics · Ch 2 Residence · Ch 3 Salaries · Ch 4 HP · Ch 5 PGBP · Ch 6 Capital Gain · Ch 7 IFOS · Ch 8 Clubbing · Ch 9 Set-Off · Ch 10 Deductions · Ch 11 TDS/TCS · <span style="color:#378ADD">Ch 12 Return Filing</span> | 🎯 Complete DT Flashcard Set | Price Learning Hub</div>
+<div class="footer">Made for <span>CA Inter May 2026</span> — Ch 1 Basics · Ch 2 Residence · Ch 3 Salaries · Ch 4 HP · Ch 5 PGBP · Ch 6 Capital Gain · Ch 7 IFOS · Ch 8 Clubbing · Ch 9 Set-Off · Ch 10 Deductions · Ch 11 TDS/TCS · <span>Ch 12 Return Filing</span> | 🎯 Complete DT Flashcard Set | <span>Prince Learning Hub</span></div>
 
 <script>
 
@@ -1870,7 +1900,13 @@ const CHRTN = [
   {tp:"Sec 139(4) Belated Return",ch:"rtn",col:"skyblue",star:true,title:"Sec 139(4) — Belated Return & Consequences",bullets:["Missed due date → File BELATED RETURN u/s 139(4)","Last date: EARLIER of (i) 3 months before end of AY = 31st December of AY OR (ii) Before completion of Assessment","AY 2026-27 belated deadline = 31st December 2026","CONSEQUENCES of belated return:","No carry forward of PGBP/CG/Race horse losses (Sec 80)","No deduction u/c VI-A: 80JJAA, 80QQB, 80RRB, and 10AA NOT allowed","Interest u/s 234A: 1% per month or part of month from due date till actual filing","Late filing fee u/s 234F: Rs 5,000 if NTI > Rs 5L | Rs 1,000 if NTI <= Rs 5L"],trick:"Trick: 'Belated = by 31st Dec of AY | 4 consequences: No C/F losses + No 80JJAA/10AA + 234A interest + 234F fee Rs5K/Rs1K | 31 December = Last chance!'"},
   {tp:"Sec 139(5) Revised Return",ch:"rtn",col:"skyblue",star:false,title:"Sec 139(5) — Revised Return",bullets:["Filed 139(1)/139(3)/139(4) and found OMISSION or WRONG STATEMENT → File REVISED RETURN","Time limit: EARLIER of (i) 31st December of AY (3 months before AY end) OR (ii) Before completion of Assessment","Note 1: Belated return filed u/s 139(4) CAN be revised u/s 139(5)","Note 2: Revised return SUBSTITUTES original return from date original return was filed","Note 3: Assessee can revise ANY NUMBER OF TIMES within time limit"],trick:"Trick: 'Revised return = same 31st Dec deadline | Replaces original from original date | Can revise unlimited times | Even belated can be revised | Found error? 139(5) fix karo'"},
   {tp:"Sec 139(8A) Updated Return",ch:"rtn",col:"skyblue",star:true,title:"Sec 139(8A) — Updated Return (ITR-U)",bullets:["Can be filed within 4 YEARS (48 months) from end of relevant AY","WHO CAN file: (1) No return filed at all OR (2) Filed 139(1)/139(4) wanting to declare additional income","WHO CANNOT file: (3) Cannot declare LOSS | (4) Cannot REDUCE income already declared | (5) Cannot file 2nd updated return for same AY","ADDITIONAL TAX + interest: Year 1 (0-12 months) = 25% extra | Year 2 (12-24) = 50% extra | Year 3 (24-36) = 60% extra | Year 4 (36-48) = 70% extra","Example: AY 24-25 loss return filed. PGBP was Rs 5L (shown). Updated return: PGBP Rs 9L (increased) → Can file. Original PGBP was Rs 5L and B/F loss Rs 5L set off. Updated return shows PGBP Rs 9L → C/F reduced to Rs 1L"],trick:"Trick: 'Updated = 4 years window | Extra tax 25-50-60-70% year 1-2-3-4 | Can add income | Cannot reduce income or add losses | Only once per AY | ITR-U form'"},
-  {tp:"Sec 139(9) & 140A",ch:"rtn",col:"skyblue",star:false,title:"Sec 139(9) — Defective Return & Sec 140A — Self Assessment",bullets:["DEFECTIVE RETURN u/s 139(9): Return defective if (a) Not in prescribed form OR (b) Tax proofs not attached OR (c) 44AB audit report not submitted","AO intimates defect → 15 days (or extended) to rectify | If NOT rectified → Return INVALID/VOID (ab-initio)","SEC 140A — SELF ASSESSMENT TAX (SAT): Tax on total income minus TDS minus TCS minus Advance Tax minus Relief minus AMT credit = SAT","SAT > 0 = Pay before filing return | SAT < 0 = Tax refund from Govt","WHO SIGNS return: Individual = Self | HUF = Karta | Company = MD (or Director if MD unavailable) | Firm/LLP = Managing Partner","SEC 139AA — AADHAAR: Quote Aadhaar in PAN application AND ITR (w.e.f. 01.07.2017) | PAN-Aadhaar link deadline: 31.03.2022 | PAN inoperative if not linked by 01.07.2023 | Not applicable to: NR, Non-Indian citizen, J&K/Assam/Meghalaya, 80+ age"],trick:"Trick: 'Defective = Wrong form/no tax proof/no audit → 15 days to fix or VOID | SAT = Pay before filing | Who signs: Self/Karta/MD/Managing Partner | Aadhaar = link PAN by Jul23 or inoperative'"},
+  {tp:"Sec 139(9) & 140A",ch:"rtn",col:"skyblue",star:false,title:"Sec 139(9) — Defective Return & Sec 140A — Self Assessment",bullets:["DEFECTIVE RETURN u/s 139(9): Return defective if (a) Not in prescribed form OR (b) Tax proofs not attached OR (c) 44AB audit report not submitted","AO intimates defect → 15 days (or extended) to rectify | If NOT rectified → Return INVALID/VOID (ab-initio)","SEC 140A — SELF ASSESSMENT TAX (SAT): Tax on total income minus TDS minus TCS minus Advance Tax minus Relief minus AMT credit = SAT","SAT > 0 = Pay before filing return | SAT < 0 = Tax refund from Govt","Short payment adjustment order: First towards FEES (234F), then towards INTEREST (234A/B/C), then towards TAX","WHO SIGNS return: Individual = Self | HUF = Karta | Company = MD (or Director if MD unavailable) | Firm/LLP = Managing Partner","SEC 139AA — AADHAAR: Quote Aadhaar in PAN application AND ITR (w.e.f. 01.07.2017) | PAN-Aadhaar link deadline: 31.03.2022 | PAN inoperative if not linked by 01.07.2023 | Not applicable to: NR, Non-Indian citizen, J&K/Assam/Meghalaya, 80+ age"],trick:"Trick: 'Defective = Wrong form/no tax proof/no audit → 15 days to fix or VOID | SAT = Pay before filing | Short payment order = FIT (Fees→Interest→Tax) | Who signs: Self/Karta/MD/Managing Partner | Aadhaar = link PAN by Jul23 or inoperative'"},
+  {tp:"Sec 139A — PAN",ch:"rtn",col:"skyblue",star:true,title:"Sec 139A — Permanent Account Number (PAN)",bullets:["WHO MUST APPLY FOR PAN?","(1) Every person whose total income > Basic Exemption → Deadline: 31st May of AY","(2) Business/Profession T/O or GR likely to exceed Rs 5 Lakhs → Deadline: End of PY","(3) Trust required u/s 139(4A) → Deadline: End of PY","(4) Resident (other than Individual) entering financial transaction ≥ Rs 2,50,000 aggregate in FY → By 31st May of AY","(5) MD/Director/Partner/Trustee/Author/Founder/Karta/CEO/Principal Officer of persons in (4) → By 31st May of AY","(6) Person intending to enter into: Cash deposits ≥ Rs 20L in Bank/Co-op bank | Cash withdrawal ≥ Rs 20L | Opening current/cash credit a/c → At least 7 days BEFORE transaction","MINOR with no taxable income: Can enter transactions by quoting parent's/guardian's PAN","PAN & Aadhaar INTERCHANGEABLE: If PAN not allotted but Aadhaar held → Quote Aadhaar (PAN auto-allotted by Dept) | Or if PAN allotted and already linked with Aadhaar","Sec 272B Penalty for non-compliance with Sec 139A = Rs 10,000 per default"],trick:"Trick: 'PAN apply ka schedule: May31 (income>exemption or person type 4/5) | End of PY (Business 5L) | 7 days before (20L cash transaction) | MINOR = Parents ka PAN quote karo | 272B = 10K penalty per default!'"},
+  {tp:"Sec 139A — PAN Transactions",ch:"rtn",col:"skyblue",star:true,title:"Sec 139A — PAN to be quoted in transactions (key list)",bullets:["TRANSACTIONS REQUIRING PAN QUOTING:","1. Sale/purchase of MOTOR VEHICLE (other than 2-wheeler) — ALL amounts","2. Opening BANK/CO-OP BANK ACCOUNT (other than FD in Point 12 and basic savings) — ALL amounts","3. Application for Credit/Debit Card — ALL amounts","4. Opening D-MAT account — ALL amounts","5. Hotel/restaurant payment — Cash > Rs 50,000","6. Foreign travel or foreign currency purchase — Cash > Rs 50,000","7. Mutual Fund units purchase — Amount > Rs 50,000","8. Debentures/bonds of company/institution — Amount > Rs 50,000","9. RBI bonds — Amount > Rs 50,000","10. Cash deposit with Bank/Co-op/Post Office — Cash > Rs 50,000 per day","11. Bank Drafts/Pay Orders/Banker's Cheques — Cash > Rs 50,000 per day","12. FD with Bank/Co-op/Post/Nidhi/NBFC — Amount > Rs 50,000 OR > Rs 5L aggregate in FY","13. Pre-paid payment instruments — Amount > Rs 50,000","14. Life Insurance premium — Amount > Rs 50,000 in FY","15. Sale/purchase of securities (other than shares) — > Rs 1 Lakh per transaction","16. Unlisted company shares — > Rs 1 Lakh per transaction","17. Immovable property — Amount or SDV > Rs 10 Lakhs","18. Goods/services (other than above) — > Rs 2 Lakhs per transaction"],trick:"Trick: 'PAN threshold chart shortcut: ALL (vehicle/bank a/c/demat/card) | 50K (hotel/travel/FD/MF/debenture/cash deposit) | 1L (securities/unlisted shares) | 10L (immovable property) | 2L (other goods/services)'"},
+  {tp:"Sec 139AA — Aadhaar",ch:"rtn",col:"skyblue",star:true,title:"Sec 139AA — Aadhaar Number (mandatory quoting)",bullets:["Every person ELIGIBLE to obtain Aadhaar shall, on/after 1st July 2017, quote Aadhaar number:","(i) In application form for PAN allotment","(ii) In return of income filed on/after 1st July 2017","If Aadhaar not available → Quote APPLICATION ID of Aadhaar","IMPORTANT: From 1/10/2024, Enrolment ID option is NOT available. Person who applied PAN on basis of Enrolment ID must mandatorily intimate his Aadhaar in prescribed manner","LINKING PAN WITH AADHAAR:","Every person holding PAN on 1st July 2017 must link PAN with Aadhaar by 31st March 2022","Failure to link → PAN becomes INOPERATIVE (not cancelled — treated as not quoted)","From 01/04/2022: Linking fees u/s 234H required (already paid for late linking)","From 01/07/2023: CBDT negative consequences of inoperative PAN apply (as if PAN not furnished)","WHO IS EXEMPT from Sec 139AA? (persons not possessing Aadhaar):","(i) Residents of J&K, Meghalaya, Assam","(ii) Non-Resident (NR) as per IT Act 1961","(iii) Person of age 80 years or more at any time during PY","(iv) Not a citizen of India"],trick:"Trick: 'Aadhaar mandatory since Jul 2017 | Link by Mar 2022 or PAN inoperative | Enrolment ID invalid from Oct 2024 | EXEMPTED = J-M-A States + NR + 80 years + Non-Indian | JMANE = Jaao Mat Aadhaar Nahi Enforce!'"},
+  {tp:"Sec 139B — TRP",ch:"rtn",col:"skyblue",star:false,title:"Sec 139B — Tax Return Preparers (TRP)",bullets:["CBDT may frame a SCHEME whereby SPECIFIED CLASS of persons can file ROI through Tax Return Preparers (TRPs)","TRP = Individual authorised to act as TRP by CBDT — but NOT the following:","(a) Chartered Accountant","(b) Legal Practitioner","(c) Officer of Scheduled Bank (where assessee maintains account)","(d) Employee of specified class of person","SPECIFIED CLASS of persons = Any person required to file ROI EXCEPT: (a) Company (b) Person whose BOA required audit u/s 44AB","Per CBDT scheme — only INDIVIDUAL and HUF can file through TRP","To become TRP: Must hold bachelor's degree from recognised Indian university OR passed Inter exam of ICAI/ICSI/ICMAI (CMA)"],trick:"Trick: 'TRP = Helper for filing returns | CA/Lawyer/Bank officer CANNOT be TRP | Only Individual & HUF can use TRP | To BE a TRP = Graduate + passed CA/CS/CMA Inter | Company cannot use TRP!'"},
+  {tp:"Sec 140 — Verification",ch:"rtn",col:"skyblue",star:true,title:"Sec 140 — Verification of Return (Who Signs?)",bullets:["WHO VERIFIES the return — depends on type of assessee:","INDIVIDUAL: Himself | If abroad or mentally incapacitated → Person competent to verify on behalf","HUF: Karta | If Karta abroad or mentally incapacitated → Any ADULT member of HUF","PARTNERSHIP FIRM: Managing Partner | If no Managing Partner → Any ADULT Partner","LLP: Designated Partner | If no Designated Partner → Any Partner OR any other person as prescribed","COMPANY: MD | If no MD → Any other Director OR any other person as prescribed","Company under LIQUIDATION → Liquidator","Company — IBC 2016 Insolvency application admitted by Adjudicating Authority → Insolvency Professional appointed by that Authority","POLITICAL PARTY: CEO","LOCAL AUTHORITY: Principal Officer","ANY OTHER PERSON: Person competent to verify","IMPORTANT: If return NOT verified → Treated as INVALID RETURN (void-ab-initio)","* any other person = Interim Resolution Professional, Resolution Professional, or Liquidator as per IBC 2016"],trick:"Trick: 'Verification table: Ind=Self | HUF=Karta | Firm=Managing Partner | LLP=Designated Partner | Company=MD | Liquidation=Liquidator | Neta=CEO | Local=Principal Officer | Unverified=VOID!'"},
+  {tp:"Sec 139(1C) & 139(8A) Advanced",ch:"rtn",col:"skyblue",star:true,title:"Sec 139(1C) Central Govt Exemption & 139(8A) Updated Return — Advanced",bullets:["SEC 139(1C): Central Govt may by NOTIFICATION specify class/classes of persons EXEMPT from requirement of filing return","SEC 139(8A) — UPDATED RETURN (ITR-U) ADVANCED POINTS:","Time limit: 48 months from END of relevant AY | e.g., AY 25-26 → file updated return by 31st March 2030","Who can file: Person whether or not already filed return u/s 139(1)/(4)/(5)","CANNOT file updated return if:","(1) Updated return = Return of LOSS (i.e., income is negative)","(2) Updated return has ALREADY been filed for that AY u/s 139(8A)","(3) Updated return DECREASES total tax liability OR results in REFUND or INCREASES REFUND vs original return","SPECIAL RULE: If person sustained loss + filed loss return timely u/s 139(1) → Can file updated return if updated return shows INCOME (not loss)","CARRY FORWARD REDUCTION: If filing updated return reduces B/F loss or unabsorbed dep or AMT credit → Must file updated return for EACH SUBSEQUENT YEAR also","ADDITIONAL TAX COMPUTATION: Tax diff = [Tax + SC + HEC + Interest under 234A/B/C] as per updated return MINUS [Tax paid before filing updated return]","Then on this difference: within 12 months = 25% | 12-24 months = 50% | 24-36 months = 60% | 36-48 months = 70% additional tax"],trick:"Trick: 'Updated return = can always FILE to add income | CANNOT file if = already filed for AY / result is loss / reduces tax/gives more refund | 4 slabs = 25-50-60-70% extra tax year 1-4 | Subsequent year cascade if B/F loss reduced!'"},
 ];
 
 
@@ -1907,16 +1943,16 @@ document.getElementById("tab-mega").textContent="🔀 ALL Chapters ("+MEGA.lengt
 
 
 const CM={
-  orange:{bg:"#3D2200",border:"#E8A000",title:"#FFF3CD",sub:"#F0C040",dot:"#D4A000",trick:"#5C3700",trickTxt:"#F0C040",topicBg:"#E8A000",topicTxt:"#3D2200"},
-  skyblue:{bg:"#072237",border:"#2980B9",title:"#D9EDF7",sub:"#A8D4EC",dot:"#5BA4CF",trick:"#0D3A5C",trickTxt:"#A8D4EC",topicBg:"#2980B9",topicTxt:"#072237"},
-  teal:  {bg:"#04342C",border:"#1D9E75",title:"#E1F5EE",sub:"#9FE1CB",dot:"#5DCAA5",trick:"#085041",trickTxt:"#9FE1CB",topicBg:"#1D9E75",topicTxt:"#04342C"},
-  purple:{bg:"#26215C",border:"#7F77DD",title:"#EEEDFE",sub:"#CECBF6",dot:"#AFA9EC",trick:"#3C3489",trickTxt:"#CECBF6",topicBg:"#7F77DD",topicTxt:"#26215C"},
-  amber: {bg:"#412402",border:"#BA7517",title:"#FAEEDA",sub:"#FAC775",dot:"#EF9F27",trick:"#633806",trickTxt:"#FAC775",topicBg:"#BA7517",topicTxt:"#412402"},
-    coral: {bg:"#4A1B0C",border:"#D85A30",title:"#FAECE7",sub:"#F5C4B3",dot:"#F0997B",trick:"#712B13",trickTxt:"#F5C4B3",topicBg:"#D85A30",topicTxt:"#4A1B0C"},
-  blue:  {bg:"#042C53",border:"#378ADD",title:"#E6F1FB",sub:"#B5D4F4",dot:"#85B7EB",trick:"#0C447C",trickTxt:"#B5D4F4",topicBg:"#378ADD",topicTxt:"#042C53"},
-  green: {bg:"#173404",border:"#639922",title:"#EAF3DE",sub:"#C0DD97",dot:"#97C459",trick:"#27500A",trickTxt:"#C0DD97",topicBg:"#639922",topicTxt:"#173404"},
-  pink:  {bg:"#4B1528",border:"#D4537E",title:"#FBEAF0",sub:"#F4C0D1",dot:"#ED93B1",trick:"#72243E",trickTxt:"#F4C0D1",topicBg:"#D4537E",topicTxt:"#4B1528"},
-  red:   {bg:"#3B0A0A",border:"#CC3333",title:"#FDE8E8",sub:"#F5AAAA",dot:"#E87070",trick:"#5C1212",trickTxt:"#F5AAAA",topicBg:"#CC3333",topicTxt:"#3B0A0A"}
+  orange:{bg:"#1c1100",border:"#d97706",title:"#fef3c7",sub:"#fbbf24",dot:"#f59e0b",trick:"#292000",trickTxt:"#fde68a",topicBg:"#d97706",topicTxt:"#1c1100"},
+  skyblue:{bg:"#071930",border:"#3b82f6",title:"#dbeafe",sub:"#93c5fd",dot:"#60a5fa",trick:"#0c2540",trickTxt:"#93c5fd",topicBg:"#3b82f6",topicTxt:"#071930"},
+  teal:  {bg:"#021c18",border:"#14b8a6",title:"#ccfbf1",sub:"#5eead4",dot:"#2dd4bf",trick:"#042f29",trickTxt:"#5eead4",topicBg:"#14b8a6",topicTxt:"#021c18"},
+  purple:{bg:"#130e30",border:"#8b5cf6",title:"#ede9fe",sub:"#c4b5fd",dot:"#a78bfa",trick:"#1e1545",trickTxt:"#c4b5fd",topicBg:"#8b5cf6",topicTxt:"#130e30"},
+  amber: {bg:"#1f1000",border:"#f59e0b",title:"#fef3c7",sub:"#fcd34d",dot:"#fbbf24",trick:"#2c1700",trickTxt:"#fde68a",topicBg:"#f59e0b",topicTxt:"#1f1000"},
+  coral: {bg:"#200c05",border:"#ef4444",title:"#fee2e2",sub:"#fca5a5",dot:"#f87171",trick:"#310f07",trickTxt:"#fca5a5",topicBg:"#ef4444",topicTxt:"#200c05"},
+  blue:  {bg:"#0a1628",border:"#6366f1",title:"#e0e7ff",sub:"#a5b4fc",dot:"#818cf8",trick:"#131d38",trickTxt:"#a5b4fc",topicBg:"#6366f1",topicTxt:"#0a1628"},
+  green: {bg:"#071a0a",border:"#22c55e",title:"#dcfce7",sub:"#86efac",dot:"#4ade80",trick:"#0c2a10",trickTxt:"#86efac",topicBg:"#22c55e",topicTxt:"#071a0a"},
+  pink:  {bg:"#1e0715",border:"#ec4899",title:"#fce7f3",sub:"#f9a8d4",dot:"#f472b6",trick:"#2d0b1f",trickTxt:"#f9a8d4",topicBg:"#ec4899",topicTxt:"#1e0715"},
+  red:   {bg:"#1a0505",border:"#ef4444",title:"#fee2e2",sub:"#fca5a5",dot:"#f87171",trick:"#2a0808",trickTxt:"#fca5a5",topicBg:"#ef4444",topicTxt:"#1a0505"}
 };
 
 function switchChapter(ch){
