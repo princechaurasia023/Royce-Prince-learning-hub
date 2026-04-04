@@ -421,3 +421,17 @@ document.getElementById("virtualBanner").style.display="none";
 function closeBanner(){
 document.getElementById("virtualBanner").style.display="none";
 }
+// Dark Mode Toggle
+const themeToggle = document.getElementById("themeToggle");
+
+if(themeToggle){
+themeToggle.addEventListener("click",()=>{
+const currentTheme = document.documentElement.getAttribute("data-theme");
+
+if(currentTheme === "dark"){
+document.documentElement.removeAttribute("data-theme");
+}else{
+document.documentElement.setAttribute("data-theme","dark");
+}
+});
+}
