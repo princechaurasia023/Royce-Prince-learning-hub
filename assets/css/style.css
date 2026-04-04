@@ -909,3 +909,35 @@ footer a:hover { color: var(--accent); }
   .stats-strip { grid-template-columns: 1fr 1fr; }
   .section__header { flex-direction: column; gap: 8px; }
 }
+.virtual-banner{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#7C3AED;
+color:white;
+padding:10px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+z-index:9999;
+font-weight:600;
+}
+
+.virtual-banner a{
+background:white;
+color:#7C3AED;
+padding:6px 14px;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
+}
+
+.virtual-banner button{
+background:none;
+border:none;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
