@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Inter – Advanced Accounts Flashcards | Prince Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f14;
+  --surface:#141720;
+  --surface2:#1c2130;
+  --border:#252b3b;
+  --accent:#f59e0b;
+  --accent2:#3b82f6;
+  --accent3:#10b981;
+  --accent4:#ef4444;
+  --accent5:#8b5cf6;
+  --accent6:#ec4899;
+  --text:#e8eaf0;
+  --muted:#6b7280;
+  --card-front:#1a1f2e;
+  --card-back:#0f172a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* ── HEADER ── */
+.header{background:linear-gradient(135deg,#0d0f14 0%,#141720 50%,#1a1330 100%);border-bottom:1px solid var(--border);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--accent);letter-spacing:.5px}
+.logo span{color:var(--text);font-size:.85rem;font-family:'DM Sans',sans-serif;display:block;font-weight:300}
+.header-stats{display:flex;gap:18px;align-items:center;font-size:.78rem;color:var(--muted)}
+.stat-badge{background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:20px;color:var(--text)}
+.stat-badge span{color:var(--accent);font-weight:600}
+
+/* ── CHAPTER TABS ── */
+.chapter-nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.chapter-nav::-webkit-scrollbar{display:none}
+.chapter-tabs{display:inline-flex;gap:4px;padding:10px 0}
+.ch-tab{padding:7px 14px;border-radius:8px;cursor:pointer;font-size:.78rem;font-weight:500;border:1px solid transparent;color:var(--muted);transition:all .2s;white-space:nowrap;background:transparent}
+.ch-tab:hover{background:var(--surface2);color:var(--text)}
+.ch-tab.active{border-color:var(--accent);background:rgba(245,158,11,.12);color:var(--accent)}
+
+/* ── CHAPTER COVER ── */
+.chapter-cover{display:none;padding:32px 24px;max-width:900px;margin:0 auto}
+.chapter-cover.active{display:block}
+.cover-card{border-radius:20px;padding:40px;border:1px solid var(--border);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%)}
+.cover-card::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;opacity:.08}
+.cover-label{font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.cover-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;line-height:1.2;margin-bottom:16px}
+.cover-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:28px;line-height:1.6}
+.cover-meta{display:flex;gap:12px;flex-wrap:wrap}
+.meta-pill{padding:6px 14px;border-radius:20px;font-size:.75rem;font-weight:500;border:1px solid}
+.cover-summary{margin-top:28px;padding:20px;background:rgba(255,255,255,.03);border-radius:12px;border-left:3px solid var(--accent)}
+.cover-summary h4{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:10px}
+.cover-summary p{font-size:.88rem;color:var(--muted);line-height:1.7}
+.cover-key-points{margin-top:16px;display:grid;gap:8px}
+.cover-kp{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--text)}
+.cover-kp::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+.start-btn{margin-top:28px;padding:12px 28px;background:var(--accent);color:#000;border:none;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.start-btn:hover{background:#d97706;transform:translateY(-1px)}
+
+/* ── QUICK REFERENCE TABLE ── */
+.qr-section{margin-top:24px}
+.qr-title{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:12px;font-weight:600}
+.qr-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.qr-table th{background:var(--surface2);padding:9px 12px;text-align:left;font-weight:600;color:var(--accent);border:1px solid var(--border)}
+.qr-table td{padding:8px 12px;border:1px solid var(--border);color:var(--text);vertical-align:top;line-height:1.5}
+.qr-table tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.qr-table td:first-child{color:var(--accent3);font-weight:500}
+
+/* ── FILTERS ── */
+.filter-bar{padding:14px 24px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filter-label{font-size:.75rem;color:var(--muted);font-weight:500;margin-right:4px}
+.filter-pill{padding:5px 12px;border-radius:20px;border:1px solid var(--border);font-size:.75rem;cursor:pointer;background:transparent;color:var(--muted);transition:all .2s;font-family:'DM Sans',sans-serif}
+.filter-pill:hover{border-color:var(--accent2);color:var(--text)}
+.filter-pill.active{background:rgba(59,130,246,.15);border-color:var(--accent2);color:var(--accent2)}
+
+/* ── PROGRESS ── */
+.progress-bar-wrap{padding:10px 24px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;font-size:.78rem;color:var(--muted)}
+.progress-bar{flex:1;height:4px;background:var(--border);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:4px;transition:width .4s ease}
+.progress-text{white-space:nowrap}
+
+/* ── FLASHCARD AREA ── */
+.card-area{display:none;padding:24px;max-width:900px;margin:0 auto}
+.card-area.active{display:block}
+.card-count{text-align:center;font-size:.8rem;color:var(--muted);margin-bottom:16px}
+
+/* FLIP CARD */
+.flip-wrapper{perspective:1200px;height:380px;cursor:pointer;margin-bottom:20px}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.flip-inner.flipped{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;padding:32px;border:1px solid var(--border)}
+.flip-front{background:var(--card-front);border-color:var(--border)}
+.flip-back{background:var(--card-back);transform:rotateY(180deg);border-color:var(--accent2)}
+.card-topic-tag{font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;padding:4px 10px;background:rgba(245,158,11,.12);border-radius:20px;width:fit-content}
+.card-q{font-family:'Playfair Display',serif;font-size:1.25rem;line-height:1.5;flex:1;display:flex;align-items:center}
+.flip-hint{font-size:.72rem;color:var(--muted);text-align:center;margin-top:auto}
+.flip-hint span{color:var(--accent2)}
+.card-answer{font-size:.9rem;line-height:1.7;color:var(--text);flex:1;overflow-y:auto}
+.card-answer strong{color:var(--accent);font-weight:600}
+.card-answer .formula{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);border-radius:8px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:.82rem;margin:8px 0;color:var(--accent2)}
+.card-answer ul{margin-left:16px;margin-top:6px}
+.card-answer li{margin-bottom:4px}
+.card-answer .highlight{background:rgba(245,158,11,.15);padding:2px 6px;border-radius:4px;color:var(--accent)}
+.card-answer .note{font-size:.78rem;color:var(--accent3);margin-top:8px;padding:8px 12px;background:rgba(16,185,129,.08);border-radius:8px;border-left:2px solid var(--accent3)}
+.mnemonic-box{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:.82rem}
+.mnemonic-box strong{color:var(--accent5)}
+
+/* ── CARD CONTROLS ── */
+.card-controls{display:flex;justify-content:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.ctrl-btn{padding:10px 22px;border-radius:10px;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;background:var(--surface)}
+.ctrl-btn:hover{transform:translateY(-1px)}
+.btn-prev{color:var(--muted)}
+.btn-prev:hover{border-color:var(--muted);color:var(--text)}
+.btn-flip{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.btn-flip:hover{background:#2563eb}
+.btn-next{background:var(--accent);color:#000;border-color:var(--accent)}
+.btn-next:hover{background:#d97706}
+.btn-mark{color:var(--accent5);border-color:rgba(139,92,246,.4)}
+.btn-mark.marked{background:rgba(139,92,246,.2);color:var(--accent5)}
+.btn-mark:hover{border-color:var(--accent5)}
+.rating-row{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.rate-btn{padding:7px 16px;border-radius:8px;border:1px solid;font-size:.78rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;font-weight:500}
+.rate-easy{border-color:#10b981;color:#10b981;background:rgba(16,185,129,.08)}
+.rate-easy:hover{background:rgba(16,185,129,.2)}
+.rate-hard{border-color:#ef4444;color:#ef4444;background:rgba(239,68,68,.08)}
+.rate-hard:hover{background:rgba(239,68,68,.2)}
+.rate-review{border-color:#f59e0b;color:#f59e0b;background:rgba(245,158,11,.08)}
+.rate-review:hover{background:rgba(245,158,11,.2)}
+
+/* ── KEYBOARD HINT ── */
+.kb-hint{text-align:center;font-size:.72rem;color:var(--muted);margin-top:10px}
+.kb-hint kbd{background:var(--surface2);border:1px solid var(--border);padding:2px 6px;border-radius:4px;font-family:'DM Mono',monospace;font-size:.7rem}
+
+/* ── SUMMARY NOTICE PANELS ── */
+.summary-panel{padding:24px;max-width:900px;margin:0 auto;display:none}
+.summary-panel.active{display:block}
+.summary-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px}
+.summary-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--accent);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.summary-card p{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:8px}
+.summary-card .imp{color:var(--accent);font-weight:600}
+.summary-card .warning{color:var(--accent4);font-weight:600}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:60px 24px;color:var(--muted)}
+.empty-state .icon{font-size:2.5rem;margin-bottom:12px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .cover-title{font-size:1.6rem}
+  .flip-wrapper{height:320px}
+  .card-q{font-size:1.05rem}
+  .card-controls{gap:8px}
+  .ctrl-btn{padding:8px 14px;font-size:.8rem}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="logo">Prince Learning Hub</div>
+    <div class="logo"><span>CA Inter · Advanced Accounts · Accounting Standards</span></div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-badge">Total Cards: <span id="totalCards">0</span></div>
+    <div class="stat-badge">Done: <span id="doneCards">0</span></div>
+    <div class="stat-badge">Marked: <span id="markedCount">0</span></div>
+  </div>
+</div>
+
+<div class="chapter-nav">
+  <div class="chapter-tabs" id="chapterTabs"></div>
+</div>
+
+<div class="filter-bar" id="filterBar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-pill active" data-filter="all" onclick="setFilter('all',this)">All Cards</button>
+  <button class="filter-pill" data-filter="definition" onclick="setFilter('definition',this)">Definitions</button>
+  <button class="filter-pill" data-filter="formula" onclick="setFilter('formula',this)">Formulas</button>
+  <button class="filter-pill" data-filter="rule" onclick="setFilter('rule',this)">Rules</button>
+  <button class="filter-pill" data-filter="example" onclick="setFilter('example',this)">Examples</button>
+  <button class="filter-pill" data-filter="mnemonic" onclick="setFilter('mnemonic',this)">Mnemonics</button>
+  <button class="filter-pill" data-filter="marked" onclick="setFilter('marked',this)">⭐ Marked</button>
+</div>
+
+<div class="progress-bar-wrap">
+  <span class="progress-text" id="progressText">Card 0 of 0</span>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <span class="progress-text" id="pctText">0%</span>
+</div>
+
+<div id="mainContent"></div>
+
+<script>
+/* ════════════════════════════════════════════════
+   DATA – All chapters from PDF
+════════════════════════════════════════════════ */
+const CHAPTERS = [
+{
+  id:'intro',
+  no:1,
+  title:'Introduction to Accounting Standards',
+  color:'#f59e0b',
+  subtitle:'AS Overview, ICAI Framework, Ind AS vs AS',
+  pageRef:'HB.1',
+  summary:`Accounting Standards (AS) are issued by ICAI for entities on which AS apply. Currently AS 1–29 exist, except AS 6 & 8 which are withdrawn — so 27 effective standards. These standards deal with Recognition, Measurement, Presentation, and Disclosures. Ind AS is India's version of global IFRS/IAS standards, applicable to listed companies or those with net worth ≥ ₹250 crore.`,
+  keyPoints:[
+    'AS 1 to 29 issued; AS 6 & 8 withdrawn → 27 effective standards',
+    'Process: ASB Draft → Exposure Draft → Public Comments → ICAI Council Approval → NFRA Approval',
+    'Ind AS = Indian Accounting Standards based on IFRS/IAS (global standards by IASB)',
+    'CARVE IN = additional clarification in Ind AS; CARVE OUT = deviation from global standard (9-10 carve-outs)',
+    'Companies listed OR net worth ≥ ₹250 crore must apply Ind AS',
+    'Benefits: Standardisation, Transparency, Comparability, Better Disclosures'
+  ],
+  quickRef:[
+    ['Type','Description','Example'],
+    ['Accounting Standards (AS)','Issued by ICAI; for non-Ind AS companies','AS 1 to 29 (27 active)'],
+    ['Indian Accounting Standards (Ind AS)','Based on IFRS/IAS; for listed/large companies','Ind AS 1 to Ind AS 116'],
+    ['Carve In','Additional clarification added to Ind AS vs IFRS','Extra guidance by MCA'],
+    ['Carve Out','Deviation from IFRS in Ind AS','~9-10 deviations only'],
+    ['IASB','International Accounting Standards Board','Issues IFRS and IAS'],
+    ['NFRA','National Financial Reporting Authority','Approves AS for companies']
+  ],
+  cards:[
+    {topic:'Definition',q:'Accounting Standards kis ne issue karta hai aur kyon?',a:`<strong>ICAI (Institute of Chartered Accountants of India)</strong> issues Accounting Standards.<br><br>These are issued for entities on which AS applies, including any foreign-approved accounting standards.<br><br><strong>Benefits:</strong><ul><li>Standardisation → Consistency & Transparency</li><li>Additional Disclosures → Better Understanding</li><li>Comparability of Financial Statements</li></ul>`,type:'definition'},
+    {topic:'Numbers',q:'Currently kitne Accounting Standards active hain? Kaunse withdrawn hain?',a:`AS 1 to 29 issued kiye gaye hain.<br><br><span class="highlight">AS 6 and AS 8 have been WITHDRAWN.</span><br><br>So effectively <strong>27 Accounting Standards</strong> currently exist and are applicable.<br><div class="note">Remember: 29 issued – 2 withdrawn = 27 active</div>`,type:'rule',mnemonic:'29 - 2 = 27 (Sirf yad rakho 6 aur 8 gaye!)'},
+    {topic:'Process',q:'AS issue karne ki process kya hai? Steps batao.',a:`<strong>5-Step Process:</strong><br><div class="formula">1. ASB (Accounting Standards Board) prepares draft<br>2. Exposure Draft → put for PUBLIC COMMENTS<br>3. Final changes made based on comments<br>4. Approved by ICAI Council → AS is born<br>5. Approved by NFRA → Applied to companies</div><div class="note">Remember: Draft → Public → Revise → ICAI → NFRA</div>`,type:'rule',mnemonic:'D-P-R-I-N: Draft, Public, Revise, ICAI, NFRA'},
+    {topic:'Objectives',q:'Accounting Standards ke objectives kya hain?',a:`AS ke <strong>3 main Objectives:</strong><ul><li>Harmonise accounting policies of entities</li><li>Make financial statements more <strong>Reliable</strong></li><li>Make financial statements more <strong>Understandable, Comparable and Relevant</strong></li></ul><br>Issues dealt by AS: <span class="highlight">Recognition, Measurement, Presentation, Disclosures</span>`,type:'definition'},
+    {topic:'Ind AS',q:'Ind AS kya hai? Kab se apply hua aur kiske liye?',a:`<strong>Indian Accounting Standards (Ind AS)</strong> = India's version of global IFRS/IAS<br><br><strong>Timeline:</strong><div class="formula">2006: India promised world to adopt global standards<br>2015: First applied (Net Worth ≥ ₹500 crore)<br>Now: Listed companies OR Net Worth ≥ ₹250 crore</div><br>Based on ~40 IFRS and IAS issued by <strong>IASB</strong> (International Accounting Standards Board)`,type:'definition'},
+    {topic:'Carve In vs Out',q:'Carve In aur Carve Out kya hota hai Ind AS mein?',a:`<strong>Carve IN:</strong> When additional clarification/guidance was added to Ind AS (beyond global IFRS)<br><br><strong>Carve OUT:</strong> When India deviated from global standards in Ind AS<ul><li>Only ~9-10 carve-outs exist as on date</li><li>Hence Ind AS ≈ same as global standards</li></ul><div class="note">Carve Out = deviation (bahut kam hain – 9-10 only)</div>`,type:'definition',mnemonic:'IN = extra added; OUT = deviation from global'},
+    {topic:'Significance',q:'Global Accounting Standards ki zaroorat kyun hai?',a:`<strong>3 Reasons:</strong><ul><li><strong>Cross-border Capital:</strong> Global investment needs uniform standards</li><li><strong>Cost Reduction:</strong> Reduces cost of applying standards globally</li><li><strong>Global Listing:</strong> Companies listed globally need same standards</li></ul>`,type:'rule'},
+    {topic:'Quick Check',q:'AS deals with which 4 aspects of transactions?',a:`AS deals with:<br><div class="formula">1. RECOGNITION – When to record?<br>2. MEASUREMENT – How much to record?<br>3. PRESENTATION – How to show in FS?<br>4. DISCLOSURES – What to reveal?</div><div class="mnemonic-box"><strong>🧠 Mnemonic:</strong> <strong>RMPD</strong> = Recognition, Measurement, Presentation, Disclosure</div>`,type:'definition',mnemonic:'RMPD – Roz Maro Practice Daily!'}
+  ]
+},
+{
+  id:'framework',
+  no:2,
+  title:'Framework for Preparation & Presentation of Financial Statements',
+  color:'#3b82f6',
+  subtitle:'Users, Assumptions, Qualitative Characteristics, Elements, Measurement',
+  pageRef:'HB.2',
+  summary:`The Framework defines who uses financial statements, what underlying assumptions apply (Going Concern, Accrual, Consistency), what makes them qualitatively good (Understandable, Relevant, Reliable, Comparable), what elements they contain (Assets, Liabilities, Equity, Income, Expense), and how items are measured (Historical Cost, Current Cost, Realisable Value, Present Value). Components of FS = Balance Sheet + P&L. Cash Flow Statement is a REPORT, not a component.`,
+  keyPoints:[
+    '7 Users: Investors, Employees, Lenders, Suppliers, Customers, Govt, Public',
+    '3 Underlying Assumptions: Going Concern, Accrual, Consistency',
+    '4 Qualitative Characteristics: Understandable, Relevant, Reliable, Comparable',
+    '5 Elements: Assets, Liabilities, Equity, Income, Expense',
+    '4 Measurement Bases: Historical Cost, Current Cost, Realisable Value, Present Value',
+    'Components of FS = Balance Sheet + P&L (NOT Cash Flow Statement – it is a Report!)'
+  ],
+  quickRef:[
+    ['Assumption','Meaning','Disclosure if not followed'],
+    ['Going Concern','Entity will continue for foreseeable future; no intent to liquidate','MUST DISCLOSE + prepare FS assuming assets/liabilities settled soon'],
+    ['Accrual','Income & expense on period/time basis (not cash basis)','N/A (always followed)'],
+    ['Consistency','Apply same policies; don\'t change frequently','Change requires disclosure'],
+    ['Understandable','Simple for users to understand','Material items included'],
+    ['Relevant','Contains material items; ignores immaterial','Materiality principle'],
+    ['Reliable','Complete, Fair, Substance over form, Neutral, Prudent','5 sub-characteristics'],
+    ['Comparable','At least 1 year comparative data','Except newly formed entities']
+  ],
+  cards:[
+    {topic:'Users',q:'Financial Statements ke 7 users kaun hain?',a:`<strong>7 Users of Financial Statements:</strong><div class="formula">1. Investors (Shareholders)<br>2. Employees<br>3. Lenders (Banks/FIs)<br>4. Suppliers<br>5. Customers<br>6. Government<br>7. Public</div><div class="mnemonic-box"><strong>🧠 Mnemonic:</strong> <strong>IELS CGP</strong> – Investors, Employees, Lenders, Suppliers, Customers, Govt, Public</div>`,type:'definition',mnemonic:'IELS CGP'},
+    {topic:'Going Concern',q:'Going Concern assumption kya hai? Disclose kab karna hai?',a:`<strong>Going Concern:</strong> Entity will continue operations for foreseeable future. No intention to liquidate or curtail operations.<br><br><div class="formula">If Going Concern IS followed → NO disclosure needed<br>If Going Concern NOT followed → MANDATORY DISCLOSURE<br>Also prepare FS assuming Assets & Liabilities will be settled soon</div><div class="note">Going Concern = Entity ka kaam chaltha rahega assumption</div>`,type:'rule'},
+    {topic:'Accrual',q:'Accrual Assumption kya kehta hai?',a:`<strong>Accrual Assumption:</strong> All expenses and income should be recorded on <span class="highlight">period basis / time basis</span> (NOT on cash basis).<br><br>Example: Rent expense of March recorded in March even if paid in April.<div class="note">Cash milna ya dena zaroori nahi – period mein record karo!</div>`,type:'definition'},
+    {topic:'Consistency',q:'Consistency Assumption kya hai?',a:`<strong>Consistency:</strong> Entity should consistently apply its policies and should NOT change them frequently.<br><br>If change in policy occurs → Must DISCLOSE the change and its effect.<div class="note">FIFO se Weighted Avg mein switch kiya? Batao, kyon kiya aur kitna effect hua!</div>`,type:'rule'},
+    {topic:'Qualitative',q:'Financial Statements ke 4 Qualitative Characteristics kya hain?',a:`<div class="formula">1. UNDERSTANDABLE – Simple language<br>2. RELEVANT – Material items included; immaterial ignored<br>3. RELIABLE – Complete, Fair, Substance>Form, Neutral, Prudent<br>4. COMPARABLE – Min 1 year comparative data</div><div class="mnemonic-box"><strong>🧠 Mnemonic:</strong> <strong>URRC</strong> – Understandable, Relevant, Reliable, Comparable</div>`,type:'definition',mnemonic:'URRC – "Urrr Chal" – Understandable, Relevant, Reliable, Comparable'},
+    {topic:'Reliability Sub-chars',q:'Reliable hone ke liye 5 sub-characteristics kya hain?',a:`<strong>5 Sub-characteristics of Reliability:</strong><div class="formula">1. Completeness – Should be complete<br>2. Free from Bias (Neutral)<br>3. Substance over Form – Reality > Legal form<br>4. Prudence – Conservative<br>5. Faithful Representation</div><div class="note">All facts should be disclosed with equal prominence (Neutral)</div>`,type:'rule',mnemonic:'C-N-S-P-F: Complete, Neutral, Substance, Prudent, Faithful'},
+    {topic:'Elements',q:'Financial Statements ke 5 elements kya hain? Define karo.',a:`<strong>5 Elements:</strong><br><strong>Asset:</strong> Economic resource (संसाधन), in control of entity (धारित), having future benefit (फायदेमंद)<div class="note">Note: If entity has any machine with NO economic benefit → NOT an asset!</div><strong>Liability:</strong> Present obligation arising from past event, settled by outflow of resources, measurable<br><strong>Equity (Capital):</strong> Assets – Liabilities = Residual interest<br><strong>Income:</strong> Increase in resources without increase in liabilities<br><strong>Expense:</strong> Decline in resources without increase in assets`,type:'definition'},
+    {topic:'Measurement',q:'Financial Statements mein 4 Measurement Bases kaunse hain?',a:`<div class="formula">1. HISTORICAL COST (Method-1)<br>   Assets at fair value of consideration given<br>   Liabilities at fair value of consideration received<br><br>2. CURRENT COST (Method-2)<br>   Asset = Fair value of similar asset (aaj kharidne ka daam)<br>   Liability = Fair value of similar liability<br><br>3. REALISABLE VALUE<br>   Asset = Fair value if sold today<br>   Liability = Fair value if settled today<br><br>4. PRESENT VALUE<br>   Asset = Present value of future inflows<br>   Liability = Present value of future outflows</div>`,type:'definition',mnemonic:'HC-CC-RV-PV: Historical, Current, Realisable, Present Value'},
+    {topic:'Components',q:'Financial Statements ke components kaunse hain?',a:`<strong>Components of Financial Statements:</strong><div class="formula">✅ Balance Sheet<br>✅ Profit & Loss Statement</div><div class="note">⚠️ IMPORTANT: Cash Flow Statement is NOT a component – it is a REPORT!<br>Segment Report = also a Report (not component)<br>Statement of Changes in Equity = Component under Ind AS (Not in your course)</div>`,type:'rule'},
+    {topic:'Accounting Equation',q:'Accounting Equation kya hai?',a:`<div class="formula">ASSETS – LIABILITIES = EQUITY<br><br>OR<br><br>ASSETS = LIABILITIES + EQUITY</div><br>This is the fundamental equation that every Balance Sheet must satisfy.`,type:'formula'}
+  ]
+},
+{
+  id:'applicability',
+  no:3,
+  title:'Applicability of Accounting Standards',
+  color:'#10b981',
+  subtitle:'SMC, Big Companies, Non-Corporate Entities, Level I/II/III',
+  pageRef:'HB.7',
+  summary:`AS applicability depends on entity type and size. Big Companies must apply all 27 AS. SMC (Small and Medium Companies) get relaxations. Non-corporate entities (Partnership, LLP, Trust, Society) follow Level I, II, III framework. Certain AS like AS 3, 17, 20, 21-29 have partial or full exemptions for smaller entities.`,
+  keyPoints:[
+    'Big Companies: Listed OR Public deposits OR Net Worth > 2.5 crore at any time → Apply all 27 AS (some exemptions)',
+    'SMC = Non-listed company, no public deposits, net worth ≤ 50 crore, turnover ≤ 250 crore',
+    'SMC: Apply all AS BUT exemptions from AS 3, 17, 20, 21-27 + certain relaxations',
+    'For 2 consecutive years as SMC → exemptions applicable from 2nd year',
+    'Non-Corporate: Level I (all AS), Level II (Level II entities), Level III (smaller)',
+    'Ind AS not applicable to non-corporate entities generally'
+  ],
+  quickRef:[
+    ['Category','Who','AS Applicable'],
+    ['Big Companies (Listed/Public)','Listed OR Public Deposits OR Net Worth > 2.5Cr','All AS 1-29 (some disclosure exemptions)'],
+    ['SMC (Non-listed)','Turnover ≤ 250Cr AND Net Worth ≤ 50Cr AND no public deposits','All AS but Exempt: AS 3,17,20,21-27'],
+    ['New SMC → Non-SMC','Ceases to be SMC','No exemptions for 2 consecutive years'],
+    ['Non-Corp Level I','Turnover > 50Cr OR Borrowing > 10Cr OR Listed','All AS (no exemptions)'],
+    ['Non-Corp Level II','Turnover > 10Cr OR Borrowing > 2Cr, etc.','All AS with some relaxations'],
+    ['Non-Corp Level III','Below Level II criteria','More relaxations available']
+  ],
+  cards:[
+    {topic:'SMC Definition',q:'SMC (Small and Medium Company) kise kehte hain?',a:`SMC = Non-listed company where:<div class="formula">Net Worth ≤ ₹50 crore (at any time in preceding year)<br>AND Turnover ≤ ₹250 crore (in preceding year)<br>AND No Public deposits<br>AND Not a holding/subsidiary of above companies</div><div class="note">SMC = Non-listed + Small size + No public deposits</div>`,type:'definition',mnemonic:'SMC = Small Mat Chodo; 50 crore NW, 250 crore Turnover'},
+    {topic:'SMC Exemptions',q:'SMC ko kaun kaun se AS se exemption milti hai?',a:`SMC gets exemptions/relaxations from:<div class="formula">AS 3 – Cash Flow Statement (not required)<br>AS 17 – Segment Reporting (exempted)<br>AS 20 – Earnings Per Share (exempted)<br>AS 21,23,27 – Consolidated Accounts (exempted)<br>AS 15 – Partial relaxation on employee benefits<br>Also partial relaxation: AS 19, 28, 29</div><div class="note">If 2 consecutive years as SMC → exemptions from 2nd year</div>`,type:'rule',mnemonic:'3,17,20,21-27: Teen Satraha Bees, Ikkis se Sattaees'},
+    {topic:'Big Companies',q:'Big Companies kise maante hain AS ke liye?',a:`A company is considered BIG (Non-SMC) if it is:<div class="formula">Listed company (on any stock exchange)<br>OR Public company with public deposits<br>OR Net worth > ₹2.5 crore at any previous time<br>OR Company engaged in non-banking finance activities</div>Such companies apply ALL 27 AS. Some disclosure relaxations may still apply.`,type:'rule'},
+    {topic:'Non-Corporate',q:'Non-corporate entities (LLP, Partnership, Trust) ke liye AS applicability?',a:`<strong>Non-corporate entities (Partnership, LLP, Society, Trust, Commercial activities):</strong><br><br><strong>Level I:</strong> Apply ALL AS (1-29 except 6,8) – NO exemptions<br>Level I includes: Listed entities, Banks, Turnover > ₹50Cr, Borrowings > ₹10Cr, H/S of above<br><br><strong>Level II:</strong> Apply all AS but relaxations available from AS 3,17,20,21,23,27; Disclosure exemptions from AS 15,19,28,29<br><br><strong>Level III:</strong> More relaxations available; Disclosure exemption: AS 15, 19, 29, 14, 25, 17, 22<div class="note">Balance Entities = Level III</div>`,type:'rule'},
+    {topic:'Ind AS Applicability',q:'Ind AS apply kab hota hai?',a:`<strong>Ind AS applies to:</strong><div class="formula">Listed companies<br>OR Net Worth ≥ ₹250 crore</div><br><div class="note">⚠️ Ind AS does NOT generally apply to Non-corporate entities (Partnership, LLP, Trust etc.)</div><br>Ind AS ≈ IFRS (based on global standards; ~9-10 carve-outs only)`,type:'rule'}
+  ]
+},
+{
+  id:'as1',
+  no:4,
+  title:'AS 1 – Disclosure of Accounting Policies',
+  color:'#ef4444',
+  subtitle:'Accounting Policies, Disclosure Requirements, Fundamental Assumptions, Change in Policy',
+  pageRef:'HB.9',
+  summary:`AS 1 applies to ALL entities on which AS apply. Accounting Policies = specific accounting principles and methods applied in preparation of financial statements. Examples include stock valuation (Cost or NRV, whichever lower), stock valuation method (FIFO/Weighted Avg), investment valuation, goodwill amortisation, treatment of borrowing costs, foreign exchange policy, PPE valuation. Main principles: Disclosure Requirement, How to select policy, Treatment of changes, Fundamental Accounting Assumptions.`,
+  keyPoints:[
+    'Applicable to ALL entities where AS apply',
+    'Accounting Policy = specific principles & methods for preparing FS',
+    'From 2016: Depreciation methods are now called ESTIMATES (not policy)',
+    'Provision calculation method = Accounting Estimate (not policy)',
+    '4 Main Principles of AS 1: Disclosure, Selection, Change Treatment, Fundamental Assumptions',
+    '3 Fundamental Assumptions: Going Concern, Accrual, Consistency (these need NOT be disclosed if followed; MUST disclose if NOT followed)'
+  ],
+  quickRef:[
+    ['Item','Is it Accounting Policy?','Notes'],
+    ['Stock valuation (Cost or NRV)','✅ YES','Accounting Policy'],
+    ['Stock method (FIFO / Weighted Avg)','✅ YES','Accounting Policy'],
+    ['Investment valuation','✅ YES','Cost or Fair Value, whichever lower'],
+    ['Goodwill amortisation','✅ YES','Life = Accounting Policy'],
+    ['Borrowing cost treatment','✅ YES','Capitalise or Write-off'],
+    ['Foreign exchange treatment','✅ YES','Treatment of rate changes'],
+    ['PPE Valuation','✅ YES','Cost less dep OR Revalued model'],
+    ['Depreciation method','❌ NO (from 2016)','Now called Accounting ESTIMATE'],
+    ['Provision calculation method','❌ NO','Called Accounting Estimate']
+  ],
+  cards:[
+    {topic:'Definition',q:'Accounting Policies kya hain? Define karo AS 1 ke anusar.',a:`<strong>Accounting Policies = "Specific Accounting Principles and Methods applied in Preparation and Presentation of Financial Statements"</strong><br><br>Simple words: Yeh rules hain jo entity apply karta hai apni FS banate waqt.<br><br>Example: Entity values stock at Cost or NRV, whichever lower → This is an Accounting POLICY.`,type:'definition'},
+    {topic:'Important Note',q:'From 2016, Depreciation Methods ko kya kehte hain?',a:`<span class="highlight">IMPORTANT CHANGE FROM 2016:</span><br><br>Depreciation Methods are <strong>NO LONGER called Accounting Policy</strong>.<br><br>They are now called <strong>ACCOUNTING ESTIMATES</strong>.<br><br>Similarly, any method applied to calculate Provision Amount is also an <strong>Accounting Estimate</strong> (not policy).<div class="note">SLM, WDV → These are Estimates, not Policies (post 2016)</div>`,type:'rule'},
+    {topic:'Examples',q:'Accounting Policies ke 6 examples kya hain?',a:`<strong>Examples of Accounting Policies:</strong><ul><li>Stock Valuation Policy (Cost or NRV, whichever lower)</li><li>Stock Valuation Method (FIFO or Weighted Average)</li><li>Valuation of Investments (Cost or Fair Value, whichever lower)</li><li>Goodwill Amortisation Policy (useful life)</li><li>Treatment of Borrowing Cost (Capitalise or Write-off)</li><li>Treatment of Foreign Exchange (rate change treatment)</li><li>Valuation of PPE (Cost less dep OR Revalued)</li></ul>`,type:'example'},
+    {topic:'4 Main Principles',q:'AS 1 ke 4 main principles kaunse hain?',a:`<div class="formula">(A) Disclosure Requirements<br>    – What to disclose about accounting policies<br><br>(B) How to Select Accounting Policies<br>    – Which policy to choose?<br><br>(C) Treatment of Changes in Accounting Policies<br>    – How to deal with policy changes<br><br>(D) Fundamental Accounting Assumptions<br>    – Going Concern, Accrual, Consistency</div><div class="mnemonic-box"><strong>🧠 Mnemonic:</strong> DSCD – Disclose, Select, Change, Default (Fundamental Assumptions)</div>`,type:'rule',mnemonic:'DSCD – Disclose, Select, Change, Default Assumptions'},
+    {topic:'Fundamental Assumptions',q:'3 Fundamental Accounting Assumptions kya hain? Disclosure rule kya hai?',a:`<strong>3 Fundamental Accounting Assumptions:</strong><div class="formula">1. Going Concern<br>2. Accrual Basis<br>3. Consistency</div><br><strong>Disclosure Rule:</strong><br><span class="highlight">If FOLLOWED → No disclosure needed</span><br><span class="highlight">If NOT FOLLOWED → MANDATORY disclosure required</span><div class="note">These are so basic that we assume every entity follows them. Disclosure only when broken!</div>`,type:'rule',mnemonic:'GAC – Going, Accrual, Consistency (GAC mein koi change nahi karo bina bataye!)'},
+    {topic:'Consistency',q:'Accounting Policy mein change kab aur kaise karte hain?',a:`Policy can be changed only if:<div class="formula">1. Required by Statute (law mein change)<br>2. Required by Accounting Standards<br>3. Change results in more appropriate presentation of FS</div><br><strong>If policy is changed:</strong> DISCLOSE<ul><li>Nature of change</li><li>Reason for change</li><li>Quantum of change (monetary impact)</li></ul>`,type:'rule'},
+    {topic:'Disclosure',q:'AS 1 ke under kya kya disclose karna hota hai?',a:`<strong>Disclosure Requirements:</strong><ul><li>All significant accounting policies as a separate note in FS</li><li>Any change in policy must be disclosed with reason and effect</li><li>If fundamental assumption (GC/Accrual/Consistency) is NOT followed → disclose</li></ul><div class="note">Note: From 2016, if depreciation method changes → it is a CHANGE IN ESTIMATE (not policy change) → No retrospective effect; Only prospective</div>`,type:'rule'}
+  ]
+},
+{
+  id:'as2',
+  no:5,
+  title:'AS 2 – Valuation of Inventories',
+  color:'#8b5cf6',
+  subtitle:'Inventory Definition, NRV, Cost Formula, FIFO, Weighted Average',
+  pageRef:'HB.16',
+  summary:`AS 2 applies to all inventories EXCEPT WIP for construction contracts, WIP for service providers, inventory of shares/debentures/bonds, and producer inventory of agriculture/livestock (valued at NRV). Inventories are assets held for sale or in production. Valued at lower of Cost or NRV (item by item, NOT global basis). NRV = Estimated Selling Price less Estimated Selling Expenses. Cost = Cost of Material + Conversion Cost. Cost formulas: FIFO or Weighted Average. LIFO not allowed.`,
+  keyPoints:[
+    'AS 2 Excludes: WIP (construction & service), shares/debentures, agriculture/livestock inventories',
+    'Inventory types: Finished Goods, WIP, Raw Materials',
+    'Valuation Rule: Lower of Cost or NRV (item by item basis – not global)',
+    'Raw Material: Cost only; BUT if finished goods sell below cost → Raw Material at REPLACEMENT PRICE',
+    'NRV = Estimated Selling Price – Estimated Selling Expenses',
+    'Cost Formulas: FIFO or Weighted Average (LIFO prohibited)',
+    'Cost = Material Cost + Conversion Cost (+ Other costs to bring to present location)'
+  ],
+  quickRef:[
+    ['Item','Valuation Rule','Exception'],
+    ['Finished Goods / Stock in Trade','LOWER of Cost or NRV','Item by item, not global'],
+    ['Work in Progress (WIP)','LOWER of Cost or NRV','Item by item'],
+    ['Raw Material','COST only','BUT: if FG sells below cost → Raw Mat at Replacement Price'],
+    ['Agriculture/Livestock Inventory','NRV (Biologically produced)','AS 2 not applicable'],
+    ['Shares/Debentures','Not covered by AS 2','Separate standard'],
+    ['WIP – Construction Contracts','Covered by AS 7','Not AS 2'],
+    ['NRV Formula','Est. SP – Est. Selling Expenses','For WIP: Also less Cost of Completion'],
+    ['Cost Formula','FIFO OR Weighted Average','LIFO = NOT ALLOWED']
+  ],
+  cards:[
+    {topic:'Scope',q:'AS 2 kiske liye applicable hai? Kya exclude hai?',a:`AS 2 applies to all inventories EXCEPT:<div class="formula">❌ WIP for Construction Contracts (→ AS 7)<br>❌ WIP for Service Providers<br>❌ Inventory of Shares, Debentures, Bonds<br>❌ Producer Inventory of Agriculture, Livestock & similar assets<br>   (These valued at NRV – biologically produced, assured sale)</div><div class="note">Trade inventory of agri goods → Apply AS 2 as usual</div>`,type:'rule',mnemonic:'CAS-A excluded: Construction, Accounts(shares), Service, Agriculture'},
+    {topic:'Definition',q:'Inventories kya hain? 3 types batao.',a:`<strong>Inventories are ASSETS:</strong><div class="formula">1. Held for SALE in ordinary course of business (Finished Goods/Stock in Trade)<br>2. In process of PRODUCTION for subsequent sale (WIP)<br>3. Materials & Supplies held for CONSUMPTION in production (Raw Material)</div>`,type:'definition'},
+    {topic:'Valuation Rule',q:'Inventory ki valuation kaise karte hain? Rule kya hai?',a:`<strong>Valuation Rule: LOWER of Cost or NRV</strong><br><br><span class="highlight">Applied on ITEM BY ITEM basis (NOT global basis!)</span><div class="formula">If Cost < NRV → Value at COST<br>If NRV < Cost → Value at NRV (write down)</div><div class="note">Global basis allowed only by special permission. Generally item by item!</div>`,type:'rule',mnemonic:'Lower of Cost or NRV – "LCNRV" – Lower Cost NRV Vahi'},
+    {topic:'Raw Material Exception',q:'Raw Material ki valuation kab replacement price par hoti hai?',a:`<strong>Raw Material Normal Rule: Cost only</strong><br><br><strong>Exception:</strong> If the <span class="highlight">Finished Goods in which raw material is incorporated are to be sold BELOW cost</span>, then:<div class="formula">Raw Material valuation → REPLACEMENT PRICE</div><br>Logic: FG sell hoga loss mein → RM ka cost recover nahi hoga → RM bhi write down karo<div class="note">RM normally cost par hota hai; exception tab jab FG ka NRV &lt; cost</div>`,type:'rule'},
+    {topic:'NRV Calculation',q:'NRV (Net Realisable Value) kaise calculate karte hain?',a:`<strong>NRV ≠ Sale Price or Market Price</strong><br><br><div class="formula">NRV for Finished Goods / Stock in Trade:<br>Estimated Selling Price  XXX<br>(–) Estimated Selling Expenses  XXX<br>= NRV  XXX<br><br>NRV for WIP:<br>Estimated Selling Price  XXX<br>(–) Estimated Selling Expenses  XXX<br>(–) Cost of Completing WIP  XXX<br>= NRV for WIP  XXX</div><br>Selling Expenses examples: Commission on sale, Delivery expenses`,type:'formula'},
+    {topic:'Cost of Material',q:'AS 2 mein Inventory ki Cost kaise calculate karte hain?',a:`<strong>Cost of Material per unit:</strong><div class="formula">Material Purchase Price (after discount, incl. GST)  XXX<br>(–) Tax Credit / Input Tax Credit  XXX<br>(+) Loading/Unloading Cost  XXX<br>(+) Freight and Insurance Cost  XXX<br>(+) Other costs to bring to present location & condition  XXX<br>= Total Material Cost  XXX<br>(÷) Units Purchased less Normal Loss Units<br>= Cost of Material per unit  XXX</div>`,type:'formula'},
+    {topic:'Conversion Cost',q:'Cost of Conversion kya hoti hai? Formula batao.',a:`<div class="formula">Direct Labour Cost per unit  XXX<br>(+) Direct Cost per unit  XXX<br>(+) Production/Factory Overhead (Variable) per unit  XXX<br>(+) Production/Factory Overhead (Fixed) per unit  XXX<br>= Total Cost per unit  XXX</div><div class="note">Fixed overhead allocated based on NORMAL CAPACITY (not actual)</div>`,type:'formula'},
+    {topic:'Cost Formulas',q:'AS 2 mein allowed cost formulas kaunse hain?',a:`<strong>Cost Price Calculation Techniques:</strong><div class="formula">1. Actual Cost Technique (most commonly used)<br>2. Standard Cost Technique<br>3. Retail Price Technique</div><br><strong>Cost Flow Formulas allowed:</strong><br><span class="highlight">✅ FIFO (First In First Out)</span><br><span class="highlight">✅ Weighted Average Method</span><br><span class="highlight">❌ LIFO – NOT ALLOWED as per AS 2!</span>`,type:'rule',mnemonic:'FW allowed; LIFO = Forbidden (Life Impossible For Old method)'}
+  ]
+},
+{
+  id:'as3',
+  no:6,
+  title:'AS 3 – Cash Flow Statements',
+  color:'#ec4899',
+  subtitle:'Operating, Investing, Financing Activities | Direct & Indirect Method',
+  pageRef:'HB.27',
+  summary:`AS 3 requires all companies (EXCEPT One Person Company) to prepare Cash Flow Statement. CFS classifies flows into Operating, Investing, and Financing activities. Cash & Cash Equivalents = Cash in hand + Cash at bank + Marketable Securities (realisable within 3 months). Operating activities can be reported using Direct Method (preferred) or Indirect Method. Interest & Dividend treatment differs for financial institutions.`,
+  keyPoints:[
+    'Mandatory for all companies EXCEPT One Person Company (OPC)',
+    '3 Activities: Operating, Investing, Financing',
+    'Cash & Cash Equivalents includes marketable securities realisable within 3 months',
+    'Operating Activities: Core business cash flows (sales receipts, purchases paid)',
+    'Investing Activities: Fixed assets + Investments (incl. interest income from investments)',
+    'Financing Activities: Share capital, borrowings, dividends paid',
+    'Direct Method: Shows actual receipts and payments (ICAI preferred)',
+    'Indirect Method: Start from PAT/Net Profit; add back non-cash items',
+    'For Banks/FIs: Investments and interest thereon = Operating (not investing)'
+  ],
+  quickRef:[
+    ['Activity','Examples (Inflows)','Examples (Outflows)'],
+    ['Operating','Cash from sales, cash from debtors, advance from customers','Payment to suppliers, salaries, operating expenses'],
+    ['Investing','Sale of fixed assets, sale of investments, interest received on investments','Purchase of fixed assets, purchase of investments'],
+    ['Financing','Issue of shares, debentures, loans taken','Repayment of loans, dividend paid, interest paid on borrowings'],
+    ['Cash Equivalents','Marketable securities realisable within 3 months','Treasury bonds, T-bills, money market funds'],
+    ['Interest Received','Investing (Normal companies); Operating (Banks)','—'],
+    ['Dividend Received','Investing (Normal); Operating (Banks)','—'],
+    ['Interest Paid','Financing (Normal companies)','—'],
+    ['Dividend Paid','Financing activity','—']
+  ],
+  cards:[
+    {topic:'Definition',q:'Cash Flow Statement kya hai? Kise prepare karna hai?',a:`<strong>Cash Flow Statement (AS 3):</strong> Statement specifying flow of Cash and Cash Equivalents during a period.<br><br><strong>Who must prepare:</strong> <span class="highlight">ALL Companies EXCEPT One Person Company (OPC)</span><br><br>Classified into:<div class="formula">1. Cash Flow from Operating Activities<br>2. Cash Flow from Investing Activities<br>3. Cash Flow from Financing Activities</div>`,type:'definition'},
+    {topic:'Cash Equivalents',q:'Cash and Cash Equivalents mein kya include hota hai?',a:`<div class="formula">Cash & Cash Equivalents =<br>Cash in Hand  XXX<br>+ Cash at Bank  XXX<br>+ Marketable Securities  XXX</div><br><strong>Marketable Securities</strong> = Investments which are:<ul><li>Readily realisable within <span class="highlight">3 months</span></li><li>Examples: Treasury Bonds, T-bills, Money Market Funds</li></ul><div class="note">Short-term bank overdraft = part of Cash & Cash Equivalents if repayable on demand!</div>`,type:'definition'},
+    {topic:'Operating Activities',q:'Operating Activities kya hoti hain? Examples do.',a:`<strong>Operating Activities = Core Business Activities</strong><br><br><strong>INFLOWS (Receipts):</strong><ul><li>Cash from customers (sales)</li><li>Cash received from debtors</li><li>Advance from customers</li></ul><strong>OUTFLOWS (Payments):</strong><ul><li>Payment to suppliers</li><li>Payment to employees (salaries)</li><li>Other operating expenses</li></ul><div class="note">For Banks & FIs: Investments & interest on them = OPERATING (not investing)</div>`,type:'definition'},
+    {topic:'Investing Activities',q:'Investing Activities kya hoti hain?',a:`<strong>Investing = Flow from Fixed Assets & Investments</strong><br><br><strong>INFLOWS:</strong><ul><li>Sale of fixed assets</li><li>Sale of investments</li><li>Interest income from investments</li><li>Dividend received from investments</li></ul><strong>OUTFLOWS:</strong><ul><li>Purchase of fixed assets</li><li>Purchase of investments</li></ul><div class="note">For Banks/FIs → investments are operating items!</div>`,type:'definition'},
+    {topic:'Financing Activities',q:'Financing Activities mein kya aata hai?',a:`<strong>Financing = Changes in capital structure / borrowings</strong><br><br><strong>INFLOWS:</strong><ul><li>Issue of equity shares</li><li>Issue of debentures/bonds</li><li>Loans taken (from banks, institutions)</li></ul><strong>OUTFLOWS:</strong><ul><li>Repayment of loans</li><li>Dividend paid (to shareholders)</li><li>Interest paid on borrowings</li><li>Buyback of shares</li></ul>`,type:'definition'},
+    {topic:'Direct vs Indirect',q:'Cash Flow Statement ke Direct aur Indirect method mein kya fark hai?',a:`<strong>DIRECT METHOD (Preferred by ICAI):</strong><div class="formula">Cash received from customers  XXX<br>Less: Cash paid to suppliers  (XXX)<br>Less: Cash paid to employees  (XXX)<br>Less: Other operating payments  (XXX)<br>= Net Operating Cash Flow  XXX</div><br><strong>INDIRECT METHOD (Common in practice):</strong><div class="formula">Net Profit / PAT  XXX<br>Add: Non-cash charges (Depreciation, Amortisation)  XXX<br>Add/Less: Working capital changes  XXX<br>= Net Operating Cash Flow  XXX</div>`,type:'rule',mnemonic:'Direct = Actual receipts/payments; Indirect = Start from Profit'},
+    {topic:'Non-Cash Items',q:'Indirect method mein PAT se kya add back karte hain?',a:`<strong>Non-Cash Items to ADD BACK to PAT:</strong><div class="formula">Depreciation & Amortisation  XXX<br>Loss on Sale of Fixed Assets  XXX<br>Provisions created  XXX<br>Amortisation of goodwill  XXX<br>Interest expense (if shown below PAT)  XXX</div><br><strong>Working Capital Adjustments:</strong><div class="formula">Increase in Current Liabilities → ADD<br>Decrease in Current Liabilities → DEDUCT<br>Increase in Current Assets → DEDUCT<br>Decrease in Current Assets → ADD</div>`,type:'formula'},
+    {topic:'Usefulness',q:'CFS kyun prepare karte hain? Uski usefulness kya hai?',a:`<strong>Cash Flow Statement is useful for:</strong><ul><li>Understanding main sources of <span class="highlight">Inflows and Outflows</span> of Cash</li><li>Analysing cash management policies of entity</li><li>Business valuation information</li><li>Identifying <strong>Overtrading / Undertrading</strong> in entity</li><li>Better comparison between entities</li><li>Improvement in budgeting</li></ul>`,type:'rule'}
+  ]
+},
+{
+  id:'as7',
+  no:7,
+  title:'AS 7 – Construction Contracts',
+  color:'#f59e0b',
+  subtitle:'Percentage of Completion Method, Contract Revenue, Contract Cost',
+  pageRef:'HB.58',
+  summary:`AS 7 applies to long-term construction contracts. Revenue and cost recognised using PERCENTAGE OF COMPLETION METHOD. Contract Revenue includes initial price + variations + claims + escalation + incentives. Contract Cost = Direct Cost + Indirect Cost + Allocated Cost. Degree of Completion = Cost Incurred to date ÷ (Cost incurred + Future estimated cost) × 100. Expected loss on contract = recognise IMMEDIATELY in full.`,
+  keyPoints:[
+    'Method: Percentage of Completion (PoC) method',
+    'Contract Revenue = Initial Price + Variations/Claims/Escalation/Incentives',
+    'Contract Cost = Direct Cost + Indirect Cost (allocated)',
+    'Degree of Completion = Cumulative Cost Incurred ÷ (Cumulative Cost + Future Cost) × 100',
+    'Revenue to recognise = DoC × Total Contract Revenue – Revenue already recognised',
+    'Expected Loss on contract = Recognise IMMEDIATELY (conservatism)',
+    'Variation/claim recognised only if measurable reliably AND realisation is certain'
+  ],
+  quickRef:[
+    ['Item','Formula/Rule'],
+    ['Contract Revenue','Initial Price + Variations + Claims + Escalation + Incentives'],
+    ['Contract Cost','Direct Cost + Indirect Cost on Contract + Allocated Cost'],
+    ['Direct Cost','Material consumed (op.stock+purchases-cl.stock), Labour, Other direct exp'],
+    ['Indirect Cost on Contract','Supervisor cost, Depreciation of machine on site, Subcontract cost, Hire charges'],
+    ['Allocated Cost','Insurance, Admin overhead allocated to contract'],
+    ['Degree of Completion','Cumulative Cost Incurred ÷ (Cum. Cost + Future Estimated Cost) × 100'],
+    ['Revenue for year','DoC × Total Revenue – Revenue recognised in prior years'],
+    ['Expected Loss','Recognise IMMEDIATELY in full regardless of DoC'],
+    ['Incentives','Recognised if in sufficient advanced stage and standard likely to be met']
+  ],
+  cards:[
+    {topic:'Scope',q:'AS 7 kab apply hota hai?',a:`AS 7 applies to <strong>Construction Contracts</strong> – long-term contracts for construction of assets.<br><br>Examples: Construction of building, road, bridge, ship, complex manufacturing.<br><br>Method used: <span class="highlight">PERCENTAGE OF COMPLETION (PoC) METHOD</span><div class="note">Short contracts where start & completion in same year → Different treatment possible</div>`,type:'definition'},
+    {topic:'Contract Revenue',q:'Contract Revenue mein kya include hota hai?',a:`<div class="formula">Contract Revenue =<br>Initial Contract Price  XXX<br>(+) Variations  XXX<br>(+) Claims  XXX<br>(+) Escalation  XXX<br>(+) Incentives  XXX<br>= Total Contract Revenue  XXX</div><br><strong>NOTE:</strong> Variations/Claims/Escalation/Incentives recognised ONLY IF:<ul><li>Can be measured reliably AND</li><li>Realisation is certain (approved by other party)</li></ul><br><strong>Incentives</strong> recognised if contract is in sufficiently advanced stage making it probable that standard will be met or exceeded.`,type:'formula'},
+    {topic:'Contract Cost',q:'Contract Cost mein kya include hota hai?',a:`<div class="formula">CONTRACT COST =<br>(a) Direct Cost on Contract:<br>   • Material Consumed (Opening Stock + Purchases – Closing Stock)<br>   • Labour Expenses incurred (paid or not)<br>   • Other direct expenses (design etc.)<br><br>(b) Indirect Cost on Contract:<br>   • Supervisor Cost<br>   • Depreciation of Machine on site<br>   • Subcontract costs<br>   • Hire charges of machine used at site<br><br>(c) Allocated Cost:<br>   • Insurance allocated to contract<br>   • Admin overhead allocated</div>`,type:'formula'},
+    {topic:'Degree of Completion',q:'Degree of Completion (DoC) kaise calculate karte hain?',a:`<div class="formula">Degree of Completion (%) =<br><br>Cost Incurred on CUMULATIVE basis<br>────────────────────────────────── × 100<br>Cost Incurred (Cumulative) + Future Estimated Cost</div><br><span class="highlight">CUMULATIVE</span> = Cost incurred from Beginning of Contract till this date<br><br>Note: Do NOT adjust escalation in Future Estimated Cost since it is already estimated after considering escalations.`,type:'formula'},
+    {topic:'Revenue Recognition',q:'PoC method mein current year revenue kaise calculate karte hain?',a:`<div class="formula">Step 1: Calculate Degree of Completion<br>Step 2: Revenue to be recognised CUMULATIVELY = DoC × Total Contract Revenue<br>Step 3: Revenue for CURRENT YEAR = Cumulative Revenue – Revenue already recognised (prior years)</div><br>Example: DoC = 60%, Contract Revenue = ₹100L<br>→ Cumulative Revenue = 60L<br>→ If prior year recognised ₹25L → Current year = ₹35L`,type:'formula'},
+    {topic:'Expected Loss',q:'Construction Contract mein expected loss ka treatment kya hai?',a:`<strong>EXPECTED LOSS ON CONTRACT:</strong><br><br>If total contract cost is expected to EXCEED total contract revenue → LOSS is expected.<br><br><span class="highlight">Recognise the ENTIRE expected loss IMMEDIATELY</span> in the year it becomes known.<br><br>This is based on PRUDENCE (conservatism) concept – do not delay recognising losses.<div class="note">Conservatism principle: Losses – recognise immediately; Profits – recognise gradually as earned</div>`,type:'rule',mnemonic:'Loss – Aaj hi dalo! Profit – Dheere dheere as earned'}
+  ]
+},
+{
+  id:'as9',
+  no:8,
+  title:'AS 9 – Revenue Recognition',
+  color:'#3b82f6',
+  subtitle:'Sale of Goods, Services, Interest, Dividend, Royalty',
+  pageRef:'HB.62',
+  summary:`AS 9 deals with recognition of revenue from Sale of Goods, Rendering of Services, Interest/Dividend/Royalty. Revenue from sale of goods recognised when significant risks and rewards transferred. Services: Percentage of Completion or Completed Service method. Interest: Time basis. Dividend: When right to receive declared. Royalty: As per agreement terms.`,
+  keyPoints:[
+    'Revenue from sale of goods: Recognise when significant risks & rewards transferred to buyer',
+    'Sale Returns: Deduct from revenue if certain; otherwise provision',
+    'Revenue from services: Recognised using PoC method OR Completed Service method',
+    'PoC for services: Applied when service requires substantial time (Tuition fee, Insurance income)',
+    'Completed Service: Applied in all other cases (Advertisement, Advisory, Insurance commission)',
+    'Interest revenue: Time basis (time elapses)',
+    'Dividend revenue: Right to receive exists (i.e., dividend declared)',
+    'Royalty revenue: As per conditions of agreement'
+  ],
+  quickRef:[
+    ['Source','Recognition Condition'],
+    ['Sale of Goods','Significant risks & rewards transferred; no effective control retained; reliable measurement; economic benefits probable; costs reliably measurable'],
+    ['Services (substantial time)','Percentage of Completion method'],
+    ['Services (others)','Completed Service method'],
+    ['Interest','On time basis (as time elapses)'],
+    ['Dividend','When right to receive exists (dividend declared by company)'],
+    ['Royalty','When conditions of agreement satisfied'],
+    ['Claims (wrong delivery/price increase)','Recognise as revenue when certainty of collection exists']
+  ],
+  cards:[
+    {topic:'Goods',q:'Sale of Goods se revenue kab recognise karte hain?',a:`Revenue from sale of goods recognised when ALL of following:<div class="formula">1. Significant Risks & Rewards of ownership transferred to buyer<br>2. Entity has NO effective control over goods<br>3. Revenue can be RELIABLY MEASURED<br>4. Economic benefits are PROBABLE to flow<br>5. COSTS related to transaction can be reliably measured</div>`,type:'rule'},
+    {topic:'Services – Methods',q:'Services mein revenue recognition ke kaunse 2 methods hain?',a:`<strong>Method 1: Percentage of Completion Method</strong><br>Applied when service requires <span class="highlight">substantial time</span><br>Examples: Tuition fee, Insurance income for insurance company<br><br><strong>Method 2: Completed Service Method</strong><br>Applied in ALL OTHER cases<br>Examples:<ul><li>Advertisement in Magazine, TV, Google</li><li>Advisory of Advocate, CA, Doctor</li><li>Insurance commission for agents</li></ul><div class="note">No uncertainty regarding consideration AND services rendered = Revenue recognised</div>`,type:'rule'},
+    {topic:'Interest/Dividend/Royalty',q:'Interest, Dividend aur Royalty ka revenue kab recognise karte hain?',a:`<strong>Conditions for all three: No uncertainty regarding consideration AND ultimate collection</strong><br><br><div class="formula">INTEREST: Recognised on TIME BASIS<br>           (Time has elapsed = revenue accrued)<br><br>DIVIDEND: Recognised when RIGHT TO RECEIVE exists<br>           (Right exists when dividend DECLARED)<br>           NOTE: In case of dividend → Right exists when dividend declared by company<br><br>ROYALTY: Recognised when CONDITIONS OF AGREEMENT are satisfied<br>           (Based on agreement terms)</div>`,type:'rule',mnemonic:'Interest=Time elapses; Dividend=Declared; Royalty=Agreement conditions'},
+    {topic:'Claims',q:'AS 9 mein Claims ka treatment kya hai?',a:`Claims arising due to:<ul><li>(A) Mistake / delayed payment</li><li>(B) Increase in price with retrospective effect</li></ul><br><strong>Treatment:</strong> Record as Revenue ONLY when <span class="highlight">certainty of collection EXISTS</span>.<div class="note">Claims tab tak revenue nahi jab tak collection certain na ho</div>`,type:'rule'}
+  ]
+},
+{
+  id:'as10',
+  no:9,
+  title:'AS 10 – Property, Plant & Equipment (PPE)',
+  color:'#10b981',
+  subtitle:'Recognition, Initial Measurement, Subsequent Costs, Depreciation, Derecognition',
+  pageRef:'HB.65',
+  summary:`AS 10 applies to tangible fixed assets (PPE). Recognition when probable future economic benefits flow AND cost measurable reliably. Initial measurement at COST. Subsequent measurement: Cost Model (Cost less Accumulated Depreciation) or Revaluation Model. Depreciation charged over useful life. Component accounting: Each significant part depreciated separately. Derecognition when disposed or no future benefits expected.`,
+  keyPoints:[
+    'Recognition: Probable future economic benefits + Reliably measurable cost',
+    'Enabler Assets (Roads, bridges, railways) also recognised even if no direct benefit',
+    'Initial Cost = Purchase Price + Attributable Costs – Trade Discount',
+    'Subsequent Models: Cost Model OR Revaluation Model',
+    'Component accounting: Significant parts with different useful lives → separate depreciation',
+    'Depreciation method: SLM, WDV, Units of Production (change = change in estimate)',
+    'Spare parts: Capital spares recognised as PPE; others as inventory',
+    'Derecognition: On disposal/no future benefit; Gain/Loss to P&L'
+  ],
+  quickRef:[
+    ['Cost Component','Include?'],
+    ['Purchase price (after trade discount)','✅ YES'],
+    ['Import duties, non-refundable taxes','✅ YES'],
+    ['Freight, insurance to bring to site','✅ YES'],
+    ['Installation and assembly costs','✅ YES'],
+    ['Professional fees (architect, engineer)','✅ YES'],
+    ['Borrowing costs (if QA)','✅ YES (AS 16)'],
+    ['General admin overhead','❌ NO'],
+    ['Training costs for employees','❌ NO'],
+    ['Selling and distribution costs','❌ NO'],
+    ['Abnormal waste/losses','❌ NO']
+  ],
+  cards:[
+    {topic:'Recognition',q:'PPE recognition ki 2 conditions kya hain?',a:`PPE should be recognised in books of accounts ONLY IF <strong>BOTH</strong> conditions satisfied:<div class="formula">(i) It is PROBABLE that future economic benefits associated<br>    with asset will flow to entity<br>                    AND<br>(ii) Its COST can be RELIABLY MEASURED</div><br><div class="note"><strong>Enabler Assets:</strong> Assets that enable other assets to provide benefits (Roads, Bridges, Railway sidings) are also recognised even if they don't provide direct economic benefits.</div>`,type:'rule'},
+    {topic:'Initial Measurement',q:'PPE ki initial cost mein kya include hota hai?',a:`<strong>Initial Cost of PPE:</strong><div class="formula">Purchase Price (after trade discount)  XXX<br>(+) Import duties & non-refundable taxes  XXX<br>(+) Freight, insurance to bring to site  XXX<br>(+) Installation & assembly  XXX<br>(+) Professional fees (architect, engineer)  XXX<br>(+) Estimated dismantling cost (if obligated)  XXX<br>(+) Borrowing costs if QA (AS 16)  XXX<br>= COST of PPE  XXX</div><br>NOT included: General admin, training costs, selling costs, abnormal losses`,type:'formula'},
+    {topic:'Subsequent Costs',q:'PPE ke subsequent expenditure ka treatment kya hai?',a:`<strong>Two options for subsequent measurement:</strong><br><br><strong>Cost Model:</strong> PPE carried at Cost less Accumulated Depreciation less Impairment<br><br><strong>Revaluation Model:</strong> PPE revalued at fair value; Revaluation surplus goes to OCI<div class="formula">If value increases: Dr PPE / Cr Revaluation Reserve<br>If value decreases: Dr P&L (to extent no prior surplus) / Cr PPE</div><br><strong>Subsequent expenditure capitalised</strong> if it increases future economic benefits beyond original; otherwise expense.`,type:'rule'},
+    {topic:'Depreciation',q:'Depreciation ke baare mein AS 10 kya kehta hai?',a:`<strong>Depreciation:</strong> Systematic allocation of depreciable amount over useful life<br><br><strong>Methods allowed:</strong><div class="formula">1. Straight Line Method (SLM)<br>2. Written Down Value (WDV)<br>3. Units of Production Method</div><br><strong>Change in Method:</strong> Treated as CHANGE IN ESTIMATE (prospective; no retrospective)<br><br><strong>Component Accounting:</strong> If PPE has significant parts with different useful lives → Each part depreciated SEPARATELY.<div class="note">From AS 10: Depreciation method = Accounting Estimate (not policy)</div>`,type:'rule'},
+    {topic:'Derecognition',q:'PPE ko derecognise kab karte hain? Gain/Loss ka treatment?',a:`<strong>PPE Derecognised when:</strong><ul><li>Disposed of (sold, scrapped)</li><li>No future economic benefits expected</li></ul><br><div class="formula">Gain/Loss = Net Sale Proceeds – Carrying Amount (Book Value)</div><br><strong>Treatment of Gain/Loss:</strong> Recognise in <span class="highlight">Profit & Loss Statement</span><br><div class="note">NOT classified as revenue (disclosed separately in P&L)</div>`,type:'rule'}
+  ]
+},
+{
+  id:'as11',
+  no:10,
+  title:'AS 11 – Effects of Changes in Foreign Exchange Rates',
+  color:'#ef4444',
+  subtitle:'Monetary/Non-monetary Items, Transaction Date, Closing Rate, Exchange Differences',
+  pageRef:'HB.76',
+  summary:`AS 11 deals with how to account for foreign currency transactions and how to translate financial statements of foreign operations. Key distinction: Monetary vs Non-monetary items. Monetary items translated at CLOSING RATE; Exchange differences on monetary items go to P&L. Non-monetary items stay at TRANSACTION DATE rate. Foreign operations (integral vs non-integral) have different translation rules.`,
+  keyPoints:[
+    'Monetary Items (debtors, creditors, loans) → Translate at CLOSING RATE; Exchange diff → P&L',
+    'Non-Monetary Items (PPE, inventory) → Translate at TRANSACTION DATE rate; No remeasurement',
+    'Initial recognition: All transactions at TRANSACTION DATE exchange rate',
+    'Exchange Differences: Generally to P&L (few exceptions allowed)',
+    'For QA assets: Exchange diff can be added to/deducted from cost of asset (Option)',
+    'Integral Foreign Operation: Translate as if branch of parent (transaction rate/closing rate)',
+    'Non-integral Foreign Operation: Translate at CLOSING RATE; exchange diff → FCTR (Equity)'
+  ],
+  quickRef:[
+    ['Item Type','Translation Rate','Exchange Difference'],
+    ['Monetary – Debtors, Creditors, Loans','CLOSING RATE','→ P&L (as gain/loss)'],
+    ['Non-Monetary at Historical Cost (PPE, Inventory)','TRANSACTION DATE rate','No exchange diff'],
+    ['Non-Monetary at Fair Value (Investments at FV)','Rate when FV determined','Part of FV change'],
+    ['Initial Recognition (all items)','TRANSACTION DATE rate','N/A'],
+    ['Integral Foreign Operation – Monetary','Closing Rate','→ P&L'],
+    ['Integral Foreign Operation – Non-Monetary','Transaction Date / Historical Rate','No exchange diff'],
+    ['Non-Integral Foreign Operation – All items','Closing Rate (assets/liabilities)','→ FCTR (OCI/Equity)']
+  ],
+  cards:[
+    {topic:'Monetary vs Non-Monetary',q:'Monetary aur Non-Monetary items kaise differentiate karte hain?',a:`<strong>MONETARY ITEMS:</strong> Items with a fixed or determinable amount of money<ul><li>Trade Debtors, Creditors</li><li>Loans receivable/payable</li><li>Cash & Bank balances</li><li>Bank overdraft</li></ul><strong>NON-MONETARY ITEMS:</strong> Items without fixed money amount<ul><li>PPE (Property, Plant & Equipment)</li><li>Inventory</li><li>Goodwill, Intangible Assets</li><li>Prepaid expenses</li></ul>`,type:'definition',mnemonic:'Monetary = Fixed money value (debtors/creditors/loans); Non-monetary = PPE/Inventory'},
+    {topic:'Translation Rules',q:'Foreign currency items ko translate karne ka rule kya hai?',a:`<div class="formula">MONETARY ITEMS:<br>At CLOSING RATE (reporting date rate)<br>Exchange Difference → P&L<br><br>NON-MONETARY at Historical Cost:<br>At TRANSACTION DATE RATE<br>No re-measurement = No exchange difference<br><br>NON-MONETARY at Fair Value:<br>At Rate when Fair Value determined<br>Exchange diff = part of FV change</div>`,type:'rule'},
+    {topic:'Initial Recognition',q:'Foreign currency transaction ko initially kaise record karte hain?',a:`On initial recognition:<br><br><span class="highlight">Record at TRANSACTION DATE exchange rate</span><br><br>Transaction Date = Date when transaction qualifies for recognition as per AS<br><br>Example: Purchased machinery worth USD 10,000 on 1 Jan at rate ₹83/$ → Record at ₹8,30,000<div class="note">Later: Monetary item (loan) → remeasure at closing rate; Non-monetary (machinery) → stays at ₹8,30,000</div>`,type:'rule'},
+    {topic:'Exchange Differences',q:'Exchange differences ka treatment kya hai?',a:`<strong>General Rule:</strong> Exchange differences on monetary items → <span class="highlight">P&L as gain/loss</span><br><br><strong>Exception (QA – Qualifying Asset option):</strong><br>Exchange difference related to foreign currency borrowings for acquiring QA → Can be CAPITALISED (added to cost of QA) upto amount that corrects for interest rate differential.<div class="note">This option is being phased out; generally take exchange diff to P&L</div>`,type:'rule'}
+  ]
+},
+{
+  id:'as12',
+  no:11,
+  title:'AS 12 – Accounting for Government Grants',
+  color:'#8b5cf6',
+  subtitle:'Types of Grants, Conditions, Recognition, Presentation, Refund',
+  pageRef:'HB.80',
+  summary:`Government grants are recognised when there is reasonable assurance (i) entity will comply with conditions AND (ii) grant will be received. Grants related to assets (Capital Grants): Deduct from asset cost OR recognise as Deferred Income. Grants related to income (Revenue Grants): Recognise in P&L in the same period as related expense. Grants received before conditions met = treat as LIABILITY (deferred income). If grant refunded = treat as change in estimate.`,
+  keyPoints:[
+    'Recognition: Reasonable assurance of compliance AND receipt of grant',
+    'Do NOT recognise grants on cash basis (receipt alone is not enough)',
+    'Asset-related Grants: Deduct from cost of asset OR Deferred Income approach',
+    'Revenue/Income Grants: Recognise in P&L matching with related expense period',
+    'Non-monetary grants (asset given at concessional rate): Recognise at fair value of asset',
+    'Refund of grant: Treat as change in accounting estimate; adjust carrying amount',
+    'Contingencies related to grants: Disclose as per AS 29'
+  ],
+  quickRef:[
+    ['Type of Grant','Treatment Option 1','Treatment Option 2'],
+    ['Asset-related (Capital) Grant','Deduct from COST of Asset; Depreciate on reduced cost','Deferred Income; release to P&L over asset life'],
+    ['Revenue/Income Grant','Recognise in P&L in period of related expense','Cannot defer if related expense already recognised'],
+    ['Grant for immediate expense','P&L immediately in same period','—'],
+    ['Grant received before conditions met','LIABILITY (Deferred Grant)','Recognise in P&L only when conditions met'],
+    ['Non-monetary grant (free asset)','Fair Value of Asset = Grant amount','Both asset and grant at nominal amount (option)'],
+    ['Grant Refund','Adjust carrying amount of asset / P&L','Remaining deferred balance also adjusted']
+  ],
+  cards:[
+    {topic:'Recognition',q:'Government Grant ko kab recognise karte hain?',a:`Grant recognised when there is <strong>REASONABLE ASSURANCE</strong> of both:<div class="formula">(i) Entity will COMPLY with conditions attached to grant<br>AND<br>(ii) Grant WILL BE RECEIVED (or has been received)</div><br><span class="highlight">NOT on cash basis!</span> Mere receipt of grant ≠ automatic recognition.<br><div class="note">If conditions not yet met → Grant = LIABILITY (Deferred Income in Balance Sheet)</div>`,type:'rule'},
+    {topic:'Asset Grant',q:'Capital / Asset-related Government Grant ka treatment kya hai?',a:`<strong>Two Options for Asset-Related Grants:</strong><br><br><strong>Option 1: Deduct from Asset Cost</strong><div class="formula">Machinery cost = ₹10L; Grant = ₹2L<br>Carrying amount = ₹8L<br>Depreciate on ₹8L (reduced cost)</div><br><strong>Option 2: Deferred Income Method</strong><div class="formula">Recognise grant as Deferred Income (liability)<br>Release to P&L over the useful life of asset<br>(Same ratio as depreciation)</div>`,type:'rule'},
+    {topic:'Revenue Grant',q:'Revenue/Income Grants ka treatment kya hai?',a:`<strong>Revenue Grants = Recognise in P&L</strong> in the same period as the related expense.<br><br>Principle: MATCHING – Grant recognised when corresponding expense recognised.<br><br>Examples:<ul><li>Export subsidy → P&L in year of export</li><li>Grant to cover specific loss → P&L in year of loss</li><li>Grant for general support → P&L immediately</li></ul>`,type:'rule',mnemonic:'Revenue Grant = Match karo related expense se – Same period!'},
+    {topic:'Non-monetary Grants',q:'Non-monetary grants (free assets) ka treatment?',a:`When government gives an asset for free or at concessional price:<br><br><strong>Treatment:</strong> Recognise asset at <span class="highlight">FAIR VALUE</span> of the asset received.<br><div class="formula">Dr. Asset (Fair Value)  XXX<br>Cr. Government Grant/Deferred Income  XXX</div><br>Alternative: Both asset and grant recognised at nominal value (₹1) – rarely used.<div class="note">Fair value approach is preferred and more common</div>`,type:'rule'},
+    {topic:'Grant Refund',q:'Government Grant refund karna pade to treatment kya hai?',a:`If government grant must be REFUNDED:<br><br><strong>For Asset Grants:</strong><div class="formula">Increase carrying amount of asset by refund<br>Increase depreciation going forward<br>Any unamortised deferred income also adjusted</div><br><strong>For Revenue Grants:</strong><div class="formula">Recognise refund amount as expense in P&L<br>Adjust any remaining deferred income</div>Treat as <strong>Change in Accounting Estimate</strong> – prospective effect only.`,type:'rule'}
+  ]
+},
+{
+  id:'as16',
+  no:12,
+  title:'AS 16 – Borrowing Costs',
+  color:'#ec4899',
+  subtitle:'Qualifying Assets, Capitalisation, Commencement/Suspension/Cessation',
+  pageRef:'HB.89',
+  summary:`AS 16 requires borrowing costs directly attributable to acquisition/construction/production of Qualifying Assets (QA) to be CAPITALISED. All other borrowing costs → P&L expense. QA = Asset that normally takes substantial period (≥12 months) to get ready. Capitalisation commences when expenditure incurred + borrowing cost incurred + activities started. Suspended during extended interruption. Ceases when substantially ready for use.`,
+  keyPoints:[
+    'Qualifying Asset (QA) = Takes substantial time (generally ≥12 months) to get ready for intended use',
+    'Borrowing costs directly attributable to QA → CAPITALISE',
+    'All other borrowing costs → P&L as expense',
+    'QA Examples: Buildings under construction, Dams, Airports, Ships, Aircraft, Stocks (wines)',
+    'NOT QA: Normal plant/machinery, vehicles, working capital, investments, intangibles (technical knowhow)',
+    'Commencement of capitalisation: Expenditure + Borrowing cost + Activities all incurred',
+    'Suspension: Extended interruption of work',
+    'Cessation: When substantially all activities complete'
+  ],
+  quickRef:[
+    ['Item','Qualifying Asset (QA)?'],
+    ['Modernisation & Renovation of Plant & Machinery (incl. advances paid)','✅ YES – QA'],
+    ['Construction of Building, Road, Dam, Airport (incl. advances)','✅ YES – QA'],
+    ['Stocks taking substantial period to manufacture (e.g., Wines)','✅ YES – QA'],
+    ['Normal Plant & Machinery (normal purchase)','❌ NOT QA'],
+    ['Vehicles','❌ NOT QA'],
+    ['Working Capital','❌ NOT QA'],
+    ['Investment in Shares/Debentures','❌ NOT QA'],
+    ['Intangible Assets (Technical Knowhow)','❌ NOT QA'],
+    ['Tools, Equipment (advances)','❌ NOT QA']
+  ],
+  cards:[
+    {topic:'Definition',q:'Qualifying Asset (QA) kya hai? Define karo.',a:`<strong>Qualifying Asset (QA)</strong> = An asset that <span class="highlight">NORMALLY takes a substantial period of time to get ready for its intended use or sale</span>.<br><br>Generally, <strong>12 months or more</strong> is considered substantial period, unless lower period can be justified.<br><br>If lower period can be justified, then take substantial period as less than 12 months.`,type:'definition',mnemonic:'QA = Qualifying = 12+ months lagta hai ready hone mein'},
+    {topic:'Treatment',q:'Borrowing costs ka treatment kya hai?',a:`<div class="formula">DIRECTLY ATTRIBUTABLE BORROWING COSTS for QA<br>→ CAPITALISE (add to cost of asset)<br><br>ALL OTHER BORROWING COSTS<br>→ EXPENSE (P&L charge)</div><br><strong>Borrowing Costs include:</strong><ul><li>Interest on loans, debentures, bonds</li><li>Amortisation of discount/premium on borrowings</li><li>Finance charges on finance leases</li><li>Exchange differences on foreign currency borrowings (to extent of interest correction)</li></ul>`,type:'rule'},
+    {topic:'QA Examples',q:'QA aur Non-QA ke examples batao.',a:`<div class="formula">QUALIFYING ASSETS (QA):<br>✅ Modernisation & Renovation of P&M (incl. advances)<br>✅ Construction of Building/Road/Dam/Airport/Ships/Aircraft (incl. advances)<br>✅ Stocks taking substantial time (Wines, Whiskey)<br><br>NOT QUALIFYING ASSETS:<br>❌ Normal Plant & Machinery<br>❌ Vehicles<br>❌ Working Capital<br>❌ Investment in Shares/Debentures<br>❌ Intangible Assets (Technical Knowhow)<br>❌ Other Stocks<br>❌ Tools, Equipment</div>`,type:'example',mnemonic:'QA = Construction types + Renovation + Long-manufacturing stocks'},
+    {topic:'Capitalisation Rules',q:'Capitalisation kab shuru, suspend aur band karte hain?',a:`<strong>COMMENCEMENT:</strong> All three must be present:<div class="formula">1. Expenditure on asset being incurred<br>2. Borrowing costs being incurred<br>3. Activities necessary to prepare asset are in progress</div><br><strong>SUSPENSION:</strong> Capitalisation suspended during extended periods when development is interrupted (not during technical/administrative delays)<br><br><strong>CESSATION:</strong> When all activities necessary to prepare asset for intended use are <span class="highlight">SUBSTANTIALLY COMPLETE</span>`,type:'rule',mnemonic:'Start: Exp+BC+Activities; Pause: Extended interruption; Stop: Substantially complete'},
+    {topic:'Specific vs General',q:'Specific borrowing aur General borrowing ka treatment kya hai?',a:`<strong>Specific Borrowings:</strong> Taken specifically for QA<div class="formula">Capitalise = Actual Borrowing Cost incurred – Income earned on temporary investment of surplus funds</div><br><strong>General Borrowings:</strong> Taken for general purposes<div class="formula">Capitalisation Rate = Total Borrowing Cost of General Borrowings ÷ Weighted Average General Borrowings Outstanding<br><br>Amount to Capitalise = Capitalisation Rate × Average expenditure on QA from general borrowings</div>`,type:'formula'}
+  ]
+},
+{
+  id:'as17',
+  no:13,
+  title:'AS 17 – Segment Reporting',
+  color:'#f59e0b',
+  subtitle:'Business Segments, Geographical Segments, Primary/Secondary, Reportable Segments',
+  pageRef:'HB.94',
+  summary:`AS 17 applies to entities that have multiple business segments or geographical segments. Segments help users understand performance of different parts of entity. Primary vs Secondary segments based on where risks and rewards mainly originate. Reportable segments: those that meet 10% threshold criteria. Disclosure includes segment revenue, segment result, segment assets, segment liabilities, capital expenditure, depreciation.`,
+  keyPoints:[
+    'Applicable to: Listed companies, Banks, Companies with turnover > ₹50 crore',
+    'Business Segment = Group of related products/services with similar risk-return profile',
+    'Geographical Segment = Operations in a particular economic environment',
+    'Primary Segment = Segment with higher risk & returns (determines main reporting format)',
+    'Reportable Segment if any ONE of: Revenue ≥ 10%, Result ≥ 10%, Assets ≥ 10%',
+    'Minimum: 75% of total revenue must be covered by reportable segments',
+    'Segment disclosures: Revenue, Result (profit/loss), Assets, Liabilities, CapEx, Depreciation'
+  ],
+  quickRef:[
+    ['Disclosure Item','Primary Segment','Secondary Segment'],
+    ['Segment Revenue','✅ Detailed','✅ Required'],
+    ['Segment Result (Profit/Loss)','✅ Detailed','❌ Not required'],
+    ['Segment Assets','✅ Detailed','✅ Required'],
+    ['Segment Liabilities','✅ Detailed','❌ Not required'],
+    ['Capital Expenditure','✅ Detailed','✅ Required'],
+    ['Depreciation','✅ Detailed','❌ Not required'],
+    ['Reportable Threshold','Revenue ≥ 10% OR Result ≥ 10% OR Assets ≥ 10%','—'],
+    ['75% Rule','Total of reportable segments must cover ≥ 75% of total revenue','—']
+  ],
+  cards:[
+    {topic:'Definition',q:'Business Segment aur Geographical Segment kya hai?',a:`<strong>Business Segment:</strong> A distinguishable component of an entity engaged in providing related products/services, with risks and returns different from other segments.<br><br><strong>Geographical Segment:</strong> A distinguishable component engaged in operations within a particular economic environment, with different risks and returns from other economic environments.<div class="note">Kaunsa Primary hai? → Jahan se entity ke main risks aur returns arise karte hain</div>`,type:'definition'},
+    {topic:'Reportable Segments',q:'Reportable Segment kaise identify karte hain? 10% Rule kya hai?',a:`A segment is REPORTABLE if it meets ANY ONE of:<div class="formula">1. Segment REVENUE ≥ 10% of total revenue of all segments<br>OR<br>2. Segment RESULT (profit/loss) ≥ 10% of combined result<br>OR<br>3. Segment ASSETS ≥ 10% of total assets of all segments</div><br><strong>75% Rule:</strong> Total revenue of all reportable segments ≥ 75% of entity's total revenue. If not, add more segments.`,type:'rule',mnemonic:'10-10-10 Rule: Revenue, Result, Assets – ek bhi 10% se zyada → Reportable!'},
+    {topic:'Disclosures',q:'Segment Reporting mein kya kya disclose karna hota hai?',a:`<strong>Primary Segment Disclosures:</strong><ul><li>Segment Revenue (external + inter-segment)</li><li>Segment Result (profit/loss)</li><li>Segment Assets</li><li>Segment Liabilities</li><li>Capital Expenditure</li><li>Depreciation</li><li>Non-cash expenses other than depreciation</li></ul><strong>Secondary Segment:</strong> Revenue, Assets, and Capital Expenditure only.`,type:'rule'}
+  ]
+},
+{
+  id:'as20',
+  no:14,
+  title:'AS 20 – Earnings Per Share (EPS)',
+  color:'#3b82f6',
+  subtitle:'Basic EPS, Diluted EPS, Weighted Average Shares, Bonus Issue, Rights Issue',
+  pageRef:'HB.99',
+  summary:`AS 20 applies to companies with equity shares listed on stock exchange OR filing FS with SEBI. Basic EPS = Net Profit attributable to equity / Weighted Average Equity Shares. Diluted EPS adjusts for potential equity shares (convertible instruments). Bonus issue = considered for full year. Fresh issue = from date consideration receivable. Weighted average must be calculated for each period. EPS disclosed on face of P&L.`,
+  keyPoints:[
+    'Applicable to: Listed companies (on any stock exchange OR filing with SEBI)',
+    'Basic EPS = Net Profit after tax (less preference dividend) ÷ Weighted Average Equity Shares',
+    'Diluted EPS = Adjusted Net Profit ÷ Adjusted Weighted Average Shares (including potential shares)',
+    'Bonus Issue: Treated as if issued from BEGINNING OF PERIOD (no time weighting)',
+    'Fresh Issue: Time weighted from date consideration becomes receivable',
+    'Buyback of shares: Reduce shares from buyback date',
+    'Right Issue: Bonus element + Fresh issue element → Calculate theoretical ex-rights price',
+    'Preference Dividend: DEDUCT from Net Profit for Basic EPS numerator'
+  ],
+  quickRef:[
+    ['Type of Issue','Date for Weighting'],
+    ['Fresh Issue of Shares','Date consideration becomes receivable (contractual date)'],
+    ['Bonus Issue','Beginning of period (consider for FULL year – no time weighting)'],
+    ['Right Issue','Separate into: (a) Bonus portion from beginning, (b) Fresh portion from issue date'],
+    ['Shares on Conversion of Debt','Date when debt ceases to be debt'],
+    ['Shares on Conversion of Interest','Date when interest ceases'],
+    ['Shares on Asset Acquisition','Date assets acquired'],
+    ['Buyback of Shares','Reduce from buyback date'],
+    ['Preference Dividend','Deduct from Net Profit (Basic EPS numerator)']
+  ],
+  cards:[
+    {topic:'Basic EPS',q:'Basic EPS kaise calculate karte hain?',a:`<div class="formula">BASIC EPS =<br>Net Profit attributable to Equity Shareholders<br>──────────────────────────────────────────<br>Weighted Average Number of Equity Shares<br><br>Numerator = PAT – Preference Dividend<br>             – Reserve created by entity (not deducted)<br>             – Dividend Distribution Tax (DDT no longer applicable)</div><div class="note">Note: Corporate Dividend Tax / DDT not applicable now (post Oct 2019)</div>`,type:'formula'},
+    {topic:'Weighted Average Shares',q:'Weighted Average Shares kaise calculate karte hain?',a:`<strong>Outstanding Shares</strong> = Issued and subscribed shares<br><strong>Weighted Average</strong> = Consider TIME as weight<div class="formula">Example:<br>Jan 1: 10,000 shares outstanding<br>Apr 1: 2,000 new shares issued<br><br>WA = (10,000 × 12/12) + (2,000 × 9/12)<br>   = 10,000 + 1,500 = 11,500</div>`,type:'formula'},
+    {topic:'Bonus Issue',q:'Bonus Issue ke shares ko weighted average mein kaise treat karte hain?',a:`<strong>Bonus Issue:</strong> Date is NOT relevant. Consider bonus shares as if issued from the <span class="highlight">BEGINNING OF THE PERIOD</span>.<br><br>Also: If bonus issue is announced after year end but before FS approval → Restate EPS for ALL PRIOR PERIODS presented.<div class="note">Bonus = FREE shares; no consideration → treat as full year!</div>`,type:'rule',mnemonic:'Bonus = Pura Saal! No time weighting'},
+    {topic:'Right Issue',q:'Right Issue ka EPS calculation mein special treatment kya hai?',a:`Right Issue has TWO components:<div class="formula">(A) BONUS PORTION:<br>   = Bonus element in right issue<br>   Treated as bonus shares from beginning of period<br><br>(B) FRESH ISSUE PORTION:<br>   = Balance of right issue<br>   Time weighted from date consideration receivable</div><br>Theoretical Ex-Rights Price = <br>(Shares before rights × Market Price + New shares × Exercise Price) ÷ Total shares after rights`,type:'formula'},
+    {topic:'Diluted EPS',q:'Diluted EPS kya hai? Basic EPS se kaise differ karta hai?',a:`<strong>Diluted EPS</strong> = Shows EPS assuming all potential equity shares (dilutive instruments) were converted:<div class="formula">Diluted EPS = Adjusted Net Profit ÷ Adjusted Weighted Avg Shares<br><br>Adjusted Net Profit = Basic EPS numerator<br>   + Interest saved on convertible debt (net of tax)<br>   + Other adjustments<br><br>Adjusted Shares = Basic WA Shares<br>   + Potential shares from convertibles, options, warrants</div><div class="note">Diluted EPS ≤ Basic EPS (always)</div>`,type:'formula'}
+  ]
+},
+{
+  id:'as24',
+  no:15,
+  title:'AS 24 – Discontinuing Operations',
+  color:'#10b981',
+  subtitle:'Definition, Disclosure Requirements, Measurement, Presentation',
+  pageRef:'HB.104',
+  summary:`AS 24 deals with discontinued operations – when an entity decides to discontinue a business component. A discontinuing operation is a component that entity is disposing of substantially in its entirety or abandoning. Must disclose revenue, expenses, pre-tax profit/loss, tax expense, and gain/loss on disposal separately. The disclosures are required from the date entity first commits to a formal plan of disposal.`,
+  keyPoints:[
+    'Discontinuing Operation = Component being disposed of / abandoned / sold substantially in entirety',
+    'Separate disclosure of revenue, expense, profit/loss, tax from discontinuing operation',
+    'Disclosure from: Date of entity\'s formal plan/commitment to discontinue',
+    'Net assets related to discontinuing operation: Disclose carrying amount',
+    'Cash flows from discontinued operation: Disclose separately',
+    'Gain/loss on sale of assets: Include in result of discontinuing operation',
+    'AS 24 not applicable if restructuring within same entity'
+  ],
+  quickRef:[
+    ['Disclosure Requirement','When'],
+    ['Revenue from discontinuing operation','From initial disclosure event'],
+    ['Expenses allocated to discontinuing operation','From initial disclosure event'],
+    ['Pre-tax profit/loss of discontinuing operation','From initial disclosure event'],
+    ['Tax expense for discontinuing operation','From initial disclosure event'],
+    ['Gain/loss on disposal of assets','When disposal occurs'],
+    ['Net assets of discontinuing operation','When material plan committed'],
+    ['Cash flows – Operating, Investing, Financing','Separately disclosed']
+  ],
+  cards:[
+    {topic:'Definition',q:'Discontinuing Operation kya hota hai?',a:`<strong>Discontinuing Operation:</strong> A component of an entity that the entity:<div class="formula">(a) Is disposing of SUBSTANTIALLY IN ITS ENTIRETY<br>OR<br>(b) ABANDONING<br>OR<br>(c) Disposing through SALE OF ASSETS</div><br>Component = A segment or operation that can be clearly distinguished from rest of entity (separate operations and cash flows).<div class="note">Simple restructuring within same entity ≠ Discontinuing operation</div>`,type:'definition'},
+    {topic:'Disclosure',q:'Discontinuing Operation mein kya disclose karna padta hai?',a:`<strong>Disclosures required (from date of formal commitment):</strong><ul><li>Revenue from discontinuing operation</li><li>Expenses allocated to discontinuing operation</li><li>Pre-tax profit/loss</li><li>Tax expense related</li><li>Gain/Loss on disposal of assets</li><li>Net assets (carrying amount)</li><li>Cash flows: Operating, Investing, Financing separately</li></ul><div class="note">Disclosure from: Date entity FIRST commits to formal plan of disposal</div>`,type:'rule'}
+  ]
+},
+{
+  id:'prepfs',
+  no:16,
+  title:'Preparation of Financial Statements',
+  color:'#ec4899',
+  subtitle:'Schedule III, P&L Format, Balance Sheet Format, Disclosure Notes',
+  pageRef:'HB.106',
+  summary:`Preparation of Financial Statements as per Companies Act, 2013 – Schedule III (Division I for AS companies). Includes format for Statement of Profit & Loss, Balance Sheet, and Notes. P&L shows: Revenue from Operations, Other Income → Total Income; minus Cost of Material, Purchase of Stock in Trade, Changes in Inventory, Employee Benefits, Finance Cost, Depreciation, Other Expenses → Total Expenses → Profit Before Tax.`,
+  keyPoints:[
+    'Schedule III (Division I) – For companies following AS',
+    'P&L Format: Revenue from Operations + Other Income = Total Income; minus all expenses = PBT',
+    'Balance Sheet: Equity & Liabilities side and Assets side',
+    'Notes to Accounts: Mandatory disclosures for each line item',
+    'Current vs Non-Current classification: Based on 12-month operating cycle',
+    'Equity includes: Paid-up Share Capital + Other Equity (Reserves & Surplus)',
+    'General Points: Company name, CIN, period, figures in lakhs/crores'
+  ],
+  quickRef:[
+    ['P&L Item','Nature'],
+    ['Revenue from Operations','Primary revenue (sales)'],
+    ['Other Income','Interest, dividend, gain on disposal etc.'],
+    ['Cost of Materials Consumed','For manufacturing companies'],
+    ['Purchase of Stock in Trade','For trading companies'],
+    ['Changes in Inventory','Opening – Closing (FG, WIP, Stock in Trade)'],
+    ['Employee Benefits Expense','Salaries, PF, gratuity, leave encashment'],
+    ['Finance Cost','Interest expense, bank charges'],
+    ['Depreciation & Amortisation','On PPE and intangible assets'],
+    ['Other Expenses','All other operating expenses'],
+    ['Tax Expense','Current Tax + Deferred Tax']
+  ],
+  cards:[
+    {topic:'P&L Format',q:'Statement of Profit & Loss ka format kya hai?',a:`<div class="formula">REVENUE FROM OPERATIONS  XXX<br>OTHER INCOME  XXX<br>TOTAL INCOME (A)  XXX<br>─────────────────────────────<br>Cost of Materials Consumed  XXX<br>Purchases of Stock in Trade  XXX<br>Changes in Inventories (FG, WIP, SIT)  XXX<br>Employee Benefits Expense  XXX<br>Finance Cost  XXX<br>Depreciation & Amortisation  XXX<br>Other Expenses  XXX<br>TOTAL EXPENSES (B)  XXX<br>─────────────────────────────<br>PROFIT BEFORE TAX (A–B)  XXX<br>Tax Expense  XXX<br>PROFIT AFTER TAX  XXX</div>`,type:'formula'},
+    {topic:'Balance Sheet',q:'Balance Sheet Structure kya hai?',a:`<strong>EQUITY & LIABILITIES SIDE:</strong><div class="formula">Shareholders' Funds:<br>  Share Capital  XXX<br>  Other Equity (Reserves & Surplus)  XXX<br>Non-Current Liabilities:<br>  Long-term Borrowings  XXX<br>  Deferred Tax Liabilities  XXX<br>Current Liabilities:<br>  Short-term Borrowings  XXX<br>  Trade Payables  XXX<br>  Other Current Liabilities  XXX<br>  Short-term Provisions  XXX</div><br><strong>ASSETS SIDE:</strong><div class="formula">Non-Current Assets:<br>  PPE, Intangibles, Capital WIP  XXX<br>  Non-current Investments  XXX<br>Current Assets:<br>  Inventories, Debtors, Cash, Other CA  XXX</div>`,type:'formula'},
+    {topic:'Current vs Non-current',q:'Current aur Non-current classification ka rule kya hai?',a:`<strong>An asset is CURRENT if:</strong><ul><li>Expected to be realised/used within 12 months OR operating cycle (whichever longer)</li><li>Held primarily for trading</li><li>Cash or cash equivalent</li></ul><br><strong>A liability is CURRENT if:</strong><ul><li>Expected to be settled within 12 months or operating cycle</li><li>Held primarily for trading</li><li>No unconditional right to defer beyond 12 months</li></ul><div class="note">All other assets = Non-current; All other liabilities = Non-current</div>`,type:'rule'},
+    {topic:'Schedule III',q:'Schedule III Division I mein kya hota hai?',a:`<strong>Schedule III, Division I</strong> = Applicable to companies following Accounting Standards (AS)<br><br>Includes:<div class="formula">• Format of Statement of Profit & Loss with Notes<br>• Format of Balance Sheet with Notes<br>• General Points (instructions for preparation)<br>• Guidance on classification of line items</div><div class="note">Division II = For Ind AS companies<br>Division III = For NBFCs (Ind AS)</div>`,type:'rule'},
+    {topic:'Notes to Accounts',q:'Notes to Accounts mein kya hota hai?',a:`Notes to Accounts provide detail for each line item in P&L and Balance Sheet:<ul><li>Share capital note: Number of shares, face value, rights, restrictions</li><li>PPE note: Gross block, depreciation, net block</li><li>Inventories note: Raw material, WIP, Finished Goods breakdown</li><li>Borrowings note: Nature, interest rate, security, repayment terms</li><li>Significant Accounting Policies note (AS 1 compliance)</li></ul><div class="note">Notes are INTEGRAL part of FS – as important as main statements</div>`,type:'rule'}
+  ]
+}
+];
+
+/* ════════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════════ */
+let state = {
+  activeChapter: 0,
+  showCover: true,
+  cardIndex: 0,
+  filter: 'all',
+  flipped: false,
+  markedCards: JSON.parse(localStorage.getItem('acct_marked') || '[]'),
+  doneCards: JSON.parse(localStorage.getItem('acct_done') || '[]'),
+};
+
+function getFilteredCards() {
+  const ch = CHAPTERS[state.activeChapter];
+  let cards = ch.cards;
+  if (state.filter === 'marked') return cards.filter((_,i) => state.markedCards.includes(`${state.activeChapter}-${i}`));
+  if (state.filter === 'all') return cards;
+  return cards.filter(c => c.type === state.filter || (state.filter === 'mnemonic' && c.mnemonic));
+}
+
+function cardKey(ci) { return `${state.activeChapter}-${ci}`; }
+
+/* ════════════════════════════════════════════════
+   RENDER
+════════════════════════════════════════════════ */
+function render() {
+  renderTabs();
+  renderMainContent();
+  updateStats();
+}
+
+function renderTabs() {
+  const tabs = document.getElementById('chapterTabs');
+  tabs.innerHTML = CHAPTERS.map((ch, i) => `
+    <button class="ch-tab ${i===state.activeChapter?'active':''}" onclick="selectChapter(${i})" style="--ch-color:${ch.color}">
+      Ch ${ch.no} · ${ch.title.length > 22 ? ch.title.substring(0,22)+'…' : ch.title}
+    </button>
+  `).join('');
+}
+
+function renderMainContent() {
+  const cont = document.getElementById('mainContent');
+  cont.innerHTML = '';
+  if (state.showCover) {
+    cont.innerHTML = renderCover();
+  } else {
+    cont.innerHTML = renderCardArea();
+  }
+  updateProgress();
+}
+
+function renderCover() {
+  const ch = CHAPTERS[state.activeChapter];
+  const qr = ch.quickRef;
+  return `
+  <div class="chapter-cover active">
+    <div class="cover-card" style="border-top:3px solid ${ch.color}">
+      <div class="cover-label" style="color:${ch.color}">Chapter ${ch.no} · ${ch.pageRef}</div>
+      <div class="cover-title">${ch.title}</div>
+      <div class="cover-subtitle">${ch.subtitle}</div>
+      <div class="cover-meta">
+        <span class="meta-pill" style="color:${ch.color};border-color:${ch.color}30;background:${ch.color}10">${ch.cards.length} Flashcards</span>
+        <span class="meta-pill" style="color:#6b7280;border-color:#252b3b">${ch.pageRef}</span>
+      </div>
+      <div class="cover-summary">
+        <h4>📋 Chapter Summary</h4>
+        <p>${ch.summary}</p>
+      </div>
+      <div class="cover-key-points">
+        <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:${ch.color};margin-bottom:8px">⭐ Key Points to Remember</h4>
+        ${ch.keyPoints.map(kp => `<div class="cover-kp">${kp}</div>`).join('')}
+      </div>
+      ${qr ? `
+      <div class="qr-section">
+        <div class="qr-title">📊 Quick Reference Table</div>
+        <table class="qr-table">
+          <thead><tr>${qr[0].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>${qr.slice(1).map(row=>`<tr>${row.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+        </table>
+      </div>` : ''}
+      <button class="start-btn" onclick="startCards()" style="background:${ch.color}">
+        Start Flashcards →
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderCardArea() {
+  const ch = CHAPTERS[state.activeChapter];
+  const cards = getFilteredCards();
+  if (cards.length === 0) {
+    return `<div class="card-area active"><div class="empty-state"><div class="icon">🔍</div><p>No cards match this filter.</p><button class="ctrl-btn" onclick="setFilter('all',null)">Show All Cards</button></div></div>`;
+  }
+  const ci = Math.min(state.cardIndex, cards.length - 1);
+  const card = cards[ci];
+  const globalIdx = ch.cards.indexOf(card);
+  const marked = state.markedCards.includes(cardKey(globalIdx));
+  return `
+  <div class="card-area active">
+    <div class="card-count">Card <strong style="color:var(--accent)">${ci+1}</strong> of ${cards.length} · <span style="color:var(--muted)">${ch.title}</span></div>
+    <div class="flip-wrapper" onclick="flipCard()">
+      <div class="flip-inner ${state.flipped?'flipped':''}" id="flipInner">
+        <div class="flip-face flip-front">
+          <div class="card-topic-tag">${card.topic}</div>
+          <div class="card-q">${card.q}</div>
+          <div class="flip-hint">Click card to reveal answer · <span>Space</span> to flip</div>
+        </div>
+        <div class="flip-face flip-back">
+          <div class="card-topic-tag" style="background:rgba(59,130,246,.15);color:var(--accent2)">${card.topic} · Answer</div>
+          <div class="card-answer">${card.a}${card.mnemonic?`<div class="mnemonic-box"><strong>🧠 Mnemonic:</strong> ${card.mnemonic}</div>`:''}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-controls">
+      <button class="ctrl-btn btn-prev" onclick="prevCard()">← Prev</button>
+      <button class="ctrl-btn btn-mark ${marked?'marked':''}" onclick="toggleMark(${globalIdx})">
+        ${marked?'★ Marked':'☆ Mark'}
+      </button>
+      <button class="ctrl-btn btn-flip" onclick="flipCard()">Flip Card</button>
+      <button class="ctrl-btn btn-next" onclick="nextCard()">Next →</button>
+    </div>
+    <div class="rating-row">
+      <button class="rate-btn rate-easy" onclick="rateCard(${globalIdx},'easy')">✅ Easy</button>
+      <button class="rate-btn rate-review" onclick="rateCard(${globalIdx},'review')">🔄 Review</button>
+      <button class="rate-btn rate-hard" onclick="rateCard(${globalIdx},'hard')">❌ Hard</button>
+      <button class="ctrl-btn" onclick="goToCover()" style="font-size:.75rem;padding:7px 12px">📋 Cover</button>
+    </div>
+    <div class="kb-hint"><kbd>←</kbd> Prev &nbsp; <kbd>Space</kbd> Flip &nbsp; <kbd>→</kbd> Next</div>
+  </div>`;
+}
+
+function updateProgress() {
+  const ch = CHAPTERS[state.activeChapter];
+  const cards = getFilteredCards();
+  const ci = Math.min(state.cardIndex, cards.length - 1);
+  const pct = cards.length > 0 ? Math.round((ci+1)/cards.length*100) : 0;
+  document.getElementById('progressText').textContent = `Card ${ci+1} of ${cards.length}`;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('pctText').textContent = pct + '%';
+}
+
+function updateStats() {
+  let total = CHAPTERS.reduce((a,c)=>a+c.cards.length,0);
+  document.getElementById('totalCards').textContent = total;
+  document.getElementById('doneCards').textContent = state.doneCards.length;
+  document.getElementById('markedCount').textContent = state.markedCards.length;
+}
+
+/* ════════════════════════════════════════════════
+   ACTIONS
+════════════════════════════════════════════════ */
+function selectChapter(i) {
+  state.activeChapter = i;
+  state.showCover = true;
+  state.cardIndex = 0;
+  state.flipped = false;
+  render();
+}
+
+function startCards() {
+  state.showCover = false;
+  state.cardIndex = 0;
+  state.flipped = false;
+  render();
+}
+
+function goToCover() {
+  state.showCover = true;
+  state.flipped = false;
+  render();
+}
+
+function flipCard() {
+  state.flipped = !state.flipped;
+  const inner = document.getElementById('flipInner');
+  if (inner) inner.className = 'flip-inner ' + (state.flipped ? 'flipped' : '');
+}
+
+function nextCard() {
+  const cards = getFilteredCards();
+  const ch = CHAPTERS[state.activeChapter];
+  const card = cards[state.cardIndex];
+  if (card) {
+    const gi = ch.cards.indexOf(card);
+    if (!state.doneCards.includes(`${state.activeChapter}-${gi}`)) {
+      state.doneCards.push(`${state.activeChapter}-${gi}`);
+      localStorage.setItem('acct_done', JSON.stringify(state.doneCards));
+    }
+  }
+  if (state.cardIndex < cards.length - 1) {
+    state.cardIndex++;
+    state.flipped = false;
+    renderMainContent();
+    updateStats();
+  } else {
+    // Last card → next chapter cover or loop
+    if (state.activeChapter < CHAPTERS.length - 1) {
+      const msg = confirm('Chapter complete! ✅ Go to next chapter?');
+      if (msg) selectChapter(state.activeChapter + 1);
+    } else {
+      alert('🎉 You\'ve completed all chapters! Great revision!');
+    }
+  }
+}
+
+function prevCard() {
+  if (state.cardIndex > 0) {
+    state.cardIndex--;
+    state.flipped = false;
+    renderMainContent();
+  }
+}
+
+function toggleMark(globalIdx) {
+  const key = cardKey(globalIdx);
+  const idx = state.markedCards.indexOf(key);
+  if (idx > -1) state.markedCards.splice(idx, 1);
+  else state.markedCards.push(key);
+  localStorage.setItem('acct_marked', JSON.stringify(state.markedCards));
+  renderMainContent();
+  updateStats();
+}
+
+function rateCard(globalIdx, rating) {
+  // Visual feedback
+  const btn = event.target;
+  const orig = btn.textContent;
+  btn.textContent = rating === 'easy' ? '✅ Got it!' : rating === 'hard' ? '❌ Need Practice' : '🔄 Queued';
+  setTimeout(() => {
+    btn.textContent = orig;
+    nextCard();
+  }, 400);
+}
+
+function setFilter(f, el) {
+  state.filter = f;
+  state.cardIndex = 0;
+  state.flipped = false;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderMainContent();
+}
+
+/* ════════════════════════════════════════════════
+   KEYBOARD
+════════════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (state.showCover) return;
+  if (e.key === 'ArrowRight') nextCard();
+  else if (e.key === 'ArrowLeft') prevCard();
+  else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+/* ════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════ */
+render();
+</script>
+</body>
+</html>
