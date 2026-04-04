@@ -415,5 +415,7 @@
   function id(i) { return document.getElementById(i); }
 
   updateStats();
+   setTimeout(()=>{
+document.getElementById("virtualBanner").style.display="none";
+},10000);
 
-})();
