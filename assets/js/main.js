@@ -435,27 +435,39 @@ document.documentElement.setAttribute("data-theme","dark");
 }
 });
 }
-   let time = 1500;
-let timer;
+  let timer;
+let time = 1500;
 
 function startTimer(){
-timer = setInterval(()=>{
-time--;
-let minutes = Math.floor(time/60);
-let seconds = time%60;
-
-document.getElementById("timer").innerHTML =
-minutes + ":" + (seconds<10?"0":"") + seconds;
-
-if(time<=0){
 clearInterval(timer);
+timer = setInterval(updateTimer,1000);
 }
-},1000);
+
+function pauseTimer(){
+clearInterval(timer);
 }
 
 function resetTimer(){
 clearInterval(timer);
 time = 1500;
-document.getElementById("timer").innerHTML="25:00";
+updateDisplay();
 }
-   
+
+function updateTimer(){
+time--;
+updateDisplay();
+
+if(time <= 0){
+clearInterval(timer);
+}
+}
+
+function updateDisplay(){
+let minutes = Math.floor(time/60);
+let seconds = time % 60;
+
+document.getElementById("timer").innerText =
+minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
+
+updateDisplay();
