@@ -435,44 +435,39 @@ document.documentElement.setAttribute("data-theme","dark");
 }
 });
 }
- document.addEventListener("DOMContentLoaded", function(){
-
+ 
+// Study Timer
+let timer;
 let time = 1500;
-let interval;
 
-const timer = document.getElementById("timer");
-const startBtn = document.getElementById("startBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const resetBtn = document.getElementById("resetBtn");
-
-function updateTimer(){
-let minutes = Math.floor(time/60);
-let seconds = time%60;
-
-timer.innerHTML =
-minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-}
-
-startBtn.addEventListener("click",()=>{
-clearInterval(interval);
-interval = setInterval(()=>{
+function startTimer(){
+clearInterval(timer);
+timer = setInterval(()=>{
 time--;
 updateTimer();
 
 if(time <= 0){
-clearInterval(interval);
+clearInterval(timer);
 }
 },1000);
-});
+}
 
-pauseBtn.addEventListener("click",()=>{
-clearInterval(interval);
-});
+function pauseTimer(){
+clearInterval(timer);
+}
 
-resetBtn.addEventListener("click",()=>{
-clearInterval(interval);
+function resetTimer(){
+clearInterval(timer);
 time = 1500;
 updateTimer();
-});
+}
+
+function updateTimer(){
+let minutes = Math.floor(time/60);
+let seconds = time % 60;
+
+document.getElementById("timer").innerText =
+minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
 
 updateTimer();
