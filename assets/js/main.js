@@ -476,5 +476,3 @@ updateTimer();
 });
 
 updateTimer();
-
-});
