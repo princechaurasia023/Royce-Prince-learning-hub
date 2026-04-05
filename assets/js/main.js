@@ -435,39 +435,46 @@ document.documentElement.setAttribute("data-theme","dark");
 }
 });
 }
-  let timer;
+ document.addEventListener("DOMContentLoaded", function(){
+
 let time = 1500;
+let interval;
 
-function startTimer(){
-clearInterval(timer);
-timer = setInterval(updateTimer,1000);
-}
-
-function pauseTimer(){
-clearInterval(timer);
-}
-
-function resetTimer(){
-clearInterval(timer);
-time = 1500;
-updateDisplay();
-}
+const timer = document.getElementById("timer");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
 
 function updateTimer(){
-time--;
-updateDisplay();
-
-if(time <= 0){
-clearInterval(timer);
-}
-}
-
-function updateDisplay(){
 let minutes = Math.floor(time/60);
-let seconds = time % 60;
+let seconds = time%60;
 
-document.getElementById("timer").innerText =
+timer.innerHTML =
 minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
 
-updateDisplay();
+startBtn.addEventListener("click",()=>{
+clearInterval(interval);
+interval = setInterval(()=>{
+time--;
+updateTimer();
+
+if(time <= 0){
+clearInterval(interval);
+}
+},1000);
+});
+
+pauseBtn.addEventListener("click",()=>{
+clearInterval(interval);
+});
+
+resetBtn.addEventListener("click",()=>{
+clearInterval(interval);
+time = 1500;
+updateTimer();
+});
+
+updateTimer();
+
+});
