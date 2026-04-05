@@ -1033,3 +1033,15 @@ color:white;
 border-radius:5px;
 cursor:pointer;
 }
+.progress-bar{
+background:#ddd;
+height:10px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.progress-bar div{
+background:#7C3AED;
+height:100%;
+border-radius:10px;
+}
