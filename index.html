@@ -1,712 +1,1516 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prince Learning Hub — CA Inter Study Dashboard</title>
-  <meta name="description" content="Master CA Inter Tax, Law, Accounts & GST with smart flashcards, AI assistance, and structured study tools." />
-  <meta name="theme-color" content="#F7F6F3" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><text y='22' x='6' font-size='18' fill='white'>◈</text></svg>" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prince Learning Hub — CA Inter May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090f;
+    --bg2: #0d1117;
+    --bg3: #111827;
+    --surface: #161d2e;
+    --surface2: #1e2a3d;
+    --border: rgba(99,130,201,0.15);
+    --border2: rgba(99,130,201,0.08);
+    --accent: #4f7ef8;
+    --accent2: #6fa3ff;
+    --gold: #f4c542;
+    --gold2: #ffe08a;
+    --green: #22c55e;
+    --red: #ef4444;
+    --orange: #f97316;
+    --purple: #a78bfa;
+    --text: #e8edf8;
+    --text2: #8fa3c8;
+    --text3: #4a5d7e;
+    --glow: rgba(79,126,248,0.12);
+    --glow2: rgba(79,126,248,0.06);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 68px;
+    background: rgba(7,9,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .nav-logo .logo-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo .logo-sub {
+    font-size: 11px;
+    color: var(--text3);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-links a {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text2);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-links a:hover {
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .nav-cta {
+    padding: 9px 20px !important;
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent2) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(79,126,248,0.35) !important;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,126,248,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(167,139,250,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 10% 60%, rgba(79,126,248,0.05) 0%, transparent 60%);
+  }
+
+  /* Animated grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,126,248,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,126,248,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 80%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    background: rgba(79,126,248,0.1);
+    border: 1px solid rgba(79,126,248,0.25);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent2);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeInDown 0.6s ease both;
+  }
+
+  .hero-badge .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--text);
+    margin-bottom: 20px;
+    animation: fadeInDown 0.6s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: transparent;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text2);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    font-weight: 400;
+    animation: fadeInDown 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInDown 0.6s 0.3s ease both;
+    margin-bottom: 72px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 1px rgba(79,126,248,0.3), 0 4px 24px rgba(79,126,248,0.25);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(79,126,248,0.5), 0 8px 32px rgba(79,126,248,0.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--surface2);
+    border-color: rgba(99,130,201,0.3);
+    transform: translateY(-2px);
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.6s 0.4s ease both;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-num span {
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: var(--border);
+    align-self: stretch;
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section {
+    padding: 80px 20px;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--text2);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* ─── SUBJECTS GRID ─── */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .subject-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    text-decoration: none;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .subject-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--card-accent, var(--accent));
+    border-radius: 18px 18px 0 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .subject-card:hover {
+    background: var(--surface2);
+    border-color: rgba(99,130,201,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(79,126,248,0.1);
+  }
+
+  .subject-card:hover::before { opacity: 1; }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .card-subtitle {
+    font-size: 12.5px;
+    color: var(--text2);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--card-accent, var(--accent));
+    transition: gap 0.2s;
+  }
+
+  .subject-card:hover .card-link { gap: 10px; }
+
+  /* ─── QUICK REF ─── */
+  .quickref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .qr-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .qr-card-header {
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .qr-card-icon {
+    font-size: 20px;
+  }
+
+  .qr-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .qr-card-sub {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  .qr-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .qr-table tr {
+    border-bottom: 1px solid var(--border2);
+    transition: background 0.15s;
+  }
+
+  .qr-table tr:last-child { border-bottom: none; }
+  .qr-table tr:hover { background: var(--bg3); }
+
+  .qr-table td {
+    padding: 11px 22px;
+    font-size: 13px;
+  }
+
+  .qr-table td:first-child { color: var(--text2); }
+
+  .qr-table td:last-child {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 12.5px;
+  }
+
+  /* ─── LIVE SESSION CARD ─── */
+  .session-banner {
+    background: linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(79,126,248,0.08) 100%);
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 20px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+  }
+
+  .session-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .session-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  .session-text .session-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .session-text .session-sub {
+    font-size: 13px;
+    color: var(--text2);
+    margin-top: 3px;
+  }
+
+  .session-meta {
+    display: flex;
+    gap: 24px;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .meta-key {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  .btn-green {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    background: var(--green);
+    color: #fff;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(34,197,94,0.3);
+  }
+
+  .btn-green:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(34,197,94,0.4);
+  }
+
+  /* ─── AI ASSISTANT ─── */
+  .ai-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ai-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .ai-chat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .ai-chat-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg2);
+  }
+
+  .ai-avatar {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .ai-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .ai-status {
+    font-size: 11.5px;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .ai-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  .ai-messages {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 240px;
+  }
+
+  .msg {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .msg-bot {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg-user {
+    background: var(--accent);
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .ai-input-row {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+  }
+
+  .ai-input {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    outline: none;
+  }
+
+  .ai-input:focus { border-color: var(--accent); }
+
+  .ai-send {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 16px;
+  }
+
+  .ai-send:hover { background: var(--accent2); transform: scale(1.05); }
+
+  .ai-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .prompt-chip {
+    padding: 8px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12.5px;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .prompt-chip:hover {
+    background: var(--surface2);
+    border-color: var(--accent);
+    color: var(--accent2);
+  }
+
+  /* ─── PROGRESS DASHBOARD ─── */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .dash-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .dash-card-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text3);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .dash-card-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .dash-card-sub {
+    font-size: 12.5px;
+    color: var(--text2);
+  }
+
+  .progress-bar-wrap {
+    background: var(--bg3);
+    border-radius: 100px;
+    height: 6px;
+    margin-top: 14px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    transition: width 1s ease;
+  }
+
+  .streak-dots {
+    display: flex;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .streak-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .streak-dot.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(79,126,248,0.4);
+  }
+
+  .streak-dot.inactive {
+    background: var(--bg3);
+    color: var(--text3);
+    border: 1px solid var(--border2);
+  }
+
+  .streak-dot.today {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 2px 8px rgba(244,197,66,0.4);
+  }
+
+  /* ─── RESOURCES ─── */
+  .resources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .resource-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .resource-item:hover {
+    background: var(--surface2);
+    border-color: rgba(99,130,201,0.3);
+    transform: translateX(4px);
+  }
+
+  .resource-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .resource-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .resource-desc {
+    font-size: 12.5px;
+    color: var(--text2);
+  }
+
+  .resource-arrow {
+    margin-left: auto;
+    color: var(--text3);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+
+  .resource-item:hover .resource-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 48px 20px 32px;
+  }
+
+  .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .footer-brand {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+    color: var(--text3);
+    max-width: 340px;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent2); }
+
+  .footer-bottom {
+    max-width: 1120px;
+    margin: 32px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .footer-tag {
+    padding: 5px 12px;
+    background: rgba(79,126,248,0.1);
+    border: 1px solid rgba(79,126,248,0.2);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 18px; }
+    .nav-links { display: none; }
+
+    .ai-layout { grid-template-columns: 1fr; }
+    .session-banner { flex-direction: column; text-align: center; }
+    .session-meta { justify-content: center; }
+
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-links { align-items: flex-start; }
+
+    .stats-row { gap: 20px; }
+    .stat-divider { display: none; }
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+</style>
 </head>
 <body>
-  
-<!-- ═══════════════════════════════════════════
-     NAVIGATION
-═══════════════════════════════════════════ -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <div class="nav__inner">
-    <a href="#" class="nav__logo" aria-label="Prince Learning Hub">
-      <div class="nav__logo-icon">◈</div>
-      <span class="nav__logo-text">Prince <span>Learning Hub</span></span>
-    </a>
 
-    <div class="nav__links" role="list">
-      <a href="#categories" class="nav__link" role="listitem">Categories</a>
-      <a href="#flashcards" class="nav__link" role="listitem">Flashcards</a>
-      <a href="#quick-ref" class="nav__link" role="listitem">Quick Ref</a>
-      <a href="#upload" class="nav__link" role="listitem">Upload</a>
-      <a href="#ai" class="nav__link" role="listitem">AI Assistant</a>
-      <a href="#virtual-library" class="nav__link">Virtual Library</a>
-      <a href="#gst-practice" class="nav__link">GST Practice</a>
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">P</div>
+    <div>
+      <div class="logo-text">Prince Learning Hub</div>
+      <div class="logo-sub">CA Inter May 2026</div>
     </div>
-
-    <div class="nav__right">
-      <button class="nav__search-btn" data-search-open aria-label="Search (Ctrl+K)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <a href="https://royceprince.github.io/tax-flashcard.html" class="nav__cta" target="_blank" rel="noopener">
-        Tax Flashcards → 
-      </a> 
-      <a href="https://royceprince.github.io/gst-flashcard.html" class="nav__cta" target="_blank" rel="noopener">
-      GST Flashcards →
-      </a>
-      <a href="https://royceprince.github.io/audit-flashcard.html" class="nav__cta" target="_blank" rel="noopener">
-      Audit Flashcards →
-      </a>
-      <a href="https://royceprince.github.io/law-flashcard.html" class="nav__cta" target="_blank" rel="noopener">
-      Law Flashcards →
-      </a>
-      <a href="https://royceprince.github.io/accounts-flashcard.html" class="nav__cta" target="_blank" rel="noopener">
-      Advance Accounts Flashcards →
-       </a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#subjects">Subjects</a>
+    <a href="#quickref">Quick Ref</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#ai-section">AI Help</a>
+    <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="nav-cta">🟢 Join Live</a>
   </div>
 </nav>
 
-<!-- Mobile Nav -->
-<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
-  <nav class="mobile-nav__links">
-    <a href="#categories" class="mobile-nav__link">📚 Categories</a>
-    <a href="#flashcards" class="mobile-nav__link">🃏 Flashcards</a>
-    <a href="#quick-ref" class="mobile-nav__link">⚡ Quick Reference</a>
-    <a href="#upload" class="mobile-nav__link">⬆️ Upload Notes</a>
-    <a href="#ai" class="mobile-nav__link">🤖 AI Assistant</a>
-  </nav>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     SEARCH OVERLAY
-═══════════════════════════════════════════ -->
-<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search" aria-modal="true">
-  <div class="search-box">
-    <div class="search-box__input-row">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" class="search-box__input" id="searchInput" placeholder="Search flashcards, topics, chapters…" autocomplete="off" />
-      <kbd class="search-box__shortcut">ESC</kbd>
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      CA Inter · May 2026 Preparation
     </div>
-    <div class="search-box__results" id="searchResults"></div>
-    <div class="search-box__hint">
-      <span><kbd>↵</kbd> to select</span>
-      <span><kbd>ESC</kbd> to close</span>
-      <span><kbd>⌘K</kbd> to open</span>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     MAIN CONTENT
-═══════════════════════════════════════════ -->
-<main class="main-wrapper">
-<!-- ── VIRTUAL LIBRARY ───────────────────────── -->
-<section class="section" id="virtual-library">
-  <div class="section__header">
-    <h2 class="section__title">
-      <span class="section__title-dot" style="background:var(--purple)"></span>
-      Virtual Library
-    </h2>
-    <span class="section__subtitle">Join Daily Study Sessions</span>
-  </div>
-
-  <div class="quick-ref-grid">
-
-    <div class="quick-ref-card">
-      <div class="quick-ref-card__header">
-        <div class="quick-ref-card__icon">🎓</div>
-        <div>
-          <div class="quick-ref-card__title">Daily Study Session</div>
-          <div class="quick-ref-card__sub">Google Meet Live</div>
-        </div>
-      </div>
-
-      <div class="quick-ref-item">
-        <span class="quick-ref-item__label">Time</span>
-        <span class="quick-ref-item__val">24*7</span>
-      </div>
-
-      <div class="quick-ref-item">
-        <span class="quick-ref-item__label">Member</span>
-        <span class="quick-ref-item__val">(CA WARRIORS)</span>
-      </div>
-
-      <a href="https://meet.google.com/dgx-xani-sjh" 
-         target="_blank" 
-         class="btn btn--primary" 
-         style="margin-top:15px">
-         🟢 Join Google Meet
-      </a>
-
-    </div>
-
-  </div>
-</section>
-  <!-- ── HERO ────────────────────────────────── -->
-<!-- ── STUDENT DASHBOARD ───────────────────────── -->
-<section class="section" id="dashboard">
-  <div class="section__header">
-    <h2 class="section__title">
-      <span class="section__title-dot" style="background:var(--accent)"></span>
-      Student Dashboard
-    </h2>
-    <span class="section__subtitle">Track your CA Inter preparation</span>
-  </div>
-
-  <div class="dashboard-grid">
-
-    <!-- Continue Study -->
-    <div class="dashboard-card">
-      <div class="dashboard-card__title">📚 Continue Study</div>
-      <div class="dashboard-card__body">
-        <p>Last Topic: GST Input Tax Credit</p>
-        <a href="gst-flashcard.html" class="btn btn--primary">
-          Resume Study →
-        </a>
-      </div>
-    </div>
-
-    <!-- Daily Goal -->
-    <div class="dashboard-card">
-      <div class="dashboard-card__title">🎯 Daily Goal</div>
-      <div class="dashboard-card__body">
-        <p>Target: 20 Flashcards</p>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width:40%"></div>
-        </div>
-        <small>8 / 20 Completed</small>
-      </div>
-    </div>
-
-    <!-- Weak Subjects -->
-    <div class="dashboard-card">
-      <div class="dashboard-card__title">⚠️ Weak Subjects</div>
-      <div class="dashboard-card__body">
-        <p>Accounts</p>
-        <p>Law</p>
-      </div>
-    </div>
-
-    <!-- Study Streak -->
-    <div class="dashboard-card">
-      <div class="dashboard-card__title">🔥 Study Streak</div>
-      <div class="dashboard-card__body">
-        <h3 id="dashboardStreak">5 Days</h3>
-        <small>Keep going!</small>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-  
-  <!-- ── GST PRACTICE ───────────────────────── -->
-<section class="section" id="gst-practice">
-  <div class="section__header">
-    <h2 class="section__title">
-      <span class="section__title-dot" style="background:var(--green)"></span>
-      GST Practice
-    </h2>
-    <span class="section__subtitle">Practice MCQ & Case Based Questions</span>
-  </div>
-
-  <div class="quick-ref-grid">
-
-    <div class="quick-ref-card">
-      <div class="quick-ref-card__header">
-        <div class="quick-ref-card__icon">🧾</div>
-        <div>
-          <div class="quick-ref-card__title">GST Practice Questions</div>
-          <div class="quick-ref-card__sub">Exam Oriented Practice</div>
-        </div>
-      </div>
-
-      <a href="gst-practice.html" class="btn btn--primary">
-   🚀 Start Practice
-       </a>
-
-    </div>
-
-  </div>
-</section>
-  <section class="hero" aria-labelledby="heroTitle">
-    <div class="hero__bg">
-      <div class="hero__orb hero__orb--1"></div>
-      <div class="hero__orb hero__orb--2"></div>
-    </div>
-
-    <div class="hero__badge">
-      <span class="hero__badge-dot"></span>
-      CA Inter · May 2026
-    </div>
-
-    <h1 class="hero__title" id="heroTitle">
-      Master Tax, Law,<br>
-      <em>Accounts & GST</em>
+    <h1 class="hero-title">
+      Master Tax, Law,<br><em>Accounts &amp; GST</em>
     </h1>
-    <p class="hero__subtitle">
-      Your personal study dashboard for CA Inter Both Group. Smart flashcards, AI-powered assistance, and structured revision — all in one place.
+    <p class="hero-sub">
+      Smart flashcards, AI-powered assistance, and structured revision — your all-in-one study companion for CA Inter Both Groups.
     </p>
-
-    <div class="hero__actions">
-      <a href="#flashcards" class="btn btn--primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-        Start Studying
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </a>
-      <button class="btn btn--secondary" data-search-open>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        Quick Search
-        <kbd style="font-size:10px;opacity:.5;font-family:var(--font-mono);margin-left:2px">⌘K</kbd>
-      </button>
-      <a href="https://royceprince.github.io/tax-flashcard.html" class="btn btn--ghost" target="_blank" rel="noopener">
-      📊 Full Tax Deck →
-      </a>
-
-      <a href="gst-flashcard.html" class="btn btn--ghost" target="_blank" rel="noopener">
-      📊 Full GST Deck →
-      </a>
-      <a href="law-flashcard.html" class="btn btn--ghost" target="_blank" rel="noopener">
-      ⚖️ Full Law Deck →
-       </a>
-      <a href="audit-flashcard.html" class="btn btn--ghost" target="_blank" rel="noopener">
-      📚 Full Audit Deck →
-      </a>
-       <a href="accounts-flashcard.html" class="btn btn--ghost" target="_blank" rel="noopener">
-      📚 Full Advance Accounts Deck →
-      </a>
-      
-     </div>
-
-    <div class="hero__stats">
-      <div class="hero__stat">
-        <div class="hero__stat-num" id="heroFlashcards">12</div>
-        <div class="hero__stat-label">Flashcards</div>
-      </div>
-      <div class="hero__stat">
-        <div class="hero__stat-num" id="heroFiles">0</div>
-        <div class="hero__stat-label">Uploaded Files</div>
-      </div>
-      <div class="hero__stat">
-        <div class="hero__stat-num">4</div>
-        <div class="hero__stat-label">Subjects</div>
-      </div>
-      <div class="hero__stat">
-        <div class="hero__stat-num" id="streakCount">1</div>
-        <div class="hero__stat-label">Day Streak 🔥</div>
-      </div>
+    <div class="hero-actions">
+      <a href="#subjects" class="btn-primary">📚 Start Studying →</a>
+      <a href="#ai-section" class="btn-secondary">🤖 Ask AI Assistant</a>
     </div>
-  </section>
-
-  <!-- ── STATS STRIP ───────────────────────── -->
-  <div class="stats-strip" role="region" aria-label="Study statistics">
-    <div class="stat-card">
-      <div class="stat-card__icon stat-card__icon--blue">🃏</div>
-      <div class="stat-card__body">
-        <div class="stat-card__num" id="statFlashcards" data-count="12">12</div>
-        <div class="stat-card__label">Total Flashcards</div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Subjects</div>
       </div>
-      <span class="stat-card__delta stat-card__delta--up">+12</span>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card__icon stat-card__icon--green">📄</div>
-      <div class="stat-card__body">
-        <div class="stat-card__num" id="statFiles" data-count="0">0</div>
-        <div class="stat-card__label">Study Files</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">500<span>+</span></div>
+        <div class="stat-label">Flashcards</div>
       </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card__icon stat-card__icon--amber">📚</div>
-      <div class="stat-card__body">
-        <div class="stat-card__num" data-count="4">4</div>
-        <div class="stat-card__label">Subjects</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">24<span>/7</span></div>
+        <div class="stat-label">AI Support</div>
       </div>
-      <span class="stat-card__delta stat-card__delta--up">All</span>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card__icon stat-card__icon--purple">🎯</div>
-      <div class="stat-card__body">
-        <div class="stat-card__num" id="statCategories" data-count="4">4</div>
-        <div class="stat-card__label">Categories</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">May<span> '26</span></div>
+        <div class="stat-label">Exam Target</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ── CATEGORIES ───────────────────────── -->
-  <section class="section" id="categories" aria-labelledby="catTitle">
-    <div class="section__header">
-      <h2 class="section__title" id="catTitle">
-        <span class="section__title-dot"></span>
-        Study Categories
-      </h2>
-      <span class="section__subtitle">Filter your material by subject</span>
-    </div>
+<!-- ── SUBJECTS ── -->
+<section id="subjects">
+  <div class="container">
+    <div class="section-label">Study Material</div>
+    <h2 class="section-title">All Subjects, One Place</h2>
+    <p class="section-desc">Chapter-wise smart flashcards built from ICAI study material with mnemonics and exam-focused notes.</p>
 
-    <div class="categories-grid">
-      <div class="category-card category-card--all active" data-cat="all" role="button" tabindex="0" aria-pressed="true">
-        <div class="category-card__emoji">📖</div>
-        <div class="category-card__name">All Subjects</div>
-        <div class="category-card__count">12 flashcards</div>
-        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:100%"></div></div>
-      </div>
-      <div class="category-card category-card--tax" data-cat="tax" role="button" tabindex="0" aria-pressed="false">
-        <div class="category-card__emoji">📊</div>
-        <div class="category-card__name">Income Tax</div>
-        <div class="category-card__count">5 flashcards · Direct Tax</div>
-        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:42%"></div></div>
-      </div>
-      <div class="category-card category-card--gst" data-cat="gst" role="button" tabindex="0" aria-pressed="false">
-        <div class="category-card__emoji">🧾</div>
-        <div class="category-card__name">GST</div>
-        <div class="category-card__count">3 flashcards · Indirect Tax</div>
-        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:25%"></div></div>
-      </div>
-      <div class="category-card category-card--law" data-cat="law" role="button" tabindex="0" aria-pressed="false">
-        <div class="category-card__emoji">⚖️</div>
-        <div class="category-card__name">Law</div>
-        <div class="category-card__count">2 flashcards · Company Law</div>
-        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:17%"></div></div>
-      </div>
-      <div class="category-card category-card--acc" data-cat="acc" role="button" tabindex="0" aria-pressed="false">
-        <div class="category-card__emoji">🧮</div>
-        <div class="category-card__name">Accounts</div>
-        <div class="category-card__count">2 flashcards · Adv. Accounts</div>
-        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:17%"></div></div>
-      </div>
-      <a href="https://royceprince.github.io/tax-flashcard.html"
-         class="category-card category-card--tax"
-         style="text-decoration:none; display:block"
-         target="_blank" rel="noopener">
-        <div class="category-card__emoji">🚀</div>
-        <div class="category-card__name">Full Tax Deck</div>
-        <div class="category-card__count">Complete chapter-wise flashcards ↗</div>
-        <div class="category-card__bar"><div class="category-card__bar-fill" style="width:100%"></div></div>
+    <div class="subjects-grid">
+
+      <a href="https://royceprince.github.io/tax-flashcard.html" class="subject-card" style="--card-accent:#f97316;">
+        <span class="card-icon">📊</span>
+        <div class="card-title">Direct Tax</div>
+        <div class="card-subtitle">Income Tax Act, TDS, Capital Gains, Deductions u/s 80C–80U, Return Filing</div>
+        <div class="card-link" style="color:#f97316;">Open Flashcards →</div>
       </a>
-    </div>
-  </section>
 
-  <!-- ── FLASHCARDS ────────────────────────── -->
-  <section class="section" id="flashcards" aria-labelledby="fcTitle">
-    <div class="section__header">
-      <h2 class="section__title" id="fcTitle">
-        <span class="section__title-dot"></span>
-        Flashcards
-      </h2>
-      <a href="#" class="section__action">
-        View All
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="https://royceprince.github.io/gst-flashcard.html" class="subject-card" style="--card-accent:#22c55e;">
+        <span class="card-icon">🧾</span>
+        <div class="card-title">GST</div>
+        <div class="card-subtitle">14 chapters — Supply, ITC, Registration, Returns, Valuation, Place of Supply</div>
+        <div class="card-link" style="color:#22c55e;">Open Flashcards →</div>
       </a>
-    </div>
 
-    <div class="filter-tabs" role="tablist" aria-label="Filter by category">
-      <button class="filter-tab active" data-cat="all" role="tab" aria-selected="true">All</button>
-      <button class="filter-tab" data-cat="tax" role="tab" aria-selected="false">📊 Income Tax</button>
-      <button class="filter-tab" data-cat="gst" role="tab" aria-selected="false">🧾 GST</button>
-      <button class="filter-tab" data-cat="law" role="tab" aria-selected="false">⚖️ Law</button>
-      <button class="filter-tab" data-cat="acc" role="tab" aria-selected="false">🧮 Accounts</button>
-      <button class="filter-tab" data-cat="acc" role="tab" aria-selected="false">🧮Audit</button>
-      <button class="filter-tab" data-cat="acc" role="tab" aria-selected="false">🧮 Fm</button>
-      <button class="filter-tab" data-cat="acc" role="tab" aria-selected="false">🧮Costing</button>
-    </div>
-
-    <div class="flashcard-grid" id="flashcardGrid" role="list" aria-label="Flashcards">
-      <!-- Rendered by JS -->
-    </div>
-  </section>
-
-  <!-- ── QUICK REFERENCE ───────────────────── -->
-  <section class="section" id="quick-ref" aria-labelledby="qrTitle">
-    <div class="section__header">
-      <h2 class="section__title" id="qrTitle">
-        <span class="section__title-dot" style="background:var(--amber)"></span>
-        Quick Reference
-      </h2>
-      <span class="section__subtitle">Key rates & limits at a glance</span>
-    </div>
-
-    <div class="quick-ref-grid">
-     <!-- Tax Slabs -->
-      <div class="quick-ref-card">
-        <div class="quick-ref-card__header">
-          <div class="quick-ref-card__icon" style="background:var(--accent-soft)">📊</div>
-          <div>
-            <div class="quick-ref-card__title">Income Tax Slabs (New Regime)</div>
-            <div class="quick-ref-card__sub">AY 2025-26 · Individual</div>
-          </div>
-        </div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Up to ₹3,00,000</span><span class="quick-ref-item__val">NIL</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">₹3L – ₹7L</span><span class="quick-ref-item__val">5%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">₹7L – ₹10L</span><span class="quick-ref-item__val">10%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">₹10L – ₹12L</span><span class="quick-ref-item__val">15%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">₹12L – ₹15L</span><span class="quick-ref-item__val">20%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Above ₹15L</span><span class="quick-ref-item__val">30%</span></div>
-      </div>
-
-      <!-- GST Rates -->
-      <div class="quick-ref-card">
-        <div class="quick-ref-card__header">
-          <div class="quick-ref-card__icon" style="background:var(--purple-soft)">🧾</div>
-          <div>
-            <div class="quick-ref-card__title">GST Key Limits</div>
-            <div class="quick-ref-card__sub">Registration & Composition</div>
-          </div>
-        </div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Goods Registration</span><span class="quick-ref-item__val">₹40L</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Services Registration</span><span class="quick-ref-item__val">₹20L</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Composition Limit</span><span class="quick-ref-item__val">₹1.5 Cr</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Composition (Mfr/Trader)</span><span class="quick-ref-item__val">1%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Composition (Restaurant)</span><span class="quick-ref-item__val">5%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">GSTR-3B Due Date</span><span class="quick-ref-item__val">20th</span></div>
-      </div>
-
-      <!-- Company Law -->
-      <div class="quick-ref-card">
-        <div class="quick-ref-card__header">
-          <div class="quick-ref-card__icon" style="background:var(--green-soft)">⚖️</div>
-          <div>
-            <div class="quick-ref-card__title">Company Law Key Facts</div>
-            <div class="quick-ref-card__sub">Companies Act 2013</div>
-          </div>
-        </div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Pvt Ltd Min Members</span><span class="quick-ref-item__val">2</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Pvt Ltd Max Members</span><span class="quick-ref-item__val">200</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Public Ltd Min Members</span><span class="quick-ref-item__val">7</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">First AGM (months)</span><span class="quick-ref-item__val">9 months</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">AGM Gap (max)</span><span class="quick-ref-item__val">15 months</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">First Auditor (days)</span><span class="quick-ref-item__val">30 days</span></div>
-      </div>
-
-      <!-- Depreciation -->
-      <div class="quick-ref-card">
-        <div class="quick-ref-card__header">
-          <div class="quick-ref-card__icon" style="background:var(--amber-soft)">📉</div>
-          <div>
-            <div class="quick-ref-card__title">Depreciation Rates (IT Act)</div>
-            <div class="quick-ref-card__sub">WDV Method</div>
-          </div>
-        </div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Buildings (RCC)</span><span class="quick-ref-item__val">10%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Furniture & Fittings</span><span class="quick-ref-item__val">10%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Motor Car (non-hire)</span><span class="quick-ref-item__val">15%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Plant & Machinery</span><span class="quick-ref-item__val">15%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Computers</span><span class="quick-ref-item__val">40%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Intangibles (know-how)</span><span class="quick-ref-item__val">25%</span></div>
-      </div>
-
-      <!-- TDS Rates -->
-      <div class="quick-ref-card">
-        <div class="quick-ref-card__header">
-          <div class="quick-ref-card__icon" style="background:var(--red-soft)">📋</div>
-          <div>
-            <div class="quick-ref-card__title">TDS Key Sections</div>
-            <div class="quick-ref-card__sub">Common TDS Rates</div>
-          </div>
-        </div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 192 · Salary</span><span class="quick-ref-item__val">Slab Rate</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194A · Interest</span><span class="quick-ref-item__val">10%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194C · Contractor</span><span class="quick-ref-item__val">1%/2%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194H · Commission</span><span class="quick-ref-item__val">5%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194I · Rent</span><span class="quick-ref-item__val">10%</span></div>
-        <div class="quick-ref-item"><span class="quick-ref-item__label">Sec 194J · Prof. Fees</span><span class="quick-ref-item__val">10%</span></div>
-      </div>
-
-      <!-- Study Streak Widget -->
-      <div class="streak-widget" aria-label="Study streak">
-        <div class="streak-widget__label">🔥 Study Streak</div>
-        <div class="streak-widget__num" id="streakCountWidget">1</div>
-        <div class="streak-widget__sub">Days in a row — keep it up!</div>
-        <div class="streak-days">
-          <div class="streak-day done" aria-label="Monday done">M</div>
-          <div class="streak-day done" aria-label="Tuesday done">T</div>
-          <div class="streak-day done" aria-label="Wednesday done">W</div>
-          <div class="streak-day today" aria-label="Thursday today">T</div>
-          <div class="streak-day" aria-label="Friday">F</div>
-          <div class="streak-day" aria-label="Saturday">S</div>
-          <div class="streak-day" aria-label="Sunday">S</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── RESOURCES / LINKS ─────────────────── -->
-  <section class="section" id="resources" aria-labelledby="resTitle">
-    <div class="section__header">
-      <h2 class="section__title" id="resTitle">
-        <span class="section__title-dot" style="background:var(--green)"></span>
-        Study Resources
-      </h2>
-      <span class="section__subtitle">Curated links for CA Inter prep</span>
-    </div>
-    <div class="resource-list">
-      <a href="https://royceprince.github.io/tax-flashcard.html"
-         class="resource-card" style="--rc-color:#2563EB" target="_blank" rel="noopener">
-        <div class="resource-card__icon">📊</div>
-        <div class="resource-card__body">
-          <div class="resource-card__title">Full Tax Flashcard Deck</div>
-          <div class="resource-card__desc">Complete chapter-wise Direct Tax flashcards ICAI Study Material</div>
-        </div>
-        <svg class="resource-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="https://royceprince.github.io/law-flashcard.html" class="subject-card" style="--card-accent:#a78bfa;">
+        <span class="card-icon">⚖️</span>
+        <div class="card-title">Corporate & Other Laws</div>
+        <div class="card-subtitle">Companies Act 2013, LLP, Negotiable Instruments Act, IBC, SCRA</div>
+        <div class="card-link" style="color:#a78bfa;">Open Flashcards →</div>
       </a>
-      <a href="https://www.icai.org/" class="resource-card" style="--rc-color:#16A34A" target="_blank" rel="noopener">
-        <div class="resource-card__icon">🏛️</div>
-        <div class="resource-card__body">
-          <div class="resource-card__title">ICAI Official Website</div>
-          <div class="resource-card__desc">Study materials, RTPs, MTPs, and official exam resources</div>
-        </div>
-        <svg class="resource-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+
+      <a href="https://royceprince.github.io/accounts-flashcard.html" class="subject-card" style="--card-accent:#4f7ef8;">
+        <span class="card-icon">📚</span>
+        <div class="card-title">Advanced Accounts</div>
+        <div class="card-subtitle">AS 1–29, Amalgamation (AS-14), Branch Accounting, Internal Reconstruction</div>
+        <div class="card-link" style="color:#4f7ef8;">Open Flashcards →</div>
       </a>
-      <a href="#ai" class="resource-card" style="--rc-color:#7C3AED">
-        <div class="resource-card__icon">🤖</div>
-        <div class="resource-card__body">
-          <div class="resource-card__title">AI Study Assistant</div>
-          <div class="resource-card__desc">Ask any question on Tax, GST, Law or Accounts — powered by Claude AI</div>
-        </div>
-        <svg class="resource-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+
+      <a href="https://royceprince.github.io/audit-flashcard.html" class="subject-card" style="--card-accent:#06b6d4;">
+        <span class="card-icon">🔍</span>
+        <div class="card-title">Audit</div>
+        <div class="card-subtitle">SA 200, SA 300 — Audit Principles, Audit Planning, Risk Assessment</div>
+        <div class="card-link" style="color:#06b6d4;">Open Flashcards →</div>
       </a>
-    </div>
-  </section>
 
-  <!-- ── UPLOAD ────────────────────────────── -->
-  <section class="section" id="upload" aria-labelledby="uploadTitle">
-    <div class="section__header">
-      <h2 class="section__title" id="uploadTitle">
-        <span class="section__title-dot" style="background:var(--amber)"></span>
-        Upload Study Notes
-      </h2>
-      <span class="section__subtitle">Upload HTML flashcard files — stored in your browser</span>
+      <a href="https://royceprince.github.io/gst-practice.html" class="subject-card" style="--card-accent:#f4c542;">
+        <span class="card-icon">🎯</span>
+        <div class="card-title">GST MCQ Practice</div>
+        <div class="card-subtitle">Exam-oriented MCQs and case-based questions with explanations</div>
+        <div class="card-link" style="color:#f4c542;">Start Practice →</div>
+      </a>
+
     </div>
 
-    <div class="upload-area" id="uploadArea" role="button" tabindex="0" aria-label="Upload flashcard files">
-      <input type="file" id="fileInput" accept=".html" multiple aria-label="Choose flashcard files" />
-      <div class="upload-area__icon">⬆️</div>
-      <div class="upload-area__title">Drag & drop your flashcard files here</div>
-      <div class="upload-area__sub">or click to browse · Supports <strong>.html</strong> flashcard files</div>
-      <button class="btn btn--secondary" onclick="document.getElementById('fileInput').click()">
-        Browse Files
-      </button>
+    <!-- Live Session Banner -->
+    <div class="session-banner">
+      <div class="session-info">
+        <div class="session-dot"></div>
+        <div class="session-text">
+          <div class="session-title">Daily Study Session — CA Warriors</div>
+          <div class="session-sub">Google Meet · Live doubt solving and group study</div>
+        </div>
+      </div>
+      <div class="session-meta">
+        <div class="meta-item">
+          <div class="meta-val">24/7</div>
+          <div class="meta-key">Available</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-val">∞</div>
+          <div class="meta-key">Members</div>
+        </div>
+      </div>
+      <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="btn-green">🟢 Join Google Meet</a>
     </div>
+  </div>
+</section>
 
-    <div class="upload-category-select">
-      <label for="uploadCategory">Assign category:</label>
-      <select class="select-styled" id="uploadCategory">
-        <option value="tax">📊 Income Tax</option>
-        <option value="gst">🧾 GST</option>
-        <option value="law">⚖️ Law</option>
-        <option value="acc">🧮 Accounts</option>
-      </select>
-    </div>
+<!-- ── QUICK REFERENCE ── -->
+<section id="quickref" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Quick Reference</div>
+    <h2 class="section-title">Key Rates & Limits</h2>
+    <p class="section-desc">Most-tested numbers in CA Inter exams — memorise these cold.</p>
 
-    <div id="uploadedFileList" class="uploaded-files-list" aria-label="Uploaded files" aria-live="polite">
-      <!-- Rendered by JS -->
-    </div>
-  </section>
+    <div class="quickref-grid">
 
-  <!-- ── AI ASSISTANT ──────────────────────── -->
-  <section class="section" id="ai" aria-labelledby="aiTitle">
-    <div class="section__header">
-      <h2 class="section__title" id="aiTitle">
-        <span class="section__title-dot" style="background:var(--purple)"></span>
-        AI Study Assistant
-      </h2>
-      <span class="section__subtitle">Powered by Claude · Ask anything about CA Inter</span>
-    </div>
-
-    <div class="ai-section">
-      <!-- Chat Window -->
-      <div class="chat-window" role="region" aria-label="Chat with AI assistant">
-        <div class="chat-window__header">
-          <div class="chat-window__avatar" aria-hidden="true">◈</div>
+      <div class="qr-card">
+        <div class="qr-card-header">
+          <span class="qr-card-icon">📊</span>
           <div>
-            <div class="chat-window__name">CA Study Assistant</div>
-            <div class="chat-window__status">Online</div>
-          </div>
-          <div class="chat-window__actions">
-            <button title="Clear chat" onclick="document.getElementById('chatMessages').innerHTML=''" aria-label="Clear chat history">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
-            </button>
+            <div class="qr-card-title">Income Tax Slabs (New Regime)</div>
+            <div class="qr-card-sub">AY 2026-27 · Individual</div>
           </div>
         </div>
+        <table class="qr-table">
+          <tr><td>Up to ₹3,00,000</td><td>NIL</td></tr>
+          <tr><td>₹3L – ₹7L</td><td>5%</td></tr>
+          <tr><td>₹7L – ₹10L</td><td>10%</td></tr>
+          <tr><td>₹10L – ₹12L</td><td>15%</td></tr>
+          <tr><td>₹12L – ₹15L</td><td>20%</td></tr>
+          <tr><td>Above ₹15L</td><td>30%</td></tr>
+        </table>
+      </div>
 
-        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages">
-          <div class="chat-msg chat-msg--ai">
-            <div class="chat-msg__avatar" aria-hidden="true">◈</div>
-            <div>
-              <div class="chat-msg__bubble">
-                Namaste! 🙏 Main aapka CA Inter study assistant hoon. Tax, GST, Law, ya Accounts — kuch bhi poochho!<br><br>
-                <strong>Try asking:</strong> "Section 80C ki limit kya hai?" or "GST ITC ke conditions?"
-              </div>
-              <div class="chat-msg__time">Now</div>
+      <div class="qr-card">
+        <div class="qr-card-header">
+          <span class="qr-card-icon">🧾</span>
+          <div>
+            <div class="qr-card-title">GST Key Limits</div>
+            <div class="qr-card-sub">Registration & Composition</div>
+          </div>
+        </div>
+        <table class="qr-table">
+          <tr><td>Goods Registration</td><td>₹40L</td></tr>
+          <tr><td>Services Registration</td><td>₹20L</td></tr>
+          <tr><td>Composition Limit</td><td>₹1.5 Cr</td></tr>
+          <tr><td>Composition (Mfr/Trader)</td><td>1%</td></tr>
+          <tr><td>Composition (Restaurant)</td><td>5%</td></tr>
+          <tr><td>GSTR-3B Due Date</td><td>20th</td></tr>
+        </table>
+      </div>
+
+      <div class="qr-card">
+        <div class="qr-card-header">
+          <span class="qr-card-icon">⚖️</span>
+          <div>
+            <div class="qr-card-title">Company Law Key Facts</div>
+            <div class="qr-card-sub">Companies Act 2013</div>
+          </div>
+        </div>
+        <table class="qr-table">
+          <tr><td>Pvt Ltd Min Members</td><td>2</td></tr>
+          <tr><td>Pvt Ltd Max Members</td><td>200</td></tr>
+          <tr><td>Public Ltd Min Members</td><td>7</td></tr>
+          <tr><td>First AGM</td><td>9 months</td></tr>
+          <tr><td>AGM Gap (max)</td><td>15 months</td></tr>
+          <tr><td>First Auditor</td><td>30 days</td></tr>
+        </table>
+      </div>
+
+      <div class="qr-card">
+        <div class="qr-card-header">
+          <span class="qr-card-icon">📋</span>
+          <div>
+            <div class="qr-card-title">TDS Key Sections</div>
+            <div class="qr-card-sub">Common TDS Rates</div>
+          </div>
+        </div>
+        <table class="qr-table">
+          <tr><td>Sec 192 · Salary</td><td>Slab Rate</td></tr>
+          <tr><td>Sec 194A · Interest</td><td>10%</td></tr>
+          <tr><td>Sec 194C · Contractor</td><td>1%/2%</td></tr>
+          <tr><td>Sec 194H · Commission</td><td>5%</td></tr>
+          <tr><td>Sec 194I · Rent</td><td>10%</td></tr>
+          <tr><td>Sec 194J · Prof. Fees</td><td>10%</td></tr>
+        </table>
+      </div>
+
+      <div class="qr-card">
+        <div class="qr-card-header">
+          <span class="qr-card-icon">📉</span>
+          <div>
+            <div class="qr-card-title">Depreciation Rates</div>
+            <div class="qr-card-sub">IT Act · WDV Method</div>
+          </div>
+        </div>
+        <table class="qr-table">
+          <tr><td>Buildings (RCC)</td><td>10%</td></tr>
+          <tr><td>Furniture & Fittings</td><td>10%</td></tr>
+          <tr><td>Motor Car (non-hire)</td><td>15%</td></tr>
+          <tr><td>Plant & Machinery</td><td>15%</td></tr>
+          <tr><td>Computers</td><td>40%</td></tr>
+          <tr><td>Intangibles (know-how)</td><td>25%</td></tr>
+        </table>
+      </div>
+
+      <div class="qr-card">
+        <div class="qr-card-header">
+          <span class="qr-card-icon">🔑</span>
+          <div>
+            <div class="qr-card-title">80C Deductions</div>
+            <div class="qr-card-sub">Old Regime · Max ₹1.5L</div>
+          </div>
+        </div>
+        <table class="qr-table">
+          <tr><td>PPF / EPF</td><td>✓</td></tr>
+          <tr><td>Life Insurance Premium</td><td>✓</td></tr>
+          <tr><td>ELSS Mutual Fund</td><td>✓</td></tr>
+          <tr><td>NSC / NPS</td><td>✓</td></tr>
+          <tr><td>Home Loan Principal</td><td>✓</td></tr>
+          <tr><td>Overall Limit</td><td>₹1.5L</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── DASHBOARD ── -->
+<section id="dashboard">
+  <div class="container">
+    <div class="section-label">Student Dashboard</div>
+    <h2 class="section-title">Track Your Progress</h2>
+    <p class="section-desc">Monitor your CA Inter preparation with daily goals and subject-wise progress.</p>
+
+    <div class="dashboard-grid">
+
+      <div class="dash-card">
+        <div class="dash-card-label">📚 Continue Study</div>
+        <div class="dash-card-val">GST</div>
+        <div class="dash-card-sub">Last topic: Input Tax Credit</div>
+        <a href="https://royceprince.github.io/gst-flashcard.html" class="btn-primary" style="margin-top:16px;font-size:13px;padding:10px 18px;">Resume →</a>
+      </div>
+
+      <div class="dash-card">
+        <div class="dash-card-label">🎯 Daily Goal</div>
+        <div class="dash-card-val">8<span style="font-size:18px;color:var(--text2)"> /20</span></div>
+        <div class="dash-card-sub">Flashcards completed today</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:40%;"></div>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="dash-card-label">🔥 Study Streak</div>
+        <div class="dash-card-val" style="color:var(--gold);">5</div>
+        <div class="dash-card-sub">Days in a row — keep going!</div>
+        <div class="streak-dots">
+          <div class="streak-dot active">M</div>
+          <div class="streak-dot active">T</div>
+          <div class="streak-dot active">W</div>
+          <div class="streak-dot active">T</div>
+          <div class="streak-dot active">F</div>
+          <div class="streak-dot today">S</div>
+          <div class="streak-dot inactive">S</div>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="dash-card-label">⚠️ Weak Subjects</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:13px;color:var(--text2);width:80px;">Accounts</span>
+            <div class="progress-bar-wrap" style="flex:1;margin-top:0;">
+              <div class="progress-bar-fill" style="width:45%;background:linear-gradient(90deg,var(--red),var(--orange));"></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:13px;color:var(--text2);width:80px;">Law</span>
+            <div class="progress-bar-wrap" style="flex:1;margin-top:0;">
+              <div class="progress-bar-fill" style="width:60%;background:linear-gradient(90deg,var(--orange),var(--gold));"></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:13px;color:var(--text2);width:80px;">GST</span>
+            <div class="progress-bar-wrap" style="flex:1;margin-top:0;">
+              <div class="progress-bar-fill" style="width:75%;"></div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chat-input-row">
-          <textarea
-            class="chat-input"
-            id="chatInput"
-            placeholder="Ask about Tax, GST, Law, Accounts…"
-            rows="1"
-            aria-label="Type your question"
-          ></textarea>
-          <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI ASSISTANT ── -->
+<section class="ai-section" id="ai-section">
+  <div class="container">
+    <div class="ai-layout">
+      <div>
+        <div class="section-label">AI Powered</div>
+        <h2 class="section-title">Ask Anything,<br><em style="font-family:'Playfair Display',serif;font-style:italic;color:transparent;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;background-clip:text;">Get Answers Instantly</em></h2>
+        <p class="section-desc" style="margin-bottom:28px;">Your personal CA Inter AI professor — powered by Claude. Ask in Hindi or English, anytime.</p>
+        <div class="ai-prompts">
+          <div class="prompt-chip">Section 80C limit?</div>
+          <div class="prompt-chip">GST ITC conditions</div>
+          <div class="prompt-chip">AGM requirements</div>
+          <div class="prompt-chip">Capital Gains period</div>
+          <div class="prompt-chip">TDS deduction time</div>
+          <div class="prompt-chip">May 2026 strategy</div>
         </div>
       </div>
 
-      <!-- Side Panel -->
-      <div class="ai-section__side">
-        <div class="ai-tip-card">
-          <div class="ai-tip-card__title"><span class="ai-tip-card__title-icon">⚡</span> Quick Prompts</div>
-          <div class="ai-prompt-suggestions">
-            <button class="ai-prompt-btn">Section 80C mein kya kya aata hai?</button>
-            <button class="ai-prompt-btn">GST mein Input Tax Credit ke 6 conditions kya hain?</button>
-            <button class="ai-prompt-btn">Company Law mein AGM ki requirements explain karo</button>
-            <button class="ai-prompt-btn">Capital Gains ka short/long term period kya hai?</button>
-            <button class="ai-prompt-btn">TDS deduction ka time of deduction kab hota hai?</button>
-            <button class="ai-prompt-btn">Partnership firm mein interest on capital ka treatment?</button>
+      <div class="ai-chat">
+        <div class="ai-chat-header">
+          <div class="ai-avatar">🤖</div>
+          <div>
+            <div class="ai-name">CA Study Assistant</div>
+            <div class="ai-status">Online · Ready to help</div>
           </div>
         </div>
-
-        <div class="ai-tip-card">
-          <div class="ai-tip-card__title"><span class="ai-tip-card__title-icon">📌</span> Exam Tips</div>
-          <div class="ai-prompt-suggestions">
-            <button class="ai-prompt-btn">May 2026 exam ke liye important topics suggest karo</button>
-            <button class="ai-prompt-btn">Last minute revision strategy for Tax</button>
-            <button class="ai-prompt-btn">Previous year question patterns for GST</button>
-          </div>
+        <div class="ai-messages" id="aiMessages">
+          <div class="msg msg-bot">Namaste! 🙏 Main aapka CA Inter professor hoon. Tax, GST, Law, ya Accounts — kuch bhi poochho!</div>
         </div>
-
-        <div class="ai-disclaimer">
-          <strong>📢 Disclaimer:</strong> AI responses are educational summaries for CA Inter exam preparation. Always verify from ICAI Study Material, RTPs, and official notifications. Not a substitute for professional tax or legal advice.
+        <div class="ai-input-row">
+          <input class="ai-input" id="aiInput" placeholder="Koi bhi concept poochho..." type="text" />
+          <button class="ai-send" id="aiSend">➤</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
+<!-- ── RESOURCES ── -->
+<section id="resources">
+  <div class="container">
+    <div class="section-label">Resources</div>
+    <h2 class="section-title">Study Resources</h2>
+    <p class="section-desc">Curated links for CA Inter preparation — everything in one place.</p>
 
-<!-- ═══════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════ -->
-<footer role="contentinfo">
-  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div class="resources-list">
+      <a href="https://royceprince.github.io/tax-flashcard.html" class="resource-item">
+        <div class="resource-icon" style="background:rgba(249,115,22,0.1);">📊</div>
+        <div>
+          <div class="resource-title">Direct Tax Flashcard Deck</div>
+          <div class="resource-desc">Complete chapter-wise flashcards · ICAI aligned · with mnemonics</div>
+        </div>
+        <div class="resource-arrow">→</div>
+      </a>
+
+      <a href="https://royceprince.github.io/gst-practice.html" class="resource-item">
+        <div class="resource-icon" style="background:rgba(34,197,94,0.1);">🎯</div>
+        <div>
+          <div class="resource-title">GST MCQ Practice</div>
+          <div class="resource-desc">Exam-oriented MCQs with chapter filter, difficulty levels and explanations</div>
+        </div>
+        <div class="resource-arrow">→</div>
+      </a>
+
+      <a href="https://www.icai.org/" target="_blank" class="resource-item">
+        <div class="resource-icon" style="background:rgba(167,139,250,0.1);">🏛️</div>
+        <div>
+          <div class="resource-title">ICAI Official Website</div>
+          <div class="resource-desc">Study material, RTPs, MTPs, official exam notifications</div>
+        </div>
+        <div class="resource-arrow">→</div>
+      </a>
+
+      <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="resource-item">
+        <div class="resource-icon" style="background:rgba(34,197,94,0.1);">🟢</div>
+        <div>
+          <div class="resource-title">Daily Google Meet — CA Warriors</div>
+          <div class="resource-desc">Live group study sessions · 24×7 · Doubt solving with batchmates</div>
+        </div>
+        <div class="resource-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
     <div>
-      <strong style="color:var(--text-1)">◈ Prince Learning Hub</strong>
-      &nbsp;·&nbsp; © 2025 · Built for CA Inter May 2026
+      <div class="footer-brand">◈ Prince Learning Hub</div>
+      <div class="footer-desc">Built for CA Inter May 2026. Smart flashcards, AI assistance, and structured revision — all in one place. Not affiliated with ICAI.</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center">
-      <a href="#flashcards">Flashcards</a>
-      <a href="#quick-ref">Quick Ref</a>
-      <a href="#upload">Upload</a>
-      <a href="#ai">AI Help</a>
-      <a href="https://royceprince.github.io/tax-flashcard.html" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">Tax Deck ↗</a>
+    <div class="footer-links">
+      <a href="#subjects">Subjects</a>
+      <a href="#quickref">Quick Reference</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#ai-section">AI Assistant</a>
+      <a href="https://www.icai.org/" target="_blank">ICAI →</a>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Prince Learning Hub · CA Inter May 2026 · Built with ❤️ for CA Warriors</div>
+    <div class="footer-tag">May 2026 Exam</div>
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════
-     TOAST CONTAINER
-═══════════════════════════════════════════ -->
-<div id="toastContainer" class="toast-container" aria-live="polite" role="status"></div>
+<script>
+  // Simple AI Chat Demo
+  const input = document.getElementById('aiInput');
+  const sendBtn = document.getElementById('aiSend');
+  const messages = document.getElementById('aiMessages');
 
-<script src="assets/js/main.js" defer></script>
+  const answers = {
+    '80c': 'Section 80C mein PPF, EPF, LIC Premium, ELSS, NSC, Home Loan Principal aate hain. Overall limit ₹1.5 lakh hai. 💡 Trick: "PELHN" — PPF, ELSS, LIC, Home loan, NSC.',
+    'itc': 'GST ITC ke 4 main conditions: (1) Registered person ho, (2) Tax Invoice ho, (3) Goods/services receive ho gaye hon, (3) GSTR-2B mein appear ho, (4) Return file ki ho. ⚠️ Blocked credits: Motor car, Food, Club membership.',
+    'agm': 'First AGM: Incorporation ke 9 months ke andar. Subsequent AGM: Financial year end ke 6 months ke andar, AGMs ke beech max 15 months ka gap. Board of Directors AGM call karta hai.',
+    'capital': 'Short Term: Listed shares — 12 months se kam. Long Term: 12+ months. STCG on listed shares: 15% (Sec 111A). LTCG on listed shares: 10% above ₹1 lakh (Sec 112A).',
+    'tds': 'TDS deduction time: Earlier of — (1) Payment ka time, ya (2) Credit ka time. Deposit: 7th of next month (except March — 30th April). Form 26Q quarterly file hoti hai.',
+    'default': 'Yeh topic mujhe pata hai! CA Inter ke liye specifically bataun — aap kaunsa aspect samajhna chahte hain? Tax, GST, Law, ya Accounts? 📚'
+  };
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg msg-user';
+    userMsg.textContent = text;
+    messages.appendChild(userMsg);
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    setTimeout(() => {
+      const lc = text.toLowerCase();
+      let reply = answers.default;
+      if (lc.includes('80c') || lc.includes('deduction')) reply = answers['80c'];
+      else if (lc.includes('itc') || lc.includes('input tax')) reply = answers.itc;
+      else if (lc.includes('agm') || lc.includes('meeting')) reply = answers.agm;
+      else if (lc.includes('capital gain')) reply = answers.capital;
+      else if (lc.includes('tds')) reply = answers.tds;
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'msg msg-bot';
+      botMsg.textContent = reply;
+      messages.appendChild(botMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 800);
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+  // Animate progress bars on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.width || entry.target.style.width;
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+    observer.observe(bar);
+  });
+</script>
 </body>
 </html>
