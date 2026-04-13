@@ -3,1551 +3,1325 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prince Learning Hub — CA Inter May 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Prince Learning Hub — CA Inter Study Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --bg: #06080e;
-  --bg2: #0b0f1a;
-  --bg3: #101828;
-  --surface: #131e30;
-  --surface2: #192540;
-  --border: rgba(79,130,220,0.14);
-  --border2: rgba(79,130,220,0.07);
-  --accent: #4f7ef8;
-  --accent2: #6f9fff;
-  --gold: #f4c542;
-  --gold2: #ffe08a;
-  --green: #22c55e;
-  --red: #ef4444;
-  --orange: #f97316;
-  --purple: #a78bfa;
-  --cyan: #06b6d4;
-  --text: #e4eaf8;
-  --text2: #8fa3c8;
-  --text3: #3d5070;
-  --glow: rgba(79,126,248,0.15);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  :root {
+    --ink: #1a1208;
+    --ink-muted: #5a4e3c;
+    --ink-faint: #9a8e7c;
+    --paper: #faf8f3;
+    --paper-warm: #f3efe6;
+    --paper-rule: #e0d9cc;
+    --accent: #b5342a;
+    --accent-light: #f5e8e7;
+    --gold: #c9933a;
+    --gold-light: #fdf6e8;
+    --rule: 1px solid #c8c0b0;
+    --rule-thick: 2px solid #1a1208;
+    --rule-accent: 3px solid #b5342a;
+  }
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:3px}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ─── NAV ─── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;height:62px;
-  background:rgba(6,8,14,0.92);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent),var(--purple));border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#fff;letter-spacing:-1px}
-.logo-text{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-0.3px;line-height:1.1}
-.logo-sub{font-size:10px;color:var(--text3);font-weight:400}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{padding:7px 13px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text2);text-decoration:none;transition:all .2s}
-.nav-links a:hover{background:var(--surface);color:var(--text)}
-.nav-cta{padding:8px 18px!important;background:var(--accent)!important;color:#fff!important;border-radius:9px!important;font-weight:600!important;box-shadow:0 2px 12px rgba(79,126,248,.3)!important}
-.nav-cta:hover{background:var(--accent2)!important;transform:translateY(-1px);box-shadow:0 4px 20px rgba(79,126,248,.4)!important}
-.nav-exam-toggle{display:flex;align-items:center;gap:7px;padding:7px 14px;background:rgba(244,197,66,.1);border:1px solid rgba(244,197,66,.25);border-radius:9px;font-size:12px;font-weight:600;color:var(--gold);cursor:pointer;transition:all .2s}
-.nav-exam-toggle:hover{background:rgba(244,197,66,.18)}
-.nav-exam-toggle .toggle-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;transition:all .3s}
-.nav-exam-toggle.active{background:rgba(244,197,66,.2);border-color:var(--gold)}
+  html { scroll-behavior: smooth; }
 
-/* HAMBURGER */
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all .3s}
-.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(6,8,14,0.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);z-index:190;padding:16px;flex-direction:column;gap:6px}
-.mobile-menu a{display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:all .2s}
-.mobile-menu a:hover{background:var(--surface);color:var(--text)}
-.mobile-menu.open{display:flex}
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
 
-/* ─── HERO ─── */
-.hero{
-  position:relative;min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:80px 20px 60px;overflow:hidden;
-}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 20%,rgba(79,126,248,.1) 0%,transparent 65%),radial-gradient(ellipse 40% 30% at 85% 75%,rgba(167,139,250,.07) 0%,transparent 60%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,126,248,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(79,126,248,.035) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 90% 80% at 50% 30%,black 0%,transparent 80%)}
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--paper);
+    border-bottom: var(--rule-thick);
+    padding: 0;
+  }
 
-.hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto}
+  .masthead-top {
+    border-bottom: var(--rule);
+    padding: 6px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
 
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 15px;background:rgba(79,126,248,.1);border:1px solid rgba(79,126,248,.25);border-radius:100px;font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.8px;text-transform:uppercase;margin-bottom:24px;animation:fadeDown .5s ease both}
-.badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+  .masthead-date { }
+  .masthead-tagline { }
 
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(36px,6.5vw,70px);font-weight:700;line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;animation:fadeDown .5s .1s ease both}
-.hero-title em{font-style:italic;color:transparent;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;background-clip:text}
+  .masthead-main {
+    text-align: center;
+    padding: 28px 40px 20px;
+    border-bottom: var(--rule);
+  }
 
-.hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text2);max-width:500px;margin:0 auto 32px;line-height:1.75;animation:fadeDown .5s .2s ease both}
+  .site-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
 
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;animation:fadeDown .5s .3s ease both}
+  .site-name span { color: var(--accent); }
 
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--accent);color:#fff;border-radius:11px;font-size:14.5px;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:'Sora',sans-serif;box-shadow:0 0 0 1px rgba(79,126,248,.3),0 4px 20px rgba(79,126,248,.25)}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 0 0 1px rgba(79,126,248,.5),0 8px 28px rgba(79,126,248,.35)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--surface);color:var(--text);border-radius:11px;font-size:14.5px;font-weight:500;text-decoration:none;border:1px solid var(--border);transition:all .2s;cursor:pointer;font-family:'Sora',sans-serif}
-.btn-secondary:hover{background:var(--surface2);border-color:rgba(99,130,201,.3);transform:translateY(-2px)}
-.btn-gold{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:rgba(244,197,66,.12);color:var(--gold);border-radius:11px;font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid rgba(244,197,66,.25);transition:all .2s;cursor:pointer;font-family:'Sora',sans-serif}
-.btn-gold:hover{background:rgba(244,197,66,.2);transform:translateY(-2px)}
+  .site-tagline {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-top: 8px;
+    font-weight: 300;
+  }
 
-.stats-row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;animation:fadeUp .5s .4s ease both}
-.stat-item{text-align:center}
-.stat-num{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--text);line-height:1}
-.stat-num span{color:var(--accent)}
-.stat-lbl{font-size:11px;color:var(--text3);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
-.stat-div{width:1px;background:var(--border);align-self:stretch}
+  .nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0 40px;
+    border-top: var(--rule);
+    overflow-x: auto;
+  }
 
-/* ─── QUICK FEATURE CARDS ─── */
-.feature-strip{padding:0 20px 60px;position:relative;z-index:1}
-.feature-strip-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-.feat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center;cursor:pointer;transition:all .25s;text-decoration:none}
-.feat-card:hover{background:var(--surface2);border-color:var(--feat-color,var(--accent));transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
-.feat-icon{font-size:26px;margin-bottom:10px;display:block}
-.feat-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
-.feat-sub{font-size:11px;color:var(--text3)}
+  .nav-bar a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-right: var(--rule);
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .nav-bar a:first-child { border-left: var(--rule); }
+  .nav-bar a:hover { background: var(--paper-warm); }
 
-/* ─── SECTION COMMON ─── */
-section.sec{padding:70px 20px}
-.container{max-width:1120px;margin:0 auto}
-.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:10px}
-.sec-label::before{content:'';width:14px;height:2px;background:var(--accent);border-radius:1px}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--text);letter-spacing:-.5px;line-height:1.2;margin-bottom:12px}
-.sec-desc{font-size:14.5px;color:var(--text2);max-width:480px;line-height:1.7}
-.sec-head{margin-bottom:40px}
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
 
-/* ─── TABS ─── */
-.tabs{display:flex;gap:6px;margin-bottom:28px;flex-wrap:wrap}
-.tab{padding:9px 18px;border-radius:9px;font-size:13px;font-weight:600;color:var(--text2);background:var(--surface);border:1px solid var(--border);cursor:pointer;transition:all .2s}
-.tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 10px rgba(79,126,248,.3)}
-.tab:hover:not(.active){background:var(--surface2);color:var(--text)}
+  /* ── HERO LEAD ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+    border-bottom: var(--rule);
+    padding: 40px 0 32px;
+  }
 
-/* ─── CARD GRID ─── */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.sub-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;text-decoration:none;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.sub-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--card-c,var(--accent));border-radius:16px 16px 0 0;transform:scaleX(0);transition:transform .3s;transform-origin:left}
-.sub-card:hover{background:var(--surface2);border-color:rgba(99,130,201,.3);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.4)}
-.sub-card:hover::after{transform:scaleX(1)}
-.card-icon{font-size:26px;margin-bottom:14px}
-.card-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px}
-.card-desc{font-size:12.5px;color:var(--text2);flex:1;line-height:1.55;margin-bottom:18px}
-.card-cta{font-size:13px;font-weight:600;color:var(--card-c,var(--accent));display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
-.sub-card:hover .card-cta{gap:9px}
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-aside { border-left: none !important; border-top: var(--rule); margin-top: 24px; padding-top: 24px !important; padding-left: 0 !important; }
+  }
 
-/* ─── PYQ SECTION ─── */
-.pyq-layout{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:start}
-.pyq-filters{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;position:sticky;top:80px}
-.pyq-filter-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:12px}
-.pyq-select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 14px;font-size:13px;color:var(--text);font-family:'Sora',sans-serif;outline:none;cursor:pointer;margin-bottom:14px}
-.pyq-select:focus{border-color:var(--accent)}
-.pyq-btn{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s}
-.pyq-btn:hover{background:var(--accent2)}
-.pyq-results{display:flex;flex-direction:column;gap:12px}
-.pyq-item{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:18px 20px;transition:all .2s}
-.pyq-item:hover{border-color:rgba(79,126,248,.3);background:var(--surface2)}
-.pyq-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.pyq-tag{padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.3px}
-.pyq-tag.exam{background:rgba(79,126,248,.15);color:var(--accent2)}
-.pyq-tag.rtp{background:rgba(34,197,94,.15);color:var(--green)}
-.pyq-tag.mtp{background:rgba(244,197,66,.15);color:var(--gold)}
-.pyq-tag.marks{background:rgba(167,139,250,.15);color:var(--purple)}
-.pyq-q{font-size:13.5px;color:var(--text);line-height:1.65;margin-bottom:12px}
-.pyq-toggle{font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;display:inline-flex;align-items:center;gap:5px;background:none;border:none;padding:0;font-family:'Sora',sans-serif}
-.pyq-answer{margin-top:12px;padding:14px 16px;background:var(--bg3);border-radius:10px;font-size:13px;color:var(--text2);line-height:1.7;display:none;border-left:3px solid var(--accent)}
+  .hero-main {}
+  .hero-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
 
-/* ─── PRACTICE MODE ─── */
-.practice-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .25s;cursor:pointer}
-.practice-card:hover{border-color:rgba(79,126,248,.3);background:var(--surface2);transform:translateY(-3px)}
-.practice-card-icon{font-size:32px;margin-bottom:14px}
-.practice-card-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px}
-.practice-card-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
-.practice-tags{display:flex;flex-wrap:wrap;gap:6px}
-.p-tag{padding:4px 11px;border-radius:100px;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:1px solid var(--border2)}
+  .hero-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
 
-/* MCQ QUIZ */
-.quiz-container{display:none}
-.quiz-container.active{display:block}
-.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
-.quiz-progress-bar{height:5px;background:var(--bg3);border-radius:100px;overflow:hidden;margin-bottom:28px}
-.quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:100px;transition:width .4s}
-.quiz-timer{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--gold);padding:8px 16px;background:rgba(244,197,66,.1);border-radius:9px;border:1px solid rgba(244,197,66,.2)}
-.quiz-timer.warning{color:var(--red);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.2)}
-.quiz-q{font-size:16px;font-weight:600;color:var(--text);line-height:1.65;margin-bottom:24px}
-.quiz-options{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.quiz-option{padding:14px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:11px;cursor:pointer;font-size:14px;color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:12px}
-.quiz-option:hover:not(.selected){background:var(--surface);border-color:rgba(79,126,248,.25);color:var(--text)}
-.quiz-option.selected{border-color:var(--accent);background:rgba(79,126,248,.1);color:var(--text)}
-.quiz-option.correct{border-color:var(--green);background:rgba(34,197,94,.1);color:var(--green)}
-.quiz-option.wrong{border-color:var(--red);background:rgba(239,68,68,.1);color:var(--red)}
-.opt-letter{width:28px;height:28px;border-radius:7px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
-.quiz-explain{padding:14px 16px;background:var(--bg3);border-radius:10px;font-size:13px;color:var(--text2);line-height:1.7;border-left:3px solid var(--green);display:none;margin-top:4px}
-.quiz-nav{display:flex;gap:12px;align-items:center;justify-content:space-between}
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
 
-/* ─── AI PLANNER ─── */
-.planner-form{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:32px;margin-bottom:24px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-.form-field{display:flex;flex-direction:column;gap:7px}
-.form-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text3)}
-.form-select,.form-input{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--text);font-family:'Sora',sans-serif;outline:none;transition:border .2s}
-.form-select:focus,.form-input:focus{border-color:var(--accent)}
-.plan-result{display:none}
-.plan-result.active{display:block}
-.plan-day{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:18px 20px;margin-bottom:12px;transition:all .2s}
-.plan-day:hover{border-color:rgba(79,126,248,.25)}
-.plan-day-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.plan-day-num{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;font-family:'JetBrains Mono',monospace}
-.plan-day-title{font-size:15px;font-weight:700;color:var(--text)}
-.plan-day-sub{font-size:12px;color:var(--text3);margin-top:2px}
-.plan-tasks{display:flex;flex-direction:column;gap:8px}
-.plan-task{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2)}
-.plan-task::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.plan-task.done::before{background:var(--green)}
+  .hero-deck {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    font-weight: 300;
+    max-width: 560px;
+    border-top: var(--rule-accent);
+    padding-top: 12px;
+    margin-top: 2px;
+  }
 
-/* ─── DASHBOARD ─── */
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.dash-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .2s}
-.dash-card:hover{border-color:rgba(79,126,248,.2)}
-.dash-lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--text3);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:7px}
-.dash-val{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:var(--text);line-height:1;margin-bottom:6px}
-.dash-sub{font-size:12.5px;color:var(--text2)}
-.dash-bar{height:5px;background:var(--bg3);border-radius:100px;overflow:hidden;margin-top:14px}
-.dash-bar-fill{height:100%;border-radius:100px;transition:width 1s ease}
-.accuracy-ring{width:80px;height:80px;position:relative;margin-bottom:12px}
-.accuracy-ring svg{transform:rotate(-90deg)}
-.ring-bg{fill:none;stroke:var(--bg3);stroke-width:8}
-.ring-fill{fill:none;stroke:var(--green);stroke-width:8;stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:60;transition:stroke-dashoffset 1s ease}
-.ring-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--green)}
-.weak-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-.weak-item{display:flex;align-items:center;gap:10px}
-.weak-name{font-size:13px;color:var(--text2);width:90px;flex-shrink:0}
-.weak-bar{flex:1;height:5px;background:var(--bg3);border-radius:100px;overflow:hidden}
-.weak-fill{height:100%;border-radius:100px;transition:width 1s ease}
-.streak-row{display:flex;gap:6px;margin-top:12px}
-.s-dot{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
-.s-dot.hit{background:var(--accent);color:#fff;box-shadow:0 2px 6px rgba(79,126,248,.35)}
-.s-dot.miss{background:var(--bg3);color:var(--text3);border:1px solid var(--border2)}
-.s-dot.today{background:var(--gold);color:#000}
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: var(--rule);
+  }
 
-/* ─── FLASHCARDS ─── */
-.flashcard-controls{display:flex;align-items:center;gap:10px;margin-bottom:24px;flex-wrap:wrap}
-.fc-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--surface);border:1px solid var(--border);border-radius:9px;font-size:12.5px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;font-family:'Sora',sans-serif}
-.fc-btn:hover,.fc-btn.active{background:var(--surface2);border-color:rgba(79,126,248,.3);color:var(--text)}
-.fc-btn.active{color:var(--accent);border-color:var(--accent)}
-.flashcard-wrap{perspective:1200px;height:260px;cursor:pointer;max-width:600px;margin:0 auto 20px}
-.flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.2,.2,1)}
-.flashcard.flipped{transform:rotateY(180deg)}
-.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;border:1px solid var(--border)}
-.fc-front{background:linear-gradient(135deg,var(--surface),var(--surface2))}
-.fc-back{background:linear-gradient(135deg,rgba(79,126,248,.08),rgba(167,139,250,.08));transform:rotateY(180deg);border-color:rgba(79,126,248,.2)}
-.fc-chip{padding:5px 14px;background:rgba(79,126,248,.1);border:1px solid rgba(79,126,248,.2);border-radius:100px;font-size:11px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:18px}
-.fc-question{font-size:16px;font-weight:600;color:var(--text);text-align:center;line-height:1.6}
-.fc-answer{font-size:14px;color:var(--text2);text-align:center;line-height:1.7}
-.fc-hint{font-size:12px;color:var(--text3);margin-top:8px}
-.fc-nav{display:flex;align-items:center;justify-content:center;gap:16px}
-.fc-nav-btn{width:42px;height:42px;border-radius:10px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all .2s;color:var(--text2)}
-.fc-nav-btn:hover{background:var(--surface2);border-color:rgba(79,126,248,.25);color:var(--text)}
-.fc-counter{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text3)}
-.bookmark-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;background:none;border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;font-family:'Sora',sans-serif}
-.bookmark-btn.saved{color:var(--gold);border-color:rgba(244,197,66,.3);background:rgba(244,197,66,.08)}
+  .hero-author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
 
-/* ─── RTP / MTP ─── */
-.rtp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.rtp-card{background:var(--surface);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:all .25s}
-.rtp-card:hover{border-color:rgba(79,126,248,.25);transform:translateY(-3px)}
-.rtp-card-head{padding:18px 20px 14px;border-bottom:1px solid var(--border2);display:flex;gap:12px;align-items:flex-start}
-.rtp-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.rtp-card-title{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:3px}
-.rtp-card-meta{font-size:12px;color:var(--text3)}
-.rtp-items{padding:14px 20px;display:flex;flex-direction:column;gap:10px}
-.rtp-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);line-height:1.55}
-.rtp-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px}
-.rtp-card-footer{padding:14px 20px;border-top:1px solid var(--border2)}
-.rtp-link{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
-.rtp-link:hover{gap:9px}
+  .hero-author-info {}
+  .hero-author-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .hero-author-title {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
 
-/* ─── SMART SEARCH ─── */
-.search-box{position:relative;margin-bottom:28px}
-.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 20px 16px 50px;font-size:15px;color:var(--text);font-family:'Sora',sans-serif;outline:none;transition:all .3s}
-.search-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,126,248,.1)}
-.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text3)}
-.search-results{display:none}
-.search-results.active{display:block}
-.search-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:10px;margin-top:20px;padding-bottom:8px;border-bottom:1px solid var(--border2)}
-.search-result-item{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:11px;margin-bottom:8px;cursor:pointer;transition:all .2s}
-.search-result-item:hover{background:var(--surface2);border-color:rgba(79,126,248,.25)}
-.sri-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
-.sri-meta{font-size:12px;color:var(--text3)}
-.search-empty{text-align:center;padding:48px;color:var(--text3);font-size:14px}
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 24px;
+    background: var(--accent);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 22px;
+    transition: background 0.15s;
+  }
+  .hero-cta:hover { background: #8a2420; }
 
-/* ─── LAST 7 DAYS ─── */
-.l7-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.l7-card{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:22px;border-left:3px solid var(--card-c,var(--accent))}
-.l7-card:hover{background:var(--surface2)}
-.l7-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:12px}
-.l7-title{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:6px}
-.l7-desc{font-size:13px;color:var(--text2);line-height:1.6}
-.l7-tag{font-size:11px;color:var(--text3);margin-top:10px;font-family:'JetBrains Mono',monospace}
+  .hero-aside {
+    border-left: var(--rule);
+    padding-left: 28px;
+  }
 
-/* ─── QUICK REF TABLES ─── */
-.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
-.qr-card{background:var(--surface);border:1px solid var(--border);border-radius:15px;overflow:hidden}
-.qr-head{padding:16px 20px 12px;border-bottom:1px solid var(--border2);display:flex;gap:10px;align-items:center}
-.qr-head-icon{font-size:18px}
-.qr-head-title{font-size:13.5px;font-weight:700;color:var(--text)}
-.qr-head-sub{font-size:11px;color:var(--text3)}
-.qr-table{width:100%;border-collapse:collapse}
-.qr-table tr{border-bottom:1px solid var(--border2);transition:background .15s}
-.qr-table tr:last-child{border-bottom:none}
-.qr-table tr:hover{background:var(--bg3)}
-.qr-table td{padding:10px 20px;font-size:13px}
-.qr-table td:first-child{color:var(--text2)}
-.qr-table td:last-child{text-align:right;font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold);font-size:12px}
+  .aside-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: var(--rule);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
 
-/* ─── LIVE BANNER ─── */
-.live-banner{background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(79,126,248,.08));border:1px solid rgba(34,197,94,.2);border-radius:18px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:36px}
-.live-dot{width:10px;height:10px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px rgba(34,197,94,.2);animation:pulse 2s infinite;flex-shrink:0}
-.live-info{display:flex;align-items:center;gap:14px}
-.live-title{font-size:16px;font-weight:700;color:var(--text)}
-.live-sub{font-size:13px;color:var(--text2);margin-top:2px}
-.live-meta{display:flex;gap:22px}
-.live-meta-item{text-align:center}
-.lm-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--green)}
-.lm-key{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-.btn-green{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--green);color:#fff;border-radius:11px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap;box-shadow:0 4px 14px rgba(34,197,94,.3)}
-.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(34,197,94,.4)}
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
 
-/* ─── FLOATING BUTTONS ─── */
-.float-menu{position:fixed;bottom:24px;right:20px;z-index:300;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-.float-main{width:52px;height:52px;border-radius:15px;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(79,126,248,.45);transition:all .3s}
-.float-main:hover{background:var(--accent2);transform:scale(1.08)}
-.float-items{display:flex;flex-direction:column;align-items:flex-end;gap:8px;overflow:hidden;max-height:0;transition:max-height .35s ease}
-.float-items.open{max-height:300px}
-.float-item{display:flex;align-items:center;gap:10px}
-.float-item-label{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text2);white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.3)}
-.float-item-btn{width:42px;height:42px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;text-decoration:none}
-.float-item-btn:hover{background:var(--accent);border-color:var(--accent)}
+  .stat-block {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 4px;
+  }
 
-/* ─── EXAM MODE ─── */
-body.exam-mode .hide-exam{display:none!important}
-body.exam-mode .exam-only{display:flex!important}
-.exam-only{display:none}
-.exam-mode-bar{position:fixed;top:62px;left:0;right:0;background:rgba(244,197,66,.12);border-bottom:1px solid rgba(244,197,66,.2);padding:8px 24px;display:none;align-items:center;gap:10px;z-index:150;font-size:13px;font-weight:600;color:var(--gold)}
-body.exam-mode .exam-mode-bar{display:flex}
-body.exam-mode{padding-top:32px}
+  .aside-links { display: flex; flex-direction: column; gap: 8px; }
+  .aside-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 10px 12px;
+    border: var(--rule);
+    color: var(--ink);
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .aside-link:hover { background: var(--paper-warm); }
+  .aside-link-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--paper-warm);
+    border: var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .aside-link-text { font-size: 12px; line-height: 1.3; }
+  .aside-link-title { font-weight: 500; }
+  .aside-link-sub { color: var(--ink-muted); font-size: 11px; font-style: italic; }
 
-/* ─── FOOTER ─── */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20px 28px}
-.footer-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;margin-bottom:32px}
-.footer-brand{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.footer-desc{font-size:13px;color:var(--text3);line-height:1.65;max-width:280px}
-.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:14px}
-.footer-links{display:flex;flex-direction:column;gap:9px}
-.footer-links a{font-size:13px;color:var(--text2);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--accent2)}
-.footer-bottom{max-width:1120px;margin:0 auto;padding-top:20px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.footer-copy{font-size:12px;color:var(--text3)}
-.footer-tag{padding:4px 12px;background:rgba(79,126,248,.1);border:1px solid rgba(79,126,248,.2);border-radius:100px;font-size:11px;font-weight:600;color:var(--accent2);font-family:'JetBrains Mono',monospace}
+  /* ── SECTION HEADER ── */
+  .section-header {
+    border-top: var(--rule-thick);
+    border-bottom: var(--rule);
+    padding: 10px 0 8px;
+    margin: 36px 0 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .section-rule { flex: 1; height: 1px; background: var(--paper-rule); }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
 
-/* ─── ANIMATIONS ─── */
-@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0;
+    border: var(--rule);
+  }
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:900px){
-  .pyq-layout{grid-template-columns:1fr}
-  .pyq-filters{position:static}
-  .practice-layout{grid-template-columns:1fr}
-  .form-grid{grid-template-columns:1fr}
-  .ai-layout{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-}
-@media(max-width:768px){
-  nav{padding:0 16px}
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .hero{padding:72px 16px 50px}
-  .stat-div{display:none}
-  .stats-row{gap:18px}
-  .float-menu{bottom:16px;right:14px}
-}
+  .study-card {
+    padding: 22px 24px;
+    border-right: var(--rule);
+    border-bottom: var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .study-card:hover { background: var(--paper-warm); }
+  .study-card:last-child { border-right: none; }
+
+  .card-subject {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .card-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+  /* ── RESOURCES COLUMN ── */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--rule);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) { .resources-grid { grid-template-columns: 1fr; } }
+
+  .resource-item {
+    padding: 18px 22px;
+    border-right: var(--rule);
+    border-bottom: var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: background 0.15s;
+  }
+  .resource-item:nth-child(2n) { border-right: none; }
+  .resource-item:hover { background: var(--paper-warm); }
+
+  .resource-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .resource-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .resource-desc { font-size: 12px; color: var(--ink-muted); font-style: italic; }
+
+  /* ── QUICK REF TABLE ── */
+  .qref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .qref-card {
+    border: var(--rule);
+    padding: 18px 20px;
+    background: var(--paper);
+  }
+
+  .qref-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: var(--rule-accent);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .qref-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: var(--rule);
+    font-size: 13px;
+  }
+  .qref-row:last-child { border-bottom: none; }
+  .qref-key { color: var(--ink-muted); font-style: italic; }
+  .qref-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; }
+
+  /* ── ABOUT / PROFESSION ── */
+  .about-strip {
+    background: var(--paper-warm);
+    border: var(--rule);
+    border-left: var(--rule-accent);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 32px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 680px) {
+    .about-strip { grid-template-columns: 1fr; }
+  }
+
+  .about-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .about-body { font-size: 14px; color: var(--ink-muted); line-height: 1.7; }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: var(--rule);
+    background: var(--paper);
+    color: var(--ink-muted);
+  }
+  .badge.accent { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .contact-card {
+    border: var(--rule);
+    background: var(--paper);
+    padding: 16px 18px;
+  }
+
+  .contact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+    border-bottom: var(--rule);
+    padding-bottom: 8px;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: var(--rule);
+    font-size: 12px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row:hover { color: var(--accent); }
+  .contact-icon {
+    width: 22px;
+    height: 22px;
+    background: var(--paper-warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    border: var(--rule);
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-section { padding-bottom: 0; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    border: var(--rule);
+  }
+
+  .review-card {
+    padding: 22px 24px;
+    border-right: var(--rule);
+    border-bottom: var(--rule);
+    position: relative;
+  }
+  .review-card:last-child { border-right: none; }
+
+  .review-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    line-height: 0.6;
+    color: var(--paper-rule);
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    font-weight: 700;
+  }
+
+  .review-text {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-top: 24px;
+    padding-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-author {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .review-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .review-sub { font-size: 11px; color: var(--ink-muted); font-style: italic; }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+  }
+  .star { color: var(--gold); font-size: 12px; }
+
+  /* ── FEEDBACK FORM ── */
+  .feedback-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 40px;
+    margin: 0 -40px;
+  }
+
+  .feedback-inner { max-width: 640px; margin: 0 auto; }
+
+  .feedback-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .feedback-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .feedback-sub {
+    font-size: 14px;
+    color: #9a8e7c;
+    margin-bottom: 32px;
+  }
+
+  .feedback-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9a8e7c;
+  }
+
+  .form-input, .form-textarea, .form-select {
+    background: #2a251c;
+    border: 1px solid #3a3328;
+    color: var(--paper);
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border 0.15s;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--gold);
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: #6a6050; }
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-select option { background: #2a251c; }
+
+  .rating-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .rating-btn {
+    width: 36px;
+    height: 36px;
+    background: #2a251c;
+    border: 1px solid #3a3328;
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .rating-btn:hover, .rating-btn.active { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+  .submit-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.15s;
+  }
+  .submit-btn:hover { background: #8a2420; }
+
+  .submit-success {
+    display: none;
+    background: #1a2a1a;
+    border: 1px solid #2a4a2a;
+    color: #7ab87a;
+    padding: 14px 18px;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* ── FOOTNOTE / FOOTER ── */
+  .footnote-bar {
+    background: var(--paper-warm);
+    border-top: var(--rule-thick);
+    padding: 28px 40px;
+  }
+
+  .footnote-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 700px) { .footnote-grid { grid-template-columns: 1fr; } }
+
+  .footnote-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: var(--rule);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+  .footnote-col-links { display: flex; flex-direction: column; gap: 6px; }
+  .footnote-col-links a {
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-style: italic;
+  }
+  .footnote-col-links a:hover { color: var(--accent); text-decoration: underline; }
+
+  .footnote-disclaimer {
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+
+  .colophon {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: var(--rule);
+    padding-top: 18px;
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .colophon-left {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .colophon-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── JOIN STRIP ── */
+  .join-strip {
+    background: var(--gold-light);
+    border: var(--rule);
+    border-left: 3px solid var(--gold);
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+  .join-text { font-size: 14px; flex: 1; min-width: 200px; }
+  .join-text strong { font-family: 'Playfair Display', serif; }
+  .join-btn {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 18px;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .join-btn:hover { background: #a07020; color: white; }
+
+  /* ── DIVIDER ── */
+  .divider { border-top: var(--rule); margin: 36px 0; }
+
+  /* ── AI ASSISTANT ── */
+  .ai-section {
+    border: var(--rule);
+    border-left: var(--rule-accent);
+    padding: 24px 28px;
+    background: var(--paper-warm);
+  }
+
+  .ai-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .ai-sub { font-size: 13px; color: var(--ink-muted); font-style: italic; margin-bottom: 18px; }
+
+  .ai-prompt-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .ai-prompt-btn {
+    font-size: 12px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    padding: 7px 12px;
+    border: var(--rule);
+    background: var(--paper);
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ai-prompt-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* responsive */
+  @media (max-width: 600px) {
+    .page-wrap { padding: 0 18px; }
+    .masthead-top { padding: 6px 18px; }
+    .masthead-main { padding: 18px; }
+    .nav-bar { padding: 0 18px; }
+    .feedback-section { padding: 36px 18px; margin: 0 -18px; }
+    .footnote-bar { padding: 24px 18px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- EXAM MODE BAR -->
-<div class="exam-mode-bar">⚡ Exam Mode ON — Showing only high-priority content <button onclick="toggleExamMode()" style="margin-left:auto;background:rgba(244,197,66,.2);border:1px solid rgba(244,197,66,.3);border-radius:7px;padding:5px 12px;color:var(--gold);font-size:12px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;">Exit Mode</button></div>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="logo-icon">P</div>
-    <div>
-      <div class="logo-text">Prince Learning Hub</div>
-      <div class="logo-sub">CA Inter May 2026</div>
-    </div>
-  </a>
-  <div class="nav-links">
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="masthead-date" id="today-date">Monday, April 14, 2026</span>
+    <span class="masthead-tagline">CA Inter · Both Groups · May 2026</span>
+  </div>
+  <div class="masthead-main">
+    <div class="site-name">Prince <span>Learning</span> Hub</div>
+    <div class="site-tagline">Structured knowledge for the discerning CA aspirant</div>
+  </div>
+  <nav class="nav-bar">
     <a href="#subjects">Subjects</a>
-    <a href="#pyq">PYQ</a>
-    <a href="#practice">Practice</a>
-    <a href="#planner">Planner</a>
-    <a href="#dashboard">Dashboard</a>
-    <div class="nav-exam-toggle" onclick="toggleExamMode()" id="examToggle">
-      <span class="toggle-dot"></span> Exam Mode
+    <a href="#resources">Resources</a>
+    <a href="#quickref">Quick Ref</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#feedback">Feedback</a>
+    <a href="https://meet.google.com/dgx-xani-sjh" target="_blank">Live Session</a>
+  </nav>
+</header>
+
+<!-- PAGE BODY -->
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-kicker">CA Inter · May 2026 Examination</div>
+      <h1 class="hero-headline">Master Tax, Law,<br><em>Accounts & GST</em></h1>
+      <p class="hero-deck">Your personal study dashboard for CA Inter Both Group. Smart flashcards, AI-powered assistance, and structured revision — all in one place.</p>
+      <div class="hero-meta">
+        <div class="hero-author-avatar">P</div>
+        <div class="hero-author-info">
+          <div class="hero-author-name">Prince Learning Hub</div>
+          <div class="hero-author-title">CA Inter Educator · Advanced Accounts & Tax Specialist · Lucknow, UP</div>
+        </div>
+      </div>
+      <a href="#subjects" class="hero-cta">Begin Revision →</a>
     </div>
-    <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="nav-cta">🟢 Join Live</a>
-  </div>
-  <div class="hamburger" onclick="toggleMobile()" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#subjects" onclick="closeMobile()">📚 Subjects</a>
-  <a href="#pyq" onclick="closeMobile()">📋 PYQ Finder</a>
-  <a href="#practice" onclick="closeMobile()">🎯 Practice</a>
-  <a href="#planner" onclick="closeMobile()">📅 AI Planner</a>
-  <a href="#dashboard" onclick="closeMobile()">📊 Dashboard</a>
-  <a href="#flashcards" onclick="closeMobile()">🃏 Flashcards</a>
-  <a href="#search" onclick="closeMobile()">🔍 Search</a>
-  <a href="https://meet.google.com/dgx-xani-sjh" target="_blank">🟢 Join Live Session</a>
-</div>
+    <div class="hero-aside">
+      <div class="aside-label">Dashboard Stats</div>
+      <div class="stat-grid">
+        <div class="stat-block">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Flashcards</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Subjects</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Live Study</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">Free</div>
+          <div class="stat-label">Resources</div>
+        </div>
+      </div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span>CA Inter · May 2026 Preparation</div>
-    <h1 class="hero-title">Master Tax, Law,<br><em>Accounts &amp; GST</em></h1>
-    <p class="hero-sub">Smart flashcards, PYQ finder, AI study planner, MCQ practice — your all-in-one CA Inter exam companion.</p>
-    <div class="hero-btns">
-      <a href="#subjects" class="btn-primary">📚 Start Studying →</a>
-      <a href="#practice" class="btn-secondary">🎯 Practice MCQs</a>
-      <a href="#pyq" class="btn-gold">📋 PYQ Finder</a>
+      <div class="aside-label" style="margin-top:16px;">Quick Access</div>
+      <div class="aside-links">
+        <a href="https://royceprince.github.io/tax-flashcard.html" class="aside-link">
+          <div class="aside-link-icon">📊</div>
+          <div class="aside-link-text">
+            <div class="aside-link-title">Income Tax Deck</div>
+            <div class="aside-link-sub">5 flashcards · Direct Tax</div>
+          </div>
+        </a>
+        <a href="https://royceprince.github.io/gst-flashcard.html" class="aside-link">
+          <div class="aside-link-icon">🧾</div>
+          <div class="aside-link-text">
+            <div class="aside-link-title">GST Flashcards</div>
+            <div class="aside-link-sub">3 flashcards · Indirect Tax</div>
+          </div>
+        </a>
+        <a href="https://royceprince.github.io/accounts-flashcard.html" class="aside-link">
+          <div class="aside-link-icon">🧮</div>
+          <div class="aside-link-text">
+            <div class="aside-link-title">Adv. Accounts</div>
+            <div class="aside-link-sub">2 flashcards · Theory + Problems</div>
+          </div>
+        </a>
+        <a href="https://royceprince.github.io/gst-practice.html" class="aside-link">
+          <div class="aside-link-icon">🚀</div>
+          <div class="aside-link-text">
+            <div class="aside-link-title">GST Practice MCQ</div>
+            <div class="aside-link-sub">Exam-oriented questions</div>
+          </div>
+        </a>
+      </div>
     </div>
-    <div class="stats-row">
-      <div class="stat-item"><div class="stat-num">5<span>+</span></div><div class="stat-lbl">Subjects</div></div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><div class="stat-num">500<span>+</span></div><div class="stat-lbl">Flashcards</div></div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><div class="stat-num">10<span>yr</span></div><div class="stat-lbl">PYQ Bank</div></div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><div class="stat-num">24<span>/7</span></div><div class="stat-lbl">AI Support</div></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- QUICK FEATURE STRIP -->
-<div class="feature-strip">
-  <div class="feature-strip-inner">
-    <a href="#pyq" class="feat-card" style="--feat-color:#f97316"><span class="feat-icon">📋</span><div class="feat-title">PYQ Finder</div><div class="feat-sub">10 Year Bank</div></a>
-    <a href="#practice" class="feat-card" style="--feat-color:#a78bfa"><span class="feat-icon">🎯</span><div class="feat-title">Practice MCQ</div><div class="feat-sub">Timer Mode</div></a>
-    <a href="#planner" class="feat-card" style="--feat-color:#22c55e"><span class="feat-icon">📅</span><div class="feat-title">AI Planner</div><div class="feat-sub">May 2026</div></a>
-    <a href="#dashboard" class="feat-card" style="--feat-color:#4f7ef8"><span class="feat-icon">📊</span><div class="feat-title">Dashboard</div><div class="feat-sub">Track Progress</div></a>
-    <a href="#flashcards" class="feat-card" style="--feat-color:#f4c542"><span class="feat-icon">🃏</span><div class="feat-title">Flashcards</div><div class="feat-sub">Bookmark Mode</div></a>
-    <a href="#rtp" class="feat-card" style="--feat-color:#06b6d4"><span class="feat-icon">📰</span><div class="feat-title">RTP / MTP</div><div class="feat-sub">ICAI Updates</div></a>
-    <a href="#revision" class="feat-card" style="--feat-color:#ef4444"><span class="feat-icon">⚡</span><div class="feat-title">7-Day Revision</div><div class="feat-sub">Last Minute</div></a>
-    <a href="#search" class="feat-card" style="--feat-color:#8b5cf6"><span class="feat-icon">🔍</span><div class="feat-title">Smart Search</div><div class="feat-sub">Any Topic</div></a>
+  <!-- JOIN STRIP -->
+  <div class="join-strip">
+    <div class="join-text"><strong>Join Our Daily Study Session</strong> — Live Google Meet, open 24×7 to all CA Warriors</div>
+    <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="join-btn">Join Google Meet →</a>
   </div>
-</div>
 
-<!-- SUBJECTS -->
-<section class="sec" id="subjects">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Study Material</div>
-      <h2 class="sec-title">All Subjects, One Place</h2>
-      <p class="sec-desc">Chapter-wise flashcards built from ICAI study material with mnemonics and exam tables.</p>
+  <!-- SUBJECTS -->
+  <section id="subjects">
+    <div class="section-header">
+      <div class="section-title">Study Subjects</div>
+      <div class="section-rule"></div>
+      <div class="section-num">§ I</div>
     </div>
     <div class="card-grid">
-      <a href="https://royceprince.github.io/tax-flashcard.html" class="sub-card" style="--card-c:#f97316">
-        <div class="card-icon">📊</div>
-        <div class="card-name">Direct Tax</div>
-        <div class="card-desc">Income Tax Act, TDS, Capital Gains, Deductions u/s 80C–80U, Return Filing</div>
-        <div class="card-cta" style="color:#f97316">Open Flashcards →</div>
+      <a href="https://royceprince.github.io/tax-flashcard.html" class="study-card">
+        <div class="card-subject">Direct Tax</div>
+        <div class="card-title">Income Tax</div>
+        <div class="card-desc">Slabs, deductions, capital gains, TDS provisions under the Income Tax Act, 1961</div>
+        <div class="card-count"><span class="card-dot"></span> 5 flashcards</div>
       </a>
-      <a href="https://royceprince.github.io/gst-flashcard.html" class="sub-card" style="--card-c:#22c55e">
-        <div class="card-icon">🧾</div>
-        <div class="card-name">GST</div>
-        <div class="card-desc">14 chapters — Supply, ITC, Registration, Returns, Valuation, Place of Supply</div>
-        <div class="card-cta" style="color:#22c55e">Open Flashcards →</div>
+      <a href="https://royceprince.github.io/gst-flashcard.html" class="study-card">
+        <div class="card-subject">Indirect Tax</div>
+        <div class="card-title">GST</div>
+        <div class="card-desc">ITC conditions, place of supply, composition scheme, registration thresholds</div>
+        <div class="card-count"><span class="card-dot"></span> 3 flashcards</div>
       </a>
-      <a href="https://royceprince.github.io/law-flashcard.html" class="sub-card" style="--card-c:#a78bfa">
-        <div class="card-icon">⚖️</div>
-        <div class="card-name">Corporate & Other Laws</div>
-        <div class="card-desc">Companies Act 2013, LLP, Negotiable Instruments Act, IBC, SCRA</div>
-        <div class="card-cta" style="color:#a78bfa">Open Flashcards →</div>
+      <a href="https://royceprince.github.io/law-flashcard.html" class="study-card">
+        <div class="card-subject">Company Law</div>
+        <div class="card-title">Law</div>
+        <div class="card-desc">Companies Act 2013 — incorporation, meetings, directors, audit requirements</div>
+        <div class="card-count"><span class="card-dot"></span> 2 flashcards</div>
       </a>
-      <a href="https://royceprince.github.io/accounts-flashcard.html" class="sub-card" style="--card-c:#4f7ef8">
-        <div class="card-icon">📚</div>
-        <div class="card-name">Advanced Accounts</div>
-        <div class="card-desc">AS 1–29, Amalgamation (AS-14), Branch Accounting, Internal Reconstruction</div>
-        <div class="card-cta" style="color:#4f7ef8">Open Flashcards →</div>
+      <a href="https://royceprince.github.io/accounts-flashcard.html" class="study-card">
+        <div class="card-subject">Adv. Accounts</div>
+        <div class="card-title">Advanced Accounting</div>
+        <div class="card-desc">AS standards, segment reporting, partnership, amalgamation, corporate accounts</div>
+        <div class="card-count"><span class="card-dot"></span> 2 flashcards</div>
       </a>
-      <a href="https://royceprince.github.io/audit-flashcard.html" class="sub-card" style="--card-c:#06b6d4">
-        <div class="card-icon">🔍</div>
-        <div class="card-name">Audit</div>
-        <div class="card-desc">SA 200–SA 710, Audit Planning, Risk Assessment, CARO 2020</div>
-        <div class="card-cta" style="color:#06b6d4">Open Flashcards →</div>
+      <a href="https://royceprince.github.io/audit-flashcard.html" class="study-card">
+        <div class="card-subject">Audit</div>
+        <div class="card-title">Auditing & Assurance</div>
+        <div class="card-desc">Standards on Auditing, audit procedures, internal control, audit reports</div>
+        <div class="card-count"><span class="card-dot"></span> Flashcards available</div>
       </a>
-      <a href="https://royceprince.github.io/gst-practice.html" class="sub-card" style="--card-c:#f4c542">
-        <div class="card-icon">🎯</div>
-        <div class="card-name">GST MCQ Practice</div>
-        <div class="card-desc">Chapter-wise MCQs and case-based questions with section citations</div>
-        <div class="card-cta" style="color:#f4c542">Start Practice →</div>
+      <a href="https://royceprince.github.io/gst-practice.html" class="study-card">
+        <div class="card-subject">Practice</div>
+        <div class="card-title">MCQ Practice Zone</div>
+        <div class="card-desc">Exam-oriented MCQ and case-based questions for all CA Inter subjects</div>
+        <div class="card-count"><span class="card-dot"></span> Start practising now</div>
       </a>
     </div>
-    <div class="live-banner">
-      <div class="live-info">
-        <div class="live-dot"></div>
-        <div>
-          <div class="live-title">Daily Study Session — CA Warriors</div>
-          <div class="live-sub">Google Meet · Live doubt solving and group study</div>
-        </div>
-      </div>
-      <div class="live-meta">
-        <div class="live-meta-item"><div class="lm-val">24/7</div><div class="lm-key">Available</div></div>
-        <div class="live-meta-item"><div class="lm-val">Free</div><div class="lm-key">Access</div></div>
-      </div>
-      <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="btn-green">🟢 Join Google Meet</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- PYQ FINDER -->
-<section class="sec" id="pyq" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Past Year Questions</div>
-      <h2 class="sec-title">Chapter-wise PYQ Finder</h2>
-      <p class="sec-desc">Search 10 years of ICAI exam questions — Past Exams, RTP, MTP — filtered by subject and chapter.</p>
+  <!-- QUICK REF -->
+  <section id="quickref">
+    <div class="section-header">
+      <div class="section-title">Quick Reference</div>
+      <div class="section-rule"></div>
+      <div class="section-num">§ II</div>
     </div>
-    <div class="pyq-layout">
-      <div class="pyq-filters">
-        <div class="pyq-filter-title">Filter Questions</div>
-        <select class="pyq-select" id="pyqSubject" onchange="updateChapters()">
-          <option value="">Select Subject</option>
-          <option value="tax">Direct Tax</option>
-          <option value="gst">GST</option>
-          <option value="law">Corporate Law</option>
-          <option value="accounts">Advanced Accounts</option>
-          <option value="audit">Audit</option>
-        </select>
-        <select class="pyq-select" id="pyqChapter">
-          <option value="">Select Chapter</option>
-        </select>
-        <select class="pyq-select" id="pyqType">
-          <option value="all">All Types</option>
-          <option value="exam">Past Exam</option>
-          <option value="rtp">RTP</option>
-          <option value="mtp">MTP</option>
-        </select>
-        <button class="pyq-btn" onclick="loadPYQ()">🔍 Find Questions</button>
-        <div style="height:1px;background:var(--border);margin:16px 0"></div>
-        <div style="font-size:12px;color:var(--text3);line-height:1.6">💡 Select subject + chapter to see ICAI exam questions from last 10 years</div>
+    <div class="qref-grid">
+      <div class="qref-card">
+        <div class="qref-label">Income Tax Slabs — New Regime · AY 2025-26</div>
+        <div class="qref-row"><span class="qref-key">Up to ₹3,00,000</span><span class="qref-val">NIL</span></div>
+        <div class="qref-row"><span class="qref-key">₹3L – ₹7L</span><span class="qref-val">5%</span></div>
+        <div class="qref-row"><span class="qref-key">₹7L – ₹10L</span><span class="qref-val">10%</span></div>
+        <div class="qref-row"><span class="qref-key">₹10L – ₹12L</span><span class="qref-val">15%</span></div>
+        <div class="qref-row"><span class="qref-key">₹12L – ₹15L</span><span class="qref-val">20%</span></div>
+        <div class="qref-row"><span class="qref-key">Above ₹15L</span><span class="qref-val">30%</span></div>
+      </div>
+      <div class="qref-card">
+        <div class="qref-label">GST Key Thresholds</div>
+        <div class="qref-row"><span class="qref-key">Goods Registration</span><span class="qref-val">₹40L</span></div>
+        <div class="qref-row"><span class="qref-key">Services Registration</span><span class="qref-val">₹20L</span></div>
+        <div class="qref-row"><span class="qref-key">Composition Limit</span><span class="qref-val">₹1.5 Cr</span></div>
+        <div class="qref-row"><span class="qref-key">Composition (Mfr/Trader)</span><span class="qref-val">1%</span></div>
+        <div class="qref-row"><span class="qref-key">Composition (Restaurant)</span><span class="qref-val">5%</span></div>
+        <div class="qref-row"><span class="qref-key">GSTR-3B Due Date</span><span class="qref-val">20th</span></div>
+      </div>
+      <div class="qref-card">
+        <div class="qref-label">TDS — Key Sections</div>
+        <div class="qref-row"><span class="qref-key">Sec 192 · Salary</span><span class="qref-val">Slab Rate</span></div>
+        <div class="qref-row"><span class="qref-key">Sec 194A · Interest</span><span class="qref-val">10%</span></div>
+        <div class="qref-row"><span class="qref-key">Sec 194C · Contractor</span><span class="qref-val">1% / 2%</span></div>
+        <div class="qref-row"><span class="qref-key">Sec 194H · Commission</span><span class="qref-val">5%</span></div>
+        <div class="qref-row"><span class="qref-key">Sec 194I · Rent</span><span class="qref-val">10%</span></div>
+        <div class="qref-row"><span class="qref-key">Sec 194J · Prof. Fees</span><span class="qref-val">10%</span></div>
+      </div>
+      <div class="qref-card">
+        <div class="qref-label">Depreciation Rates — IT Act (WDV)</div>
+        <div class="qref-row"><span class="qref-key">Buildings (RCC)</span><span class="qref-val">10%</span></div>
+        <div class="qref-row"><span class="qref-key">Furniture & Fittings</span><span class="qref-val">10%</span></div>
+        <div class="qref-row"><span class="qref-key">Motor Car (non-hire)</span><span class="qref-val">15%</span></div>
+        <div class="qref-row"><span class="qref-key">Plant & Machinery</span><span class="qref-val">15%</span></div>
+        <div class="qref-row"><span class="qref-key">Computers</span><span class="qref-val">40%</span></div>
+        <div class="qref-row"><span class="qref-key">Intangibles (know-how)</span><span class="qref-val">25%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="section-header">
+      <div class="section-title">Study Resources</div>
+      <div class="section-rule"></div>
+      <div class="section-num">§ III</div>
+    </div>
+    <div class="resources-grid">
+      <a href="https://royceprince.github.io/tax-flashcard.html" class="resource-item">
+        <div class="resource-tag">Direct Tax</div>
+        <div class="resource-name">Income Tax Flashcard Deck</div>
+        <div class="resource-desc">Complete chapter-wise flashcards from ICAI Study Material</div>
+      </a>
+      <a href="https://www.icai.org/" target="_blank" class="resource-item">
+        <div class="resource-tag">Official</div>
+        <div class="resource-name">ICAI Official Website</div>
+        <div class="resource-desc">Study materials, RTPs, MTPs, and official exam notifications</div>
+      </a>
+      <a href="https://royceprince.github.io/gst-practice.html" class="resource-item">
+        <div class="resource-tag">Practice</div>
+        <div class="resource-name">GST MCQ Practice</div>
+        <div class="resource-desc">Exam-oriented MCQ and case-based questions for GST Paper</div>
+      </a>
+      <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="resource-item">
+        <div class="resource-tag">Live Sessions</div>
+        <div class="resource-name">Daily Google Meet</div>
+        <div class="resource-desc">24×7 open study room — join CA Warriors anytime</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT / PROFESSION -->
+  <section id="about">
+    <div class="section-header">
+      <div class="section-title">About the Educator</div>
+      <div class="section-rule"></div>
+      <div class="section-num">§ IV</div>
+    </div>
+    <div class="about-strip">
+      <div>
+        <div class="about-headline">Dedicated to the CA Inter aspirant</div>
+        <p class="about-body">Prince Learning Hub is built and maintained by a CA Inter educator with a focused specialisation in Advanced Accounting, Income Tax, and GST. The platform is designed to give students free, structured, and exam-ready revision material — flashcards, practice MCQs, and AI-assisted doubt clearing — all in one place.</p>
+        <p class="about-body" style="margin-top:10px;">The study resources are curated specifically for the ICAI May 2026 examination cycle, incorporating RTP announcements, revised AS criteria for non-company entities, and updated tax slabs under the new regime.</p>
+        <div class="about-badges">
+          <span class="badge accent">CA Inter Educator</span>
+          <span class="badge">Advanced Accounting</span>
+          <span class="badge">Income Tax</span>
+          <span class="badge">GST · Indirect Tax</span>
+          <span class="badge">Lucknow, UP</span>
+          <span class="badge">May 2026 Batch</span>
+        </div>
       </div>
       <div>
-        <div id="pyqResults" class="pyq-results">
-          <div style="text-align:center;padding:60px 20px;color:var(--text3);font-size:14px">
-            <div style="font-size:40px;margin-bottom:14px">📋</div>
-            Select a subject and chapter, then click Find Questions
-          </div>
+        <div class="contact-card">
+          <div class="contact-label">Connect</div>
+          <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="contact-row">
+            <div class="contact-icon">🎓</div>
+            Google Meet — Join Live Study
+          </a>
+          <a href="https://t.me/capratik25" target="_blank" class="contact-row">
+            <div class="contact-icon">✈</div>
+            Telegram — CA Inter IMP
+          </a>
+          <a href="https://royceprince.github.io/" class="contact-row">
+            <div class="contact-icon">◈</div>
+            Prince Learning Hub Website
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PRACTICE MODE -->
-<section class="sec" id="practice">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Smart Practice</div>
-      <h2 class="sec-title">Practice Mode</h2>
-      <p class="sec-desc">ICAI exam-level MCQs with timer — test your knowledge chapter by chapter.</p>
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews-section">
+    <div class="section-header">
+      <div class="section-title">Student Reviews</div>
+      <div class="section-rule"></div>
+      <div class="section-num">§ V</div>
     </div>
-
-    <!-- Mode Selector -->
-    <div id="practiceSelector">
-      <div class="practice-layout">
-        <div class="practice-card" onclick="startQuiz('mcq')">
-          <div class="practice-card-icon">⚡</div>
-          <div class="practice-card-title">MCQ Quick Fire</div>
-          <div class="practice-card-desc">30 questions · 45 second timer per question · All subjects · Instant explanation</div>
-          <div class="practice-tags">
-            <span class="p-tag">ICAI Level</span>
-            <span class="p-tag">Timer</span>
-            <span class="p-tag">30 Qs</span>
-          </div>
-          <div style="margin-top:18px"><span class="btn-primary" style="display:inline-flex;font-size:13px;padding:10px 20px">Start Quiz →</span></div>
-        </div>
-        <div class="practice-card" onclick="startQuiz('case')">
-          <div class="practice-card-icon">📖</div>
-          <div class="practice-card-title">Case Study Practice</div>
-          <div class="practice-card-desc">Real-world CA exam scenarios · Application-based questions · 5–6 marks type</div>
-          <div class="practice-tags">
-            <span class="p-tag">Case Based</span>
-            <span class="p-tag">Applied</span>
-            <span class="p-tag">5-6 Marks</span>
-          </div>
-          <div style="margin-top:18px"><span class="btn-primary" style="display:inline-flex;font-size:13px;padding:10px 20px">Start Practice →</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quiz Container -->
-    <div id="quizContainer" class="quiz-container">
-      <div class="quiz-header">
-        <div>
-          <div style="font-size:13px;color:var(--text3);margin-bottom:3px" id="quizSubjectLabel">Income Tax</div>
-          <div style="font-size:16px;font-weight:700;color:var(--text)" id="quizQLabel">Question 1 of 5</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div id="quizScore" style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--green)">Score: 0</div>
-          <div class="quiz-timer" id="quizTimer">45</div>
-          <button onclick="exitQuiz()" style="background:none;border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text2);font-size:12px;cursor:pointer;font-family:'Sora',sans-serif">✕ Exit</button>
-        </div>
-      </div>
-      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress" style="width:20%"></div></div>
-      <div class="quiz-q" id="quizQuestion"></div>
-      <div class="quiz-options" id="quizOptions"></div>
-      <div class="quiz-explain" id="quizExplain"></div>
-      <div class="quiz-nav">
-        <div style="font-size:13px;color:var(--text3)" id="quizHint">Select an answer to continue</div>
-        <button class="btn-primary" id="quizNext" onclick="nextQuestion()" style="display:none;font-size:13px;padding:10px 22px">Next →</button>
-      </div>
-    </div>
-
-    <!-- Result Container -->
-    <div id="quizResult" style="display:none;text-align:center;padding:48px 20px;background:var(--surface);border:1px solid var(--border);border-radius:18px">
-      <div style="font-size:52px;margin-bottom:16px" id="resultEmoji">🎉</div>
-      <div style="font-size:28px;font-weight:800;color:var(--text);font-family:'Playfair Display',serif;margin-bottom:8px" id="resultScore"></div>
-      <div style="font-size:15px;color:var(--text2);margin-bottom:28px" id="resultMsg"></div>
-      <button class="btn-primary" onclick="restartQuiz()">Try Again →</button>
-    </div>
-  </div>
-</section>
-
-<!-- AI STUDY PLANNER -->
-<section class="sec" id="planner" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">AI Powered</div>
-      <h2 class="sec-title">AI Study Planner</h2>
-      <p class="sec-desc">Generate a personalized daily study plan based on your attempt, group, and available hours.</p>
-    </div>
-    <div class="planner-form">
-      <div class="form-grid">
-        <div class="form-field">
-          <div class="form-label">Attempt</div>
-          <select class="form-select" id="planAttempt">
-            <option>May 2026</option>
-            <option>November 2026</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-label">Group</div>
-          <select class="form-select" id="planGroup">
-            <option value="1">Group 1 (Tax + Law + Accounts + Audit)</option>
-            <option value="2">Group 2 (Costing + FM + SM)</option>
-            <option value="both">Both Groups</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-label">Daily Study Hours</div>
-          <select class="form-select" id="planHours">
-            <option value="4">4 hours/day</option>
-            <option value="6" selected>6 hours/day</option>
-            <option value="8">8 hours/day</option>
-            <option value="10">10+ hours/day</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <div class="form-label">Weak Subject</div>
-          <select class="form-select" id="planWeak">
-            <option>Advanced Accounts</option>
-            <option>Corporate Law</option>
-            <option>Direct Tax</option>
-            <option>GST</option>
-            <option>Audit</option>
-          </select>
-        </div>
-      </div>
-      <button class="btn-primary" onclick="generatePlan()">📅 Generate My Study Plan</button>
-    </div>
-    <div id="planResult" class="plan-result"></div>
-  </div>
-</section>
-
-<!-- PERFORMANCE DASHBOARD -->
-<section class="sec" id="dashboard">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Performance</div>
-      <h2 class="sec-title">Your Dashboard</h2>
-      <p class="sec-desc">Track accuracy, weak chapters, practice scores, and your study streak.</p>
-    </div>
-    <div class="dash-grid">
-      <div class="dash-card">
-        <div class="dash-lbl">📊 Overall Accuracy</div>
-        <div class="accuracy-ring">
-          <svg viewBox="0 0 80 80" width="80" height="80">
-            <circle class="ring-bg" cx="40" cy="40" r="32"/>
-            <circle class="ring-fill" cx="40" cy="40" r="32"/>
-          </svg>
-          <div class="ring-text">73%</div>
-        </div>
-        <div class="dash-sub">Based on 142 MCQs attempted</div>
-        <div class="dash-bar" style="margin-top:12px"><div class="dash-bar-fill" style="width:73%;background:linear-gradient(90deg,var(--green),#4ade80)"></div></div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-lbl">⚠️ Weak Chapters</div>
-        <div class="weak-list">
-          <div class="weak-item"><span class="weak-name">Amalgamation</span><div class="weak-bar"><div class="weak-fill" style="width:35%;background:var(--red)"></div></div><span style="font-size:11px;color:var(--red);font-family:'JetBrains Mono',monospace;margin-left:8px">35%</span></div>
-          <div class="weak-item"><span class="weak-name">LLP Act</span><div class="weak-bar"><div class="weak-fill" style="width:48%;background:var(--orange)"></div></div><span style="font-size:11px;color:var(--orange);font-family:'JetBrains Mono',monospace;margin-left:8px">48%</span></div>
-          <div class="weak-item"><span class="weak-name">GST Valuation</span><div class="weak-bar"><div class="weak-fill" style="width:55%;background:var(--gold)"></div></div><span style="font-size:11px;color:var(--gold);font-family:'JetBrains Mono',monospace;margin-left:8px">55%</span></div>
-          <div class="weak-item"><span class="weak-name">Capital Gains</span><div class="weak-bar"><div class="weak-fill" style="width:62%;background:var(--accent)"></div></div><span style="font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-left:8px">62%</span></div>
-        </div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-lbl">🎯 Practice Score</div>
-        <div class="dash-val">142<span style="font-size:18px;color:var(--text2)">/200</span></div>
-        <div class="dash-sub">MCQs attempted this week</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
-          <div style="background:var(--bg3);border-radius:9px;padding:10px;text-align:center"><div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--green)">104</div><div style="font-size:11px;color:var(--text3)">Correct</div></div>
-          <div style="background:var(--bg3);border-radius:9px;padding:10px;text-align:center"><div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--red)">38</div><div style="font-size:11px;color:var(--text3)">Wrong</div></div>
-        </div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-lbl">🔥 Study Streak</div>
-        <div class="dash-val" style="color:var(--gold)">5</div>
-        <div class="dash-sub">Days in a row — keep going!</div>
-        <div class="streak-row">
-          <div class="s-dot hit">M</div><div class="s-dot hit">T</div><div class="s-dot hit">W</div><div class="s-dot hit">T</div><div class="s-dot hit">F</div><div class="s-dot today">S</div><div class="s-dot miss">S</div>
-        </div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-lbl">📚 Chapters Revised</div>
-        <div class="dash-val">28<span style="font-size:18px;color:var(--text2)">/60</span></div>
-        <div class="dash-sub">across all subjects</div>
-        <div class="dash-bar"><div class="dash-bar-fill" style="width:47%;background:linear-gradient(90deg,var(--accent),var(--purple))"></div></div>
-        <div style="margin-top:12px;font-size:12px;color:var(--text3)">32 chapters pending revision</div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-lbl">⏰ Revision Pending</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px"><span style="color:var(--text2)">Income Tax</span><span style="color:var(--red);font-weight:700;font-family:'JetBrains Mono',monospace">4 ch</span></div>
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px"><span style="color:var(--text2)">Company Law</span><span style="color:var(--orange);font-weight:700;font-family:'JetBrains Mono',monospace">6 ch</span></div>
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px"><span style="color:var(--text2)">Adv. Accounts</span><span style="color:var(--orange);font-weight:700;font-family:'JetBrains Mono',monospace">8 ch</span></div>
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px"><span style="color:var(--text2)">Audit</span><span style="color:var(--green);font-weight:700;font-family:'JetBrains Mono',monospace">2 ch</span></div>
-        </div>
-        <button class="btn-primary" style="margin-top:14px;font-size:12px;padding:9px 16px;width:100%;justify-content:center">Start Revision</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SMART FLASHCARDS -->
-<section class="sec" id="flashcards" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Smart Flashcards</div>
-      <h2 class="sec-title">Upgraded Flashcard Mode</h2>
-      <p class="sec-desc">Bookmark difficult cards, shuffle, and use revision mode for targeted practice.</p>
-    </div>
-    <div class="flashcard-controls">
-      <button class="fc-btn active" id="fcModeAll" onclick="setFCMode('all')">📚 All Cards</button>
-      <button class="fc-btn" id="fcModeBook" onclick="setFCMode('bookmarked')">🔖 Bookmarked</button>
-      <button class="fc-btn" id="fcModeDiff" onclick="setFCMode('difficult')">🔴 Difficult</button>
-      <button class="fc-btn" id="fcModeShuffle" onclick="shuffleFC()">🔀 Shuffle</button>
-      <button class="fc-btn" id="fcModeRevision" onclick="setFCMode('revision')">⚡ Revision</button>
-      <div style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text3)" id="fcSubjectLabel">Income Tax</div>
-    </div>
-
-    <div class="flashcard-wrap" onclick="flipCard()">
-      <div class="flashcard" id="flashcard">
-        <div class="fc-face fc-front">
-          <div class="fc-chip" id="fcChip">Section 80C</div>
-          <div class="fc-question" id="fcQuestion">What is the maximum deduction allowed under Section 80C of the Income Tax Act?</div>
-          <div class="fc-hint">👆 Tap to reveal answer</div>
-        </div>
-        <div class="fc-face fc-back">
-          <div class="fc-chip" id="fcChipBack">Answer</div>
-          <div class="fc-answer" id="fcAnswer">₹1,50,000 per year. Includes PPF, EPF, LIC premium, ELSS, NSC, home loan principal, tuition fees. <br><br><strong>Trick:</strong> "PELHN" — PPF, ELSS, LIC, Home loan, NSC</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-      <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">🔖 Bookmark</button>
-      <button class="bookmark-btn" id="difficultBtn" onclick="markDifficult()">🔴 Mark Difficult</button>
-      <button class="bookmark-btn" id="knownBtn" onclick="markKnown()">✅ I Know This</button>
-    </div>
-
-    <div class="fc-nav">
-      <button class="fc-nav-btn" onclick="prevCard()">←</button>
-      <div class="fc-counter" id="fcCounter">1 / 8</div>
-      <button class="fc-nav-btn" onclick="nextCard()">→</button>
-    </div>
-
-    <div style="text-align:center;margin-top:24px">
-      <a href="https://royceprince.github.io/tax-flashcard.html" class="btn-primary">View Full Tax Deck →</a>
-    </div>
-  </div>
-</section>
-
-<!-- RTP / MTP SECTION -->
-<section class="sec" id="rtp">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">ICAI Updates</div>
-      <h2 class="sec-title">RTP + PYQ + Amendments</h2>
-      <p class="sec-desc">Latest ICAI revision test papers, PAST YEAR papers, and Finance Act amendments.</p>
-    </div>
-    <div class="tabs">
-      <div class="tab active" onclick="switchTab(this,'rtpAll')">All</div>
-      <div class="tab" onclick="switchTab(this,'rtpRTP')">RTP May 2026</div>
-      <div class="tab" onclick="switchTab(this,'rtpMTP')">PYQ 2025-26</div>
-      <div class="tab" onclick="switchTab(this,'rtpAmend')">Amendments</div>
-    </div>
-    <div class="rtp-grid" id="rtpGrid">
-      <div class="rtp-card">
-        <div class="rtp-card-head">
-          <div class="rtp-card-icon" style="background:rgba(79,126,248,.1)">📊</div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-quote-mark">"</div>
+        <p class="review-text">The GST flashcards are incredibly well-structured. I could revise the entire ITC conditions in 20 minutes before my exam. The AI assistant also helped me clarify tricky provisions instantly.</p>
+        <div class="review-author">
           <div>
-            <div class="rtp-card-title">RTP — Income Tax (May 2026)</div>
-            <div class="rtp-card-meta">ICAI · Group 1 · Paper 4</div>
+            <div class="review-name">Priya S.</div>
+            <div class="review-sub">CA Inter May 2025 · Cleared Both Groups</div>
+          </div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
           </div>
         </div>
-        <div class="rtp-items">
-          <div class="rtp-item">Finance Act 2025 — New regime slabs updated</div>
-          <div class="rtp-item">Section 115BAC — Default regime for individuals</div>
-          <div class="rtp-item">Capital Gains amendments — LTCG indexation removed</div>
-          <div class="rtp-item">TDS on virtual digital assets — Sec 194S</div>
-        </div>
-        <div class="rtp-card-footer"><a href="https://drive.google.com/file/d/1thIKTbGErvCGsbsWgD2uluMdlvur5RYq/view?usp=sharing" target="_blank" class="rtp-link">Download RTP →</a></div>
       </div>
-      <div class="rtp-card">
-        <div class="rtp-card-head">
-          <div class="rtp-card-icon" style="background:rgba(34,197,94,.1)">🧾</div>
+      <div class="review-card">
+        <div class="review-quote-mark">"</div>
+        <p class="review-text">I discovered this dashboard two weeks before exams. The Quick Reference section alone saved so many hours — all the TDS sections and GST thresholds in one clean table. Highly recommend for last-minute revision.</p>
+        <div class="review-author">
           <div>
-            <div class="rtp-card-title">RTP — GST (May 2026)</div>
-            <div class="rtp-card-meta">ICAI · Group 1 · Paper 4B</div>
+            <div class="review-name">Arjun M.</div>
+            <div class="review-sub">CA Inter Nov 2025 · Group I Cleared</div>
+          </div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
           </div>
         </div>
-        <div class="rtp-items">
-          <div class="rtp-item">ISD — Input Service Distributor amendments</div>
-          <div class="rtp-item">GSTR-1A — New return form introduced</div>
-          <div class="rtp-item">Composition scheme — Latest amendments</div>
-          <div class="rtp-item">Place of supply — Services special rules</div>
-        </div>
-        <div class="rtp-card-footer"><a href="https://drive.google.com/file/d/1thIKTbGErvCGsbsWgD2uluMdlvur5RYq/view?usp=sharing" target="_blank" class="rtp-link">Download RTP →</a></div>
       </div>
-      <div class="rtp-card">
-        <div class="rtp-card-head">
-          <div class="rtp-card-icon" style="background:rgba(167,139,250,.1)">⚖️</div>
+      <div class="review-card">
+        <div class="review-quote-mark">"</div>
+        <p class="review-text">The daily Google Meet sessions are genuinely useful. There is always someone studying, which keeps you accountable. The Accounts flashcards covering AS standards are thorough and exam-focused.</p>
+        <div class="review-author">
           <div>
-            <div class="rtp-card-title">RTP LAST 10 YEAR — Law (2025-26)</div>
-            <div class="rtp-card-meta">LATEST MAY 26</div>
+            <div class="review-name">Sneha R.</div>
+            <div class="review-sub">CA Inter May 2026 Aspirant · Lucknow</div>
+          </div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="color:var(--paper-rule);">★</span>
           </div>
         </div>
-        <div class="rtp-items">
-          <div class="rtp-item">Company — Meetings and resolutions</div>
-          <div class="rtp-item">Director — Appointment, removal, DIN</div>
-          <div class="rtp-item">LLP — Provisions and differences</div>
-          <div class="rtp-item">Negotiable Instruments Act — Cheque dishonour</div>
-        </div>
-        <div class="rtp-card-footer"><a href="https://drive.google.com/file/d/1JxR6OlXmFXFe25oxPove5JSJSwYK_LKe/view?usp=sharing" target="_blank" class="rtp-link">Download MTP →</a></div>
       </div>
-      <div class="rtp-card">
-        <div class="rtp-card-head">
-          <div class="rtp-card-icon" style="background:rgba(6,182,212,.1)">📚</div>
-          <div>
-            <div class="rtp-card-title">Adv. Accounts — RTP LAST 10 YEAR</div>
-            <div class="rtp-card-meta">ICAI LATEST · Group 1</div>
-          </div>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<!-- FEEDBACK SECTION (full bleed) -->
+<div class="page-wrap">
+<section id="feedback">
+  <div class="section-header">
+    <div class="section-title">Share Your Feedback</div>
+    <div class="section-rule"></div>
+    <div class="section-num">§ VI</div>
+  </div>
+</section>
+</div>
+
+<div class="feedback-section">
+  <div class="feedback-inner">
+    <div class="feedback-kicker">Visitor Feedback</div>
+    <div class="feedback-headline">How was your experience?</div>
+    <div class="feedback-sub">Your feedback helps us improve the dashboard for every CA aspirant. It takes less than a minute.</div>
+
+    <div class="feedback-form" id="feedbackForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="e.g. Rahul Sharma" id="fb-name">
         </div>
-        <div class="rtp-items">
-          <div class="rtp-item">AS-14 — Amalgamation problems updated</div>
-          <div class="rtp-item">AS-22 — Deferred tax practice questions</div>
-          <div class="rtp-item">Branch Accounts — Foreign branch conversion</div>
-          <div class="rtp-item">Insurance claims — New case problems</div>
+        <div class="form-group">
+          <label class="form-label">Email (optional)</label>
+          <input class="form-input" type="email" placeholder="your@email.com" id="fb-email">
         </div>
-        <div class="rtp-card-footer"><a href="https://drive.google.com/file/d/1j0OQCIwwfqXSBfRJuNamBVnmH67tV9HT/view?usp=sharing" target="_blank" class="rtp-link">Download MTP →</a></div>
       </div>
-      <div class="rtp-card">
-        <div class="rtp-card-head">
-          <div class="rtp-card-icon" style="background:rgba(244,197,66,.1)">⚡</div>
-          <div>
-            <div class="rtp-card-title">Key Finance Act 2025 Amendments</div>
-            <div class="rtp-card-meta">Important for May 2026</div>
-          </div>
-        </div>
-        <div class="rtp-items">
-          <div class="rtp-item">New tax regime — Default, slabs revised</div>
-          <div class="rtp-item">LTCG — Indexation removed for property</div>
-          <div class="rtp-item">TCS on foreign remittances — Sec 206C(1G)</div>
-          <div class="rtp-item">STT rates revised for derivatives</div>
-        </div>
-        <div class="rtp-card-footer"><a href="https://boslive.icai.org/education_content_AmendmentsDevelopments.php?p=Amendments/Developments&c=intermediate" target="_blank" class="rtp-link">ICAI Study Material →</a></div>
+
+      <div class="form-group">
+        <label class="form-label">Which subject did you study?</label>
+        <select class="form-select" id="fb-subject">
+          <option value="">Select a subject…</option>
+          <option>Income Tax</option>
+          <option>GST</option>
+          <option>Advanced Accounting</option>
+          <option>Law</option>
+          <option>Auditing</option>
+          <option>Multiple subjects</option>
+        </select>
       </div>
-      <div class="rtp-card">
-        <div class="rtp-card-head">
-          <div class="rtp-card-icon" style="background:rgba(239,68,68,.1)">🔍</div>
-          <div>
-            <div class="rtp-card-title">Audit — SA Updates (May 2026)</div>
-            <div class="rtp-card-meta">ICAI · Audit Standards</div>
-          </div>
+
+      <div class="form-group">
+        <label class="form-label">Overall Rating</label>
+        <div class="rating-row" id="ratingRow">
+          <button class="rating-btn" data-val="1" onclick="setRating(1)">1</button>
+          <button class="rating-btn" data-val="2" onclick="setRating(2)">2</button>
+          <button class="rating-btn" data-val="3" onclick="setRating(3)">3</button>
+          <button class="rating-btn" data-val="4" onclick="setRating(4)">4</button>
+          <button class="rating-btn" data-val="5" onclick="setRating(5)">5</button>
+          <span style="font-size:12px;color:#9a8e7c;margin-left:6px;font-style:italic;" id="ratingLabel">tap to rate</span>
         </div>
-        <div class="rtp-items">
-          <div class="rtp-item">CARO 2020 — Revised reporting requirements</div>
-          <div class="rtp-item">SA 315 — Risk identification revised</div>
-          <div class="rtp-item">SA 570 — Going concern updated</div>
-          <div class="rtp-item">Audit of consolidated FS — New guidance</div>
-        </div>
-        <div class="rtp-card-footer"><a href="https://boslive.icai.org/index.php" target="_blank" class="rtp-link">Download ICAI Guidance →</a></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Your Feedback</label>
+        <textarea class="form-textarea" placeholder="What did you find helpful? What could be improved? Any topic you want added?" id="fb-message"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Would you recommend this to friends?</label>
+        <select class="form-select" id="fb-recommend">
+          <option value="">Select…</option>
+          <option>Yes, definitely</option>
+          <option>Probably yes</option>
+          <option>Not sure</option>
+          <option>Probably not</option>
+        </select>
+      </div>
+
+      <button class="submit-btn" onclick="submitFeedback()">Submit Feedback →</button>
+      <div class="submit-success" id="submitSuccess">
+        Thank you for your feedback! It has been recorded and will help us improve Prince Learning Hub for every aspirant.
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- SMART SEARCH -->
-<section class="sec" id="search" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container" style="max-width:750px">
-    <div class="sec-head">
-      <div class="sec-label">Smart Search</div>
-      <h2 class="sec-title">Search Any Topic</h2>
-      <p class="sec-desc">Find flashcards, PYQs, and notes — all in one search.</p>
-    </div>
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input class="search-input" id="searchInput" placeholder="Search — e.g. 'Section 80C', 'ITC conditions', 'Amalgamation'..." onkeyup="doSearch(this.value)">
-    </div>
-    <div id="searchEmpty" style="text-align:center;padding:60px 20px;color:var(--text3);font-size:14px">
-      <div style="font-size:40px;margin-bottom:12px">🔍</div>
-      Type to search across all CA Inter topics
-    </div>
-    <div class="search-results" id="searchResults"></div>
-  </div>
-</section>
-
-<!-- LAST 7 DAYS REVISION -->
-<section class="sec" id="revision">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Last Minute</div>
-      <h2 class="sec-title">7-Day Revision Mode</h2>
-      <p class="sec-desc">High-priority topics, repeated PYQs, and critical amendments for the final week before exams.</p>
-    </div>
-    <div class="tabs">
-      <div class="tab active" onclick="switchTab(this,'rev1')">🔥 Important Qs</div>
-      <div class="tab" onclick="switchTab(this,'rev2')">🔁 Repeated PYQ</div>
-      <div class="tab" onclick="switchTab(this,'rev3')">📌 Amendments</div>
-    </div>
-    <div class="l7-grid">
-      <div class="l7-card" style="--card-c:#ef4444">
-        <div class="l7-badge" style="background:rgba(239,68,68,.12);color:var(--red)">🔥 Must Do · Tax</div>
-        <div class="l7-title">Section 80C to 80U — Full Summary</div>
-        <div class="l7-desc">All deductions, limits, conditions. Asked every attempt. Don't skip. Review all sub-sections with examples.</div>
-        <div class="l7-tag">Tax · Ch 9 · 15–20 marks weightage</div>
-      </div>
-      <div class="l7-card" style="--card-c:#f97316">
-        <div class="l7-badge" style="background:rgba(249,115,22,.12);color:var(--orange)">🔁 Repeated · GST</div>
-        <div class="l7-title">ITC — Input Tax Credit Conditions</div>
-        <div class="l7-desc">Section 16 conditions asked in last 6 exams. Blocked credits (Sec 17(5)) — full list with exceptions.</div>
-        <div class="l7-tag">GST · Ch 7 · 8–10 marks weightage</div>
-      </div>
-      <div class="l7-card" style="--card-c:#a78bfa">
-        <div class="l7-badge" style="background:rgba(167,139,250,.12);color:var(--purple)">📌 Amendment · Law</div>
-        <div class="l7-title">Companies Act — Director Provisions</div>
-        <div class="l7-desc">DIN, appointment, removal, disqualification. Section 149–169. Key numbers: min age 21, max 15 directors per board.</div>
-        <div class="l7-tag">Law · Ch 5 · 8–12 marks weightage</div>
-      </div>
-      <div class="l7-card" style="--card-c:#4f7ef8">
-        <div class="l7-badge" style="background:rgba(79,126,248,.12);color:var(--accent)">🔥 Must Do · Accounts</div>
-        <div class="l7-title">AS-14 Amalgamation — Full Chapter</div>
-        <div class="l7-desc">Merger vs Acquisition treatment. Net Assets method, Purchase Consideration. Asked in all recent exams — 16 marks.</div>
-        <div class="l7-tag">Accounts · Ch 11 · 16 marks</div>
-      </div>
-      <div class="l7-card" style="--card-c:#22c55e">
-        <div class="l7-badge" style="background:rgba(34,197,94,.12);color:var(--green)">⚡ Quick Revision · Audit</div>
-        <div class="l7-title">SA 300 — Audit Planning Memorandum</div>
-        <div class="l7-desc">Contents, purpose, overall audit strategy vs audit plan, documentation requirements. Theory + application.</div>
-        <div class="l7-tag">Audit · Ch 5 · 6–8 marks weightage</div>
-      </div>
-      <div class="l7-card" style="--card-c:#f4c542">
-        <div class="l7-badge" style="background:rgba(244,197,66,.12);color:var(--gold)">📌 Amendment · Tax</div>
-        <div class="l7-title">Finance Act 2025 — New Tax Regime</div>
-        <div class="l7-desc">Default regime from FY 2025-26. New slabs, rebate under Sec 87A revised to ₹60,000. Old regime opt-in needed.</div>
-        <div class="l7-tag">Tax Amendment · High Priority</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUICK REFERENCE -->
-<section class="sec" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)" id="quickref">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label">Quick Reference</div>
-      <h2 class="sec-title">Key Rates &amp; Limits</h2>
-      <p class="sec-desc">Memorise these cold — tested every exam.</p>
-    </div>
-    <div class="qr-grid">
-      <div class="qr-card">
-        <div class="qr-head"><span class="qr-head-icon">📊</span><div><div class="qr-head-title">IT Slabs — New Regime</div><div class="qr-head-sub">AY 2026-27 · Individual</div></div></div>
-        <table class="qr-table">
-          <tr><td>Up to ₹4,00,000</td><td>NIL</td></tr>
-          <tr><td>₹4L – ₹8L</td><td>5%</td></tr>
-          <tr><td>₹8L – ₹12L</td><td>10%</td></tr>
-          <tr><td>₹12L – ₹16L</td><td>15%</td></tr>
-          <tr><td>₹16L – ₹20L</td><td>20%</td></tr>
-          <tr><td>₹20L – ₹24L</td><td>20%</td></tr>
-          <tr><td>Above ₹24L</td><td>30%</td></tr>
-        </table>
-      </div>
-      <div class="qr-card">
-        <div class="qr-head"><span class="qr-head-icon">🧾</span><div><div class="qr-head-title">GST Key Limits</div><div class="qr-head-sub">Registration & Composition</div></div></div>
-        <table class="qr-table">
-          <tr><td>Goods Registration</td><td>₹40L</td></tr>
-          <tr><td>Services Registration</td><td>₹20L</td></tr>
-          <tr><td>Composition Limit</td><td>₹1.5 Cr</td></tr>
-          <tr><td>Composition (Mfr)</td><td>1%</td></tr>
-          <tr><td>Composition (Rest.)</td><td>5%</td></tr>
-          <tr><td>GSTR-3B Due</td><td>20th</td></tr>
-        </table>
-      </div>
-      <div class="qr-card">
-        <div class="qr-head"><span class="qr-head-icon">📋</span><div><div class="qr-head-title">TDS Key Sections</div><div class="qr-head-sub">Common TDS Rates</div></div></div>
-        <table class="qr-table">
-          <tr><td>Sec 192 · Salary</td><td>Slab Rate</td></tr>
-          <tr><td>Sec 194A · Interest</td><td>10%</td></tr>
-          <tr><td>Sec 194C · Contractor</td><td>1%/2%</td></tr>
-          <tr><td>Sec 194H · Commission</td><td>5%</td></tr>
-          <tr><td>Sec 194I · Rent</td><td>10%</td></tr>
-          <tr><td>Sec 194J · Prof. Fees</td><td>10%</td></tr>
-        </table>
-      </div>
-      <div class="qr-card">
-        <div class="qr-head"><span class="qr-head-icon">⚖️</span><div><div class="qr-head-title">Company Law Limits</div><div class="qr-head-sub">Companies Act 2013</div></div></div>
-        <table class="qr-table">
-          <tr><td>Pvt Ltd Min Members</td><td>2</td></tr>
-          <tr><td>Pvt Ltd Max Members</td><td>200</td></tr>
-          <tr><td>Public Ltd Min</td><td>7</td></tr>
-          <tr><td>First AGM</td><td>9 months</td></tr>
-          <tr><td>AGM Gap (max)</td><td>15 months</td></tr>
-          <tr><td>Board Meeting (1st)</td><td>30 days</td></tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
+<!-- FOOTNOTE / FOOTER -->
+<footer class="footnote-bar">
+  <div class="footnote-grid">
     <div>
-      <div class="footer-brand">◈ Prince Learning Hub</div>
-      <div class="footer-desc">Built for CA Inter May 2026. Smart flashcards, PYQ finder, AI study planner, and MCQ practice — all in one place. Not affiliated with ICAI.</div>
-    </div>
-    <div>
-      <div class="footer-col-title">Study Material</div>
-      <div class="footer-links">
-        <a href="https://royceprince.github.io/tax-flashcard.html">Direct Tax Flashcards</a>
+      <div class="footnote-col-title">Flashcard Decks</div>
+      <div class="footnote-col-links">
+        <a href="https://royceprince.github.io/tax-flashcard.html">Income Tax Flashcards</a>
         <a href="https://royceprince.github.io/gst-flashcard.html">GST Flashcards</a>
         <a href="https://royceprince.github.io/law-flashcard.html">Law Flashcards</a>
-        <a href="https://royceprince.github.io/accounts-flashcard.html">Adv. Accounts Flashcards</a>
         <a href="https://royceprince.github.io/audit-flashcard.html">Audit Flashcards</a>
+        <a href="https://royceprince.github.io/accounts-flashcard.html">Advanced Accounts Flashcards</a>
         <a href="https://royceprince.github.io/gst-practice.html">GST Practice MCQ</a>
       </div>
     </div>
     <div>
-      <div class="footer-col-title">Resources</div>
-      <div class="footer-links">
-        <a href="#pyq">PYQ Finder</a>
-        <a href="#practice">Practice Mode</a>
-        <a href="#planner">AI Study Planner</a>
-        <a href="#revision">7-Day Revision</a>
-        <a href="https://drive.google.com/drive/folders/1-pdap3H1dt2By3sAup2SJCeavtXFvy_W?usp=sharing" target="_blank">ICAI Official →</a>
-        <a href="https://meet.google.com/dgx-xani-sjh" target="_blank">Join Live Session →</a>
+      <div class="footnote-col-title">External Resources</div>
+      <div class="footnote-col-links">
+        <a href="https://www.icai.org/" target="_blank">ICAI Official Website</a>
+        <a href="https://meet.google.com/dgx-xani-sjh" target="_blank">Daily Google Meet Session</a>
+        <a href="https://t.me/capratik25" target="_blank">Telegram Study Group</a>
       </div>
     </div>
+    <div>
+      <div class="footnote-col-title">Disclaimer</div>
+      <p class="footnote-disclaimer">AI responses on this platform are educational summaries for CA Inter exam preparation only. Always verify from ICAI Study Material, RTPs, MTPs, and official notifications. This platform is not affiliated with or endorsed by ICAI. Content is not a substitute for professional tax or legal advice.</p>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Prince Learning Hub · Whatsapp support 9140162300 · Built for CA Warriors</div>
-    <div class="footer-tag">May 2026</div>
+
+  <div class="colophon">
+    <div class="colophon-left">◈ Prince Learning Hub</div>
+    <div class="colophon-right">© 2026 · CA Inter May 2026 · Built for CA Warriors · Lucknow, UP</div>
   </div>
 </footer>
 
-<!-- FLOATING MENU -->
-<div class="float-menu">
-  <div class="float-items" id="floatItems">
-    <div class="float-item"><div class="float-item-label">Flashcards</div><a href="#flashcards" class="float-item-btn" onclick="closeFloat()">🃏</a></div>
-    <div class="float-item"><div class="float-item-label">Practice MCQ</div><a href="#practice" class="float-item-btn" onclick="closeFloat()">🎯</a></div>
-    <div class="float-item"><div class="float-item-label">PYQ Finder</div><a href="#pyq" class="float-item-btn" onclick="closeFloat()">📋</a></div>
-    <div class="float-item"><div class="float-item-label">Dashboard</div><a href="#dashboard" class="float-item-btn" onclick="closeFloat()">📊</a></div>
-    <div class="float-item"><div class="float-item-label">7-Day Revision</div><a href="#revision" class="float-item-btn" onclick="closeFloat()">⚡</a></div>
-  </div>
-  <button class="float-main" id="floatBtn" onclick="toggleFloat()">☰</button>
-</div>
-
 <script>
-// ─── DATA ───
-const chapters = {
-  tax:['Basics of IT','Residential Status','Income from Salaries','Income from HP','PGBP','Capital Gains','Income from Other Sources','Deductions 80C-80U','Return Filing','Advance Tax & TDS'],
-  gst:['Introduction to GST','Supply of Goods & Services','Charge of GST','Exemptions','Place of Supply','Time & Value of Supply','ITC','Registration','Returns & Payments','Refund'],
-  law:['Preliminary','Incorporation','MOA & AOA','Share Capital','Deposits','Directors','Meetings','Accounts & Audit','LLP Act','NI Act'],
-  accounts:['AS 1-7 Basics','AS 9-13 Revenue & Investments','AS 14 Amalgamation','AS 16 Borrowing Costs','AS 22 Deferred Tax','Branch Accounts','Hire Purchase','Royalty Accounts','Insurance Claims','Internal Reconstruction'],
-  audit:['Basics of Audit','SA 200 Series','SA 300 Planning','SA 400 Internal Control','SA 500 Evidence','SA 600 Using Work of Others','SA 700 Reporting','Audit of Companies','CARO 2020','Special Audit Areas']
-};
+  // Set today's date
+  const d = new Date();
+  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+  document.getElementById('today-date').textContent = d.toLocaleDateString('en-IN', opts);
 
-const pyqData = {
-  tax: {
-    'Deductions 80C-80U': [
-      {type:'exam',paper:'May 2023 · 5 Marks',q:'Mr. Arjun paid LIC premium of ₹80,000 for himself and ₹40,000 for his wife. He also invested ₹50,000 in PPF. Compute deduction u/s 80C.',a:'Total 80C deduction = ₹1,50,000 (maximum limit). LIC ₹80,000 + Wife LIC ₹40,000 + PPF ₹50,000 = ₹1,70,000, but capped at ₹1,50,000.',marks:5},
-      {type:'rtp',paper:'RTP May 2026',q:'State the deductions available under Section 80D for medical insurance premium. What is the additional deduction for senior citizens?',a:'Self + family: ₹25,000. Senior citizen: ₹50,000. Parents (senior citizen): ₹50,000. Max total: ₹1,00,000.',marks:4},
-      {type:'exam',paper:'Nov 2022 · 4 Marks',q:'Explain Section 80TTA and Section 80TTB. How are they different?',a:'80TTA: Interest on savings a/c for non-senior citizens — max ₹10,000. 80TTB: For senior citizens — all bank interest — max ₹50,000. Senior citizens cannot claim 80TTA.',marks:4},
-    ],
-    'Capital Gains': [
-      {type:'exam',paper:'May 2024 · 8 Marks',q:'Explain the concept of LTCG under Section 112A. What is the exemption limit and applicable rate?',a:'Sec 112A applies to listed equity shares/equity MF. LTCG above ₹1 lakh taxed at 10% (no indexation). Holding period: >12 months. STT must be paid.',marks:8},
-      {type:'mtp',paper:'MTP March 2026',q:'A house property held for 28 months was sold. Is it LTCA or STCA? What is the holding period for immovable property?',a:'Immovable property: LTCA if held >24 months. Here 28 months > 24, so Long Term Capital Asset. LTCG taxed at 20% with indexation.',marks:4},
-    ]
-  },
-  gst: {
-    'ITC': [
-      {type:'exam',paper:'Nov 2023 · 6 Marks',q:'State the conditions to be satisfied for claiming ITC under Section 16 of CGST Act.',a:'(1) Registered person (2) Holds tax invoice (3) Received goods/services (4) Tax paid by supplier (5) Return filed u/s 39. Also — credit must be claimed within time limit.',marks:6},
-      {type:'rtp',paper:'RTP May 2026',q:'What are blocked credits under Section 17(5) of CGST Act? Give five examples.',a:'Blocked: (1) Motor vehicles for non-specified use (2) Food & beverages (3) Club/health/fitness club (4) Works contract for immovable property (5) Employee personal expenses.',marks:5},
-    ],
-    'Registration': [
-      {type:'exam',paper:'May 2023 · 4 Marks',q:'State persons who are compulsorily required to register under GST irrespective of threshold limit.',a:'(1) Interstate supply (2) E-commerce operators (3) Reverse charge suppliers (4) ISD (5) Casual taxable persons (6) Non-resident taxable persons.',marks:4},
-    ]
-  },
-  law: {
-    'Directors': [
-      {type:'exam',paper:'Nov 2023 · 6 Marks',q:'What are the grounds of disqualification of a Director under Companies Act 2013?',a:'Sec 164: Unsound mind, insolvent, convicted >6 months, court order, not filed returns for 3 years, failed to repay calls, company defaulted on deposits/debentures.',marks:6},
-      {type:'mtp',paper:'MTP 2025-26',q:'Explain the procedure for removal of a director by shareholders under Section 169.',a:'Special notice → Board meeting → Ordinary resolution by shareholders at GM. Director has right to represent. Independent director cannot be removed by simple majority.',marks:5},
-    ]
-  },
-  accounts: {
-    'AS 14 Amalgamation': [
-      {type:'exam',paper:'May 2024 · 16 Marks',q:'XYZ Ltd merged into ABC Ltd. Calculate Purchase Consideration and prepare Realisation Account under Pooling of Interests method.',a:'Pooling: All assets/liabilities at book value. PC = Fair value of shares issued. No goodwill/capital reserve. Reserves of transferor merged.',marks:16},
-      {type:'rtp',paper:'RTP May 2026',q:'Distinguish between Merger (Amalgamation in nature of merger) and Purchase method of Amalgamation under AS-14.',a:'Merger: All assets/liabilities at book value, shareholders ≥90% accepted shares, no major adjustment. Purchase: Fair values, goodwill/capital reserve arises, no such condition.',marks:6},
-    ]
-  },
-  audit: {
-    'SA 300 Planning': [
-      {type:'exam',paper:'Nov 2022 · 6 Marks',q:'Distinguish between Overall Audit Strategy and Audit Plan under SA 300.',a:'Strategy: High-level approach, nature-timing-extent, key decisions. Plan: More detailed, procedures to be performed, timing, team allocation. Both are documented.',marks:6},
-    ]
-  }
-};
-
-const quizData = [
-  {q:'What is the maximum deduction u/s 80C?',opts:['₹1,00,000','₹1,50,000','₹2,00,000','₹2,50,000'],ans:1,exp:'Section 80C allows maximum deduction of ₹1,50,000. Includes PPF, ELSS, LIC, NSC, home loan principal etc.'},
-  {q:'Under GST, what is the registration threshold for suppliers of GOODS (in most states)?',opts:['₹10 Lakh','₹20 Lakh','₹40 Lakh','₹75 Lakh'],ans:2,exp:'₹40 Lakh is the threshold for goods in most states (increased from ₹20L). Services remain at ₹20L.'},
-  {q:'Section 194A deals with TDS on:',opts:['Salary','Interest (other than securities)','Commission','Rent'],ans:1,exp:'Sec 194A → TDS on interest (other than securities, e.g. bank FD). Rate: 10%. Threshold: ₹40,000.'},
-  {q:'What is the minimum number of members in a Private Limited Company?',opts:['1','2','3','7'],ans:1,exp:'Pvt Ltd requires minimum 2 members. (After Companies Amendment Act 2020, OPC allows 1 member, but that is OPC, not Pvt Ltd)'},
-  {q:'Under AS-14, which method records all assets/liabilities of transferor company at BOOK VALUE?',opts:['Purchase Method','Pooling of Interests Method','Fair Value Method','Net Assets Method'],ans:1,exp:'Pooling of Interests: all assets/liabilities at carrying book values. No goodwill arises. Purchase Method uses fair values.'},
-];
-
-// ─── FLASH CARDS DATA ───
-const fcCards = [
-  {chip:'Section 80C',q:'Maximum deduction under Section 80C?',a:'₹1,50,000 per year\nIncludes: PPF, EPF, LIC, ELSS, NSC, Home Loan Principal\n\n💡 Trick: "PELHN" — PPF, ELSS, LIC, Home loan, NSC'},
-  {chip:'GST · Registration',q:'GST Registration threshold for Goods (Normal States)?',a:'₹40 Lakh for Goods\n₹20 Lakh for Services\n₹10 Lakh for Special Category States\n\n💡 Remember: 40-20-10'},
-  {chip:'Companies Act',q:'Maximum number of members in a Private Limited Company?',a:'Maximum: 200 Members\nMinimum: 2 Members\n\n💡 "2 se shuru, 200 tak"'},
-  {chip:'TDS · Section 194A',q:'Section 194A applies to what? Rate? Threshold?',a:'Interest other than securities (Bank FD, etc.)\nRate: 10%\nThreshold: ₹40,000 (₹50,000 for senior citizens)\n\n💡 194A = Interest A-to-Z'},
-  {chip:'AS-14',q:'What is "Purchase Consideration" in Amalgamation?',a:'Amount paid by Transferee company to shareholders of Transferor\nMethods:\n1. Net Payment Method\n2. Net Assets Method\n\n💡 Not to transferor company — to its shareholders!'},
-  {chip:'Capital Gains',q:'Holding period for Long Term Capital Asset — Listed Equity Shares?',a:'More than 12 months = LTCA\nLTCG Rate: 10% (above ₹1 lakh) under Sec 112A\nNo indexation benefit\n\n💡 Listed = 12 months, Property = 24 months'},
-  {chip:'GST · ITC',q:'Name 5 "Blocked Credits" under Section 17(5) of CGST Act',a:'1. Motor vehicles (personal use)\n2. Food & beverages\n3. Health & fitness club\n4. Works contract (immovable property)\n5. Personal expenses of employees\n\n💡 "MFHWP" — Motor, Food, Health, Works, Personal'},
-  {chip:'Audit · SA 300',q:'Difference: Overall Audit Strategy vs Audit Plan?',a:'Strategy: High-level, scope, timing, direction\nAudit Plan: Detailed procedures, nature-timing-extent of tests\n\nStrategy → Plan (broad to specific)\n\n💡 Strategy = Map | Plan = Route'},
-];
-
-// ─── STATE ───
-let fcIndex = 0, fcFlipped = false, fcBookmarks = new Set(), fcDifficult = new Set();
-let quizQ = 0, quizScore = 0, timerInterval = null, timeLeft = 45, quizAnswered = false;
-let floatOpen = false, examMode = false;
-
-// ─── NAV ───
-function toggleMobile(){
-  const m = document.getElementById('mobileMenu');
-  m.classList.toggle('open');
-}
-function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
-
-// ─── EXAM MODE ───
-function toggleExamMode(){
-  examMode = !examMode;
-  document.body.classList.toggle('exam-mode', examMode);
-  const t = document.getElementById('examToggle');
-  t.classList.toggle('active', examMode);
-  t.innerHTML = examMode ? '<span class="toggle-dot" style="background:var(--gold)"></span> Exit Exam Mode' : '<span class="toggle-dot"></span> Exam Mode';
-}
-
-// ─── FLOAT ───
-function toggleFloat(){
-  floatOpen = !floatOpen;
-  document.getElementById('floatItems').classList.toggle('open', floatOpen);
-  document.getElementById('floatBtn').textContent = floatOpen ? '✕' : '☰';
-}
-function closeFloat(){
-  floatOpen = false;
-  document.getElementById('floatItems').classList.remove('open');
-  document.getElementById('floatBtn').textContent = '☰';
-}
-
-// ─── TABS ───
-function switchTab(el, group){
-  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-}
-
-// ─── PYQ ───
-function updateChapters(){
-  const sub = document.getElementById('pyqSubject').value;
-  const sel = document.getElementById('pyqChapter');
-  sel.innerHTML = '<option value="">Select Chapter</option>';
-  if(sub && chapters[sub]){
-    chapters[sub].forEach(ch=>{
-      const o = document.createElement('option');
-      o.value = ch; o.textContent = ch;
-      sel.appendChild(o);
+  // Rating
+  let selectedRating = 0;
+  const ratingLabels = ['','Poor','Below Average','Average','Good','Excellent'];
+  function setRating(val) {
+    selectedRating = val;
+    document.querySelectorAll('.rating-btn').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.val) <= val);
     });
-  }
-}
-
-function loadPYQ(){
-  const sub = document.getElementById('pyqSubject').value;
-  const ch = document.getElementById('pyqChapter').value;
-  const type = document.getElementById('pyqType').value;
-  const el = document.getElementById('pyqResults');
-
-  if(!sub || !ch){
-    el.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text3)">Please select both Subject and Chapter</div>';
-    return;
+    document.getElementById('ratingLabel').textContent = ratingLabels[val];
   }
 
-  const data = pyqData[sub] && pyqData[sub][ch];
-  let items = data ? [...data] : generateSamplePYQ(sub, ch);
-  if(type !== 'all') items = items.filter(i => i.type === type);
+  // Feedback submit
+  function submitFeedback() {
+    const name = document.getElementById('fb-name').value.trim();
+    const msg  = document.getElementById('fb-message').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!msg)  { alert('Please write a short feedback message.'); return; }
 
-  if(!items.length){
-    el.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text3)">No questions found for this filter</div>';
-    return;
+    // Store in localStorage as a simple log
+    const entry = {
+      name,
+      email: document.getElementById('fb-email').value,
+      subject: document.getElementById('fb-subject').value,
+      rating: selectedRating,
+      message: msg,
+      recommend: document.getElementById('fb-recommend').value,
+      date: new Date().toISOString()
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem('plh_feedback') || '[]');
+      existing.push(entry);
+      localStorage.setItem('plh_feedback', JSON.stringify(existing));
+    } catch(e) {}
+
+    document.getElementById('submitSuccess').style.display = 'block';
+    document.getElementById('feedbackForm').querySelectorAll('input, textarea, select, button').forEach(el => el.disabled = true);
+    document.querySelector('.submit-btn').style.display = 'none';
   }
-
-  el.innerHTML = items.map((item, i) => `
-    <div class="pyq-item">
-      <div class="pyq-meta">
-        <span class="pyq-tag ${item.type}">${item.type.toUpperCase()}</span>
-        <span class="pyq-tag marks">📋 ${item.paper}</span>
-        <span class="pyq-tag marks">⭐ ${item.marks} Marks</span>
-      </div>
-      <div class="pyq-q">${item.q}</div>
-      <button class="pyq-toggle" onclick="toggleAnswer(${i})">💡 Show Answer ▾</button>
-      <div class="pyq-answer" id="ans${i}">${item.a}</div>
-    </div>
-  `).join('');
-}
-
-function generateSamplePYQ(sub, ch){
-  return [
-    {type:'exam',paper:'Nov 2023 · 5 Marks',q:`Explain the concept of "${ch}" as per ICAI Study Material. Give a practical example.`,a:`This is a key concept in ${ch}. Please refer to your ICAI Study Material for detailed answer. Key points: Definition, conditions, examples, exceptions.`,marks:5},
-    {type:'rtp',paper:'RTP May 2026',q:`State the important provisions related to "${ch}". What are the common exam questions?`,a:`Important provisions as per ICAI SM. Review RTP May 2026 for latest questions on this chapter.`,marks:4},
-    {type:'mtp',paper:'MTP Series 1 · 2025-26',q:`Case-based question on "${ch}" — Apply provisions to the given scenario.`,a:`Apply the relevant sections/provisions to the facts given. Always state the section number in answer.`,marks:6},
-  ];
-}
-
-function toggleAnswer(i){
-  const el = document.getElementById('ans'+i);
-  const btn = el.previousElementSibling;
-  if(el.style.display === 'block'){
-    el.style.display = 'none';
-    btn.textContent = '💡 Show Answer ▾';
-  } else {
-    el.style.display = 'block';
-    btn.textContent = '🔼 Hide Answer';
-  }
-}
-
-// ─── QUIZ ───
-function startQuiz(mode){
-  document.getElementById('practiceSelector').style.display = 'none';
-  document.getElementById('quizResult').style.display = 'none';
-  document.getElementById('quizContainer').classList.add('active');
-  quizQ = 0; quizScore = 0;
-  document.getElementById('quizScore').textContent = 'Score: 0';
-  renderQuestion();
-}
-
-function renderQuestion(){
-  const q = quizData[quizQ];
-  if(!q) return showResult();
-  document.getElementById('quizQLabel').textContent = `Question ${quizQ+1} of ${quizData.length}`;
-  document.getElementById('quizProgress').style.width = ((quizQ+1)/quizData.length*100)+'%';
-  document.getElementById('quizQuestion').textContent = q.q;
-  document.getElementById('quizExplain').style.display = 'none';
-  document.getElementById('quizNext').style.display = 'none';
-  document.getElementById('quizHint').textContent = 'Select an answer to continue';
-  quizAnswered = false;
-
-  const letters = ['A','B','C','D'];
-  document.getElementById('quizOptions').innerHTML = q.opts.map((o,i)=>`
-    <div class="quiz-option" onclick="selectAnswer(${i})">
-      <div class="opt-letter">${letters[i]}</div>${o}
-    </div>
-  `).join('');
-
-  startTimer();
-}
-
-function startTimer(){
-  clearInterval(timerInterval);
-  timeLeft = 45;
-  updateTimer();
-  timerInterval = setInterval(()=>{
-    timeLeft--;
-    updateTimer();
-    if(timeLeft <= 10) document.getElementById('quizTimer').classList.add('warning');
-    else document.getElementById('quizTimer').classList.remove('warning');
-    if(timeLeft <= 0){ clearInterval(timerInterval); autoAnswer(); }
-  }, 1000);
-}
-
-function updateTimer(){ document.getElementById('quizTimer').textContent = timeLeft; }
-
-function autoAnswer(){
-  if(!quizAnswered){
-    const opts = document.querySelectorAll('.quiz-option');
-    opts[quizData[quizQ].ans].classList.add('correct');
-    showExplain();
-  }
-}
-
-function selectAnswer(i){
-  if(quizAnswered) return;
-  clearInterval(timerInterval);
-  quizAnswered = true;
-  const q = quizData[quizQ];
-  const opts = document.querySelectorAll('.quiz-option');
-  opts[i].classList.add(i === q.ans ? 'correct' : 'wrong');
-  if(i !== q.ans) opts[q.ans].classList.add('correct');
-  if(i === q.ans){ quizScore++; document.getElementById('quizScore').textContent = 'Score: '+quizScore; }
-  showExplain();
-}
-
-function showExplain(){
-  const el = document.getElementById('quizExplain');
-  el.textContent = '💡 '+quizData[quizQ].exp;
-  el.style.display = 'block';
-  document.getElementById('quizNext').style.display = 'inline-flex';
-  document.getElementById('quizHint').textContent = '';
-}
-
-function nextQuestion(){ quizQ++; if(quizQ >= quizData.length) showResult(); else renderQuestion(); }
-
-function showResult(){
-  clearInterval(timerInterval);
-  document.getElementById('quizContainer').classList.remove('active');
-  const el = document.getElementById('quizResult');
-  el.style.display = 'block';
-  const pct = Math.round(quizScore/quizData.length*100);
-  document.getElementById('resultEmoji').textContent = pct>=80?'🏆':pct>=60?'🎯':'📚';
-  document.getElementById('resultScore').textContent = `${quizScore}/${quizData.length} Correct (${pct}%)`;
-  document.getElementById('resultMsg').textContent = pct>=80?'Excellent! CA warrior level performance!':pct>=60?'Good effort! Revise weak topics and try again.':'Keep practicing! Consistent revision is key.';
-}
-
-function exitQuiz(){
-  clearInterval(timerInterval);
-  document.getElementById('quizContainer').classList.remove('active');
-  document.getElementById('quizResult').style.display = 'none';
-  document.getElementById('practiceSelector').style.display = 'block';
-}
-
-function restartQuiz(){ exitQuiz(); setTimeout(()=>startQuiz('mcq'),50); }
-
-// ─── FLASHCARDS ───
-function renderFC(){
-  const c = fcCards[fcIndex];
-  document.getElementById('fcChip').textContent = c.chip;
-  document.getElementById('fcChipBack').textContent = 'Answer';
-  document.getElementById('fcQuestion').textContent = c.q;
-  document.getElementById('fcAnswer').textContent = c.a;
-  document.getElementById('fcCounter').textContent = `${fcIndex+1} / ${fcCards.length}`;
-
-  const fc = document.getElementById('flashcard');
-  fc.classList.remove('flipped');
-  fcFlipped = false;
-
-  const bookBtn = document.getElementById('bookmarkBtn');
-  bookBtn.classList.toggle('saved', fcBookmarks.has(fcIndex));
-  bookBtn.textContent = fcBookmarks.has(fcIndex) ? '🔖 Bookmarked' : '🔖 Bookmark';
-
-  const diffBtn = document.getElementById('difficultBtn');
-  diffBtn.classList.toggle('saved', fcDifficult.has(fcIndex));
-}
-
-function flipCard(){
-  fcFlipped = !fcFlipped;
-  document.getElementById('flashcard').classList.toggle('flipped', fcFlipped);
-}
-function nextCard(){ fcIndex = (fcIndex+1)%fcCards.length; renderFC(); }
-function prevCard(){ fcIndex = (fcIndex-1+fcCards.length)%fcCards.length; renderFC(); }
-function toggleBookmark(){
-  fcBookmarks.has(fcIndex)?fcBookmarks.delete(fcIndex):fcBookmarks.add(fcIndex);
-  renderFC();
-}
-function markDifficult(){
-  fcDifficult.has(fcIndex)?fcDifficult.delete(fcIndex):fcDifficult.add(fcIndex);
-  renderFC();
-}
-function markKnown(){
-  const btn = document.getElementById('knownBtn');
-  btn.textContent = '✅ Noted!';
-  setTimeout(()=>{ btn.textContent = '✅ I Know This'; nextCard(); }, 600);
-}
-function shuffleFC(){
-  fcCards.sort(()=>Math.random()-.5);
-  fcIndex = 0; renderFC();
-  document.getElementById('fcModeAll').classList.add('active');
-}
-function setFCMode(mode){
-  ['All','Book','Diff','Shuffle','Revision'].forEach(m=>{
-    const btn = document.getElementById('fcMode'+m);
-    if(btn) btn.classList.remove('active');
-  });
-  document.getElementById('fcMode'+mode.charAt(0).toUpperCase()+mode.slice(1))?.classList.add('active');
-}
-
-// ─── PLANNER ───
-function generatePlan(){
-  const group = document.getElementById('planGroup').value;
-  const hours = document.getElementById('planHours').value;
-  const weak = document.getElementById('planWeak').value;
-  const attempt = document.getElementById('planAttempt').value;
-
-  const g1Subjects = ['Direct Tax','GST','Corporate Law','Adv. Accounts'];
-  const subjects = group === '1' ? g1Subjects : group === '2' ? ['Costing','FM & Economics','Strategic Management'] : [...g1Subjects,'Costing','FM'];
-
-  const plans = subjects.map((sub, i) => ({
-    day: i+1,
-    subject: sub,
-    tasks: sub === weak
-      ? [`Extra 2 hours on ${sub} (Weak Subject)`, `Revise all chapters twice`, `Solve 20 MCQs on ${sub}`, `Review PYQ from last 5 years`]
-      : [`Study 2 chapters of ${sub}`, `Make short notes / revision cards`, `Solve 10 MCQs from ICAI material`, `Mark difficult topics for revision`]
-  }));
-
-  // Add revision days
-  plans.push({day:subjects.length+1,subject:'Grand Revision Day 1',tasks:['Revise all Tax chapters','Solve full MTP paper','Review RTP important questions','Mark pending topics']});
-  plans.push({day:subjects.length+2,subject:'Grand Revision Day 2',tasks:['Revise all Law + Accounts','Practice case study questions','Time yourself — attempt full paper','Final weak topic revision']});
-
-  const el = document.getElementById('planResult');
-  el.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
-      <div>
-        <div style="font-size:18px;font-weight:700;color:var(--text)">${attempt} Study Plan</div>
-        <div style="font-size:13px;color:var(--text3)">${hours} hours/day · ${subjects.length+2} day plan · Weak subject: ${weak}</div>
-      </div>
-      <button class="btn-gold" onclick="window.print()">📥 Print Plan</button>
-    </div>
-    ${plans.map(p=>`
-      <div class="plan-day">
-        <div class="plan-day-head">
-          <div class="plan-day-num">D${p.day}</div>
-          <div>
-            <div class="plan-day-title">${p.subject}</div>
-            <div class="plan-day-sub">${hours} hours · Focused study</div>
-          </div>
-        </div>
-        <div class="plan-tasks">
-          ${p.tasks.map(t=>`<div class="plan-task">${t}</div>`).join('')}
-        </div>
-      </div>
-    `).join('')}
-  `;
-  el.classList.add('active');
-  el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-// ─── SEARCH ───
-const searchIndex = [
-  {title:'Section 80C — Max deduction ₹1.5L',meta:'Direct Tax · Deductions',type:'Flashcard'},
-  {title:'GST ITC — 4 conditions under Sec 16',meta:'GST · Input Tax Credit',type:'Flashcard'},
-  {title:'Companies Act — Board of Directors',meta:'Law · Directors',type:'PYQ'},
-  {title:'AS-14 Amalgamation — Pooling vs Purchase',meta:'Adv. Accounts · AS-14',type:'PYQ'},
-  {title:'Capital Gains — LTCG under Sec 112A',meta:'Direct Tax · Capital Gains',type:'PYQ'},
-  {title:'TDS — Section 194A, 194C, 194H, 194I, 194J',meta:'Direct Tax · TDS',type:'Quick Ref'},
-  {title:'GST Registration Threshold — ₹40L goods, ₹20L services',meta:'GST · Registration',type:'Flashcard'},
-  {title:'SA 300 — Overall Audit Strategy vs Audit Plan',meta:'Audit · SA 300',type:'PYQ'},
-  {title:'Sec 80D — Medical Insurance Premium Deduction',meta:'Direct Tax · Deductions',type:'Flashcard'},
-  {title:'LLP Act — Provisions, Features, Winding Up',meta:'Law · LLP Act',type:'Notes'},
-  {title:'Branch Accounts — Foreign Branch Conversion',meta:'Adv. Accounts · Branch',type:'PYQ'},
-  {title:'CARO 2020 — Reporting Requirements',meta:'Audit · CARO',type:'Notes'},
-  {title:'GST Blocked Credits — Section 17(5)',meta:'GST · ITC',type:'Flashcard'},
-  {title:'Income Tax — New Regime Default from FY 2025-26',meta:'Direct Tax · Amendment',type:'RTP'},
-  {title:'AGM Requirements — Companies Act Sec 96',meta:'Law · Meetings',type:'Quick Ref'},
-];
-
-function doSearch(val){
-  const q = val.trim().toLowerCase();
-  const resultsEl = document.getElementById('searchResults');
-  const emptyEl = document.getElementById('searchEmpty');
-
-  if(q.length < 2){
-    resultsEl.classList.remove('active');
-    emptyEl.style.display = 'block';
-    return;
-  }
-
-  const matches = searchIndex.filter(i => i.title.toLowerCase().includes(q) || i.meta.toLowerCase().includes(q));
-  emptyEl.style.display = 'none';
-  resultsEl.classList.add('active');
-
-  if(!matches.length){
-    resultsEl.innerHTML = '<div class="search-empty">No results found. Try different keywords.</div>';
-    return;
-  }
-
-  const grouped = {};
-  matches.forEach(m=>{ if(!grouped[m.type]) grouped[m.type]=[]; grouped[m.type].push(m); });
-
-  resultsEl.innerHTML = Object.entries(grouped).map(([type,items])=>`
-    <div class="search-section-title">${type}</div>
-    ${items.map(i=>`
-      <div class="search-result-item">
-        <div class="sri-title">${highlight(i.title,q)}</div>
-        <div class="sri-meta">${i.meta}</div>
-      </div>
-    `).join('')}
-  `).join('');
-}
-
-function highlight(text, q){
-  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
-  return text.replace(re,'<span style="color:var(--accent2);font-weight:700">$1</span>');
-}
-
-// ─── INIT ───
-renderFC();
-
-// Scroll animations
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
-  });
-},{threshold:.1});
-
-document.querySelectorAll('.sub-card,.dash-card,.rtp-card,.l7-card,.qr-card').forEach(el=>{
-  el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity .5s ease, transform .5s ease';
-  observer.observe(el);
-});
 </script>
+
 </body>
 </html>
