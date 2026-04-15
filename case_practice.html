@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Scenario Practice — Prince Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== ROOT — inherits from main site ===== */
+:root {
+  --bg:#0a0a0f; --surface:#12121a; --card:#1a1a28; --card2:#1e1e30;
+  --border:rgba(255,255,255,0.08); --border2:rgba(255,255,255,0.12);
+  --accent:#7c6af7; --accent2:#4fc3f7; --gold:#f7c948; --green:#4ade80;
+  --orange:#fb923c; --pink:#ec4899; --teal:#2dd4bf;
+  --text:#e8e8f0; --text2:#b0b0c0; --muted:#888;
+  --font:'Sora',sans-serif; --mono:'JetBrains Mono',monospace;
+  --r12:12px; --r16:16px; --r20:20px;
+  --shadow:0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow:0 8px 32px rgba(124,106,247,0.25);
+  --danger:#f87171;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:var(--font);}
+
+/* ===== BACKGROUNDS ===== */
+.bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 60% 40% at 15% 20%,rgba(124,106,247,0.12),transparent 60%),
+             radial-gradient(ellipse 50% 35% at 85% 75%,rgba(79,195,247,0.08),transparent 60%);}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(124,106,247,0.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(124,106,247,0.03) 1px,transparent 1px);
+  background-size:50px 50px;}
+
+/* ===== NAVBAR ===== */
+nav{position:sticky;top:0;z-index:1000;background:rgba(10,10,15,0.9);
+  backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;height:60px;padding:0 24px;}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-logo{width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  box-shadow:var(--shadow-glow);}
+.nav-title{font-weight:700;font-size:14px;}
+.nav-sub{font-size:10px;color:var(--muted);font-family:var(--mono);}
+.back-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border2);
+  border-radius:20px;font-size:12px;font-weight:500;color:var(--text2);
+  transition:all 0.2s;}
+.back-btn:hover{background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);}
+
+/* ===== MAIN LAYOUT ===== */
+.page-wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:32px 24px 80px;}
+
+/* ===== PAGE HEADER ===== */
+.page-header{margin-bottom:36px;}
+.page-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;
+  background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.25);
+  border-radius:20px;font-size:10px;font-weight:700;color:var(--accent);
+  font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.page-header h1{font-size:clamp(24px,4vw,38px);font-weight:700;letter-spacing:-1px;margin-bottom:8px;}
+.page-header h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-header p{color:var(--text2);font-size:14px;max-width:560px;}
+
+/* ===== FILTER BAR ===== */
+.filter-bar{background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r20);padding:22px 24px;margin-bottom:24px;}
+.filter-bar h3{font-size:12px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.8px;margin-bottom:16px;font-family:var(--mono);}
+.filter-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;}
+.filter-group label{display:block;font-size:10px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;}
+.filter-select{width:100%;padding:10px 14px;background:var(--surface);
+  border:1px solid var(--border);border-radius:10px;color:var(--text);
+  font-family:var(--font);font-size:13px;outline:none;
+  appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;
+  transition:border-color 0.2s;}
+.filter-select:focus{border-color:var(--accent);}
+.filter-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.btn-start-case{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;
+  background:linear-gradient(135deg,var(--accent),#5b4fd4);border:none;border-radius:12px;
+  color:#fff;font-size:13px;font-weight:600;transition:all 0.25s;
+  box-shadow:0 6px 20px rgba(124,106,247,0.35);}
+.btn-start-case:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(124,106,247,0.5);}
+.btn-start-mixed{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;
+  background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.3);border-radius:12px;
+  color:var(--accent2);font-size:13px;font-weight:600;transition:all 0.25s;}
+.btn-start-mixed:hover{background:rgba(79,195,247,0.18);transform:translateY(-1px);}
+.stats-strip{display:flex;gap:20px;padding:12px 0 0;border-top:1px solid var(--border);flex-wrap:wrap;}
+.stat-item{font-size:12px;color:var(--muted);}
+.stat-item b{color:var(--text);font-family:var(--mono);}
+
+/* ===== CASE LIST ===== */
+.case-list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:32px;}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:20px;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
+.case-card::before{content:'';position:absolute;inset:0;border-radius:16px;
+  background:linear-gradient(135deg,rgba(124,106,247,0.05),transparent);
+  opacity:0;transition:opacity 0.25s;}
+.case-card:hover{border-color:rgba(124,106,247,0.35);box-shadow:var(--shadow-glow);transform:translateY(-2px);}
+.case-card:hover::before{opacity:1;}
+.cc-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;
+  font-size:9px;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.5px;
+  background:rgba(124,106,247,0.12);color:var(--accent);margin-bottom:10px;}
+.cc-title{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.4;}
+.cc-chapter{font-size:12px;color:var(--accent2);margin-bottom:8px;font-family:var(--mono);}
+.cc-meta{display:flex;align-items:center;justify-content:space-between;}
+.cc-qcount{font-size:11px;color:var(--muted);}
+.cc-start{padding:6px 14px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);
+  border-radius:20px;font-size:11px;font-weight:600;color:var(--accent);transition:all 0.2s;}
+.case-card:hover .cc-start{background:var(--accent);color:#fff;border-color:var(--accent);}
+.cc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;}
+.cc-chip{padding:2px 8px;background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  border-radius:20px;font-size:10px;color:var(--muted);}
+.cc-score-badge{position:absolute;top:14px;right:14px;width:32px;height:32px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;font-family:var(--mono);}
+
+/* ===== QUIZ AREA ===== */
+#quizArea{display:none;}
+.quiz-wrap{max-width:760px;margin:0 auto;}
+
+/* Timer */
+.quiz-timer-bar{background:var(--card);border:1px solid rgba(247,201,72,0.3);
+  border-radius:14px;padding:14px 20px;margin-bottom:20px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.timer-left{display:flex;align-items:center;gap:12px;}
+.timer-icon{font-size:18px;}
+.timer-num{font-size:26px;font-weight:700;font-family:var(--mono);color:var(--gold);}
+.timer-num.warning{color:var(--orange);}
+.timer-num.danger{color:var(--danger);animation:blink 0.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.5;}}
+.timer-label{font-size:11px;color:var(--muted);font-family:var(--mono);}
+.timer-track{flex:1;min-width:120px;height:6px;background:rgba(255,255,255,0.08);
+  border-radius:3px;overflow:hidden;}
+.timer-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--orange));
+  border-radius:3px;transition:width 1s linear;}
+.btn-stop-quiz{padding:7px 16px;background:rgba(248,113,113,0.1);
+  border:1px solid rgba(248,113,113,0.2);border-radius:8px;
+  color:var(--danger);font-size:12px;font-weight:600;transition:all 0.2s;}
+.btn-stop-quiz:hover{background:rgba(248,113,113,0.2);}
+
+/* Progress */
+.quiz-progress{margin-bottom:20px;}
+.qp-meta{display:flex;justify-content:space-between;font-size:11px;
+  color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
+.qp-bar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.qp-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius:2px;transition:width 0.4s ease;}
+
+/* Scenario box */
+.scenario-box{background:rgba(79,195,247,0.04);border:1px solid rgba(79,195,247,0.15);
+  border-radius:14px;padding:20px 24px;margin-bottom:20px;}
+.sb-label{font-size:10px;font-weight:700;color:var(--accent2);font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.sb-title{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--accent);}
+.sb-text{font-size:13px;color:var(--text2);line-height:1.8;white-space:pre-line;}
+.sb-toggle{font-size:11px;color:var(--accent);cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:4px;}
+.sb-toggle:hover{text-decoration:underline;}
+
+/* Question */
+.question-card{background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r20);padding:28px;margin-bottom:16px;}
+.q-number{font-size:10px;font-weight:700;color:var(--accent);font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.q-text{font-size:15px;font-weight:500;line-height:1.7;margin-bottom:22px;}
+.options-grid{display:flex;flex-direction:column;gap:10px;}
+.option-btn{padding:14px 18px;background:var(--surface);
+  border:1px solid var(--border);border-radius:12px;
+  font-size:13px;font-family:var(--font);transition:all 0.2s;
+  cursor:pointer;text-align:left;line-height:1.5;color:var(--text);
+  display:flex;align-items:flex-start;gap:12px;position:relative;}
+.option-btn:hover:not(.selected):not(.correct):not(.wrong){
+  background:rgba(124,106,247,0.08);border-color:rgba(124,106,247,0.3);}
+.opt-letter{min-width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,0.07);display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;font-family:var(--mono);
+  color:var(--muted);flex-shrink:0;margin-top:0px;transition:all 0.2s;}
+.option-btn.correct{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.4);}
+.option-btn.correct .opt-letter{background:rgba(74,222,128,0.2);color:var(--green);}
+.option-btn.wrong{background:rgba(248,113,113,0.08);border-color:rgba(248,113,113,0.3);}
+.option-btn.wrong .opt-letter{background:rgba(248,113,113,0.2);color:var(--danger);}
+.option-btn.correct .opt-text{color:var(--green);}
+.option-btn.wrong .opt-text{color:var(--danger);}
+.opt-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:16px;}
+
+/* Explanation */
+.explanation-box{background:rgba(124,106,247,0.05);border:1px solid rgba(124,106,247,0.2);
+  border-radius:12px;padding:16px 20px;margin-top:14px;animation:slideIn 0.3s ease;}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+.exp-label{font-size:10px;font-weight:700;color:var(--accent);font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;}
+.exp-text{font-size:13px;color:var(--text2);line-height:1.8;white-space:pre-line;font-family:var(--mono);}
+
+/* Nav buttons */
+.q-footer{display:flex;align-items:center;justify-content:space-between;
+  margin-top:20px;flex-wrap:wrap;gap:10px;}
+.q-score-info{font-size:12px;color:var(--muted);}
+.q-score-info b{color:var(--green);font-family:var(--mono);}
+.btn-next{padding:11px 28px;background:var(--accent);border:none;border-radius:12px;
+  color:#fff;font-weight:600;font-size:14px;transition:all 0.2s;display:none;}
+.btn-next:hover{background:#6b5ce7;transform:translateY(-1px);}
+
+/* ===== RESULT SCREEN ===== */
+.result-wrap{max-width:600px;margin:0 auto;text-align:center;padding:32px 0;}
+.result-glow{width:100px;height:100px;border-radius:50%;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;font-size:48px;
+  background:rgba(124,106,247,0.1);border:2px solid rgba(124,106,247,0.2);}
+.result-score-big{font-size:52px;font-weight:700;font-family:var(--mono);
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+.result-label{font-size:15px;color:var(--text2);margin-bottom:24px;}
+.result-stats{display:flex;gap:16px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;}
+.rs-item{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:16px 24px;text-align:center;}
+.rs-val{font-size:24px;font-weight:700;font-family:var(--mono);}
+.rs-val.green{color:var(--green);}
+.rs-val.red{color:var(--danger);}
+.rs-val.gold{color:var(--gold);}
+.rs-key{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:4px;}
+.result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-retry{padding:12px 28px;background:linear-gradient(135deg,var(--accent),#5b4fd4);
+  border:none;border-radius:12px;color:#fff;font-weight:600;font-size:14px;}
+.btn-browse{padding:12px 28px;background:rgba(255,255,255,0.05);
+  border:1px solid var(--border2);border-radius:12px;color:var(--text);font-weight:500;font-size:14px;}
+.result-chapter-breakdown{background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:20px;margin-top:20px;text-align:left;}
+.rcb-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:0.8px;margin-bottom:14px;}
+.rcb-row{display:flex;align-items:center;justify-content:space-between;
+  padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.rcb-row:last-child{border:none;}
+.rcb-pct{font-family:var(--mono);font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px;}
+.pct-good{background:rgba(74,222,128,0.12);color:var(--green);}
+.pct-ok{background:rgba(247,201,72,0.12);color:var(--gold);}
+.pct-bad{background:rgba(248,113,113,0.12);color:var(--danger);}
+
+/* ===== CORRECT/WRONG ANIMATION ===== */
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+@keyframes popIn{0%{transform:scale(0.95);}60%{transform:scale(1.02);}100%{transform:scale(1);}}
+.animate-wrong{animation:shake 0.35s ease;}
+.animate-correct{animation:popIn 0.3s ease;}
+
+/* ===== EMPTY STATE ===== */
+.empty-state{text-align:center;padding:48px 24px;color:var(--muted);}
+.empty-state .icon{font-size:48px;margin-bottom:14px;}
+
+/* ===== SCROLL TO TOP ===== */
+.scroll-hint{text-align:center;font-size:11px;color:var(--muted);margin-top:24px;font-family:var(--mono);}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  .page-wrap{padding:24px 14px 60px;}
+  .filter-row{grid-template-columns:1fr;}
+  .case-list-grid{grid-template-columns:1fr;}
+  .result-stats{gap:10px;}
+  .rs-item{padding:12px 16px;}
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">◈</div>
+      <div>
+        <div class="nav-title">Prince Learning Hub</div>
+        <div class="nav-sub">CA INTER · MAY 2026</div>
+      </div>
+    </div>
+    <a href="index.html" class="back-btn">← Back to Main</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-tag">📂 ICAI Case Scenarios</div>
+    <h1>Case Scenario <em>Practice System</em></h1>
+    <p>ICAI Advanced Accounting booklet — 10 Case Scenarios, 30+ MCQs. Filter by chapter, attempt with timer, and see detailed solutions.</p>
+  </div>
+
+  <!-- FILTER + CONTROLS -->
+  <div class="filter-bar" id="filterSection">
+    <h3>🎯 Configure Your Practice</h3>
+    <div class="filter-row">
+      <div class="filter-group">
+        <label>Subject</label>
+        <select class="filter-select" id="filterSubject" onchange="applyFilters()">
+          <option value="all">All Subjects</option>
+          <option value="Advanced Accounting">Advanced Accounting</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Chapter / AS</label>
+        <select class="filter-select" id="filterChapter" onchange="applyFilters()">
+          <option value="all">All Chapters</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Case Scenario No.</label>
+        <select class="filter-select" id="filterCase" onchange="applyFilters()">
+          <option value="all">All Cases</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Year / Source</label>
+        <select class="filter-select" id="filterYear" onchange="applyFilters()">
+          <option value="all">All Years</option>
+          <option value="ICAI Module 2026">ICAI Module 2026</option>
+        </select>
+      </div>
+    </div>
+    <div class="filter-actions">
+      <button class="btn-start-case" onclick="startFilteredPractice()">▶ Start Case Practice</button>
+      <button class="btn-start-mixed" onclick="startMixedPractice()">🔀 Mixed Practice (All Cases)</button>
+    </div>
+    <div class="stats-strip" id="statsStrip">
+      <div class="stat-item">Showing <b id="caseCount">0</b> cases</div>
+      <div class="stat-item">Total <b id="qCount">0</b> questions</div>
+      <div class="stat-item">Sessions: <b id="sessionCount">0</b></div>
+      <div class="stat-item">Best Score: <b id="bestScore">—</b></div>
+    </div>
+  </div>
+
+  <!-- CASE CARD LIST -->
+  <div class="case-list-grid" id="caseListGrid"></div>
+
+  <!-- QUIZ AREA (hidden by default) -->
+  <div id="quizArea">
+    <div class="quiz-wrap">
+
+      <!-- Timer Bar -->
+      <div class="quiz-timer-bar">
+        <div class="timer-left">
+          <span class="timer-icon">⏱</span>
+          <div>
+            <div class="timer-num" id="timerDisplay">20:00</div>
+            <div class="timer-label">TIME REMAINING</div>
+          </div>
+        </div>
+        <div class="timer-track">
+          <div class="timer-fill" id="timerFill" style="width:100%"></div>
+        </div>
+        <button class="btn-stop-quiz" onclick="stopQuiz()">■ Stop Quiz</button>
+      </div>
+
+      <!-- Progress -->
+      <div class="quiz-progress">
+        <div class="qp-meta">
+          <span id="qProgressText">Question 1 / 10</span>
+          <span id="qScoreText">Score: 0</span>
+        </div>
+        <div class="qp-bar"><div class="qp-fill" id="qProgressFill" style="width:0%"></div></div>
+      </div>
+
+      <!-- Scenario Box -->
+      <div class="scenario-box" id="scenarioBox">
+        <div class="sb-label">📋 Case Scenario</div>
+        <div class="sb-title" id="sbTitle"></div>
+        <div class="sb-text" id="sbText"></div>
+        <span class="sb-toggle" id="sbToggle" onclick="toggleScenario()">▲ Hide scenario</span>
+      </div>
+
+      <!-- Question Box -->
+      <div class="question-card" id="questionCard">
+        <div class="q-number" id="qNumber">QUESTION 1</div>
+        <div class="q-text" id="qText"></div>
+        <div class="options-grid" id="optionsGrid"></div>
+        <div class="explanation-box" id="expBox" style="display:none">
+          <div class="exp-label">💡 Solution & Explanation</div>
+          <div class="exp-text" id="expText"></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="q-footer">
+        <div class="q-score-info">Correct: <b id="liveCorrect">0</b> &nbsp;|&nbsp; Wrong: <b id="liveWrong" style="color:var(--danger)">0</b></div>
+        <button class="btn-next" id="btnNext" onclick="nextQuestion()">Next Question →</button>
+      </div>
+
+    </div><!-- end quiz-wrap -->
+  </div><!-- end quizArea -->
+
+  <!-- RESULT AREA -->
+  <div id="resultArea" style="display:none;">
+    <div class="result-wrap">
+      <div class="result-glow" id="resultEmoji"></div>
+      <div class="result-score-big" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-stats">
+        <div class="rs-item"><div class="rs-val green" id="resCorrect">0</div><div class="rs-key">Correct</div></div>
+        <div class="rs-item"><div class="rs-val red" id="resWrong">0</div><div class="rs-key">Wrong</div></div>
+        <div class="rs-item"><div class="rs-val gold" id="resTime">0:00</div><div class="rs-key">Time Taken</div></div>
+        <div class="rs-item"><div class="rs-val" id="resAccuracy" style="color:var(--accent)">0%</div><div class="rs-key">Accuracy</div></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn-retry" onclick="retryQuiz()">🔄 Retry This Set</button>
+        <button class="btn-browse" onclick="backToList()">📋 Browse Cases</button>
+      </div>
+      <div class="result-chapter-breakdown" id="chapterBreakdown"></div>
+    </div>
+  </div>
+
+</div><!-- end page-wrap -->
+
+<!-- ======================================================
+     DATA — Case Scenarios JSON
+     ====================================================== -->
+<script>
+const CASE_SCENARIOS_DATA = [
+  {
+    id:"cs_01",subject:"Advanced Accounting",chapter:"AS 26 — Intangible Assets",
+    case_no:"Case Scenario 1",year:"ICAI Module 2026",
+    tags:["AS 26","Amortisation","Intangible"],
+    scenario:`Digitex Limited acquired an intellectual property at ₹70,00,000 (beginning of Year 1) — qualifies as Intangible Asset per AS 26. Benefits accrue: Year 1 → 30%, Year 2 & 3 → 25% each, Year 4 & 5 → 10% each.
+
+Year 2: Development cost incurred = ₹25,00,000 (beginning of year); expected benefit 5 years.
+Year 3: Due to change in government policies — no further benefits from development cost.
+Year 4: Remaining 20% benefit from intellectual property will accrue this year itself.`,
+    questions:[
+      {qno:1,question:"At the end of Year 2, what will be the value of Intangible Asset in the financial statements?",
+       options:["₹95,00,000","₹74,00,000","₹56,50,000","₹51,50,000"],correct:3,
+       explanation:"Year 1: IP amortised = 30% × ₹70L = ₹21L → IP value = ₹49L\nYear 2: IP amortised = 25% × ₹70L = ₹17.5L → IP value = ₹31.5L\nDev cost amortised Year 2 = ₹25L ÷ 5 = ₹5L → Dev value = ₹20L\nTotal = ₹31.5L + ₹20L = ₹51,50,000 ✓"},
+      {qno:2,question:"For Year 2, how much amount will be expensed in P&L from Intangible Assets?",
+       options:["₹21,00,000","₹22,50,000","₹14,00,000","₹5,00,000"],correct:1,
+       explanation:"IP amortisation Year 2 = 25% × ₹70L = ₹17,50,000\nDev cost amortisation Year 2 = ₹25L ÷ 5 = ₹5,00,000\nTotal P&L charge = ₹17,50,000 + ₹5,00,000 = ₹22,50,000 ✓"},
+      {qno:3,question:"For Year 3, how much amount will be expensed in P&L from Intangible Assets?",
+       options:["₹37,50,000","₹22,50,000","₹20,00,000","None of the above"],correct:0,
+       explanation:"IP amortisation Year 3 = 25% × ₹70L = ₹17,50,000\nDev cost = entire remaining ₹20,00,000 written off (AS 26 para 59 — write off when no future benefit)\nTotal = ₹17,50,000 + ₹20,00,000 = ₹37,50,000 ✓"},
+      {qno:4,question:"For Year 4, how much amount will be expensed in P&L from Intangible Assets?",
+       options:["₹19,00,000","₹20,00,000","₹14,00,000","Nil"],correct:2,
+       explanation:"After Year 3: IP remaining value = ₹14L (10% × 2 years remaining × ₹70L)\nAll benefits flow in Year 4 → full ₹14,00,000 amortised ✓\nDev cost already fully written off in Year 3"}
+    ]
+  },
+  {
+    id:"cs_02",subject:"Advanced Accounting",chapter:"AS 22 — Deferred Tax + AS 28 Impairment",
+    case_no:"Case Scenario 2",year:"ICAI Module 2026",
+    tags:["AS 22","Deferred Tax","DTL","DTA","AS 28"],
+    scenario:`Expert Ltd. — Two situations:
+
+Situation 1: Depreciation (books) = ₹6,00,000 | Depreciation (tax) = ₹15,00,000
+Adequate evidence of future profits exists.
+
+Situation 2: GST liability accrued = ₹8,00,000; expected payment next month.
+Per Section 43B of IT Act — such expenditure allowed only on payment basis.`,
+    questions:[
+      {qno:1,question:"Situation 1: Deferred tax asset/liability when tax rate = 50%?",
+       options:["₹8,50,000 (DTL)","₹4,50,000 (DTL)","₹8,50,000 (DTA)","₹4,50,000 (DTA)"],correct:1,
+       explanation:"Timing difference = Tax depreciation – Book depreciation = ₹15L – ₹6L = ₹9,00,000\nDTL = 50% × ₹9,00,000 = ₹4,50,000\nReason: Tax expense > current tax → future taxable income increases → DTL ✓"},
+      {qno:2,question:"Situation 1: Deferred tax asset/liability when tax rate = 35%?",
+       options:["₹3,15,000 (DTA)","₹7,35,000 (DTA)","₹3,15,000 (DTL)","₹7,35,000 (DTL)"],correct:2,
+       explanation:"Same timing difference = ₹9,00,000\nDTL = 35% × ₹9,00,000 = ₹3,15,000 (DTL) ✓"},
+      {qno:3,question:"Situation 2: Deferred tax asset/liability when tax rate = 35%?",
+       options:["₹2,80,000","₹5,20,000","₹8,00,000","Nil"],correct:0,
+       explanation:"GST in books = ₹8,00,000; Not allowed for tax yet (Sec 43B)\nThis creates DTA (tax deduction available when paid)\nDTA = 35% × ₹8,00,000 = ₹2,80,000 ✓"},
+      {qno:4,question:"Which is an INTERNAL source of information for impairment as per AS 28?",
+       options:["Asset market value declined significantly","Market interest rates increased","Carrying value > market capitalisation","Internal reporting shows economic performance worse than expected"],correct:3,
+       explanation:"AS 28 Para 8 — Only option (d) is an INTERNAL source.\nOptions (a), (b), (c) are EXTERNAL sources.\nKey: Internal = evidence from company's own reporting/operations ✓"}
+    ]
+  },
+  {
+    id:"cs_03",subject:"Advanced Accounting",chapter:"AS 13 — Investments",
+    case_no:"Case Scenario 3",year:"ICAI Module 2026",
+    tags:["AS 13","Investments","Bonus Shares","Cost Method"],
+    scenario:`Suman Ltd. acquired 1,000 shares of Sarika Ltd. @ ₹150 each; brokerage @ 1%.
+
+Same financial year: Sarika Ltd. issued BONUS shares — 1 share for every 4 shares held.
+
+Suman Ltd. sold 500 shares in March; paid 1% brokerage on sale.`,
+    questions:[
+      {qno:1,question:"Carrying value of investment in Sarika Ltd. after sale of shares (AS 13)?",
+       options:["₹1,50,000","₹1,13,625","₹90,900","₹1,12,500"],correct:2,
+       explanation:"Total cost = 1,000 × ₹150 + 1% brokerage = ₹1,50,000 + ₹1,500 = ₹1,51,500\nBonus shares = 1,000 ÷ 4 = 250 → Total shares = 1,250\nCost per share = ₹1,51,500 ÷ 1,250 = ₹121.20\nRemaining after sale = 750 shares\nCarrying value = 750 × ₹121.20 = ₹90,900 ✓\nNote: Bonus shares reduce cost per share; total cost unchanged"}
+    ]
+  },
+  {
+    id:"cs_04",subject:"Advanced Accounting",chapter:"AS 12 + AS 28 + AS 10",
+    case_no:"Case Scenario 4",year:"ICAI Module 2026",
+    tags:["AS 12","Government Grant","AS 28","Impairment","AS 10","SLM"],
+    scenario:`Black Limited — Machine (01 Apr 2019):
+• Cost = ₹50,00,000 | Grant received = ₹15,00,000 (credited to cost)
+• Life = 10 years | Residual = ₹5,00,000 | Depreciation: SLM
+
+01 Apr 2021: Grant refunded fully (conditions not fulfilled).
+31 Mar 2023: Impairment indicators; Recoverable = ₹28,00,000; Revised life = 4 yrs; Nil residual.
+01 Apr 2024: Machine exchanged — paid ₹2,00,000 cash + new machine worth ₹18,00,000.`,
+    questions:[
+      {qno:1,question:"Carrying amount of Machine on 31st March, 2021 after depreciation?",
+       options:["₹28,00,000","₹26,00,000","₹41,00,000","₹29,00,000"],correct:3,
+       explanation:"Net cost after grant = ₹50L - ₹15L = ₹35,00,000\nDepreciable amount = ₹35L - ₹5L = ₹30,00,000\nAnnual depreciation = ₹30L ÷ 10 = ₹3,00,000\n31 Mar 2020: ₹35L - ₹3L = ₹32L\n31 Mar 2021: ₹32L - ₹3L = ₹29,00,000 ✓"},
+      {qno:2,question:"Depreciation for year ended 31st March, 2022?",
+       options:["₹4,87,500","₹6,37,500","₹4,50,000","₹5,37,500"],correct:0,
+       explanation:"Grant refund on 01 Apr 2021 → add back ₹15L to book value\nNew book value = ₹29L + ₹15L = ₹44,00,000\nNew depreciable amount = ₹44L - ₹5L = ₹39,00,000\nRemaining life = 8 years\nNew SLM depreciation = ₹39L ÷ 8 = ₹4,87,500 ✓ (Prospective basis, AS 12 para 11)"},
+      {qno:3,question:"Impact of impairment test on P&L (31 March 2023)?",
+       options:["₹4,00,000 loss","₹4,25,000 loss","₹6,25,000 loss","₹15,25,000 loss"],correct:2,
+       explanation:"Carrying amount before impairment (31 Mar 2023):\n= ₹44L - (2 × ₹4,87,500) = ₹44L - ₹9,75,000 = ₹34,25,000\nRecoverable amount = ₹28,00,000\nImpairment Loss = ₹34,25,000 - ₹28,00,000 = ₹6,25,000 ✓"}
+    ]
+  },
+  {
+    id:"cs_05",subject:"Advanced Accounting",chapter:"AS 22 — Comprehensive Deferred Tax",
+    case_no:"Case Scenario 5",year:"ICAI Module 2026",
+    tags:["AS 22","DTA","DTL","Permanent Difference","Timing Difference"],
+    scenario:`Star Limited — Opening Balances (31 Mar 2023): DTA = ₹1,20,000 (Dr) | DTL = ₹2,10,000 (Cr)
+
+Transactions FY 2023-24:
+1. Depreciation (books) = ₹12,00,000 | Depreciation (tax) = ₹18,00,000
+2. Interest accrued = ₹4,50,000 (paid 15-05-2024)
+3. Employer PF disallowed in 2022-23, allowed in 2023-24 = ₹82,000
+4. Unamortized preliminary expenses (tax records) = ₹1,00,000
+5. Donation = ₹70,000
+6. Tax Rate = 20%`,
+    questions:[
+      {qno:1,question:"Value of Deferred Tax Assets as on 31-03-2024?",
+       options:["₹1,52,000","₹3,30,000","₹1,23,600","₹4,50,000"],correct:2,
+       explanation:"Opening DTA = ₹1,20,000\n+ New DTA: Preliminary exp = ₹1,00,000 × 20% = ₹20,000\n- Reversal: PF = ₹82,000 × 20% = ₹16,400\n= ₹1,20,000 + ₹20,000 - ₹16,400 = ₹1,23,600 ✓\nNote: Interest (Sec 43B if paid before return date) = no timing diff; Donation = permanent diff"},
+      {qno:2,question:"Value of Deferred Tax Liabilities as on 31-03-2024?",
+       options:["₹1,23,600","₹3,30,000","₹1,52,000","₹1,20,000"],correct:1,
+       explanation:"Excess tax depreciation = ₹18L - ₹12L = ₹6,00,000\nNew DTL = ₹6,00,000 × 20% = ₹1,20,000\nOpening DTL = ₹2,10,000\nClosing DTL = ₹2,10,000 + ₹1,20,000 = ₹3,30,000 ✓"},
+      {qno:3,question:"Value of reversal of Deferred Tax Assets on 31-03-2024?",
+       options:["₹20,000","₹1,04,000","₹16,400","₹90,000"],correct:2,
+       explanation:"PF disallowed 2022-23 → allowed 2023-24 → reversal of earlier DTA\nReversal = ₹82,000 × 20% = ₹16,400 ✓"},
+      {qno:4,question:"Which item is a PERMANENT difference as per AS 22?",
+       options:["Employer PF Contribution","Donation","Unamortized preliminary expenses","Depreciation"],correct:1,
+       explanation:"Donation to private trusts = NOT allowable under IT Act → PERMANENT difference\nPermanent differences NEVER reverse → No deferred tax\nOthers are all timing differences (will reverse in future) ✓"}
+    ]
+  },
+  {
+    id:"cs_06",subject:"Advanced Accounting",chapter:"AS 7 — Construction Contracts",
+    case_no:"Case Scenario 6",year:"ICAI Module 2026",
+    tags:["AS 7","Construction Contract","Fixed Price","Loss on Contract"],
+    scenario:`AB Contractors — Fixed price contract of ₹350 Lakhs:
+• Material purchased = ₹125L | Labour = ₹95L | Unused material = ₹22L
+• Estimated future costs = ₹115L
+• Part payment received = ₹50L
+• Machinery: Used 4 years, Original cost ₹210L, Life 20 years`,
+    questions:[
+      {qno:1,question:"What will be the Profit/Loss on the contract?",
+       options:["Loss ₹5 lakhs","Loss ₹49 Lakhs","Profit ₹45 Lakhs","Profit ₹26.5 Lakhs"],correct:0,
+       explanation:"Material consumed = ₹125L - ₹22L (unused) = ₹103L\nDepreciation = (₹210L ÷ 20) × 4 = ₹42L\nTotal cost incurred = ₹103L + ₹95L + ₹42L = ₹240L\nFuture cost = ₹115L\nTotal estimated cost = ₹355L\nContract price = ₹350L\nLoss = ₹350L - ₹355L = ₹5 Lakhs (Loss) ✓"}
+    ]
+  },
+  {
+    id:"cs_07",subject:"Advanced Accounting",chapter:"AS 16 — Borrowing Costs",
+    case_no:"Case Scenario 7",year:"ICAI Module 2026",
+    tags:["AS 16","Borrowing Costs","Qualifying Asset","Capitalisation"],
+    scenario:`Ace Limited borrowed ₹25L from ABN Bank in FY 2023-24. Used funds to invest in equity shares of Kay Limited.
+
+Kay Limited is implementing a new project.
+As on 31 Mar 2024 — directors of Ace Limited capitalised interest ₹2 lakhs (added to cost of investments).
+Market value of investments = ₹24 Lakhs.`,
+    questions:[
+      {qno:1,question:"Identify the correct statement as per AS 16:",
+       options:["Interest is acquisition charge — directors correctly capitalised it.","Project is qualifying asset — directors correctly capitalised interest.","Equity shares NOT a qualifying asset — directors WRONG, interest should go to P&L.","Directors should capitalise interest to market value, not cost."],correct:2,
+       explanation:"AS 16: Interest can be capitalised ONLY for qualifying assets.\nEquity shares held by INVESTOR (Ace Ltd.) are NOT qualifying assets.\nThe qualifying asset test is from borrower's perspective, not investee's.\nEven if Kay Ltd. is building a project, Ace's investment is not a qualifying asset.\n→ ₹2 lakhs interest → charge to P&L Account ✓"}
+    ]
+  },
+  {
+    id:"cs_08",subject:"Advanced Accounting",chapter:"AS 3 — Cash Flow Statements",
+    case_no:"Case Scenario 8",year:"ICAI Module 2026",
+    tags:["AS 3","Cash Flow","Operating","Investing","Financing"],
+    scenario:`Nextspace Limited — Summary Cash Account FY 2023-24:
+
+INFLOWS: Opening ₹72K | Cash Sales ₹15,56K | Trade Receivables ₹7,40K | Rent (investment property) ₹64K | IT Refund ₹25K | Bank Loan ₹5,00K | Share Issue ₹2,50K | Sale of Investment ₹49.5K
+
+OUTFLOWS: Trade Payable ₹19,60K | Office & Selling ₹1,20K | Trade Commission ₹40.5K | Underwriting Commission ₹25K | Preference Share Redemption ₹8,00K | Brokerage (investment sale) ₹9.2K | Interest LT borrowings ₹85.6K | Overheads ₹46K | Purchase of Goodwill ₹50K | Closing ₹1,20.2K`,
+    questions:[
+      {qno:1,question:"Cash Flow from Operating Activities?",
+       options:["₹1,29,500","₹1,54,500","₹1,45,300","₹4,04,000"],correct:1,
+       explanation:"Operating Inflows: Cash Sales ₹15,56,000 + Trade Receivables ₹7,40,000 + IT Refund ₹25,000 = ₹23,21,000\nOperating Outflows: Trade Payable ₹19,60,000 + Office ₹1,20,000 + Commission ₹40,500 + Overheads ₹46,000 = ₹21,66,500\nNet = ₹23,21,000 - ₹21,66,500 = ₹1,54,500 ✓"},
+      {qno:2,question:"Cash Flow from Investing Activities?",
+       options:["₹54,300","₹1,04,300","₹29,300","₹(500)"],correct:0,
+       explanation:"Investing Inflows: Rent ₹64,000 + Sale of investment ₹49,500 = ₹1,13,500\nInvesting Outflows: Brokerage ₹9,200 + Goodwill ₹50,000 = ₹59,200\nNet = ₹1,13,500 - ₹59,200 = ₹54,300 ✓"},
+      {qno:3,question:"Cash Flow from Financing Activities?",
+       options:["₹(50,000)","₹(1,35,600)","₹54,300","₹(1,60,600)"],correct:3,
+       explanation:"Financing Inflows: Bank Loan ₹5,00,000 + Share Issue ₹2,50,000 = ₹7,50,000\nFinancing Outflows: Underwriting Commission ₹25,000 + Preference Redemption ₹8,00,000 + Interest ₹85,600 = ₹9,10,600\nNet = ₹7,50,000 - ₹9,10,600 = ₹(1,60,600) ✓"},
+      {qno:4,question:"Which item is a 'Cash Flow from Investing Activities'?",
+       options:["Underwriting Commission","Trade Commission","Purchase of Goodwill","Interest on Long Term Borrowings"],correct:2,
+       explanation:"Purchase of Goodwill = capital expenditure → Investing Activity ✓\nUnderwriting Commission = Financing (share issue related)\nTrade Commission = Operating\nInterest on LT borrowings = Financing (as per AS 3 in India) ✓"}
+    ]
+  },
+  {
+    id:"cs_09",subject:"Advanced Accounting",chapter:"AS 2 — Inventory Valuation",
+    case_no:"Case Scenario 9",year:"ICAI Module 2026",
+    tags:["AS 2","Inventory","FIFO","Weighted Average","AS 5","Change in Policy"],
+    scenario:`G Ltd. — Closing inventory 31.03.2024:
+• FIFO basis = ₹10,40,000
+• Weighted Average basis = ₹8,80,000
+• Net Realisable Value = ₹12,00,000
+
+Company decides to CHANGE from FIFO to Weighted Average method.`,
+    questions:[
+      {qno:1,question:"Value of inventory and required disclosure on 31.3.2024?",
+       options:["₹8,80,000; disclose method changed","₹12,00,000; full disclosure with amount","₹12,00,000; disclose method changed","₹8,80,000; full disclosure with financial impact"],correct:3,
+       explanation:"Lower of Cost or NRV: Cost (WA) = ₹8,80,000 vs NRV = ₹12,00,000 → ₹8,80,000 ✓\n\nChange in accounting policy (AS 5) requires:\n→ Nature of change\n→ Reason for change\n→ Financial impact = ₹10,40,000 - ₹8,80,000 = ₹1,60,000\n\nFull disclosure required → Option (d) ✓"}
+    ]
+  },
+  {
+    id:"cs_10",subject:"Advanced Accounting",chapter:"AS 7 — Construction Contracts (Advanced)",
+    case_no:"Case Scenario 10",year:"ICAI Module 2026",
+    tags:["AS 7","Construction","Stage of Completion","Variation Order","Revenue Recognition"],
+    scenario:`Gray Ltd. — Tower construction contract with Alpha Ltd.:
+
+Initial: ₹160 crore (2 towers × ₹80 crore) | Estimated cost = ₹141 crore | 3 years
+
+Year 1: Revised estimated cost = ₹150 crore
+Year 2 start: Variation — 3 towers (customer request); Contract price +₹80 crore; Cost +₹75 crore
+
+Stage of completion = Cost incurred ÷ Total estimated cost
+
+Costs incurred: Year 1 = ₹35.25 cr | Year 2 = ₹148.5 cr (incl. unused material ₹2.25 cr) | Year 3 = Balance`,
+    questions:[
+      {qno:1,question:"Stage of completion at end of Year 1 and Year 2?",
+       options:["Year 1: 23.5%, Year 2: 66%","Year 1: 23.5%, Year 2: 65%","Year 1: 25%, Year 2: 66%","Year 1: 25%, Year 2: 65%"],correct:1,
+       explanation:"Year 1: Revised cost = ₹150 cr; Actual = ₹35.25 cr\nStage = 35.25 ÷ 150 × 100 = 23.5%\n\nYear 2: Revised total cost = ₹150 + ₹75 = ₹225 cr\nActual cost = ₹148.50 - ₹2.25 (unused) = ₹146.25 cr\nStage = 146.25 ÷ 225 × 100 = 65% ✓"},
+      {qno:2,question:"Profit to be recognized at end of Year 1?",
+       options:["₹2.35 crore","₹44.75 crore","₹4.75 crore","₹21 crore"],correct:0,
+       explanation:"Revenue Year 1 = ₹160 cr × 23.5% = ₹37.60 cr\nCost incurred Year 1 = ₹35.25 cr\nProfit = ₹37.60 - ₹35.25 = ₹2.35 crore ✓"},
+      {qno:3,question:"Contract revenue recognized in each year?",
+       options:["Y1:₹80cr, Y2:₹80cr, Y3:₹80cr","Y1:₹40cr, Y2:₹116cr, Y3:₹84cr","Y1:₹37.60cr, Y2:₹118.40cr, Y3:₹84cr","Y1:₹37.60cr, Y2:₹120.80cr, Y3:₹81.60cr"],correct:2,
+       explanation:"Total revised price = ₹160 + ₹80 = ₹240 crore\nYear 1: ₹240 × 23.5% = ₹37.60 cr\nYear 2: ₹240 × 65% - ₹37.60 = ₹156 - ₹37.60 = ₹118.40 cr\nYear 3: ₹240 - ₹37.60 - ₹118.40 = ₹84 cr ✓"}
+    ]
+  }
+];
+</script>
+
+<!-- ======================================================
+     MAIN SCRIPT
+     ====================================================== -->
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let filteredCases = [];
+let activeQueue = [];   // flat array of {scenario, question} objects
+let quizState = {
+  queue: [],
+  idx: 0,
+  score: 0,
+  wrong: 0,
+  answered: false,
+  startTime: null,
+  timerSeconds: 0,
+  timerTotal: 0,
+  timerInterval: null,
+  currentScenarioId: null,
+  retryQueue: []
+};
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  populateFilters();
+  applyFilters();
+  updateTopStats();
+});
+
+function populateFilters() {
+  const chapters = [...new Set(CASE_SCENARIOS_DATA.map(c => c.chapter))];
+  const chapterSel = document.getElementById('filterChapter');
+  chapters.forEach(ch => {
+    const opt = document.createElement('option');
+    opt.value = ch; opt.textContent = ch;
+    chapterSel.appendChild(opt);
+  });
+
+  const caseSel = document.getElementById('filterCase');
+  CASE_SCENARIOS_DATA.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id; opt.textContent = c.case_no;
+    caseSel.appendChild(opt);
+  });
+}
+
+function applyFilters() {
+  const sub = document.getElementById('filterSubject').value;
+  const ch  = document.getElementById('filterChapter').value;
+  const cs  = document.getElementById('filterCase').value;
+  const yr  = document.getElementById('filterYear').value;
+
+  filteredCases = CASE_SCENARIOS_DATA.filter(c => {
+    if (sub !== 'all' && c.subject !== sub) return false;
+    if (ch  !== 'all' && c.chapter !== ch)  return false;
+    if (cs  !== 'all' && c.id !== cs)       return false;
+    if (yr  !== 'all' && c.year !== yr)     return false;
+    return true;
+  });
+
+  document.getElementById('caseCount').textContent = filteredCases.length;
+  document.getElementById('qCount').textContent = filteredCases.reduce((s,c)=>s+c.questions.length, 0);
+  renderCaseList(filteredCases);
+}
+
+function updateTopStats() {
+  const perf = JSON.parse(localStorage.getItem('plh_case_perf') || '{"sessions":0,"correct":0,"attempted":0,"bestPct":0}');
+  document.getElementById('sessionCount').textContent = perf.sessions;
+  document.getElementById('bestScore').textContent = perf.bestPct > 0 ? perf.bestPct + '%' : '—';
+}
+
+// ============================================================
+// CASE LIST
+// ============================================================
+function renderCaseList(cases) {
+  const grid = document.getElementById('caseListGrid');
+  if (!cases.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🔍</div><p>No cases match your filters. Try selecting "All" options.</p></div>`;
+    return;
+  }
+
+  const scores = JSON.parse(localStorage.getItem('plh_case_scores') || '{}');
+  grid.innerHTML = cases.map(c => {
+    const sc = scores[c.id];
+    const scoreBadge = sc ? `<div class="cc-score-badge" style="background:rgba(${sc.pct>=70?'74,222,128':'248,113,113'},0.15);border:1px solid rgba(${sc.pct>=70?'74,222,128':'248,113,113'},0.3);color:${sc.pct>=70?'var(--green)':'var(--danger)'}">${sc.pct}%</div>` : '';
+    return `
+    <div class="case-card" onclick="startSingleCase('${c.id}')">
+      ${scoreBadge}
+      <div class="cc-tag">📚 ${c.subject}</div>
+      <div class="cc-title">${c.case_no}</div>
+      <div class="cc-chapter">${c.chapter}</div>
+      <div class="cc-meta">
+        <span class="cc-qcount">📝 ${c.questions.length} Question${c.questions.length>1?'s':''}</span>
+        <span class="cc-start">${sc ? 'Retry' : 'Attempt →'}</span>
+      </div>
+      <div class="cc-tags">${c.tags.map(t=>`<span class="cc-chip">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// QUIZ LAUNCH
+// ============================================================
+function startSingleCase(caseId) {
+  const c = CASE_SCENARIOS_DATA.find(x => x.id === caseId);
+  if (!c) return;
+  launchQuiz([c]);
+}
+
+function startFilteredPractice() {
+  if (!filteredCases.length) { alert('No cases match your current filters!'); return; }
+  launchQuiz(filteredCases);
+}
+
+function startMixedPractice() {
+  const shuffled = shuffle([...CASE_SCENARIOS_DATA]);
+  launchQuiz(shuffled);
+}
+
+function launchQuiz(cases) {
+  // Build flat question queue with scenario reference
+  const queue = [];
+  cases.forEach(c => {
+    c.questions.forEach(q => {
+      queue.push({ scenario: c, question: q });
+    });
+  });
+  if (!queue.length) return;
+
+  const totalSecs = Math.max(queue.length * 90, 600); // 90s per question, min 10 min
+
+  quizState = {
+    queue, idx: 0, score: 0, wrong: 0,
+    answered: false,
+    startTime: Date.now(),
+    timerSeconds: totalSecs,
+    timerTotal: totalSecs,
+    timerInterval: null,
+    currentScenarioId: null,
+    retryQueue: [...queue]
+  };
+
+  // Show quiz area
+  document.getElementById('filterSection').style.display = 'none';
+  document.getElementById('caseListGrid').style.display = 'none';
+  document.getElementById('quizArea').style.display = 'block';
+  document.getElementById('resultArea').style.display = 'none';
+
+  startTimer();
+  renderQuestion();
+  scrollToQuiz();
+}
+
+function scrollToQuiz() {
+  document.getElementById('quizArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ============================================================
+// TIMER
+// ============================================================
+function startTimer() {
+  if (quizState.timerInterval) clearInterval(quizState.timerInterval);
+  quizState.timerInterval = setInterval(() => {
+    quizState.timerSeconds--;
+    if (quizState.timerSeconds <= 0) {
+      clearInterval(quizState.timerInterval);
+      showResult(true);
+      return;
+    }
+    updateTimerUI();
+  }, 1000);
+  updateTimerUI();
+}
+
+function updateTimerUI() {
+  const s = quizState.timerSeconds;
+  const m = Math.floor(s / 60).toString().padStart(2, '0');
+  const sec = (s % 60).toString().padStart(2, '0');
+  const disp = document.getElementById('timerDisplay');
+  const fill = document.getElementById('timerFill');
+  disp.textContent = `${m}:${sec}`;
+  disp.className = 'timer-num' + (s <= 60 ? ' danger' : s <= 180 ? ' warning' : '');
+  fill.style.width = (s / quizState.timerTotal * 100) + '%';
+}
+
+function stopQuiz() {
+  if (!confirm('Stop this quiz session? Progress will be saved.')) return;
+  clearInterval(quizState.timerInterval);
+  showResult(false);
+}
+
+// ============================================================
+// RENDER QUESTION
+// ============================================================
+function renderQuestion() {
+  const { queue, idx, score, wrong } = quizState;
+  if (idx >= queue.length) { showResult(false); return; }
+
+  const item = queue[idx];
+  const { scenario, question } = item;
+  const pct = Math.round(idx / queue.length * 100);
+
+  // Progress
+  document.getElementById('qProgressText').textContent = `Question ${idx + 1} / ${queue.length}`;
+  document.getElementById('qScoreText').textContent = `Score: ${score}`;
+  document.getElementById('qProgressFill').style.width = pct + '%';
+  document.getElementById('liveCorrect').textContent = score;
+  document.getElementById('liveWrong').textContent = wrong;
+
+  // Scenario (show if new scenario)
+  const sbBox = document.getElementById('scenarioBox');
+  if (scenario.id !== quizState.currentScenarioId) {
+    quizState.currentScenarioId = scenario.id;
+    document.getElementById('sbTitle').textContent = scenario.case_no + ' — ' + scenario.chapter;
+    document.getElementById('sbText').textContent = scenario.scenario;
+    sbBox.style.display = 'block';
+    document.getElementById('sbToggle').textContent = '▲ Hide scenario';
+    sbBox._collapsed = false;
+  }
+
+  // Question
+  document.getElementById('qNumber').textContent = `Question ${question.qno}`;
+  document.getElementById('qText').textContent = question.question;
+
+  // Options
+  const optGrid = document.getElementById('optionsGrid');
+  optGrid.innerHTML = question.options.map((o, i) => `
+    <button class="option-btn" id="opt_${i}" onclick="answerQuestion(${i})">
+      <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
+      <span class="opt-text">${o}</span>
+    </button>
+  `).join('');
+
+  // Hide explanation + next button
+  document.getElementById('expBox').style.display = 'none';
+  document.getElementById('btnNext').style.display = 'none';
+  quizState.answered = false;
+}
+
+// ============================================================
+// ANSWER
+// ============================================================
+function answerQuestion(selectedIdx) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+
+  const item = quizState.queue[quizState.idx];
+  const { question } = item;
+  const isCorrect = selectedIdx === question.correct;
+
+  if (isCorrect) quizState.score++;
+  else quizState.wrong++;
+
+  // Mark options
+  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+    if (i === question.correct) {
+      btn.classList.add('correct');
+      btn.querySelector('.opt-text') && (btn.querySelector('.opt-letter').innerHTML = '✓');
+      if (isCorrect) btn.classList.add('animate-correct');
+    } else if (i === selectedIdx && !isCorrect) {
+      btn.classList.add('wrong', 'animate-wrong');
+      btn.querySelector('.opt-letter').innerHTML = '✗';
+    }
+  });
+
+  // Show explanation
+  const expBox = document.getElementById('expBox');
+  document.getElementById('expText').textContent = question.explanation;
+  expBox.style.display = 'block';
+
+  // Show next button
+  document.getElementById('btnNext').style.display = 'block';
+
+  // Update live score
+  document.getElementById('liveCorrect').textContent = quizState.score;
+  document.getElementById('liveWrong').textContent = quizState.wrong;
+
+  // Save to localStorage
+  saveQuizProgress();
+}
+
+function nextQuestion() {
+  quizState.idx++;
+  if (quizState.idx >= quizState.queue.length) {
+    clearInterval(quizState.timerInterval);
+    showResult(false);
+  } else {
+    renderQuestion();
+    document.getElementById('questionCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// ============================================================
+// RESULT
+// ============================================================
+function showResult(timedOut) {
+  clearInterval(quizState.timerInterval);
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('resultArea').style.display = 'block';
+
+  const total = quizState.queue.length;
+  const correct = quizState.score;
+  const wrong = quizState.wrong;
+  const skipped = total - correct - wrong;
+  const pct = Math.round(correct / total * 100);
+  const elapsed = Math.floor((Date.now() - quizState.startTime) / 1000);
+  const em = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : pct >= 40 ? '📖' : '💪';
+  const lbl = timedOut ? 'Time ran out! ' : '';
+
+  document.getElementById('resultEmoji').textContent = em;
+  document.getElementById('resultScore').textContent = `${correct}/${total}`;
+  document.getElementById('resultLabel').textContent = lbl + (pct >= 80 ? 'Excellent! Keep it up!' : pct >= 60 ? 'Good effort! Review explanations.' : 'Keep practicing — review each explanation carefully.');
+  document.getElementById('resCorrect').textContent = correct;
+  document.getElementById('resWrong').textContent = wrong;
+  document.getElementById('resAccuracy').textContent = pct + '%';
+  const m = Math.floor(elapsed / 60).toString().padStart(2, '0');
+  const s = (elapsed % 60).toString().padStart(2, '0');
+  document.getElementById('resTime').textContent = `${m}:${s}`;
+
+  // Chapter breakdown
+  const breakdown = {};
+  quizState.queue.forEach((item, i) => {
+    const ch = item.scenario.chapter;
+    if (!breakdown[ch]) breakdown[ch] = { correct: 0, total: 0 };
+    breakdown[ch].total++;
+    // Note: we don't have per-question result stored; approximate from overall
+  });
+
+  // Save performance
+  const perf = JSON.parse(localStorage.getItem('plh_case_perf') || '{"sessions":0,"correct":0,"attempted":0,"bestPct":0}');
+  perf.sessions++;
+  perf.correct += correct;
+  perf.attempted += total;
+  perf.bestPct = Math.max(perf.bestPct, pct);
+  localStorage.setItem('plh_case_perf', JSON.stringify(perf));
+
+  // Save per-case scores
+  const caseScores = JSON.parse(localStorage.getItem('plh_case_scores') || '{}');
+  const uniqueCases = [...new Set(quizState.queue.map(x => x.scenario.id))];
+  uniqueCases.forEach(id => {
+    const qsForCase = quizState.queue.filter(x => x.scenario.id === id);
+    caseScores[id] = { pct, date: new Date().toLocaleDateString() };
+  });
+  localStorage.setItem('plh_case_scores', JSON.stringify(caseScores));
+
+  updateTopStats();
+
+  // Build breakdown HTML
+  const uniqueChapters = [...new Set(quizState.queue.map(x => x.scenario.chapter))];
+  const bHtml = `
+    <div class="rcb-title">📊 Topics Covered</div>
+    ${uniqueChapters.map(ch => `
+      <div class="rcb-row">
+        <span>${ch}</span>
+        <span class="rcb-pct ${pct >= 70 ? 'pct-good' : pct >= 50 ? 'pct-ok' : 'pct-bad'}">${pct}%</span>
+      </div>
+    `).join('')}
+  `;
+  document.getElementById('chapterBreakdown').innerHTML = bHtml;
+
+  document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function retryQuiz() {
+  document.getElementById('resultArea').style.display = 'none';
+  const cases = [...new Set(quizState.retryQueue.map(x => x.scenario))];
+  launchQuiz(cases);
+}
+
+function backToList() {
+  clearInterval(quizState.timerInterval);
+  document.getElementById('resultArea').style.display = 'none';
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('filterSection').style.display = 'block';
+  document.getElementById('caseListGrid').style.display = 'grid';
+  applyFilters();
+  updateTopStats();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============================================================
+// SCENARIO TOGGLE
+// ============================================================
+function toggleScenario() {
+  const box = document.getElementById('scenarioBox');
+  const text = document.getElementById('sbText');
+  const toggle = document.getElementById('sbToggle');
+  box._collapsed = !box._collapsed;
+  text.style.display = box._collapsed ? 'none' : '';
+  toggle.textContent = box._collapsed ? '▼ Show scenario' : '▲ Hide scenario';
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function shuffle(arr) {
+  return arr.map(v => ({ v, r: Math.random() })).sort((a, b) => a.r - b.r).map(x => x.v);
+}
+
+function saveQuizProgress() {
+  const stats = JSON.parse(localStorage.getItem('plh_mcq_stats') || '{"attempted":0,"correct":0}');
+  stats.attempted++;
+  if (quizState.answered) stats.correct = (stats.correct || 0) + (quizState.score > 0 ? 1 : 0);
+  localStorage.setItem('plh_mcq_stats', JSON.stringify(stats));
+}
+</script>
+</body>
+</html>
