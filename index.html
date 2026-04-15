@@ -354,7 +354,7 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <a href="#dashboard" class="nav-a">Dashboard</a>
       <a href="#revision" class="nav-a">Revision</a>
       <a href="login.html" class="nav-a" id="navLoginLink">Login</a>
-      <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="nav-cta"><span class="live-dot"></span> Join Live</a>
+      <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="nav-cta"><span class="live-dot"></span> Join Virtual Library</a>
     </div>
     <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
   </div>
@@ -367,7 +367,7 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   <a href="#dashboard" class="nav-a" onclick="closeMobileMenu()">📊 Dashboard</a>
   <a href="#revision" class="nav-a" onclick="closeMobileMenu()">⚡ Revision</a>
   <a href="login.html" class="nav-a">👤 Login</a>
-  <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="nav-a">🟢 Join Live Session</a>
+  <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="nav-a">🟢 Join Virtual Library Session</a>
 </div>
 
 <!-- GST TIMER (fixed) -->
@@ -393,7 +393,7 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <div class="hero-stat"><div class="num">6+</div><div class="lbl">Subjects</div></div>
       <div class="hero-stat"><div class="num">500+</div><div class="lbl">Flashcards</div></div>
       <div class="hero-stat"><div class="num">10yr</div><div class="lbl">PYQ Bank</div></div>
-      <div class="hero-stat"><div class="num">24/7</div><div class="lbl">AI Support</div></div>
+      <div class="hero-stat"><div class="num">24/7</div><div class="lbl">Virtual Library</div></div>
     </div>
   </div>
 </section>
@@ -405,13 +405,13 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <div class="info">
         <div class="exam-dot"></div>
         <div class="text">
-          <b>Live Group Study Session</b>
-          <p>CA Warriors — Daily doubt solving & revision</p>
+          <b>Live Group Study Session 24*7</b>
+          <p>CA Warriors — CA Foundation,Inter,Final</p>
         </div>
       </div>
       <div class="actions">
-        <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="btn-primary" style="padding:9px 18px;font-size:13px;">🟢 Join Google Meet</a>
-        <a href="login.html" class="btn-secondary" style="padding:9px 18px;font-size:13px;">👤 Student Login</a>
+        <a href="https://meet.google.com/dgx-xani-sjh" target="_blank" class="btn-primary" style="padding:9px 18px;font-size:13px;">🟢 Join Virtual Library</a>
+    
       </div>
     </div>
     <div class="quick-grid">
@@ -825,7 +825,7 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
         <a href="#planner">AI Study Planner</a>
         <a href="#revision">7-Day Revision</a>
         <a href="https://drive.google.com/drive/folders/1-pdap3H1dt2By3sAup2SJCeavtXFvy_W?usp=sharing" target="_blank">ICAI Official →</a>
-        <a href="https://meet.google.com/dgx-xani-sjh" target="_blank">Join Live Session →</a>
+        <a href="https://meet.google.com/dgx-xani-sjh" target="_blank">Join Virtual Library Session →</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -835,59 +835,8 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   </div>
 </footer>
 
-<script src="mcq_generator.js"></script>
-
 <script>
 
-function startFlashcardMCQ() {
-
-  const flashcardText = `
-  80C limit ₹1,50,000
-  LTCG after 12 months
-  80D deduction ₹50,000 for senior citizen
-  Gift above ₹50,000 taxable
-  `;
-
-  let questions = generateMCQFromFlashcards(flashcardText);
-  showMCQ(questions);
-}
-
-function showMCQ(questions) {
-  let i = 0;
-
-  const container = document.getElementById("mcq-container");
-  container.style.display = "block";
-
-  function render() {
-    let q = questions[i];
-
-    container.innerHTML = `
-      <div style="background:#111; padding:20px; border-radius:10px;">
-        <h2 style="color:white;">${q.question}</h2>
-
-        ${q.options.map((opt, index) =>
-          `<button onclick="check(${index})"
-            style="display:block; margin:10px 0; padding:10px; width:100%; background:#222; color:white; border:none; border-radius:5px;">
-            ${opt}
-          </button>`
-        ).join("")}
-      </div>
-    `;
-
-    window.check = function(ans) {
-      alert(ans === q.correct ? "Correct ✅" : "Wrong ❌");
-
-      i++;
-      if (i < questions.length) render();
-      else container.innerHTML = "<h2 style='color:white;'>Quiz Finished 🎉</h2>";
-    }
-  }
-
-  render();
-}
-
-</script>
-<script>
 // ===================== TIMER =====================
 let timerInterval=null, timerSeconds=1800, timerTotal=1800;
 function startGstTimer(){
