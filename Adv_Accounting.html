@@ -129,7 +129,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(9,9,15,.94);backdrop-fi
 <main class="main">
   <div class="ch-head">
     <div class="ch-icon" id="chIcon" style="background:rgba(244,185,66,.1)">📖</div>
-    <div class="ch-info"><h2 id="chTitle">All Chapters</h2><p id="chDesc">CA Inter Advanced Accounting — CA. Parveen Sharma Study Material</p></div>
+    <div class="ch-info"><h2 id="chTitle">All Chapters</h2><p id="chDesc">CA Inter Advanced Accounting —ICAI STUDY MATERIAL</p></div>
     <div class="ch-stats">
       <div class="cs"><div class="cs-n" id="chDescCnt" style="color:var(--blu)">370</div><div class="cs-l">Descriptive</div></div>
       <div class="cs"><div class="cs-n" id="chMcqCnt" style="color:var(--acc)">176</div><div class="cs-l">MCQs</div></div>
@@ -350,7 +350,7 @@ function buildAns(q, isMCQ) {
   } else if (q.answer) {
     content = esc(q.answer.trim());
   } else {
-    content = '<em style="color:var(--mut)">Refer: '+esc(q.chapter_name)+' — CA. Parveen Sharma</em>';
+    content = '<em style="color:var(--mut)">Refer: '+esc(q.chapter_name)+' —ICAI STUDY MATERIAL</em>';
   }
   return '<div class="qa"><button class="abtn" data-id="'+q.id+'">👁 Show Answer</button></div>'
     +'<div class="ap" id="ap-'+q.id+'"><div class="albl">✅ '+(isMCQ?"Correct Option":"Answer")+'</div><div>'+content+'</div></div>';
