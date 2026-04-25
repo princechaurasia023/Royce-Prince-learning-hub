@@ -383,7 +383,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
   <div class="page-header">
     <div class="page-tag">📂 ICAI Case Scenarios · May 2026</div>
     <h1>Complete Case Scenario <em>Practice Hub</em></h1>
-    <p>Advanced Accounting (50) · Corporate & Other Laws (50) · GST ( 30 Case Scenarios) · Income Tax (30 Cases) · Audit & Assurance (25 Cases) — All ICAI official, Finance Act 2025, timer-based, auto-scored.</p>
+    <p>Advanced Accounting (50) · Corporate & Other Laws (11) · GST (50 Flashcards + 50 Case Scenarios + 20 MCQs) · Income Tax (30 Cases) · Audit & Assurance (25 Cases) — All ICAI official, Finance Act 2025, timer-based, auto-scored.</p>
   </div>
 
   <!-- MEGA TABS -->
@@ -502,6 +502,98 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     </div>
     <div class="case-list-grid" id="auditGrid"></div>
   </div>
+
+  <!-- GST SECTION -->
+  <div class="gst-section" id="gstSection">
+    <div class="amend-banner">
+      <span class="amend-tag">🆕 2025</span>
+      <span class="amend-text">Finance Act 2025: ECO for Composition (Goods), Sec 5A RCM, Biometric Aadhaar, GSTR-1A, ISD Mandatory, New RCM Entries</span>
+    </div>
+    <div class="gst-mode-tabs">
+      <button class="gst-tab active" onclick="setGSTMode('flashcard',event)">🃏 Flashcards (50 Qs)</button>
+      <button class="gst-tab" onclick="setGSTMode('case',event)">📋 Case Scenarios (50)</button>
+      <button class="gst-tab" onclick="setGSTMode('mcq',event)">📝 MCQ Practice</button>
+    </div>
+    <!-- FLASHCARD MODE -->
+    <div id="gst-flashcard-mode">
+      <div class="chapter-bar">
+        <button class="ch-btn active" onclick="gstFilterChapter('ALL',this)">ALL</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH1',this)">Ch1</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH2',this)">Ch2</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH3',this)">Ch3</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH4',this)">Ch4</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH5',this)">Ch5</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH6',this)">Ch6</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH7',this)">Ch7</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH8',this)">Ch8</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH9',this)">Ch9</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH10',this)">Ch10</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH11',this)">Ch11</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH12',this)">Ch12</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH13',this)">Ch13</button>
+        <button class="ch-btn" onclick="gstFilterChapter('CH14',this)">Ch14</button>
+      </div>
+      <div class="pill-bar">
+        <button class="pill pill-all active" onclick="gstFilterCat('ALL',this)">🔘 All</button>
+        <button class="pill pill-concept" onclick="gstFilterCat('CONCEPT',this)">💡 Concept</button>
+        <button class="pill pill-mcq" onclick="gstFilterCat('MCQ',this)">✅ MCQ</button>
+        <button class="pill pill-trap" onclick="gstFilterCat('TRAP',this)">⚠️ Trap</button>
+        <button class="pill pill-pyq" onclick="gstFilterCat('PYQ',this)">🏛 PYQ</button>
+        <button class="pill pill-rtp" onclick="gstFilterCat('RTP',this)">📘 RTP</button>
+        <button class="pill pill-mtp" onclick="gstFilterCat('MTP',this)">📝 MTP</button>
+        <button class="pill pill-hard" onclick="gstFilterCat('HARD',this)">🔥 PowerAI</button>
+      </div>
+      <div class="diff-row">
+        <span class="diff-badge diff-easy">🟢 Easy</span>
+        <span class="diff-badge diff-medium">🟡 Medium</span>
+        <span class="diff-badge diff-hard">🔴 Hard</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-item score-green"><div class="score-num" id="gst-correct">0</div><div class="score-label">CORRECT</div></div>
+        <div class="score-item score-red"><div class="score-num" id="gst-wrong">0</div><div class="score-label">WRONG</div></div>
+        <div class="score-item score-gold"><div class="score-num" id="gst-pct">-</div><div class="score-label">ACCURACY</div></div>
+        <div class="score-item score-blue"><div class="score-num" id="gst-total">0</div><div class="score-label">TOTAL Qs</div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-track"><div class="prog-fill" id="gst-prog-fill" style="width:0%"></div></div>
+        <div class="prog-text" id="gst-prog-text">0 / 0</div>
+      </div>
+      <div class="card-scene" id="gst-card-scene" onclick="gstFlipCard()">
+        <div class="card-wrapper" id="gst-card-wrapper">
+          <div class="card-face card-front" id="gst-card-front"></div>
+          <div class="card-face card-back" id="gst-card-back"></div>
+        </div>
+      </div>
+      <div class="flip-hint">👆 Click card to flip • Arrow keys to navigate • Space to flip</div>
+      <div class="controls">
+        <button class="ctrl-btn" onclick="gstPrevCard()">← Prev</button>
+        <span class="card-counter" id="gst-counter">1 / 1</span>
+        <button class="ctrl-btn primary" onclick="gstNextCard()">Next →</button>
+        <button class="ctrl-btn" onclick="gstShuffle()">🔀</button>
+        <button class="ctrl-btn" onclick="gstMarkCorrect()" style="color:var(--green)">✅</button>
+        <button class="ctrl-btn" onclick="gstMarkWrong()" style="color:var(--red)">❌</button>
+      </div>
+    </div>
+    <!-- GST MCQ MODE -->
+    <div id="gst-mcq-mode" style="display:none;">
+      <div class="gst-mcq-chapter-bar" id="gstMcqChapterBar"></div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+        <div style="font-size:10px;font-family:var(--mono);background:rgba(67,217,142,.12);color:var(--green);border:1px solid rgba(67,217,142,.3);padding:3px 10px;border-radius:20px;">✅ <span id="gstMcqCorrect">0</span></div>
+        <div style="font-size:10px;font-family:var(--mono);background:rgba(240,71,71,.12);color:var(--red);border:1px solid rgba(240,71,71,.3);padding:3px 10px;border-radius:20px;">❌ <span id="gstMcqWrong">0</span></div>
+        <div style="font-size:10px;font-family:var(--mono);background:rgba(244,192,85,.12);color:var(--gold);border:1px solid rgba(244,192,85,.3);padding:3px 10px;border-radius:20px;">📊 <span id="gstMcqPct">—</span></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-track"><div class="prog-fill" id="gstMcqProgFill" style="width:0%;background:linear-gradient(90deg,var(--gold),var(--orange));"></div></div>
+        <div class="prog-text" id="gstMcqProgText">0 / 0</div>
+      </div>
+      <div id="gstMcqCardArea" style="margin-bottom:14px;"></div>
+      <div class="controls">
+        <button class="ctrl-btn" onclick="gstMcqPrev()">← Prev</button>
+        <span class="card-counter" id="gstMcqCounter">1 / 1</span>
+        <button class="ctrl-btn primary" onclick="gstMcqNext()">Next →</button>
+        <button class="ctrl-btn" onclick="gstMcqShuffle()">🔀</button>
+      </div>
+    </div>
     <!-- GST CASE MODE -->
     <div id="gst-case-mode" style="display:none;">
       <div id="gst-cs-list">
@@ -580,7 +672,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     <div class="case-list-grid" id="gstCsNavGrid"></div>
   </div>
 
-  <!-- Income Tax SECTION -->
+  <!-- IT SECTION -->
   <div id="itSection" style="display:none;">
     <div class="filter-bar fb-it">
       <h3>💰 Income Tax — Configure Practice</h3>
