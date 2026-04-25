@@ -336,6 +336,35 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
   .mega-tabs{gap:2px;}
   .mtab{min-width:80px;padding:8px 8px;}
 }
+
+/* ── AUDIT & ASSURANCE THEME (Blue/Cyan) ── */
+.mtab.t-audit.active{background:rgba(33,150,243,0.15);color:#42a5f5;border:1px solid rgba(33,150,243,0.3);}
+.filter-bar.fb-audit{background:rgba(8,18,38,0.9);border:1px solid rgba(33,150,243,0.2);}
+.case-card.c-audit{background:rgba(6,14,28,0.9);border:1px solid rgba(33,150,243,0.18);}
+.case-card.c-audit:hover{border-color:rgba(33,150,243,0.5);box-shadow:0 8px 32px rgba(33,150,243,0.2);transform:translateY(-2px);}
+.cc-badge.cb-audit{background:rgba(33,150,243,0.14);color:#42a5f5;}
+.c-audit .cc-go{background:rgba(33,150,243,0.1);border:1px solid rgba(33,150,243,0.2);color:#42a5f5;}
+.c-audit:hover .cc-go{background:#42a5f5;color:#000;}
+.btn-go.go-audit{background:linear-gradient(135deg,#2196f3,#00bcd4);box-shadow:0 6px 20px rgba(33,150,243,0.35);}
+.scenario-box.sb-audit{background:rgba(33,150,243,0.04);border:1px solid rgba(33,150,243,0.15);}
+.sb-label.audit{color:#42a5f5;}
+.sb-title.audit{color:#64b5f6;}
+.question-card.qc-audit{background:rgba(5,12,24,0.95);border:1px solid rgba(33,150,243,0.2);}
+.q-number.audit{color:#42a5f5;}
+.explanation-box.eaudit{background:rgba(33,150,243,0.05);border:1px solid rgba(33,150,243,0.2);}
+.exp-label.audit{color:#42a5f5;}
+.timer-fill.audit{background:linear-gradient(90deg,#2196f3,#00bcd4);}
+.timer-color-audit{color:#42a5f5;}
+.qp-fill.audit{background:linear-gradient(90deg,#2196f3,#00bcd4);}
+.btn-next.audit{background:linear-gradient(135deg,#2196f3,#00bcd4);}
+.btn-retry.audit{background:linear-gradient(135deg,#2196f3,#00bcd4);}
+.result-score-big.audit{background:linear-gradient(135deg,#2196f3,#00bcd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* ── GST MCQ MODE STYLES ── */
+.gst-mcq-chapter-bar{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;padding:10px 12px;background:var(--surface);border-radius:12px;border:1px solid var(--border);}
+.gst-mcq-ch-btn{font-size:9px;font-weight:700;padding:4px 8px;border-radius:7px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text3);transition:all 0.15s;font-family:var(--mono);}
+.gst-mcq-ch-btn.active{background:var(--gold);border-color:var(--gold);color:#000;}
+.gst-mcq-ch-btn:hover:not(.active){color:var(--text2);background:rgba(255,255,255,0.04);}
 </style>
 </head>
 <body>
@@ -354,7 +383,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
   <div class="page-header">
     <div class="page-tag">📂 ICAI Case Scenarios · May 2026</div>
     <h1>Complete Case Scenario <em>Practice Hub</em></h1>
-    <p>Advanced Accounting (50) · Corporate & Other Laws (11) · GST (50 Flashcards + 10 Case Scenarios) · Income Tax (30 Cases) — All ICAI official, Finance Act 2025, timer-based, auto-scored.</p>
+    <p>Advanced Accounting (50) · Corporate & Other Laws (50) · GST ( 30 Case Scenarios) · Income Tax (30 Cases) · Audit & Assurance (25 Cases) — All ICAI official, Finance Act 2025, timer-based, auto-scored.</p>
   </div>
 
   <!-- MEGA TABS -->
@@ -378,6 +407,11 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
       <span class="mtab-icon">💰</span>
       <span class="mtab-label">Income Tax</span>
       <span class="mtab-count">30 cases · 100+ Qs</span>
+    </button>
+    <button class="mtab t-audit" id="tabAUDIT" onclick="setTab('AUDIT')">
+      <span class="mtab-icon">📑</span>
+      <span class="mtab-label">Audit & Assurance</span>
+      <span class="mtab-count">25 cases · 80+ Qs</span>
     </button>
   </div>
 
@@ -437,76 +471,37 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     <div class="case-list-grid" id="lawGrid"></div>
   </div>
 
-  <!-- GST SECTION -->
-  <div class="gst-section" id="gstSection">
-    <div class="amend-banner">
-      <span class="amend-tag">🆕 2025</span>
-      <span class="amend-text">Finance Act 2025: ECO for Composition (Goods), Sec 5A RCM, Biometric Aadhaar, GSTR-1A, ISD Mandatory, New RCM Entries</span>
-    </div>
-    <div class="gst-mode-tabs">
-      <button class="gst-tab active" onclick="setGSTMode('flashcard',event)">🃏 Flashcards (50 Qs)</button>
-      <button class="gst-tab" onclick="setGSTMode('case',event)">📋 Case Scenarios (50)</button>
-    </div>
-    <!-- FLASHCARD MODE -->
-    <div id="gst-flashcard-mode">
-      <div class="chapter-bar">
-        <button class="ch-btn active" onclick="gstFilterChapter('ALL',this)">ALL</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH1',this)">Ch1</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH2',this)">Ch2</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH3',this)">Ch3</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH4',this)">Ch4</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH5',this)">Ch5</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH6',this)">Ch6</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH7',this)">Ch7</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH8',this)">Ch8</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH9',this)">Ch9</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH10',this)">Ch10</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH11',this)">Ch11</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH12',this)">Ch12</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH13',this)">Ch13</button>
-        <button class="ch-btn" onclick="gstFilterChapter('CH14',this)">Ch14</button>
-      </div>
-      <div class="pill-bar">
-        <button class="pill pill-all active" onclick="gstFilterCat('ALL',this)">🔘 All</button>
-        <button class="pill pill-concept" onclick="gstFilterCat('CONCEPT',this)">💡 Concept</button>
-        <button class="pill pill-mcq" onclick="gstFilterCat('MCQ',this)">✅ MCQ</button>
-        <button class="pill pill-trap" onclick="gstFilterCat('TRAP',this)">⚠️ Trap</button>
-        <button class="pill pill-pyq" onclick="gstFilterCat('PYQ',this)">🏛 PYQ</button>
-        <button class="pill pill-rtp" onclick="gstFilterCat('RTP',this)">📘 RTP</button>
-        <button class="pill pill-mtp" onclick="gstFilterCat('MTP',this)">📝 MTP</button>
-        <button class="pill pill-hard" onclick="gstFilterCat('HARD',this)">🔥 PowerAI</button>
-      </div>
-      <div class="diff-row">
-        <span class="diff-badge diff-easy">🟢 Easy</span>
-        <span class="diff-badge diff-medium">🟡 Medium</span>
-        <span class="diff-badge diff-hard">🔴 Hard</span>
-      </div>
-      <div class="score-bar">
-        <div class="score-item score-green"><div class="score-num" id="gst-correct">0</div><div class="score-label">CORRECT</div></div>
-        <div class="score-item score-red"><div class="score-num" id="gst-wrong">0</div><div class="score-label">WRONG</div></div>
-        <div class="score-item score-gold"><div class="score-num" id="gst-pct">-</div><div class="score-label">ACCURACY</div></div>
-        <div class="score-item score-blue"><div class="score-num" id="gst-total">0</div><div class="score-label">TOTAL Qs</div></div>
-      </div>
-      <div class="prog-row">
-        <div class="prog-track"><div class="prog-fill" id="gst-prog-fill" style="width:0%"></div></div>
-        <div class="prog-text" id="gst-prog-text">0 / 0</div>
-      </div>
-      <div class="card-scene" id="gst-card-scene" onclick="gstFlipCard()">
-        <div class="card-wrapper" id="gst-card-wrapper">
-          <div class="card-face card-front" id="gst-card-front"></div>
-          <div class="card-face card-back" id="gst-card-back"></div>
+  <!-- AUDIT SECTION -->
+  <div id="auditSection" style="display:none;">
+    <div class="filter-bar fb-audit">
+      <h3>📑 Audit & Assurance — Configure Practice</h3>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>Chapter / SA Series</label>
+          <select class="filter-select" id="auditFChapter" onchange="applyFiltersAUDIT()"><option value="all">All Chapters</option></select>
+        </div>
+        <div class="filter-group">
+          <label>SA Number</label>
+          <select class="filter-select" id="auditFSA" onchange="applyFiltersAUDIT()"><option value="all">All SAs</option></select>
+        </div>
+        <div class="filter-group">
+          <label>Case No.</label>
+          <select class="filter-select" id="auditFCase" onchange="applyFiltersAUDIT()"><option value="all">All Cases</option></select>
         </div>
       </div>
-      <div class="flip-hint">👆 Click card to flip • Arrow keys to navigate • Space to flip</div>
-      <div class="controls">
-        <button class="ctrl-btn" onclick="gstPrevCard()">← Prev</button>
-        <span class="card-counter" id="gst-counter">1 / 1</span>
-        <button class="ctrl-btn primary" onclick="gstNextCard()">Next →</button>
-        <button class="ctrl-btn" onclick="gstShuffle()">🔀</button>
-        <button class="ctrl-btn" onclick="gstMarkCorrect()" style="color:var(--green)">✅</button>
-        <button class="ctrl-btn" onclick="gstMarkWrong()" style="color:var(--red)">❌</button>
+      <div class="filter-actions">
+        <button class="btn-go go-audit" onclick="startAUDITPractice()">▶ Start Practice</button>
+        <button class="btn-mix" onclick="startAUDITMix()">🔀 All Cases</button>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-item">Showing <b id="auditCaseCount">0</b> cases</div>
+        <div class="stat-item">Questions <b id="auditQCount">0</b></div>
+        <div class="stat-item">Sessions <b id="auditSessions">0</b></div>
+        <div class="stat-item">Best <b id="auditBest">—</b></div>
       </div>
     </div>
+    <div class="case-list-grid" id="auditGrid"></div>
+  </div>
     <!-- GST CASE MODE -->
     <div id="gst-case-mode" style="display:none;">
       <div id="gst-cs-list">
@@ -585,7 +580,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     <div class="case-list-grid" id="gstCsNavGrid"></div>
   </div>
 
-  <!-- IT SECTION -->
+  <!-- Income Tax SECTION -->
   <div id="itSection" style="display:none;">
     <div class="filter-bar fb-it">
       <h3>💰 Income Tax — Configure Practice</h3>
@@ -2030,24 +2025,235 @@ questions:[
 ];
 
 // ================================================================
+// AUDIT & ASSURANCE DATA
+// ================================================================
+const AUDIT_DATA=[
+{id:"audit_01",subject:"Audit",chapter:"SA 200 Series — Overall Objectives",sa:"SA 200",case_no:"Case Scenario 1",tags:["SA 200","Reasonable Assurance","Professional Skepticism"],
+scenario:`XYZ & Co., Chartered Accountants, have been appointed as statutory auditors of Pinnacle Industries Ltd. During planning, the engagement partner discussed with the audit team about overall objectives and the need for professional skepticism. Junior auditor Mr. Akash argues that since the company has a clean track record, full reliance can be placed on management representations without further verification. The partner disagrees.`,
+questions:[
+{qno:1,question:"As per SA 200, the auditor shall plan and perform an audit with:",options:["Absolute assurance that FS are free from misstatement","Reasonable assurance about whether FS as a whole are free from material misstatement","Limited assurance on selected transactions","Assurance only on cash transactions"],correct:1,explanation:"SA 200 Para 5: The auditor shall obtain REASONABLE ASSURANCE about whether the FS as a whole are free from material misstatement, whether due to fraud or error. Absolute assurance is not attainable. ✓"},
+{qno:2,question:"Mr. Akash's approach of fully relying on management representations without further verification is:",options:["Correct — clean track record justifies it","Correct — management representations are sufficient","Incorrect — violates professional skepticism requirement of SA 200","Correct — if documented properly"],correct:2,explanation:"SA 200 Para 15: Professional skepticism requires the auditor to maintain a questioning mind and critically assess audit evidence. Past clean record does NOT eliminate the need for professional skepticism. ✓"},
+{qno:3,question:"Under SA 200, which of the following is NOT an inherent limitation of an audit?",options:["Nature of financial reporting","Nature of audit procedures","Need for audit to be timely and cost-effective","Auditor's lack of qualification"],correct:3,explanation:"SA 200 Para A45-A52: Inherent limitations include nature of financial reporting, nature of audit procedures, and timeliness/cost balance. Auditor's qualification is a PREREQUISITE, not a limitation. ✓"}
+]},
+{id:"audit_02",subject:"Audit",chapter:"SA 200 Series — Overall Objectives",sa:"SA 210",case_no:"Case Scenario 2",tags:["SA 210","Engagement Letter","Terms of Engagement"],
+scenario:`M/s Global Enterprises Ltd. approached PQR & Associates for their first statutory audit. The management wants to restrict the auditor from sending confirmation letters to major debtors. The engagement partner is evaluating whether to accept the audit engagement.`,
+questions:[
+{qno:1,question:"As per SA 210, restriction on sending confirmation letters would be considered:",options:["Acceptable if management provides alternative evidence","A limitation on scope that may affect ability to accept engagement","Normal business practice","Acceptable for first-year audits"],correct:1,explanation:"SA 210 Para 7: If management imposes a limitation on the scope of the auditor's work in the terms of a proposed audit engagement such that the auditor believes the limitation will result in a disclaimer, the auditor should not accept such a limited engagement as an audit engagement. ✓"},
+{qno:2,question:"The engagement letter should include:",options:["Only the fees to be charged","Objective and scope of audit, responsibilities of auditor and management, framework","Only the timeline for audit completion","Names of all audit team members"],correct:1,explanation:"SA 210 Para 10: The engagement letter should include the objective and scope of audit, responsibilities of both auditor and management, identification of applicable financial reporting framework, and reference to the expected form and content of reports. ✓"},
+{qno:3,question:"Is a new engagement letter required for recurring audits?",options:["Yes, mandatory every year","No, never required after first year","Depends — may be appropriate to remind entity of existing terms; new letter needed if terms change significantly","Only when fees change"],correct:2,explanation:"SA 210 Para 13: For recurring audits, the auditor may decide NOT to send a new letter each period. However, circumstances may warrant revision — e.g., change in management, legal requirements, scope, or financial reporting framework. ✓"}
+]},
+{id:"audit_03",subject:"Audit",chapter:"SA 200 Series — Overall Objectives",sa:"SA 220",case_no:"Case Scenario 3",tags:["SA 220","Quality Control","Direction Supervision Review"],
+scenario:`During the audit of Bright Corp Ltd., the engagement partner Mr. Verma delegated substantial work to articled assistants. After fieldwork, Mr. Verma reviewed only the audit report and signed it without reviewing working papers. The firm's quality reviewer raised concerns about this approach.`,
+questions:[
+{qno:1,question:"Mr. Verma's approach is:",options:["Acceptable — partner only needs to sign the report","Incorrect — SA 220 requires the engagement partner to direct, supervise, and review","Acceptable — if assistants are qualified","Correct — delegation is the norm"],correct:1,explanation:"SA 220 Para 15-17: The engagement partner shall take responsibility for direction, supervision, and performance of the audit engagement. This includes reviewing work performed, ensuring sufficient appropriate audit evidence, and not merely signing the report. ✓"},
+{qno:2,question:"As per SA 220, the engagement partner must be satisfied that:",options:["Fees are collected on time","Team members have appropriate competence and capabilities, including time","Only senior members perform substantive procedures","All work is done by the partner personally"],correct:1,explanation:"SA 220 Para 14: The engagement partner must be satisfied that the team collectively has appropriate competence and capabilities, including sufficient time, to perform the engagement. ✓"},
+{qno:3,question:"Engagement Quality Control Review (EQCR) is required for:",options:["All audit engagements","Only listed entity audits and other engagements as determined by firm policy","Only government audits","Only when errors are found"],correct:1,explanation:"SA 220 Para 19-21: EQCR is required for audits of listed entities and other engagements meeting criteria specified by the firm's policies. It involves an objective evaluation of significant judgments and conclusions. ✓"}
+]},
+{id:"audit_04",subject:"Audit",chapter:"SA 230 — Audit Documentation",sa:"SA 230",case_no:"Case Scenario 4",tags:["SA 230","Documentation","Working Papers"],
+scenario:`CA Priya completed the audit of Delta Manufacturing Ltd. The audit working papers consist of brief notes on pieces of paper and some oral discussions with management. No formal documentation of audit procedures, findings, or conclusions was maintained. The firm's reviewer asked why there was no proper audit file.`,
+questions:[
+{qno:1,question:"CA Priya's approach to audit documentation is:",options:["Acceptable — oral notes are sufficient","Incorrect — SA 230 requires documentation of procedures performed, evidence obtained, and conclusions","Acceptable — if audit report is clean","Correct — small audits don't need documentation"],correct:1,explanation:"SA 230 Para 8: The auditor shall prepare audit documentation that is sufficient to enable an experienced auditor, having no previous connection with the audit, to understand the nature, timing, and extent of procedures performed, results obtained, and conclusions reached. ✓"},
+{qno:2,question:"The final audit file should be assembled within:",options:["30 days from audit report date","60 days from audit report date","A period not more than 60 days after date of auditor's report","90 days from year end"],correct:2,explanation:"SA 230 Para 14 and A21: The auditor should assemble the final audit file on a timely basis, ordinarily not more than 60 days after the date of the auditor's report. ✓"},
+{qno:3,question:"Audit documentation serves the purpose of:",options:["Only for fee calculation","Evidence of auditor's basis for conclusion, and compliance with SAs","Entertainment of audit team","Filing with ICAI only"],correct:1,explanation:"SA 230 Para 3: Audit documentation provides evidence of the auditor's basis for a conclusion about achievement of overall audit objectives and evidence that the audit was planned and performed in accordance with SAs and legal requirements. ✓"}
+]},
+{id:"audit_05",subject:"Audit",chapter:"SA 300 Series — Planning",sa:"SA 300",case_no:"Case Scenario 5",tags:["SA 300","Audit Planning","Overall Audit Strategy"],
+scenario:`M/s Stellar Pharma Ltd. appointed KLM & Co. as auditors. The audit team started substantive testing immediately on 1st April without developing an audit plan or strategy. When questioned by the engagement partner, the team argued that they had audited the company last year and already knew the business.`,
+questions:[
+{qno:1,question:"The audit team's approach of skipping planning is:",options:["Acceptable for recurring audits","Incorrect — SA 300 requires planning for every audit engagement regardless of familiarity","Correct — planning wastes time","Acceptable if last year's plan is used verbatim"],correct:1,explanation:"SA 300 Para 4-7: The auditor must establish an overall audit strategy and develop an audit plan for EVERY engagement. Prior year knowledge helps but does not replace planning. Planning is an ongoing and iterative process. ✓"},
+{qno:2,question:"The Overall Audit Strategy should consider:",options:["Only the timeline for completion","Scope, timing, direction of audit, and resources to deploy","Only the number of team members","Fee negotiation details"],correct:1,explanation:"SA 300 Para 8: The overall audit strategy sets the scope, timing, and direction of the audit and guides the development of the more detailed audit plan. It considers the nature, timing, extent of resources, and the way these are managed. ✓"},
+{qno:3,question:"As per SA 300, the engagement partner should involve in planning:",options:["All team members equally","Only senior team members","The engagement partner and other key members of the engagement team","Only external experts"],correct:2,explanation:"SA 300 Para 5: The engagement partner and other key engagement team members shall be involved in planning the audit, including planning and participating in team discussion. ✓"}
+]},
+{id:"audit_06",subject:"Audit",chapter:"SA 300 Series — Planning",sa:"SA 315",case_no:"Case Scenario 6",tags:["SA 315","Understanding Entity","Risk Assessment","Internal Control"],
+scenario:`During the audit of Meridian Finance Ltd. (NBFC), the audit team did not perform any risk assessment procedures. They directly proceeded to substantive testing based on prior year materiality levels. The company had undergone a major restructuring during the year, including a new ERP system and significant changes in key management personnel.`,
+questions:[
+{qno:1,question:"The audit team's omission of risk assessment procedures is:",options:["Acceptable — they used prior year data","A violation of SA 315 — risk assessment is mandatory to identify and assess risks of material misstatement","Correct — substantive testing covers everything","Acceptable — if prior year was unqualified"],correct:1,explanation:"SA 315 Para 5-6: The auditor SHALL perform risk assessment procedures to identify and assess the risks of material misstatement at the financial statement level and assertion level. This includes understanding the entity and its environment, including internal controls. ✓"},
+{qno:2,question:"Given the restructuring and new ERP, the auditor should:",options:["Ignore it — technology changes are routine","Perform enhanced risk assessment, understand new internal controls, and consider impact on audit approach","Rely entirely on IT auditor","Accept management's assurance that controls are working"],correct:1,explanation:"SA 315 Para 11-12: The auditor shall obtain understanding of the entity's internal control relevant to the audit. Significant changes (new ERP, management changes, restructuring) require re-evaluation of risks and controls. ✓"},
+{qno:3,question:"Risk assessment procedures under SA 315 include:",options:["Only inquiry of management","Inquiries, analytical procedures, and observation and inspection","Only reviewing last year's working papers","Reading newspaper articles"],correct:1,explanation:"SA 315 Para 6: Risk assessment procedures include (a) inquiries of management and others within the entity, (b) analytical procedures, and (c) observation and inspection. These provide audit evidence for risk identification. ✓"}
+]},
+{id:"audit_07",subject:"Audit",chapter:"SA 300 Series — Planning",sa:"SA 320",case_no:"Case Scenario 7",tags:["SA 320","Materiality","Performance Materiality"],
+scenario:`CA Deepak is auditing Omega Retail Ltd. (turnover ₹500 Crore). He set materiality at ₹10 Crore (2% of turnover). During the audit, he found 8 individual misstatements of ₹80 lakhs each. He ignored all of them since each was below materiality. Aggregate uncorrected misstatements = ₹6.4 Crore.`,
+questions:[
+{qno:1,question:"CA Deepak's approach of ignoring individual misstatements below materiality is:",options:["Correct — each is immaterial","Incorrect — SA 320 requires consideration of performance materiality and accumulation of misstatements","Correct — materiality is a single threshold","Acceptable — if management approves"],correct:1,explanation:"SA 320 Para 9: Performance materiality is set at an amount LESS than materiality to reduce the probability that aggregate of uncorrected and undetected misstatements exceeds materiality. Individual misstatements must be accumulated and evaluated. ✓"},
+{qno:2,question:"Performance materiality is:",options:["Same as overall materiality","An amount set LESS than materiality to reduce the risk that aggregate misstatements exceed materiality","Double the materiality","Set by management"],correct:1,explanation:"SA 320 Para 9: Performance materiality means the amount(s) set by the auditor at LESS than materiality for the FS as a whole to reduce to an appropriately low level the probability that the aggregate of uncorrected and undetected misstatements exceeds materiality. ✓"},
+{qno:3,question:"Can materiality be revised during the audit?",options:["No — it is set during planning and cannot change","Yes — SA 320 requires the auditor to revise materiality if information comes to attention that would have caused different determination","Only upward revision is allowed","Only if management requests it"],correct:1,explanation:"SA 320 Para 12: The auditor shall revise materiality in the event of becoming aware of information during the audit that would have caused a different amount to be determined initially. ✓"}
+]},
+{id:"audit_08",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 500",case_no:"Case Scenario 8",tags:["SA 500","Audit Evidence","Sufficiency","Appropriateness"],
+scenario:`During the audit of Creative Solutions Pvt. Ltd., the audit team obtained written representations from management for ALL balances without performing any independent verification. The team argued that management representations constitute sufficient appropriate audit evidence for all assertions.`,
+questions:[
+{qno:1,question:"The audit team's sole reliance on management representations is:",options:["Correct — management representations are sufficient","Incorrect — SA 500 states that management representations alone are NOT sufficient appropriate audit evidence","Correct — for non-listed companies","Acceptable — if in writing"],correct:1,explanation:"SA 500 Para A1-A5: Sufficient appropriate audit evidence must be obtained. Management representations are NOT a substitute for other audit evidence. They provide evidence of management's beliefs but cannot be the sole source for material assertions. ✓"},
+{qno:2,question:"'Sufficiency' of audit evidence refers to:",options:["Quality of evidence","Quantity (amount) of evidence needed","Source of evidence","Cost of evidence"],correct:1,explanation:"SA 500 Para 5: Sufficiency is the measure of the QUANTITY of audit evidence. The quantity needed is affected by the risk of misstatement and the quality of evidence obtained. ✓"},
+{qno:3,question:"Which has the HIGHEST reliability as audit evidence?",options:["Oral representations from management","Internally generated documents","External evidence obtained directly by the auditor from third parties","Management's internal emails"],correct:2,explanation:"SA 500 Para A31: External evidence (e.g., bank confirmations) obtained directly by the auditor is more reliable than evidence obtained indirectly or from internal sources. Direct external evidence > indirect external > internal evidence. ✓"},
+{qno:4,question:"Under SA 500, audit evidence includes:",options:["Only information from financial statements","Information obtained from audit procedures AND other sources including previous audits and quality control procedures","Only confirmations from third parties","Only management representations"],correct:1,explanation:"SA 500 Para 5: Audit evidence comprises information used by the auditor in arriving at conclusions. It includes information contained in accounting records and other information from audit procedures, but also information from other reliable sources. ✓"}
+]},
+{id:"audit_09",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 505",case_no:"Case Scenario 9",tags:["SA 505","External Confirmations","Positive Confirmation","Negative Confirmation"],
+scenario:`While auditing Zenith Trading Co., the audit team decided to send negative confirmation requests to ALL debtors including major debtors with large balances. They did not follow up on non-responses. The total debtors balance was ₹15 Crore with the top 5 debtors accounting for 80%.`,
+questions:[
+{qno:1,question:"Using ONLY negative confirmations for major debtors is:",options:["Acceptable — it saves time","Incorrect — SA 505 requires positive confirmations for large or unusual balances","Correct — negative confirmations are always sufficient","Acceptable — if management approves"],correct:1,explanation:"SA 505 Para A14-A15: Negative confirmations provide LESS persuasive evidence than positive confirmations. They are appropriate ONLY when (a) risk of material misstatement is low, (b) population consists of large number of small homogeneous balances, and (c) very low exception rate expected. Major debtors require POSITIVE confirmations. ✓"},
+{qno:2,question:"If management refuses to allow the auditor to send confirmations, the auditor should:",options:["Accept it and use alternative procedures only","Evaluate reasons, consider implications for risk assessment, and determine if alternative procedures can provide sufficient evidence — if not, modify opinion","Immediately resign","Ignore it — confirmations are optional"],correct:1,explanation:"SA 505 Para 8-9: If management refuses, the auditor shall evaluate reasons, assess implications for assessment of relevant risks and fraud risk, and perform alternative procedures. If unable to obtain sufficient evidence, the auditor shall communicate with TCWG and determine impact on opinion. ✓"},
+{qno:3,question:"A positive confirmation request asks the respondent to:",options:["Reply only if they disagree with the balance","Reply in ALL cases — either confirming agreement or providing their own information","Send their bank statements","Contact the auditor's firm directly"],correct:1,explanation:"SA 505 Para 6: Positive confirmation — respondent replies in ALL cases. Negative confirmation — respondent replies ONLY if they disagree with the information. ✓"}
+]},
+{id:"audit_10",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 520",case_no:"Case Scenario 10",tags:["SA 520","Analytical Procedures","Substantive"],
+scenario:`CA Meera is auditing Sunrise Manufacturing Ltd. She noticed that the gross profit margin increased from 25% to 42% while the industry average remained at 28%. Raw material prices had increased by 15% during the year. The sales team had not been expanded and no new products were launched. Management explained it as "improved efficiency."`,
+questions:[
+{qno:1,question:"The significant increase in GP margin should be treated as:",options:["Acceptable — management explained it","An indicator requiring further investigation — SA 520 requires the auditor to evaluate significant differences from expected values","Normal business fluctuation","Not the auditor's concern"],correct:1,explanation:"SA 520 Para 7: When analytical procedures identify fluctuations or relationships inconsistent with other relevant information or that differ significantly from expected values, the auditor shall investigate by (a) inquiring of management and (b) performing other audit procedures. ✓"},
+{qno:2,question:"Analytical procedures as substantive procedures are MOST useful when:",options:["Account balance is immaterial","A plausible relationship among data exists and can be developed with reasonable confidence","No other evidence is available","Management requests them"],correct:1,explanation:"SA 520 Para 5: Substantive analytical procedures are generally more applicable to large volumes of transactions that tend to be predictable over time and where a plausible and precise expectation can be developed. ✓"},
+{qno:3,question:"Under SA 520, analytical procedures at the overall review stage are:",options:["Optional","Mandatory — required near the end of the audit to form overall conclusion","Only for listed companies","Performed only if qualified opinion is expected"],correct:1,explanation:"SA 520 Para 6: Analytical procedures are MANDATORY at the overall review stage (near the end of audit) to assist the auditor in forming an overall conclusion as to whether the FS are consistent with the auditor's understanding. ✓"}
+]},
+{id:"audit_11",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 530",case_no:"Case Scenario 11",tags:["SA 530","Audit Sampling","Statistical","Non-Statistical"],
+scenario:`During the audit of Metro Distributors Ltd., the audit assistant selected 50 sales invoices out of 10,000 for testing by picking the first 50 invoices from the file. When a sample deviation was found (4 invoices without proper authorization), the assistant concluded that 8% error rate existed in the entire population without any statistical analysis.`,
+questions:[
+{qno:1,question:"Selecting the first 50 invoices from the file is:",options:["Acceptable random sampling","Biased selection that does NOT represent the population — SA 530 requires representative sampling methods","The most efficient method","Correct for small populations"],correct:1,explanation:"SA 530 Para 8: Sample items shall be selected such that each sampling unit has a chance of selection. Block selection of first 50 is biased. Random selection, systematic selection, or haphazard selection methods should be used. ✓"},
+{qno:2,question:"Finding 4 deviations in 50 samples and concluding 8% population error rate without considering sampling risk is:",options:["Correct mathematical projection","Incorrect — SA 530 requires consideration of nature, cause of deviations, and whether they could be indicative of fraud","Acceptable approximation","The standard approach"],correct:1,explanation:"SA 530 Para 12-14: The auditor shall investigate the nature and cause of any deviations or misstatements identified, evaluate whether they could be indicative of fraud, and project misstatements considering sampling risk. ✓"},
+{qno:3,question:"As per SA 530, which is NOT a requirement when using audit sampling?",options:["Determine sample size sufficient to reduce sampling risk to acceptably low level","Select items for the sample so all sampling units have a chance of selection","Use only statistical sampling methods","Evaluate results and nature of deviations found"],correct:2,explanation:"SA 530 Para A4: Both statistical and non-statistical sampling approaches are acceptable. The auditor exercises professional judgment in choosing the approach. Statistical sampling is NOT mandatory. ✓"}
+]},
+{id:"audit_12",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 550",case_no:"Case Scenario 12",tags:["SA 550","Related Parties","Arm's Length"],
+scenario:`During the audit of Harmony Group Ltd., the auditor discovered that the company had sold a property worth ₹20 Crore (market value) to the Managing Director's son's company for ₹5 Crore. This transaction was not disclosed in the notes to financial statements. Management argued it was a normal business transaction.`,
+questions:[
+{qno:1,question:"The auditor's responsibility regarding this related party transaction is:",options:["Accept management's explanation","Identify, assess and respond — SA 550 requires the auditor to obtain understanding of related party relationships and transactions and evaluate disclosures","Not the auditor's concern","Only check if properly authorized"],correct:1,explanation:"SA 550 Para 11-12: The auditor shall obtain an understanding of the entity's related party relationships and transactions. The auditor shall perform procedures to identify risks of material misstatement associated with related party relationships and evaluate whether identified related party transactions have been appropriately accounted for and disclosed. ✓"},
+{qno:2,question:"Non-disclosure of this transaction would constitute:",options:["Acceptable omission","Material misstatement requiring the auditor to modify the opinion if not corrected","An immaterial matter","Not an accounting issue"],correct:1,explanation:"SA 550 Para 25: If the auditor identifies related party transactions not disclosed in accordance with the applicable financial reporting framework, the auditor shall determine whether it constitutes a misstatement. In this case, a ₹15 Crore below-market sale to a related party is clearly material. ✓"},
+{qno:3,question:"Under SA 550, previously unidentified related party transactions may indicate:",options:["Nothing unusual","Risk of fraud or error — the auditor should reconsider risk of material misstatement including fraud risk","Only accounting policy issues","That the auditor should resign"],correct:1,explanation:"SA 550 Para 22: Previously unidentified or undisclosed related party transactions may indicate intentional misstatement and risk of fraud. The auditor should reconsider the risk assessment. ✓"}
+]},
+{id:"audit_13",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 560",case_no:"Case Scenario 13",tags:["SA 560","Subsequent Events","Events After Balance Sheet Date"],
+scenario:`Apex Manufacturing Ltd. has a balance sheet date of 31st March 2025. The audit report was signed on 15th June 2025. On 10th June 2025 (before signing), a major customer filed for bankruptcy with outstanding receivable of ₹8 Crore. The customer had been under financial stress since January 2025.`,
+questions:[
+{qno:1,question:"This subsequent event is:",options:["A non-adjusting event — only disclosure","An adjusting event — the condition (financial stress) existed at balance sheet date; FS should be adjusted","Not relevant to the audit","To be considered only in next year's audit"],correct:1,explanation:"SA 560 Para 7-8: Events occurring between the date of the FS and the date of the auditor's report that provide additional evidence of conditions existing at the balance sheet date are ADJUSTING events. Customer's financial stress existed at 31 March 2025 — bankruptcy filing is additional evidence. FS should be adjusted. ✓"},
+{qno:2,question:"Under SA 560, the auditor's responsibility extends to:",options:["Only up to the balance sheet date","Events occurring between the date of FS and the date of the auditor's report","Events occurring up to the date FS are issued","Indefinitely"],correct:1,explanation:"SA 560 Para 6: The auditor shall perform audit procedures to obtain sufficient appropriate audit evidence that ALL events occurring between the date of the FS and the auditor's report date that require adjustment or disclosure have been identified. ✓"},
+{qno:3,question:"If management refuses to adjust or disclose, the auditor should:",options:["Accept management's decision","Modify the audit opinion as per SA 705","Request legal opinion only","Include it as emphasis of matter only"],correct:1,explanation:"SA 560 Para 10: If management does not amend the FS when the auditor believes they need amendment, and the auditor's report has not yet been issued, the auditor shall modify the opinion in accordance with SA 705. ✓"}
+]},
+{id:"audit_14",subject:"Audit",chapter:"SA 500 Series — Audit Evidence",sa:"SA 570",case_no:"Case Scenario 14",tags:["SA 570","Going Concern","Material Uncertainty"],
+scenario:`Coastal Shipping Ltd. has accumulated losses exceeding its net worth by 40%. Current liabilities exceed current assets by ₹200 Crore. The company's principal banker has recalled the term loan. Three major shipping vessels are non-operational due to non-compliance with safety regulations. Management has prepared FS on going concern basis stating that a "strategic investor" is expected.`,
+questions:[
+{qno:1,question:"As per SA 570, the auditor's responsibility regarding going concern is to:",options:["Only check if FS say going concern","Evaluate management's assessment of going concern and conclude whether material uncertainty exists","Certify that the company will continue","Only check bank balance"],correct:1,explanation:"SA 570 Para 6: The auditor's responsibility is to obtain sufficient appropriate audit evidence and conclude on the appropriateness of management's use of going concern basis and whether material uncertainty exists. The auditor does NOT predict future outcomes. ✓"},
+{qno:2,question:"Given the circumstances, if management's going concern assessment relies on uncertain 'strategic investor':",options:["Acceptable — business optimism is normal","Material uncertainty likely exists — auditor should evaluate adequacy of disclosures and consider impact on opinion","No concern — losses are common","Sufficient if management has signed representations"],correct:1,explanation:"SA 570 Para 18-19: When events or conditions are identified that may cast significant doubt, the auditor shall evaluate management's plans for future actions, their feasibility, and whether adequate disclosure is made. An unconfirmed strategic investor does not eliminate material uncertainty. ✓"},
+{qno:3,question:"If going concern basis is appropriate but material uncertainty exists with adequate disclosure, the audit report should include:",options:["Qualified opinion","Adverse opinion","Unmodified opinion with a separate section titled 'Material Uncertainty Related to Going Concern'","Disclaimer of opinion"],correct:2,explanation:"SA 570 Para 22: If adequate disclosure of material uncertainty is made in FS, the auditor shall express an UNMODIFIED opinion and include a separate section 'Material Uncertainty Related to Going Concern' drawing attention to the note in FS. ✓"}
+]},
+{id:"audit_15",subject:"Audit",chapter:"SA 700 Series — Reporting",sa:"SA 700",case_no:"Case Scenario 15",tags:["SA 700","Audit Report","Unmodified Opinion"],
+scenario:`CA Firm ABC & Co. completed the audit of Utopia Pharmaceuticals Ltd. and concluded that the financial statements give a true and fair view in all material respects. However, the audit report drafted by the junior partner contained several format issues — it did not include a separate section on auditor's responsibilities, did not mention the applicable financial reporting framework, and was addressed incorrectly.`,
+questions:[
+{qno:1,question:"As per SA 700, the auditor's report for an unmodified opinion MUST include:",options:["Only the opinion paragraph","Title, Addressee, Opinion section, Basis for Opinion, Responsibilities of Management, Auditor's Responsibilities, and Signature","Only opinion and annexure","Only the financial statements"],correct:1,explanation:"SA 700 Para 20-45: The report must include: Title ('Independent Auditor's Report'), Addressee, Opinion section (stating framework), Basis for Opinion, Going Concern (if applicable), KAM (listed entities), Responsibilities of Management and TCWG, Auditor's Responsibilities, Other Reporting Requirements, Signature, Place, Date. ✓"},
+{qno:2,question:"The Opinion section in the auditor's report should identify:",options:["Only the company name","The entity, the FS audited, period covered, and the applicable financial reporting framework","Only the engagement partner","The fee charged"],correct:1,explanation:"SA 700 Para 23: The Opinion section shall identify the entity, state that FS have been audited, identify the title of each statement, refer to the summary of significant accounting policies and other explanatory notes, and specify the date or period. ✓"},
+{qno:3,question:"The auditor's report should state that the auditor is independent in accordance with:",options:["Company policy","Code of Ethics issued by ICAI and ethical requirements relevant to the audit","Management's instructions","Government regulations only"],correct:1,explanation:"SA 700 Para 28(c): The Basis for Opinion section shall state that the auditor is independent of the entity in accordance with the ethical requirements that are relevant to the audit, including the Code of Ethics issued by ICAI. ✓"}
+]},
+{id:"audit_16",subject:"Audit",chapter:"SA 700 Series — Reporting",sa:"SA 705",case_no:"Case Scenario 16",tags:["SA 705","Modified Opinion","Qualified","Adverse","Disclaimer"],
+scenario:`During the audit of Thunder Electronics Ltd., the auditor found that inventory worth ₹50 Crore (30% of total assets) was physically verified by management but the auditor was NOT allowed to observe the count. The auditor could not perform alternative procedures to satisfy himself about inventory existence.`,
+questions:[
+{qno:1,question:"The inability to observe physical inventory count constitutes:",options:["No issue — management counted it","A limitation on scope that may result in modification of opinion if alternative procedures are insufficient","Normal practice","Only a disclosure matter"],correct:1,explanation:"SA 705 Para 6-7: When the auditor is unable to obtain sufficient appropriate audit evidence, a scope limitation exists. If the matter is material, the opinion should be qualified. If effects are both material AND pervasive, a disclaimer should be issued. ✓"},
+{qno:2,question:"Given that inventory is 30% of total assets and no alternative procedures were possible, the appropriate opinion is:",options:["Unmodified","Qualified","Disclaimer of opinion — the matter is material AND pervasive","Adverse"],correct:2,explanation:"SA 705 Para 10: Disclaimer of opinion is appropriate when the possible effects of undetected misstatements could be both MATERIAL AND PERVASIVE. 30% of total assets with no evidence = material AND pervasive. ✓"},
+{qno:3,question:"The difference between qualified and adverse opinion is:",options:["No difference","Qualified = material but not pervasive disagreement; Adverse = material AND pervasive disagreement with management","Qualified = minor; Adverse = major","Based on auditor's preference"],correct:1,explanation:"SA 705 Para 7: Qualified opinion = misstatements/inability are material but NOT pervasive. Adverse opinion = misstatements are material AND pervasive. Disclaimer = inability to obtain evidence is material AND pervasive. ✓"}
+]},
+{id:"audit_17",subject:"Audit",chapter:"SA 700 Series — Reporting",sa:"SA 706",case_no:"Case Scenario 17",tags:["SA 706","Emphasis of Matter","Other Matter"],
+scenario:`While auditing Paradise Hotels Ltd., the auditor noted that a significant litigation (₹200 Crore claim) is pending but appropriately disclosed in the notes. The FS are fairly presented. The auditor wants to draw users' attention to this important disclosure.`,
+questions:[
+{qno:1,question:"The appropriate tool for drawing attention is:",options:["Qualified opinion","Emphasis of Matter paragraph as per SA 706","Adverse opinion","Disclaimer"],correct:1,explanation:"SA 706 Para 6: An Emphasis of Matter paragraph is included when the auditor considers it necessary to draw users' attention to a matter appropriately presented or disclosed in the FS that is of such importance that it is fundamental to users' understanding. It does NOT modify the opinion. ✓"},
+{qno:2,question:"Emphasis of Matter paragraph should state that:",options:["The opinion is modified","The auditor's opinion is NOT modified in respect of the matter emphasized","The auditor disagrees with management","The auditor cannot form an opinion"],correct:1,explanation:"SA 706 Para 8: The Emphasis of Matter paragraph shall clearly indicate that the auditor's opinion is NOT modified in respect of the matter emphasized. It draws attention but does not modify the opinion. ✓"},
+{qno:3,question:"'Other Matter' paragraph differs from 'Emphasis of Matter' because:",options:["They are exactly the same","Other Matter refers to matters NOT presented or disclosed in FS but relevant to users' understanding of the audit","Other Matter modifies the opinion","Other Matter is for disclaimers"],correct:1,explanation:"SA 706 Para 10: Other Matter paragraph refers to a matter that is NOT presented or disclosed in the FS but is relevant to users' understanding of the audit, the auditor's responsibilities, or the auditor's report. ✓"}
+]},
+{id:"audit_18",subject:"Audit",chapter:"Company Audit",sa:"Companies Act",case_no:"Case Scenario 18",tags:["Sec 139","Sec 141","Appointment of Auditor","Eligibility"],
+scenario:`ABC Private Ltd. proposes to appoint CA Rajan as its auditor. CA Rajan is the cousin of the director Mr. Suresh. CA Rajan's wife holds shares worth ₹1,000 in the company. CA Rajan is also the auditor of 22 other companies.`,
+questions:[
+{qno:1,question:"Is CA Rajan eligible to be appointed as auditor of ABC Pvt. Ltd.?",options:["Yes — all conditions are met","No — holding shares by spouse disqualifies under Sec 141(3)(d)","Yes — small shareholding is acceptable","No — only because of excess company audits"],correct:1,explanation:"Sec 141(3)(d)(i): A person who or whose relative (including spouse) holds any security of or interest in the company shall NOT be eligible for appointment as auditor. Wife holding shares = DISQUALIFIED. Even ₹1 of shareholding disqualifies. ✓"},
+{qno:2,question:"The ceiling limit on number of company audits under Sec 141(3)(g) is:",options:["10 companies","20 companies","30 companies","Unlimited"],correct:1,explanation:"Sec 141(3)(g): A person who is in full-time employment elsewhere or is engaged as auditor of more than 20 companies shall not be eligible. The ceiling is 20 companies. CA Rajan with 22 audits exceeds this limit. ✓"},
+{qno:3,question:"As per Sec 139, the first auditor of a company shall be appointed by:",options:["Shareholders in general meeting","Board of Directors within 30 days of registration; ratified by members in first AGM","Registrar of Companies","ICAI directly"],correct:1,explanation:"Sec 139(6): First auditor of a company (other than Government company) shall be appointed by the Board of Directors within 30 days of date of registration. If Board fails, members shall appoint within 90 days at an EGM. ✓"}
+]},
+{id:"audit_19",subject:"Audit",chapter:"Company Audit",sa:"Companies Act",case_no:"Case Scenario 19",tags:["Sec 143","CARO 2020","Duties of Auditor"],
+scenario:`During the statutory audit of Nexus Infrastructure Ltd. (listed company), the auditor discovered that the company had granted a loan of ₹50 Crore to a director's relative without necessary approvals. The company also had defaulted on repayment of ₹10 Crore debentures for 60 days.`,
+questions:[
+{qno:1,question:"Under CARO 2020, the auditor must report on:",options:["Only compliance with accounting standards","Whether loans/advances/investments granted to directors/entities are not prejudicial and whether default in repayment exists","Only tax compliance","Only on going concern"],correct:1,explanation:"CARO 2020 Clause (iii): Report whether the company has made investments, provided guarantees, security, or granted loans/advances to related parties. Also Clause (ix): Report whether the company has defaulted in repayment of loans or borrowings to financial institutions, banks, government, or debenture holders. ✓"},
+{qno:2,question:"If the auditor discovers fraud, the reporting obligation under Sec 143(12) is:",options:["Report only to management","Report to Central Government within 60 days; if involving officers/employees ₹1 Crore+ report to CG, below ₹1 Crore report to Audit Committee/Board within 2 days","Only mention in audit report","No obligation — it's management's responsibility"],correct:1,explanation:"Sec 143(12): If auditor has reason to believe that an offence of fraud is being/has been committed, the auditor must report within prescribed time: Fraud by officers/employees involving ₹1 Crore or above → report to Central Government within 60 days. Below ₹1 Crore → report to Audit Committee or Board within 2 days. ✓"},
+{qno:3,question:"The loan to director's relative without approval is reportable under:",options:["Only CARO","Both CARO 2020 (Clause iii) and Sec 143(3)(f) of Companies Act regarding compliance with Sec 185/186","Not reportable","Only under tax audit"],correct:1,explanation:"CARO 2020 Clause (iii)(a): Loans to related parties — whether terms are prejudicial. Also Sec 143(3)(f): Auditor's report shall state observations on compliance with provisions of the Act (including Sec 185 — Loans to directors, Sec 186 — Loans and investments). ✓"}
+]},
+{id:"audit_20",subject:"Audit",chapter:"Company Audit",sa:"Companies Act",case_no:"Case Scenario 20",tags:["Sec 144","Prohibited Services","Auditor Independence"],
+scenario:`MNO & Associates, statutory auditors of Royal Textiles Ltd., also provided the following services to the company during the audit year: (a) Bookkeeping services through a separate team, (b) Investment advisory services, (c) Actuarial services for pension fund, (d) Tax representation before Income Tax appellate tribunal.`,
+questions:[
+{qno:1,question:"Which services are PROHIBITED for the statutory auditor under Sec 144?",options:["Only bookkeeping","Bookkeeping, investment advisory, and actuarial services — all prohibited under Sec 144","All four services","None — separate team can do it"],correct:1,explanation:"Sec 144: Statutory auditor shall NOT directly or indirectly render to the company: (a) accounting and bookkeeping, (b) internal audit, (c) design implementation of any financial information system, (d) actuarial services, (e) investment advisory, (f) investment banking, (g) rendering outsourced financial services, (h) management services. Tax representation is NOT in the prohibited list. ✓"},
+{qno:2,question:"Can MNO provide tax representation services?",options:["No — all services are prohibited","Yes — tax representation before authorities/tribunals is NOT in the Sec 144 prohibited list","Only if fees are below ₹1 lakh","Only with special resolution"],correct:1,explanation:"Sec 144: The prohibited services list does NOT include tax representation before income tax authorities or tribunals. Certification/attest services and services specifically not listed (like tax representation) may be provided. ✓"},
+{qno:3,question:"Penalty for rendering prohibited services is:",options:["No penalty","Monetary penalty on auditor and possible disqualification","Only warning letter","Penalty only on the company"],correct:1,explanation:"Sec 144 read with Sec 147: Contravention of provisions relating to auditor attracts penalty. The auditor may face monetary penalties and could be debarred from being appointed as auditor for a specified period. ✓"}
+]},
+{id:"audit_21",subject:"Audit",chapter:"Audit Report",sa:"SA 700",case_no:"Case Scenario 21",tags:["SA 701","Key Audit Matters","KAM"],
+scenario:`Alliance Technologies Ltd. is a listed company. During the audit, the engagement partner identified the following matters: (a) Revenue recognition for long-term contracts involving significant judgment, (b) Goodwill impairment assessment of ₹500 Crore involving complex projections, (c) A routine bank reconciliation difference of ₹50,000. The partner is determining which matters qualify as Key Audit Matters.`,
+questions:[
+{qno:1,question:"As per SA 701, Key Audit Matters are determined from:",options:["All matters in the audit","Matters communicated with TCWG that required significant auditor attention during the audit","Only fraud-related matters","Matters selected by management"],correct:1,explanation:"SA 701 Para 8-9: KAMs are selected from matters communicated with those charged with governance, that in the auditor's professional judgment were of MOST SIGNIFICANCE in the current period audit. They arise from areas of higher assessed risk, significant auditor judgments regarding areas of significant management judgment, and significant events/transactions. ✓"},
+{qno:2,question:"Which of the identified matters would likely qualify as KAM?",options:["Only the bank reconciliation","Revenue recognition for long-term contracts AND goodwill impairment assessment","All three matters","None — listed companies don't need KAM"],correct:1,explanation:"SA 701 Para 9: Revenue recognition with significant judgment and goodwill impairment with complex projections are matters of MOST SIGNIFICANCE. The routine bank reconciliation of ₹50,000 does not qualify — it is neither significant in amount nor does it involve significant judgment. ✓"},
+{qno:3,question:"KAM reporting is mandatory for:",options:["All companies","Audits of listed entities as per SA 701","Only government companies","Only companies with turnover > ₹100 Crore"],correct:1,explanation:"SA 701 Para 5: SA 701 applies to audits of complete sets of general purpose financial statements of LISTED ENTITIES and when the auditor otherwise decides to communicate KAMs. ✓"}
+]},
+{id:"audit_22",subject:"Audit",chapter:"Audit Report",sa:"SA 710",case_no:"Case Scenario 22",tags:["SA 710","Comparative Information","Corresponding Figures"],
+scenario:`Harmony Industries Ltd. changed its depreciation method from WDV to SLM in the current year. The previous year figures need to be restated. The previous year was audited by a different auditor firm that had issued an unmodified opinion.`,
+questions:[
+{qno:1,question:"Under SA 710, regarding comparative information, the current auditor should:",options:["Ignore previous year — it was audited by someone else","Evaluate whether comparative information agrees with prior period FS, and whether accounting policies are consistently applied or changes appropriately disclosed","Re-audit the previous year","Only disclose the change in audit report"],correct:1,explanation:"SA 710 Para 7-8: The auditor shall determine whether the comparative information agrees with amounts and disclosures of the prior period, and whether accounting policies reflected are consistent with the current period or appropriate adjustments and disclosures have been made. ✓"},
+{qno:2,question:"If the prior period was audited by another auditor, the current auditor's report should:",options:["Not mention it","State this fact in an Other Matter paragraph and mention the type of opinion expressed by predecessor","Disclaim responsibility for comparatives","Re-issue the prior auditor's report"],correct:1,explanation:"SA 710 Para 13-14: When the FS of the prior period were audited by a predecessor auditor, the current auditor shall state in an Other Matter paragraph that the prior period was audited by another auditor, the type of opinion expressed, and the date of that report. ✓"},
+{qno:3,question:"The change from WDV to SLM affects comparatives because:",options:["It doesn't affect comparatives","Corresponding figures need to be restated to reflect the new policy for meaningful comparison per AS 1/Ind AS 8","Only current year is affected","It's a change in estimate, not policy"],correct:1,explanation:"Change in depreciation method from WDV to SLM is a change in ACCOUNTING POLICY (under Indian GAAP/AS 1). Corresponding figures should be restated unless impracticable. The auditor must evaluate the appropriateness of this restatement. ✓"}
+]},
+{id:"audit_23",subject:"Audit",chapter:"Company Audit",sa:"Companies Act",case_no:"Case Scenario 23",tags:["Sec 143(3)","Audit Report Contents","True and Fair View"],
+scenario:`CA Sanjay prepared the audit report for Delta Healthcare Ltd. The report stated the financial statements "present a true and fair view" but failed to comment on: (a) whether the company has adequate internal financial controls with reference to FS, (b) whether there was any impact on going concern, and (c) whether the company has maintained proper books of account.`,
+questions:[
+{qno:1,question:"Under Sec 143(3), the auditor MUST report on:",options:["Only true and fair view","Whether the company has adequate internal financial controls system in place with reference to FS and operating effectiveness of such controls — Sec 143(3)(i)","Only CARO matters","Only tax compliance"],correct:1,explanation:"Sec 143(3)(i): The auditor's report shall state whether the company has adequate internal financial controls system in place with reference to financial statements and the operating effectiveness of such controls. This is MANDATORY for all companies covered under Sec 143. ✓"},
+{qno:2,question:"Failure to comment on books of account is:",options:["Not required","A violation — Sec 143(3)(a) requires the auditor to state whether proper books of account have been kept by the company","Optional for private companies","Required only for listed companies"],correct:1,explanation:"Sec 143(3)(a): The auditor's report shall state whether he has sought and obtained all information and explanations necessary for the purpose of the audit, and whether proper books of account have been kept. This is mandatory. ✓"},
+{qno:3,question:"The Sec 143(3) report must also include:",options:["Only balance sheet opinion","Whether the BS, P&L, and Cash Flow Statement are in agreement with the books; observations/comments on financial transactions with adverse effect per Sec 143(3)(f)","Only revenue figures","Only director remuneration"],correct:1,explanation:"Sec 143(3)(e)(f): The auditor's report shall state whether the BS, P&L Account, and Cash Flow Statement dealt with in the report are in agreement with the books of account, and report on any observation or comment on financial transactions or matters having adverse effect on the functioning of the company. ✓"}
+]},
+{id:"audit_24",subject:"Audit",chapter:"Audit Report",sa:"SA 580",case_no:"Case Scenario 24",tags:["SA 580","Written Representations","Management Representations"],
+scenario:`While completing the audit of Prism Optics Ltd., the auditor requested management to provide written representations. The CFO Mr. Gupta refused to provide written representations, stating that oral confirmations given during the audit should be sufficient.`,
+questions:[
+{qno:1,question:"As per SA 580, if management refuses to provide written representations:",options:["Accept oral representations","The auditor shall disclaim an opinion or take appropriate action, as it is a scope limitation","Issue unmodified opinion anyway","Obtain representations from junior staff"],correct:1,explanation:"SA 580 Para 19-20: If management does not provide one or more of the requested written representations, the auditor shall discuss with management, re-evaluate integrity, and take appropriate action including possible disclaimer of opinion or withdrawal from the engagement. ✓"},
+{qno:2,question:"Written representations are required from:",options:["Any employee","Management with appropriate responsibilities — typically those responsible for the preparation of FS","External legal counsel only","Board secretary only"],correct:1,explanation:"SA 580 Para 9: The auditor shall request written representations from management with appropriate responsibilities for the FS and with knowledge of the matters concerned. This is typically the CEO and CFO or equivalent. ✓"},
+{qno:3,question:"Written representations should be dated:",options:["As of the balance sheet date","As near as practicable to, but not after, the date of the auditor's report","Any convenient date","At least 30 days before audit report"],correct:1,explanation:"SA 580 Para 14: Written representations shall be for ALL FS and periods referred to in the auditor's report, and dated as near as practicable to, but not after, the date of the auditor's report on the FS. ✓"}
+]},
+{id:"audit_25",subject:"Audit",chapter:"Company Audit",sa:"Companies Act",case_no:"Case Scenario 25",tags:["Sec 140","Removal of Auditor","Resignation","Rotation"],
+scenario:`Alpha Technologies Ltd. (listed company) wants to remove its existing auditor before expiry of the 5-year term. The reason given is personal differences between the MD and the audit partner. The auditor has been in office for 3 years.`,
+questions:[
+{qno:1,question:"Removal of auditor before expiry of term requires:",options:["Board resolution only","Special resolution of shareholders after obtaining prior approval of Central Government (Tribunal) — Sec 140(1)","Simple majority in general meeting","Audit committee approval only"],correct:1,explanation:"Sec 140(1): The auditor may be removed from office before expiry of term only by a SPECIAL RESOLUTION of the company, after obtaining prior approval of the Central Government (now Tribunal under NCLT). Personal differences are not valid grounds. ✓"},
+{qno:2,question:"Mandatory rotation of auditors applies to:",options:["All companies","Listed companies and prescribed classes of companies — individual auditor 5 years, firm 10 years consecutively","Only government companies","Only companies with turnover > ₹1000 Crore"],correct:1,explanation:"Sec 139(2): Listed companies and prescribed class of companies — no individual or firm shall be appointed for more than one term of 5 consecutive years (individual) or two terms of 5 consecutive years (firm = 10 years). Cooling-off period of 5 years before reappointment. ✓"},
+{qno:3,question:"If the auditor resigns, the obligation under Sec 140(2) is:",options:["No obligation","File a statement with the company and the Registrar within 30 days indicating reasons for resignation","Only inform the Board","File with ICAI only"],correct:1,explanation:"Sec 140(2): The auditor who has resigned shall file within 30 days a statement in prescribed form with the company and the Registrar indicating the reasons and facts as may be relevant with regard to the resignation. For listed/govt companies, also file with Comptroller & Auditor General. ✓"}
+]}
+];
+
+// ================================================================
+// GST MCQ DATA (Chapter-wise ICAI aligned)
+// ================================================================
+const GST_MCQ_DATA=[
+{id:"gm1",ch:"Supply",q:"Activities specified in Schedule I of CGST Act are treated as supply even if made without consideration. Which is included?",opts:["Permanent transfer of business assets where ITC was availed","Services by employee to employer in course of employment","Sale of land","Services by court or tribunal"],correct:0,trap:"Schedule I treats certain activities as supply WITHOUT consideration — business asset transfers with ITC availed are included.",concept:"Schedule I — Supply without consideration",explanation:"Schedule I Entry 1: Permanent transfer/disposal of business assets where ITC has been availed, even if without consideration, is treated as 'supply' under CGST Act. ✓"},
+{id:"gm2",ch:"Supply",q:"Import of services by a person from a related person located outside India, without consideration, for the purpose of business — is it a supply?",opts:["No — no consideration means no supply","Yes — Schedule I Entry 4 treats it as supply","Only if value exceeds ₹50,000","Only for goods, not services"],correct:1,trap:"Schedule I Entry 4 covers imports from related persons even without consideration IF for business purposes.",concept:"Schedule I Entry 4 — Import from related persons",explanation:"Schedule I Entry 4: Import of services by a taxable person from a related person or from any of his other establishments outside India, in the course or furtherance of business, shall be treated as supply even if made without consideration. ✓"},
+{id:"gm3",ch:"Supply",q:"Which of the following activities is NEITHER a supply of goods NOR a supply of services (Schedule III)?",opts:["Services by employee to employer in course of employment","Transfer of business assets","Licensing of intellectual property","Renting of immovable property"],correct:0,explanation:"Schedule III Para 1: Services by an employee to the employer in the course of or in relation to his employment are NEITHER supply of goods NOR supply of services. ✓",concept:"Schedule III — Non-supply",trap:"Employee-employer relationship is excluded from supply definition."},
+{id:"gm4",ch:"Time of Supply",q:"Time of supply of GOODS under forward charge (Sec 12) — applicable after Notification 66/2017:",opts:["Date of invoice or last date of invoice — advance for goods does NOT trigger TOS","Date of receipt of advance","Date of delivery","Date of payment by buyer"],correct:0,explanation:"Sec 12(2) read with N/N 66/2017: For registered persons (excluding composition dealers), TOS for goods = date of invoice. Advances for goods do NOT create a separate TOS point as per N/N 66/2017. ✓",concept:"Time of Supply — Goods",trap:"Advance for GOODS ≠ TOS after N/N 66/2017. Different from services."},
+{id:"gm5",ch:"Time of Supply",q:"Time of supply of SERVICES under forward charge (Sec 13) when invoice is issued within prescribed period:",opts:["Date of issue of invoice OR date of receipt of payment — whichever is EARLIER","Date of completion of service","Date of contract","Date of filing return"],correct:0,explanation:"Sec 13(2)(a): If invoice is issued within the period prescribed under Sec 31(2), TOS = date of issue of invoice or date of receipt of payment, whichever is earlier. ✓",concept:"Time of Supply — Services",trap:"For services, advance DOES trigger TOS — unlike goods post N/N 66/2017."},
+{id:"gm6",ch:"Place of Supply",q:"Place of supply of services related to IMMOVABLE PROPERTY (Sec 12(3) IGST Act) is:",opts:["Location of recipient","Location of the immovable property","Location of supplier","Where payment is made"],correct:1,explanation:"Sec 12(3) IGST Act: POS of services directly in relation to immovable property = location of the immovable property. Includes accommodation by hotels, construction, architects, etc. ✓",concept:"POS — Immovable Property",trap:"Hotel in Jaipur → POS is Jaipur/Rajasthan regardless of guest's address."},
+{id:"gm7",ch:"Place of Supply",q:"Place of supply of goods where movement of goods is involved (Sec 10 IGST Act):",opts:["Location where movement of goods terminates for delivery to the recipient","Location of supplier","Location of billing address","Where goods are manufactured"],correct:0,explanation:"Sec 10(1)(a) IGST Act: Where supply involves movement of goods, POS = location of the goods at the time at which movement terminates for delivery to the recipient. ✓",concept:"POS — Goods with movement",trap:"POS is where goods are delivered, not where they are billed."},
+{id:"gm8",ch:"ITC",q:"As per Sec 16(2), ALL four conditions must be satisfied to avail ITC. Which is NOT a condition?",opts:["Tax invoice in possession","Goods/services received","Supplier has filed GSTR-1","Tax actually paid to Government by supplier"],correct:2,explanation:"Sec 16(2) conditions: (a) Tax invoice in possession, (b) Goods/services received, (c) Tax actually paid to Government by supplier, (d) GSTR-3B filed by recipient. GSTR-1 filing by supplier is NOT a condition under Sec 16(2). ✓",concept:"Four conditions for ITC",trap:"GSTR-1 filing is NOT a Sec 16(2) condition — but GSTR-3B filing IS."},
+{id:"gm9",ch:"ITC",q:"Blocked credit under Sec 17(5) — ITC on motor vehicles for transportation of persons with seating capacity ≤13 (including driver) is:",opts:["Always available","BLOCKED — except when used for further supply of such vehicles, transportation of passengers, or imparting training on driving","Available if used for business","50% blocked"],correct:1,explanation:"Sec 17(5)(a): ITC blocked on motor vehicles for transportation of persons with seating capacity ≤13. Exception: Used for (i) further supply of such vehicles, (ii) transportation of passengers, (iii) imparting training on driving/flying. ✓",concept:"Blocked Credits — Motor Vehicles",trap:"Goods-carrying vehicles are NOT blocked. Only person-carrying ≤13 seats."},
+{id:"gm10",ch:"ITC",q:"If consideration + tax not paid to supplier within 180 days from invoice date under forward charge:",opts:["No consequence","ITC reversed with interest from date of availing till date of reversal","ITC reversed without interest","Supplier pays penalty"],correct:1,explanation:"2nd Proviso to Sec 16(2): If value + tax not paid within 180 days, the amount of ITC availed shall be added to output tax liability of the recipient along with interest thereon. ✓",concept:"180-day payment rule",trap:"Interest is calculated from date of availing credit to date of reversal."},
+{id:"gm11",ch:"Registration",q:"Compulsory registration u/s 24 is required for which persons regardless of turnover?",opts:["Person making only intra-state supply of goods","Person making inter-state taxable supply of services (if aggregate T/O ≤ ₹20L — EXEMPTED from Sec 24)","Persons required to pay tax under RCM","Person dealing only in exempt supplies"],correct:2,explanation:"Sec 24(iii): Persons required to pay tax under reverse charge mechanism are required to obtain registration irrespective of their aggregate turnover threshold. ✓",concept:"Mandatory Registration",trap:"Inter-state SERVICES below ₹20L exempted from mandatory Sec 24 registration by N/N 10/2017."},
+{id:"gm12",ch:"Registration",q:"Threshold limit for registration for exclusive supplier of GOODS in non-special category states:",opts:["₹20 Lakh","₹40 Lakh","₹10 Lakh","₹50 Lakh"],correct:1,explanation:"Sec 22(1) read with N/N 10/2019: For persons making exclusively supply of goods, the threshold is ₹40 lakhs aggregate turnover (for non-special category states). ✓",concept:"Registration Threshold — Goods",trap:"₹40L for goods ONLY suppliers; ₹20L if any service is supplied."},
+{id:"gm13",ch:"Returns",q:"GSTR-1 (outward supplies) due date for regular monthly filers:",opts:["10th of following month","11th of following month","13th of following month","20th of following month"],correct:1,explanation:"Sec 37 read with Rules: GSTR-1 for regular monthly filers is due by 11th of the month succeeding the tax period. QRMP scheme filers: 13th of the month following the quarter. ✓",concept:"GSTR-1 Due Date",trap:"11th monthly; 13th quarterly (QRMP). GSTR-3B is 20th."},
+{id:"gm14",ch:"Returns",q:"GSTR-9 (Annual Return) filing is mandatory for all registered persons with aggregate turnover exceeding:",opts:["₹1 Crore","₹2 Crore","₹5 Crore","No threshold — mandatory for all regular taxpayers"],correct:1,explanation:"Sec 44 read with N/N 14/2022: GSTR-9 is mandatory for all regular registered persons. However, persons with aggregate turnover up to ₹2 Crore in a FY have been exempted by notification. ✓",concept:"Annual Return exemption",trap:"₹2 Crore turnover exempted from GSTR-9 filing."},
+{id:"gm15",ch:"RCM",q:"Under Reverse Charge Mechanism (Sec 9(3)), who is liable to pay GST?",opts:["Supplier","Recipient of goods/services","Government","Transporter"],correct:1,explanation:"Sec 9(3): The Government may specify categories of supply of goods/services where tax shall be paid on reverse charge basis by the RECIPIENT. The recipient is liable to pay GST and can claim ITC on such payment. ✓",concept:"RCM — Basic",trap:"Under RCM, recipient pays tax AND can avail ITC in same month."},
+{id:"gm16",ch:"RCM",q:"Under N/N 13/2017 Entry 5A (Finance Act 2025), renting of non-residential immovable property by UNREGISTERED person to any registered person (except composition) is:",opts:["Forward charge","Taxable under RCM — recipient pays","Exempt","Not applicable"],correct:1,explanation:"New Entry 5A (Finance Act 2025): Renting of any immovable property (other than residential dwelling) by any UNREGISTERED person to any registered person (other than composition dealer) is subject to Reverse Charge. ✓",concept:"New RCM Entry 5A",trap:"Only NON-RESIDENTIAL property; only from UNREGISTERED supplier."},
+{id:"gm17",ch:"Value of Supply",q:"Transaction value under Sec 15(1) is the price actually paid or payable provided:",opts:["Parties are related","Supplier and recipient are NOT related AND price is the SOLE consideration","Supply is inter-state","Payment is through banking channels"],correct:1,explanation:"Sec 15(1): Value of supply = transaction value where the supplier and the recipient are NOT related AND price is the SOLE consideration. Otherwise, value shall be determined under Rules. ✓",concept:"Transaction Value conditions",trap:"If related parties OR non-monetary consideration → Rules-based valuation."},
+{id:"gm18",ch:"Value of Supply",q:"Subsidies received from Central/State Government — included in value of supply?",opts:["Always included","EXCLUDED from transaction value under Sec 15(2)(e)","Included if > ₹1 Lakh","Depends on state"],correct:1,explanation:"Sec 15(2)(e): Value of supply shall NOT include subsidies directly linked to price, provided by Central/State Government. However, subsidies from NON-GOVERNMENT entities (private, NGO) are INCLUDED. ✓",concept:"Government subsidies exclusion",trap:"GOVERNMENT subsidy = excluded. PRIVATE/NGO subsidy = included."},
+{id:"gm19",ch:"E-Way Bill",q:"E-Way Bill is required when consignment value exceeds:",opts:["₹25,000","₹50,000","₹1,00,000","₹10,000"],correct:1,explanation:"Rule 138(1): Every registered person who causes movement of goods of consignment value exceeding ₹50,000 shall furnish information in Part A of Form GST EWB-01 for generation of e-way bill. ✓",concept:"E-Way Bill threshold",trap:"₹50,000 is the threshold; includes tax in consignment value."},
+{id:"gm20",ch:"E-Way Bill",q:"Validity of e-way bill for distance up to 200 km (other than over-dimensional cargo):",opts:["1 day from generation","1 day per 200 km","2 days","7 days"],correct:0,explanation:"Rule 138(10): E-way bill validity for regular (non-OD) cargo: 1 day for every 200 km or part thereof. So for up to 200 km = 1 day from relevant date. ✓",concept:"E-Way Bill validity",trap:"1 day per 200 km for regular cargo; 1 day per 20 km for OD cargo."}
+];
+
+// ================================================================
 // APP STATE
 // ================================================================
-let activeTab='AA'; // AA, LAW, GST, GSTCS, IT
+let activeTab='AA'; // AA, LAW, GST, GSTCS, IT, AUDIT
 let aaFiltered=[];
 let lawFiltered=[];
 let itFiltered=[];
 let gstCsNavFiltered=[];
+let auditFiltered=[];
 let quizState={queue:[],idx:0,score:0,wrong:0,answered:false,startTime:null,timerSeconds:0,timerTotal:0,timerInterval:null,currentScenarioId:null,origCases:[],subject:'AA'};
 let gstState={chapter:'ALL',category:'ALL',filtered:[],index:0,flipped:false,correct:0,wrong:0,attempted:new Set()};
 let gstCsState={scenarioIdx:0,qIdx:0,answers:[],scores:{}};
 let activeGSTMode='flashcard';
+let gstMcqState={chapter:'ALL',filtered:[],index:0,correct:0,wrong:0,attempted:new Set()};
 
 // ── SUBJECT COLOR MAP ──
 const SC={
   AA:{tab:'t-aa',card:'c-aa',badge:'cb-aa',go:'go-aa',sb:'sb-aa',label:'aa',qcard:'qc-aa',exp:'ea',qnum:'aa',btnNext:'aa',timer:'aa',retry:'aa',retryClass:'aa',score:'aa'},
   LAW:{tab:'t-law',card:'c-law',badge:'cb-law',go:'go-law',sb:'sb-law',label:'law',qcard:'qc-law',exp:'elaw',qnum:'law',btnNext:'law',timer:'law',retry:'law',retryClass:'law',score:'law'},
   GST:{tab:'t-gst',card:'c-gst',badge:'cb-gst',go:'go-gst',sb:'sb-gst',label:'gst',qcard:'qc-gst',exp:'egst',qnum:'gst',btnNext:'gst',timer:'gst',retry:'gst',retryClass:'gst',score:'gst'},
-  IT:{tab:'t-it',card:'c-it',badge:'cb-it',go:'go-it',sb:'sb-it',label:'it',qcard:'qc-it',exp:'eit',qnum:'it',btnNext:'it',timer:'it',retry:'it',retryClass:'it',score:'it'}
+  IT:{tab:'t-it',card:'c-it',badge:'cb-it',go:'go-it',sb:'sb-it',label:'it',qcard:'qc-it',exp:'eit',qnum:'it',btnNext:'it',timer:'it',retryClass:'it',score:'it'},
+  AUDIT:{tab:'t-audit',card:'c-audit',badge:'cb-audit',go:'go-audit',sb:'sb-audit',label:'audit',qcard:'qc-audit',exp:'eaudit',qnum:'audit',btnNext:'audit',timer:'audit',retry:'audit',retryClass:'audit',score:'audit'}
 };
 
 // ── INIT ──
@@ -2056,6 +2262,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   populateLAWFilters();
   populateITFilters();
   populateGSTCSFilters();
+  populateAUDITFilters();
+  initGSTMcq();
   setTab('AA');
   gstApplyFilters();
   renderGSTCard();
@@ -2067,7 +2275,7 @@ function setTab(tab){
   activeTab=tab;
   // Update mega tabs
   document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
-  const tmap={AA:'tabAA',LAW:'tabLAW',GST:'tabGST',GSTCS:'tabGSTCS',IT:'tabIT'};
+  const tmap={AA:'tabAA',LAW:'tabLAW',GST:'tabGST',GSTCS:'tabGSTCS',IT:'tabIT',AUDIT:'tabAUDIT'};
   document.getElementById(tmap[tab])?.classList.add('active');
   // Show/hide sections
   document.getElementById('aaSection').style.display=tab==='AA'?'block':'none';
@@ -2075,6 +2283,7 @@ function setTab(tab){
   document.getElementById('gstSection').style.display=tab==='GST'?'block':'none';
   document.getElementById('gstCaseSection').style.display=tab==='GSTCS'?'block':'none';
   document.getElementById('itSection').style.display=tab==='IT'?'block':'none';
+  document.getElementById('auditSection').style.display=tab==='AUDIT'?'block':'none';
   document.getElementById('quizArea').style.display='none';
   document.getElementById('resultArea').style.display='none';
   if(tab==='AA'){
@@ -2092,6 +2301,10 @@ function setTab(tab){
   } else if(tab==='IT'){
     applyFiltersIT();
     updateITStats();
+  } else if(tab==='AUDIT'){
+    populateAUDITFilters();
+    applyFiltersAUDIT();
+    updateAUDITStats();
   }
 }
 
@@ -2329,6 +2542,7 @@ function startITMix(){launchQuiz(shuffle([...IT_CASE_SCENARIOS]),'IT');}
 function startSingleCase(id,type){
   let c;
   if(type==='AA'||type==='LAW') c=AALAW_DATA.find(x=>x.id===id);
+  else if(type==='AUDIT') c=AUDIT_DATA.find(x=>x.id===id);
   else c=IT_CASE_SCENARIOS.find(x=>x.id===id);
   if(c) launchQuiz([c],type);
 }
@@ -2336,6 +2550,7 @@ function startSingleCase(id,type){
 function getSubjectKey(c,type){
   if(type==='IT') return 'IT';
   if(type==='GST') return 'GST';
+  if(type==='AUDIT') return 'AUDIT';
   if(type==='AA'||c.subject==='Advanced Accounting') return 'AA';
   return 'LAW';
 }
@@ -2350,7 +2565,7 @@ function launchQuiz(cases,type){
   document.getElementById('quizArea').style.display='block';
   document.getElementById('resultArea').style.display='none';
   // style quiz elements
-  let sub=type==='IT'?'IT':type==='GST'?'GST':(cases[0]?.subject==='Advanced Accounting'?'AA':'LAW');
+  let sub=type==='IT'?'IT':type==='GST'?'GST':type==='AUDIT'?'AUDIT':(cases[0]?.subject==='Advanced Accounting'?'AA':'LAW');
   const s=SC[sub];
   document.getElementById('timerFill').className='timer-fill '+s.timer;
   document.getElementById('qProgressFill').className='qp-fill '+s.timer;
@@ -2361,7 +2576,7 @@ function launchQuiz(cases,type){
 }
 
 function hideAllSections(){
-  ['aaSection','lawSection','gstSection','gstCaseSection','itSection','quizArea','resultArea'].forEach(id=>{
+  ['aaSection','lawSection','gstSection','gstCaseSection','itSection','auditSection','quizArea','resultArea'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.style.display='none';
   });
 }
@@ -2371,6 +2586,7 @@ function getQuizSub(){
   if(!c)return 'AA';
   if(quizState.type==='IT')return 'IT';
   if(quizState.type==='GST')return 'GST';
+  if(quizState.type==='AUDIT')return 'AUDIT';
   if(quizState.type==='AA')return 'AA';
   if(quizState.type==='LAW')return 'LAW';
   return c.scenario.subject==='Advanced Accounting'?'AA':'LAW';
@@ -2469,7 +2685,7 @@ function showResult(timedOut){
   const total=quizState.queue.length,correct=quizState.score,wrong=quizState.wrong;
   const pct=Math.round(correct/total*100);
   const elapsed=Math.floor((Date.now()-quizState.startTime)/1000);
-  const sub=quizState.type==='IT'?'IT':(quizState.origCases[0]?.subject==='Advanced Accounting'?'AA':'LAW');
+  const sub=quizState.type==='IT'?'IT':quizState.type==='AUDIT'?'AUDIT':quizState.type==='GST'?'GST':(quizState.origCases[0]?.subject==='Advanced Accounting'?'AA':'LAW');
   const s=SC[sub];
   const em=pct>=80?'🏆':pct>=60?'👍':pct>=40?'📖':'💪';
   document.getElementById('resultEmoji').textContent=em;
@@ -2488,6 +2704,7 @@ function showResult(timedOut){
   else if(quizState.type==='AA'){perfKey='plh_aa_perf';scoreKey='plh_aa_scores';}
   else if(quizState.type==='LAW'){perfKey='plh_law_perf';scoreKey='plh_law_scores';}
   else if(quizState.type==='GST'){perfKey='plh_gstcs_perf';scoreKey='plh_gstcs_scores';}
+  else if(quizState.type==='AUDIT'){perfKey='plh_audit_perf';scoreKey='plh_audit_scores';}
   else{perfKey='plh_aa_perf';scoreKey='plh_aa_scores';}
   const perf=JSON.parse(localStorage.getItem(perfKey)||'{"sessions":0,"bestPct":0}');
   perf.sessions++;perf.bestPct=Math.max(perf.bestPct,pct);localStorage.setItem(perfKey,JSON.stringify(perf));
@@ -2498,7 +2715,8 @@ function showResult(timedOut){
   else if(quizState.type==='AA')updateAAStats();
   else if(quizState.type==='LAW')updateLAWStats();
   else if(quizState.type==='GST')updateGSTCSStats();
-  const subjectLabel=quizState.type==='IT'?'💰 Income Tax':quizState.type==='GST'?'🧾 GST':(sub==='AA'?'📊 Adv. Accounts':'⚖️ Corp. Laws');
+  else if(quizState.type==='AUDIT')updateAUDITStats();
+  const subjectLabel=quizState.type==='IT'?'💰 Income Tax':quizState.type==='GST'?'🧾 GST':quizState.type==='AUDIT'?'📑 Audit & Assurance':(sub==='AA'?'📊 Adv. Accounts':'⚖️ Corp. Laws');
   document.getElementById('chapterBreakdown').innerHTML=`<div class="rcb-title">📊 Session Summary</div>
     <div class="rcb-row"><span>${subjectLabel}</span><span class="rcb-pct ${pct>=70?'pct-good':pct>=50?'pct-ok':'pct-bad'}">${pct}%</span></div>
     <div class="rcb-row" style="border:none"><span style="color:var(--text3);font-size:10px">Questions practiced</span><span style="font-family:var(--mono)">${total}</span></div>`;
@@ -2514,6 +2732,7 @@ function backToList(){
   else if(t==='AA'){document.getElementById('aaSection').style.display='block';applyFiltersAA();}
   else if(t==='LAW'){document.getElementById('lawSection').style.display='block';applyFiltersLAW();}
   else if(t==='GST'){document.getElementById('gstCaseSection').style.display='block';applyFiltersGSTCS();}
+  else if(t==='AUDIT'){document.getElementById('auditSection').style.display='block';applyFiltersAUDIT();}
   else{document.getElementById('aaSection').style.display='block';applyFiltersAA();}
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -2627,7 +2846,9 @@ function setGSTMode(mode,ev){
   if(ev&&ev.target)ev.target.classList.add('active');
   document.getElementById('gst-flashcard-mode').style.display=mode==='flashcard'?'block':'none';
   document.getElementById('gst-case-mode').style.display=mode==='case'?'block':'none';
+  document.getElementById('gst-mcq-mode').style.display=mode==='mcq'?'block':'none';
   if(mode==='case')gstRenderCsGrid();
+  if(mode==='mcq')renderGSTMcqCard();
 }
 
 // GST CASE SCENARIOS
@@ -2779,6 +3000,154 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='ArrowLeft')gstPrevCard();
   else if(e.key===' '){e.preventDefault();gstFlipCard();}
 });
+
+// ================================================================
+// AUDIT & ASSURANCE FUNCTIONS
+// ================================================================
+function populateAUDITFilters(){
+  const chapters=[...new Set(AUDIT_DATA.map(c=>c.chapter))];
+  const chSel=document.getElementById('auditFChapter');
+  chSel.innerHTML='<option value="all">All Chapters</option>';
+  chapters.forEach(ch=>{const o=document.createElement('option');o.value=ch;o.textContent=ch.length>42?ch.substring(0,40)+'…':ch;chSel.appendChild(o);});
+  const sas=[...new Set(AUDIT_DATA.map(c=>c.sa))];
+  const saSel=document.getElementById('auditFSA');
+  saSel.innerHTML='<option value="all">All SAs</option>';
+  sas.forEach(sa=>{const o=document.createElement('option');o.value=sa;o.textContent=sa;saSel.appendChild(o);});
+  const csSel=document.getElementById('auditFCase');
+  csSel.innerHTML='<option value="all">All Cases</option>';
+  AUDIT_DATA.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.case_no;csSel.appendChild(o);});
+}
+
+function applyFiltersAUDIT(){
+  const ch=document.getElementById('auditFChapter').value;
+  const sa=document.getElementById('auditFSA').value;
+  const cs=document.getElementById('auditFCase').value;
+  auditFiltered=AUDIT_DATA.filter(c=>{
+    if(ch!=='all'&&c.chapter!==ch)return false;
+    if(sa!=='all'&&c.sa!==sa)return false;
+    if(cs!=='all'&&c.id!==cs)return false;
+    return true;
+  });
+  document.getElementById('auditCaseCount').textContent=auditFiltered.length;
+  document.getElementById('auditQCount').textContent=auditFiltered.reduce((s,c)=>s+c.questions.length,0);
+  renderAUDITGrid(auditFiltered);
+  updateAUDITStats();
+}
+
+function updateAUDITStats(){
+  const p=JSON.parse(localStorage.getItem('plh_audit_perf')||'{"sessions":0,"bestPct":0}');
+  document.getElementById('auditSessions').textContent=p.sessions;
+  document.getElementById('auditBest').textContent=p.bestPct>0?p.bestPct+'%':'—';
+}
+
+function renderAUDITGrid(cases){
+  const grid=document.getElementById('auditGrid');
+  if(!cases.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:40px;margin-bottom:10px">🔍</div><p>No cases match your filters.</p></div>`;return;}
+  const scores=JSON.parse(localStorage.getItem('plh_audit_scores')||'{}');
+  grid.innerHTML=cases.map(c=>{
+    const sc=scores[c.id];
+    const badge=sc?`<div class="cc-score-badge" style="background:rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.15);border:1px solid rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.3);color:${sc.pct>=70?'var(--green)':'var(--red)'}">${sc.pct}%</div>`:'';
+    return `<div class="case-card c-audit" onclick="startSingleCase('${c.id}','AUDIT')">
+      ${badge}
+      <div class="cc-badge cb-audit">📑 ${c.sa}</div>
+      <div class="cc-title">${c.case_no}</div>
+      <div class="cc-chapter">${c.chapter}</div>
+      <div class="cc-meta"><span class="cc-qcount">📝 ${c.questions.length} Q${c.questions.length>1?'s':''}</span><span class="cc-go">${sc?'Retry':'Attempt →'}</span></div>
+      <div class="cc-tags">${c.tags.map(t=>`<span class="cc-chip">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function startAUDITPractice(){if(!auditFiltered.length){alert('No cases match filters!');return;}launchQuiz([...auditFiltered],'AUDIT');}
+function startAUDITMix(){launchQuiz(shuffle([...AUDIT_DATA]),'AUDIT');}
+
+// ================================================================
+// GST MCQ PRACTICE FUNCTIONS
+// ================================================================
+function initGSTMcq(){
+  const chapters=[...new Set(GST_MCQ_DATA.map(q=>q.ch))];
+  const bar=document.getElementById('gstMcqChapterBar');
+  bar.innerHTML='<button class="gst-mcq-ch-btn active" onclick="gstMcqFilterCh(\'ALL\',this)">ALL</button>'+
+    chapters.map(ch=>`<button class="gst-mcq-ch-btn" onclick="gstMcqFilterCh('${ch}',this)">${ch}</button>`).join('');
+  gstMcqState.filtered=[...GST_MCQ_DATA];
+  renderGSTMcqCard();
+}
+
+function gstMcqFilterCh(ch,el){
+  gstMcqState.chapter=ch;
+  document.querySelectorAll('.gst-mcq-ch-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  gstMcqState.filtered=ch==='ALL'?[...GST_MCQ_DATA]:GST_MCQ_DATA.filter(q=>q.ch===ch);
+  gstMcqState.index=0;
+  renderGSTMcqCard();
+}
+
+function renderGSTMcqCard(){
+  const q=gstMcqState.filtered[gstMcqState.index];
+  const area=document.getElementById('gstMcqCardArea');
+  if(!q){area.innerHTML='<div style="padding:40px;text-align:center;color:var(--text3);font-family:var(--mono)">No MCQs for this chapter.</div>';return;}
+  const answered=gstMcqState.attempted.has(q.id);
+  let optsHtml=q.opts.map((o,i)=>{
+    let style='background:var(--surface2);border:1.5px solid var(--border);color:var(--text2);padding:10px 14px;border-radius:9px;margin-bottom:7px;font-size:12px;line-height:1.5;cursor:pointer;transition:all 0.2s;';
+    let icon='';
+    if(answered){
+      const savedAns=gstMcqState['lastAns_'+q.id];
+      if(i===q.correct){style='background:rgba(67,217,142,.12);border:1.5px solid var(--green);color:var(--green);padding:10px 14px;border-radius:9px;margin-bottom:7px;font-size:12px;line-height:1.5;font-weight:700;';icon=' ✅';}
+      else if(i===savedAns){style='background:rgba(240,71,71,.12);border:1.5px solid var(--red);color:var(--red);padding:10px 14px;border-radius:9px;margin-bottom:7px;font-size:12px;line-height:1.5;';icon=' ❌';}
+      else{style+='opacity:0.5;';}
+    }
+    return `<div class="gst-mcq-opt" data-i="${i}" style="${style}"><b style="font-family:var(--mono);margin-right:5px">${String.fromCharCode(65+i)}.</b>${o}${icon}</div>`;
+  }).join('');
+  let conceptHtml='';
+  if(answered){
+    conceptHtml=`<div style="margin-top:10px;background:rgba(247,201,72,.06);border:1px solid rgba(247,201,72,.2);border-radius:8px;padding:10px 13px;">
+      <div style="font-size:9px;font-weight:800;color:var(--gold);font-family:var(--mono);letter-spacing:0.8px;margin-bottom:5px;">💡 ICAI CONCEPT</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.65;">${q.explanation}</div>
+      ${q.trap?`<div style="font-size:10px;color:var(--orange);background:rgba(250,130,49,.06);border:1px dashed rgba(250,130,49,.25);border-radius:6px;padding:6px 9px;margin-top:7px;">⚠️ TRAP: ${q.trap}</div>`:''}
+    </div>`;
+  }
+  area.innerHTML=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span style="font-size:9px;font-weight:800;color:var(--gold);font-family:var(--mono);background:rgba(247,201,72,.1);padding:3px 10px;border-radius:20px;border:1px solid rgba(247,201,72,.25);">${q.ch}</span>
+      <span style="font-size:9px;color:var(--text3);font-family:var(--mono);">${q.concept||''}</span>
+    </div>
+    <div style="font-size:13px;font-weight:600;color:var(--text);line-height:1.65;margin-bottom:14px;">${q.q}</div>
+    ${optsHtml}${conceptHtml}
+  </div>`;
+  if(!answered){
+    document.querySelectorAll('#gstMcqCardArea .gst-mcq-opt').forEach(el=>{
+      el.onclick=()=>{const i=parseInt(el.getAttribute('data-i'));gstMcqAnswer(i);};
+      el.onmouseover=()=>{if(!gstMcqState.attempted.has(q.id))el.style.borderColor='var(--gold)';};
+      el.onmouseout=()=>{if(!gstMcqState.attempted.has(q.id))el.style.borderColor='var(--border)';};
+    });
+  }
+  document.getElementById('gstMcqCounter').textContent=`${gstMcqState.index+1} / ${gstMcqState.filtered.length}`;
+  const total=gstMcqState.filtered.length;
+  const prog=total?(gstMcqState.index+1)/total*100:0;
+  document.getElementById('gstMcqProgFill').style.width=prog+'%';
+  document.getElementById('gstMcqProgText').textContent=`${gstMcqState.index+1} / ${total}`;
+}
+
+function gstMcqAnswer(sel){
+  const q=gstMcqState.filtered[gstMcqState.index];
+  if(!q||gstMcqState.attempted.has(q.id))return;
+  gstMcqState.attempted.add(q.id);
+  gstMcqState['lastAns_'+q.id]=sel;
+  if(sel===q.correct){gstMcqState.correct++;showNotif('✅ Correct!','green');}
+  else{gstMcqState.wrong++;showNotif('❌ Wrong','red');}
+  const total=gstMcqState.correct+gstMcqState.wrong;
+  document.getElementById('gstMcqCorrect').textContent=gstMcqState.correct;
+  document.getElementById('gstMcqWrong').textContent=gstMcqState.wrong;
+  document.getElementById('gstMcqPct').textContent=total?Math.round(gstMcqState.correct/total*100)+'%':'—';
+  renderGSTMcqCard();
+}
+
+function gstMcqNext(){if(!gstMcqState.filtered.length)return;gstMcqState.index=(gstMcqState.index+1)%gstMcqState.filtered.length;renderGSTMcqCard();}
+function gstMcqPrev(){if(!gstMcqState.filtered.length)return;gstMcqState.index=(gstMcqState.index-1+gstMcqState.filtered.length)%gstMcqState.filtered.length;renderGSTMcqCard();}
+function gstMcqShuffle(){
+  for(let i=gstMcqState.filtered.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[gstMcqState.filtered[i],gstMcqState.filtered[j]]=[gstMcqState.filtered[j],gstMcqState.filtered[i]];}
+  gstMcqState.index=0;renderGSTMcqCard();showNotif('🔀 Shuffled!');
+}
 </script>
 </body>
 </html>
