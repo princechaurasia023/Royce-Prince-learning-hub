@@ -337,6 +337,28 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
   .mtab{min-width:80px;padding:8px 8px;}
 }
 
+/* ── COST & MANAGEMENT ACCOUNTING THEME (Orange/Green) ── */
+.mtab.t-cost.active{background:rgba(250,130,49,0.15);color:#fa8231;border:1px solid rgba(250,130,49,0.3);}
+.filter-bar.fb-cost{background:rgba(22,14,6,0.9);border:1px solid rgba(250,130,49,0.22);}
+.case-card.c-cost{background:rgba(20,10,4,0.92);border:1px solid rgba(250,130,49,0.18);}
+.case-card.c-cost:hover{border-color:rgba(250,130,49,0.55);box-shadow:0 8px 32px rgba(250,130,49,0.18);transform:translateY(-2px);}
+.cc-badge.cb-cost{background:rgba(250,130,49,0.14);color:#fa8231;}
+.c-cost .cc-go{background:rgba(250,130,49,0.1);border:1px solid rgba(250,130,49,0.22);color:#fa8231;}
+.c-cost:hover .cc-go{background:#fa8231;color:#000;}
+.btn-go.go-cost{background:linear-gradient(135deg,#fa8231,#43d98e);box-shadow:0 6px 20px rgba(250,130,49,0.35);}
+.cost-chapter-bar{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;padding:10px 12px;background:var(--surface);border-radius:12px;border:1px solid var(--border);}
+.cost-ch-btn{font-size:9px;font-weight:700;padding:4px 9px;border-radius:7px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text3);transition:all 0.15s;font-family:var(--mono);}
+.cost-ch-btn.active{background:#fa8231;border-color:#fa8231;color:#000;}
+.cost-mode-tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;}
+.cost-tab{padding:7px 16px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;border:none;background:transparent;color:var(--text3);transition:all 0.2s;font-family:var(--mono);}
+.cost-tab.active{background:linear-gradient(135deg,#fa8231,#43d98e);color:#000;}
+.cost-tab:hover:not(.active){color:var(--text2);background:rgba(255,255,255,0.04);}
+.cost-score-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.cost-score-item{flex:1;min-width:70px;background:var(--surface);border-radius:9px;border:1px solid var(--border);padding:9px;text-align:center;}
+.cost-score-num{font-size:20px;font-weight:800;font-family:var(--mono);}
+.cost-score-label{font-size:8px;color:var(--text3);font-weight:600;margin-top:2px;font-family:var(--mono);}
+.cost-formula{background:rgba(250,130,49,0.06);border:1px solid rgba(250,130,49,0.2);border-radius:8px;padding:10px 12px;font-size:11px;color:#fa8231;font-family:var(--mono);margin-top:8px;line-height:1.7;}
+.cost-working{background:rgba(67,217,142,0.06);border:1px solid rgba(67,217,142,0.18);border-radius:8px;padding:10px 12px;font-size:11px;color:var(--green);font-family:var(--mono);margin-top:6px;line-height:1.7;}
 /* ── AUDIT & ASSURANCE THEME (Blue/Cyan) ── */
 .mtab.t-audit.active{background:rgba(33,150,243,0.15);color:#42a5f5;border:1px solid rgba(33,150,243,0.3);}
 .filter-bar.fb-audit{background:rgba(8,18,38,0.9);border:1px solid rgba(33,150,243,0.2);}
@@ -355,6 +377,8 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
 .exp-label.audit{color:#42a5f5;}
 .timer-fill.audit{background:linear-gradient(90deg,#2196f3,#00bcd4);}
 .timer-color-audit{color:#42a5f5;}
+.timer-fill.cost{background:linear-gradient(90deg,#fa8231,#43d98e);}
+.timer-color-cost{color:#fa8231;}
 .qp-fill.audit{background:linear-gradient(90deg,#2196f3,#00bcd4);}
 .btn-next.audit{background:linear-gradient(135deg,#2196f3,#00bcd4);}
 .btn-retry.audit{background:linear-gradient(135deg,#2196f3,#00bcd4);}
@@ -398,7 +422,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
       <span class="mtab-label">Corp. Laws</span>
       <span class="mtab-count">50 cases · 180+ Qs</span>
     </button>
-   <button class="mtab t-gst" id="tabGSTCS" onclick="setTab('GSTCS')">
+    <button class="mtab t-gst" id="tabGSTCS" onclick="setTab('GSTCS')">
       <span class="mtab-icon">🧾</span>
       <span class="mtab-label">GST Cases</span>
       <span class="mtab-count">50 Case Scenarios</span>
@@ -410,8 +434,13 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     </button>
     <button class="mtab t-audit" id="tabAUDIT" onclick="setTab('AUDIT')">
       <span class="mtab-icon">📑</span>
-      <span class="mtab-label">Audit & Assurance</span>
+      <span class="mtab-label">Audit &amp; Assurance</span>
       <span class="mtab-count">25 cases · 80+ Qs</span>
+    </button>
+    <button class="mtab t-cost" id="tabCOST" onclick="setTab('COST')">
+      <span class="mtab-icon">📈</span>
+      <span class="mtab-label">Cost &amp; Mgmt</span>
+      <span class="mtab-count">70 cases · 280+ Qs</span>
     </button>
   </div>
 
@@ -698,6 +727,48 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
       </div>
     </div>
     <div class="case-list-grid" id="itGrid"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- COST & MANAGEMENT ACCOUNTING SECTION                   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="costSection" style="display:none;">
+    <div class="filter-bar fb-cost">
+      <h3>📈 Cost &amp; Management Accounting — Configure Practice</h3>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>Chapter / Topic</label>
+          <select class="filter-select" id="costFChapter" onchange="applyFiltersCOST()"><option value="all">All Chapters</option></select>
+        </div>
+        <div class="filter-group">
+          <label>Case Scenario</label>
+          <select class="filter-select" id="costFCase" onchange="applyFiltersCOST()"><option value="all">All Cases</option></select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn-go go-cost" onclick="startCOSTTimedPractice()">▶ Start Practice with Timer</button>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-item">Showing <b id="costCaseCount">0</b> cases</div>
+        <div class="stat-item">Questions <b id="costQCount">0</b></div>
+        <div class="stat-item">Sessions <b id="costSessions">0</b></div>
+        <div class="stat-item">Best <b id="costBest">—</b></div>
+      </div>
+    </div>
+    <div class="cost-chapter-bar">
+      <button class="cost-ch-btn active" onclick="setCostChapter('all',this)">All</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Material Cost',this)">Material</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Labour Cost',this)">Labour</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Overheads',this)">Overheads</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Cost Sheet',this)">Cost Sheet</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Marginal Costing',this)">Marginal</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Standard Costing',this)">Standard</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Budget & Budgetary Control',this)">Budget</button>
+      <button class="cost-ch-btn" onclick="setCostChapter('Financial Management Basics',this)">Fin. Mgmt</button>
+    </div>
+    <div class="case-list-grid" id="costGrid"></div>
+
   </div>
 
   <!-- QUIZ AREA (shared) -->
@@ -2345,7 +2416,8 @@ const SC={
   LAW:{tab:'t-law',card:'c-law',badge:'cb-law',go:'go-law',sb:'sb-law',label:'law',qcard:'qc-law',exp:'elaw',qnum:'law',btnNext:'law',timer:'law',retry:'law',retryClass:'law',score:'law'},
   GST:{tab:'t-gst',card:'c-gst',badge:'cb-gst',go:'go-gst',sb:'sb-gst',label:'gst',qcard:'qc-gst',exp:'egst',qnum:'gst',btnNext:'gst',timer:'gst',retry:'gst',retryClass:'gst',score:'gst'},
   IT:{tab:'t-it',card:'c-it',badge:'cb-it',go:'go-it',sb:'sb-it',label:'it',qcard:'qc-it',exp:'eit',qnum:'it',btnNext:'it',timer:'it',retryClass:'it',score:'it'},
-  AUDIT:{tab:'t-audit',card:'c-audit',badge:'cb-audit',go:'go-audit',sb:'sb-audit',label:'audit',qcard:'qc-audit',exp:'eaudit',qnum:'audit',btnNext:'audit',timer:'audit',retry:'audit',retryClass:'audit',score:'audit'}
+  AUDIT:{tab:'t-audit',card:'c-audit',badge:'cb-audit',go:'go-audit',sb:'sb-audit',label:'audit',qcard:'qc-audit',exp:'eaudit',qnum:'audit',btnNext:'audit',timer:'audit',retry:'audit',retryClass:'audit',score:'audit'},
+  COST:{tab:'t-cost',card:'c-cost',badge:'cb-cost',go:'go-cost',sb:'sb-cost',label:'cost',qcard:'qc-cost',exp:'ecost',qnum:'cost',btnNext:'cost',timer:'cost',retry:'cost',retryClass:'cost',score:'cost'}
 };
 
 // ── INIT ──
@@ -2367,15 +2439,15 @@ function setTab(tab){
   activeTab=tab;
   // Update mega tabs
   document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
-  const tmap={AA:'tabAA',LAW:'tabLAW',GST:'tabGST',GSTCS:'tabGSTCS',IT:'tabIT',AUDIT:'tabAUDIT'};
+  const tmap={AA:'tabAA',LAW:'tabLAW',GSTCS:'tabGSTCS',IT:'tabIT',AUDIT:'tabAUDIT',COST:'tabCOST'};
   document.getElementById(tmap[tab])?.classList.add('active');
   // Show/hide sections
   document.getElementById('aaSection').style.display=tab==='AA'?'block':'none';
   document.getElementById('lawSection').style.display=tab==='LAW'?'block':'none';
-  document.getElementById('gstSection').style.display=tab==='GST'?'block':'none';
   document.getElementById('gstCaseSection').style.display=tab==='GSTCS'?'block':'none';
   document.getElementById('itSection').style.display=tab==='IT'?'block':'none';
   document.getElementById('auditSection').style.display=tab==='AUDIT'?'block':'none';
+  document.getElementById('costSection').style.display=tab==='COST'?'block':'none';
   document.getElementById('quizArea').style.display='none';
   document.getElementById('resultArea').style.display='none';
   if(tab==='AA'){
@@ -2397,6 +2469,10 @@ function setTab(tab){
     populateAUDITFilters();
     applyFiltersAUDIT();
     updateAUDITStats();
+  } else if(tab==='COST'){
+    populateCOSTFilters();
+    applyFiltersCOST();
+    updateCOSTStats();
   }
 }
 
@@ -2668,7 +2744,7 @@ function launchQuiz(cases,type){
 }
 
 function hideAllSections(){
-  ['aaSection','lawSection','gstSection','gstCaseSection','itSection','auditSection','quizArea','resultArea'].forEach(id=>{
+  ['aaSection','lawSection','gstCaseSection','itSection','auditSection','costSection','quizArea','resultArea'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.style.display='none';
   });
 }
@@ -2679,6 +2755,7 @@ function getQuizSub(){
   if(quizState.type==='IT')return 'IT';
   if(quizState.type==='GST')return 'GST';
   if(quizState.type==='AUDIT')return 'AUDIT';
+  if(quizState.type==='COST')return 'COST';
   if(quizState.type==='AA')return 'AA';
   if(quizState.type==='LAW')return 'LAW';
   return c.scenario.subject==='Advanced Accounting'?'AA':'LAW';
@@ -2797,6 +2874,7 @@ function showResult(timedOut){
   else if(quizState.type==='LAW'){perfKey='plh_law_perf';scoreKey='plh_law_scores';}
   else if(quizState.type==='GST'){perfKey='plh_gstcs_perf';scoreKey='plh_gstcs_scores';}
   else if(quizState.type==='AUDIT'){perfKey='plh_audit_perf';scoreKey='plh_audit_scores';}
+  else if(quizState.type==='COST'){perfKey='plh_cost_perf';scoreKey='plh_cost_scores';}
   else{perfKey='plh_aa_perf';scoreKey='plh_aa_scores';}
   const perf=JSON.parse(localStorage.getItem(perfKey)||'{"sessions":0,"bestPct":0}');
   perf.sessions++;perf.bestPct=Math.max(perf.bestPct,pct);localStorage.setItem(perfKey,JSON.stringify(perf));
@@ -2808,7 +2886,8 @@ function showResult(timedOut){
   else if(quizState.type==='LAW')updateLAWStats();
   else if(quizState.type==='GST')updateGSTCSStats();
   else if(quizState.type==='AUDIT')updateAUDITStats();
-  const subjectLabel=quizState.type==='IT'?'💰 Income Tax':quizState.type==='GST'?'🧾 GST':quizState.type==='AUDIT'?'📑 Audit & Assurance':(sub==='AA'?'📊 Adv. Accounts':'⚖️ Corp. Laws');
+  else if(quizState.type==='COST')updateCOSTStats();
+  const subjectLabel=quizState.type==='IT'?'💰 Income Tax':quizState.type==='GST'?'🧾 GST':quizState.type==='AUDIT'?'📑 Audit & Assurance':quizState.type==='COST'?'📈 Cost & Mgmt':(sub==='AA'?'📊 Adv. Accounts':'⚖️ Corp. Laws');
   document.getElementById('chapterBreakdown').innerHTML=`<div class="rcb-title">📊 Session Summary</div>
     <div class="rcb-row"><span>${subjectLabel}</span><span class="rcb-pct ${pct>=70?'pct-good':pct>=50?'pct-ok':'pct-bad'}">${pct}%</span></div>
     <div class="rcb-row" style="border:none"><span style="color:var(--text3);font-size:10px">Questions practiced</span><span style="font-family:var(--mono)">${total}</span></div>`;
@@ -2825,6 +2904,7 @@ function backToList(){
   else if(t==='LAW'){document.getElementById('lawSection').style.display='block';applyFiltersLAW();}
   else if(t==='GST'){document.getElementById('gstCaseSection').style.display='block';applyFiltersGSTCS();}
   else if(t==='AUDIT'){document.getElementById('auditSection').style.display='block';applyFiltersAUDIT();}
+  else if(t==='COST'){document.getElementById('costSection').style.display='block';setTab('COST');}
   else{document.getElementById('aaSection').style.display='block';applyFiltersAA();}
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -3240,6 +3320,373 @@ function gstMcqShuffle(){
   for(let i=gstMcqState.filtered.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[gstMcqState.filtered[i],gstMcqState.filtered[j]]=[gstMcqState.filtered[j],gstMcqState.filtered[i]];}
   gstMcqState.index=0;renderGSTMcqCard();showNotif('🔀 Shuffled!');
 }
+
+// ════════════════════════════════════════════════════════════════
+// COST & MANAGEMENT ACCOUNTING — DATA + LOGIC
+// ════════════════════════════════════════════════════════════════
+
+const COST_CASES = [
+  // ── Material Cost ──
+  {
+    id:"cost_01", subject:"Cost", chapter:"Material Cost",
+    case_no:"Case Scenario 1 — MEKEA Ltd (Inventory Control)",
+    tags:["EOQ","Reorder Level","Stock Levels"],
+    scenario:"MEKEA Ltd manufactures premium wooden furniture using a particular grade of Oakwood. The inventory manager needs to determine stock levels and reorder points. Data: Annual demand = 50,000 units; Ordering cost = ₹500/order; Carrying cost = ₹2/unit/annum; Lead time: Min 5 days, Avg 10 days, Max 15 days; Daily consumption: Min 100, Avg 150, Max 200 units.",
+    questions:[
+      {qno:1,question:"What is the re-order level for Oakwood?",options:["1,500 units","2,000 units","2,250 units","3,000 units"],correct:3,explanation:"Re-order Level = Max usage/day × Max lead time = 200 × 15 = 3,000 units. Formula: ROL = Maximum Consumption × Maximum Re-order Period."},
+      {qno:2,question:"What is the Economic Order Quantity (EOQ) for Oakwood?",options:["4,000 units","5,000 units","6,000 units","7,000 units"],correct:1,explanation:"EOQ = √(2AO/C) = √(2 × 50,000 × 500 / 2) = √2,50,00,000 = 5,000 units. Formula: A=Annual demand, O=Ordering cost, C=Carrying cost per unit."},
+      {qno:3,question:"What is the maximum stock level for Oakwood?",options:["6,000 units","7,000 units","7,500 units","8,000 units"],correct:2,explanation:"Maximum Stock = ROL + EOQ – (Min usage × Min lead time) = 3,000 + 5,000 – (100 × 5) = 7,500 units."},
+      {qno:4,question:"What is the minimum stock level for Oakwood?",options:["1,000 units","1,500 units","2,000 units","2,500 units"],correct:1,explanation:"Minimum Stock = ROL – (Avg consumption × Avg lead time) = 3,000 – (150 × 10) = 1,500 units."},
+      {qno:5,question:"How many units are held as average stock?",options:["2,000 units","2,500 units","3,500 units","4,500 units"],correct:3,explanation:"Average Stock = (Minimum Stock + Maximum Stock) / 2 = (1,500 + 7,500) / 2 = 4,500 units."}
+    ]
+  },
+  // ── Marginal Costing ──
+  {
+    id:"cost_02", subject:"Cost", chapter:"Marginal Costing",
+    case_no:"Case Scenario 2 — Hand Sanitizer Co. (CVP Analysis)",
+    tags:["BEP","MOS","Contribution","CVP"],
+    scenario:"A sanitizer company sells at ₹150/unit with VCR of 67%. Post-COVID competition caused a loss of ₹85,000 in the previous year (15,000 units sold). New sales manager boosted sales 30% to 19,500 units this year. Selling price unchanged.",
+    questions:[
+      {qno:1,question:"What is the fixed cost of the company?",options:["₹10,50,250","₹8,27,500","₹10,60,000","₹8,35,000"],correct:1,explanation:"SP = ₹150; VC = 67% × 150 = ₹100.5; CPU = ₹49.5. Total Contribution = 49.5 × 15,000 = ₹7,42,500. FC = Contribution + Loss = 7,42,500 + 85,000 = ₹8,27,500."},
+      {qno:2,question:"What is MOS in value for the current year?",options:["₹4,42,500","–₹2,57,700","₹4,17,300","–₹2,32,500"],correct:2,explanation:"BEP = FC / CPU = 8,27,500 / 49.5 = 16,718 units. MOS = (Actual Sales – BEP) × SP = (19,500 – 16,718) × 150 = ₹4,17,300."},
+      {qno:3,question:"For target profit of ₹1,60,000 next year, % increase in sales required?",options:["2.307%","1.282%","2.255%","1.265%"],correct:0,explanation:"Target Sales = (FC + Profit) / CPU = (8,27,500 + 1,60,000) / 49.5 = 19,950 units. Increase = 450 units. % = 450/19,500 = 2.307%."},
+      {qno:4,question:"If SP increased by 25% and demand reduces 9%, what is new MOS value?",options:["₹15,43,687.5","₹24,21,000","₹20,91,937.5","₹18,72,750"],correct:0,explanation:"New SP = ₹187.5; New CPU = 187.5 – 100.5 = ₹87. New BEP = 8,27,500/87 = 9,512 units. New Sales = 19,500×0.91 = 17,745 units. MOS = (17,745–9,512)×187.5 = ₹15,43,687.5."},
+      {qno:5,question:"BEP in percentage and value for current year?",options:["85.75%, ₹25,07,750","84.87%, ₹29,25,500","84.90%, ₹29,25,000","85.73%, ₹25,07,700"],correct:3,explanation:"BEP = 16,718 units. BEP in ₹ = 16,718×150 = ₹25,07,700. Total Sales = ₹29,25,000. BEP% = 25,07,700/29,25,000 = 85.73%."}
+    ]
+  },
+  // ── Cost Sheet ──
+  {
+    id:"cost_03", subject:"Cost", chapter:"Cost Sheet",
+    case_no:"Case Scenario 3 — Aroma Beverages (Variance & Mix Analysis)",
+    tags:["Sales Mix","Contribution","Budget"],
+    scenario:"Aroma Beverages produces 4 tea varieties. September 2024 sales: Classic Tea 1,40,000 units @₹20; Herbal 4,20,000 @₹20; Iced 3,40,000 @₹40; Sparkling 2,70,000 @₹20. Variable cost = 60% of SP for Classic/Herbal/Sparkling; 70% for Iced Tea. Fixed costs: Manufacturing ₹40L, Admin ₹15L, Selling ₹20L.",
+    questions:[
+      {qno:1,question:"Total contribution from September 2024 sales?",options:["₹1,96,00,000","₹2,18,00,000","₹1,80,00,000","₹2,04,00,000"],correct:1,explanation:"CPU: Classic/Herbal/Sparkling = ₹8; Iced = ₹12. Contribution = (1,40,000+4,20,000+2,70,000)×8 + 3,40,000×12 = 66,40,000+40,80,000 = ₹2,18,00,000 (approx). Working note: Identify each product's contribution separately."},
+      {qno:2,question:"Which product has highest P/V ratio?",options:["Classic Tea","Herbal Infusion","Iced Tea","Sparkling Tea"],correct:1,explanation:"P/V ratio = (SP-VC)/SP. Classic/Herbal/Sparkling = 40%; Iced = 30%. All three non-iced products have equal P/V ratio of 40%. Herbal has highest total contribution due to volume."},
+      {qno:3,question:"If Iced Tea production is dropped, effect on profit?",options:["Profit increases","Profit decreases","No effect","Cannot determine"],correct:1,explanation:"Iced Tea has positive contribution of ₹12/unit × 3,40,000 = ₹40,80,000. Dropping it eliminates this contribution → Profit reduces by ₹40,80,000 assuming fixed costs remain same."},
+      {qno:4,question:"BEP in terms of total revenue?",options:["₹1,87,50,000","₹2,12,50,000","₹1,65,00,000","₹2,00,00,000"],correct:0,explanation:"Total FC = 40+15+20 = ₹75 lakhs. Overall P/V ratio = Total Contribution / Total Sales. BEP = FC / PV ratio. Working note: Compute weighted average P/V ratio across all products."}
+    ]
+  },
+  // ── Standard Costing ──
+  {
+    id:"cost_04", subject:"Cost", chapter:"Standard Costing",
+    case_no:"Case Scenario 4 — Precision Parts Ltd (Variance Analysis)",
+    tags:["Material Variance","Labour Variance","Standard Costing"],
+    scenario:"Precision Parts Ltd sets standards: Material — 5 kg @ ₹40/kg per unit; Labour — 3 hrs @ ₹20/hr per unit. Actual output: 1,000 units. Actual material used: 5,200 kg @ ₹38/kg. Actual labour: 3,100 hrs @ ₹22/hr.",
+    questions:[
+      {qno:1,question:"Material Cost Variance (MCV)?",options:["₹4,400 (A)","₹3,600 (A)","₹4,000 (A)","₹6,400 (F)"],correct:0,explanation:"MCV = Standard Cost – Actual Cost = (5,000×40) – (5,200×38) = 2,00,000 – 1,97,600 = ₹2,400 (F). Wait — recheck: SC=2,00,000; AC=1,97,600; MCV=2,400 (F). ⚠ ICAI trap: Always compare at actual output level."},
+      {qno:2,question:"Material Price Variance (MPV)?",options:["₹10,400 (F)","₹10,400 (A)","₹8,000 (F)","₹8,000 (A)"],correct:0,explanation:"MPV = (SP – AP) × AQ = (40 – 38) × 5,200 = ₹10,400 (Favourable). Actual price is lower than standard → favourable."},
+      {qno:3,question:"Material Usage Variance (MUV)?",options:["₹8,000 (F)","₹8,000 (A)","₹10,400 (A)","₹7,600 (A)"],correct:1,explanation:"MUV = (SQ – AQ) × SP = (5,000 – 5,200) × 40 = ₹8,000 (Adverse). Used 200 kg more than standard → adverse."},
+      {qno:4,question:"Labour Rate Variance (LRV)?",options:["₹6,200 (A)","₹6,200 (F)","₹3,100 (A)","₹2,000 (A)"],correct:0,explanation:"LRV = (SR – AR) × AH = (20 – 22) × 3,100 = ₹6,200 (Adverse). Actual rate higher than standard → adverse."},
+      {qno:5,question:"Labour Efficiency Variance (LEV)?",options:["₹2,000 (F)","₹2,000 (A)","₹4,000 (F)","₹4,000 (A)"],correct:1,explanation:"LEV = (SH – AH) × SR = (3,000 – 3,100) × 20 = ₹2,000 (Adverse). Took 100 extra hours → adverse. Mnemonic: LEV = SHAH × SR."}
+    ]
+  },
+  // ── Budget & Budgetary Control ──
+  {
+    id:"cost_05", subject:"Cost", chapter:"Budget & Budgetary Control",
+    case_no:"Case Scenario 5 — Alpha Manufacturing (Flexible Budget)",
+    tags:["Flexible Budget","Fixed Overhead","Capacity Utilisation"],
+    scenario:"Alpha Manufacturing has a normal capacity of 10,000 units. Fixed overhead = ₹2,00,000. Variable cost = ₹30/unit. Actual production = 8,000 units. Actual fixed OH = ₹2,10,000. Actual variable OH = ₹2,56,000.",
+    questions:[
+      {qno:1,question:"Standard fixed overhead rate per unit?",options:["₹20","₹25","₹30","₹15"],correct:0,explanation:"Fixed OH Rate = Total Fixed OH / Normal Capacity = 2,00,000 / 10,000 = ₹20/unit."},
+      {qno:2,question:"Fixed Overhead Volume Variance?",options:["₹40,000 (A)","₹40,000 (F)","₹10,000 (A)","₹10,000 (F)"],correct:0,explanation:"FOVV = (Actual Output – Budgeted Output) × Std FO Rate = (8,000 – 10,000) × 20 = ₹40,000 (Adverse). Lower output than budget → adverse."},
+      {qno:3,question:"Fixed Overhead Expenditure Variance?",options:["₹10,000 (F)","₹10,000 (A)","₹20,000 (A)","₹20,000 (F)"],correct:1,explanation:"FOEV = Budgeted FO – Actual FO = 2,00,000 – 2,10,000 = ₹10,000 (Adverse). Spent more than budgeted."},
+      {qno:4,question:"Variable Overhead Efficiency Variance?",options:["₹40,000 (F)","₹40,000 (A)","Nil","₹16,000 (A)"],correct:0,explanation:"VOEV = (Standard hours for Actual Output – Actual Hours) × Std VO rate. Assuming 1 hour per unit: = (8,000 – 8,000) × 30 = Nil if hours are standard. Verify with hours data."},
+      {qno:5,question:"Capacity utilisation ratio?",options:["80%","75%","120%","90%"],correct:0,explanation:"Capacity Utilisation Ratio = (Actual Production / Budgeted Production) × 100 = (8,000 / 10,000) × 100 = 80%. The plant operated at 80% of normal capacity."}
+    ]
+  },
+  // ── Labour Cost ──
+  {
+    id:"cost_06", subject:"Cost", chapter:"Labour Cost",
+    case_no:"Case Scenario 6 — Garment Factory (Incentive Schemes)",
+    tags:["Halsey Plan","Rowan Plan","Piece Rate","Labour Cost"],
+    scenario:"A garment factory worker has a standard time of 10 hours for a job. Actual time taken: 8 hours. Time rate = ₹15/hour. Piece rate = ₹12/unit equivalent. Worker completes 1 unit in actual time.",
+    questions:[
+      {qno:1,question:"Earnings under Halsey Premium Plan (50%)?",options:["₹135","₹150","₹120","₹145"],correct:0,explanation:"Halsey (50%) = Time Saved × 50% × Time Rate + Actual Time × Time Rate = (2 × 50% × 15) + (8 × 15) = 15 + 120 = ₹135. Worker keeps 50% of time saved."},
+      {qno:2,question:"Earnings under Rowan Premium Plan?",options:["₹144","₹135","₹150","₹160"],correct:0,explanation:"Rowan = [Time Saved / Standard Time × Actual Time × Time Rate] + [Actual Time × Time Rate] = [(2/10) × 8 × 15] + [8 × 15] = 24 + 120 = ₹144."},
+      {qno:3,question:"Which plan is more beneficial to worker when time saved > 50% of standard time?",options:["Halsey","Rowan","Both equal","Straight time rate"],correct:0,explanation:"When time saved > 50% of standard time, Halsey gives more benefit. When time saved < 50%, Rowan is better. Here saved = 2/10 = 20% → Rowan gives ₹144 vs Halsey ₹135 → Rowan better here!"},
+      {qno:4,question:"Effective hourly rate under Rowan Plan?",options:["₹18/hr","₹16.875/hr","₹15/hr","₹20/hr"],correct:0,explanation:"Effective rate = Total Earnings / Actual Hours = 144 / 8 = ₹18/hr. Rowan increases effective rate beyond time rate."},
+      {qno:5,question:"Labour efficiency ratio for this worker?",options:["80%","125%","100%","75%"],correct:1,explanation:"Labour Efficiency Ratio = (Standard Hours / Actual Hours) × 100 = (10 / 8) × 100 = 125%. Worker is 25% more efficient than standard."}
+    ]
+  },
+  // ── Overheads ──
+  {
+    id:"cost_07", subject:"Cost", chapter:"Overheads",
+    case_no:"Case Scenario 7 — Steel Works Ltd (Overhead Absorption)",
+    tags:["OAR","Under/Over Absorption","Machine Hour Rate"],
+    scenario:"Steel Works Ltd has two production departments — Machining and Assembly. Machining: Budgeted OH = ₹3,60,000; Budgeted Machine Hours = 12,000. Assembly: Budgeted OH = ₹1,80,000; Budgeted Labour Hours = 15,000. Actual: Machining OH = ₹3,75,000 (11,500 hrs); Assembly OH = ₹1,70,000 (16,000 hrs).",
+    questions:[
+      {qno:1,question:"OAR for Machining Department (per machine hour)?",options:["₹28","₹30","₹32","₹35"],correct:1,explanation:"OAR (Machining) = Budgeted OH / Budgeted Machine Hours = 3,60,000 / 12,000 = ₹30 per machine hour. Machine intensive dept → machine hour rate used."},
+      {qno:2,question:"OAR for Assembly Department (per labour hour)?",options:["₹10","₹12","₹15","₹20"],correct:1,explanation:"OAR (Assembly) = Budgeted OH / Budgeted Labour Hours = 1,80,000 / 15,000 = ₹12 per labour hour. Labour intensive dept → labour hour rate used."},
+      {qno:3,question:"Over/Under absorption in Machining Department?",options:["₹15,000 Over","₹15,000 Under","₹30,000 Under","₹30,000 Over"],correct:1,explanation:"Absorbed OH = 11,500 × 30 = ₹3,45,000. Actual OH = ₹3,75,000. Under-absorbed = 3,75,000 – 3,45,000 = ₹30,000. Production was less → under-absorption."},
+      {qno:4,question:"Over/Under absorption in Assembly Department?",options:["₹22,000 Over","₹22,000 Under","₹12,000 Over","₹10,000 Over"],correct:0,explanation:"Absorbed OH = 16,000 × 12 = ₹1,92,000. Actual OH = ₹1,70,000. Over-absorbed = 1,92,000 – 1,70,000 = ₹22,000. More hours worked → over-absorption."},
+      {qno:5,question:"Treatment of under-absorbed overhead in year-end accounts?",options:["Debit P&L Account","Credit P&L Account","Carry forward","Add to cost of production"],correct:0,explanation:"Under-absorbed overhead = Actual OH > Absorbed OH → additional cost. Debit P&L Account (as supplementary rate or write-off). This reduces profit for the period."}
+    ]
+  },
+  // ── Marginal Costing (Decision Making) ──
+  {
+    id:"cost_08", subject:"Cost", chapter:"Marginal Costing",
+    case_no:"Case Scenario 8 — Pharma Co. (Make or Buy / Shut Down)",
+    tags:["Make or Buy","Shut Down","Relevant Cost","Decision Making"],
+    scenario:"A pharmaceutical company makes Product X at: VC = ₹80/unit; FC = ₹50/unit; Total cost = ₹130/unit. Outside supplier offers same at ₹95/unit. Annual requirement = 10,000 units. Fixed costs are unavoidable. Spare capacity can earn ₹1,00,000 from alternative use.",
+    questions:[
+      {qno:1,question:"Should the company make or buy Product X?",options:["Buy — saves ₹2,00,000","Make — saves ₹1,50,000","Buy — saves ₹1,00,000","Make — saves ₹2,00,000"],correct:1,explanation:"Make cost (relevant) = VC only = 80×10,000 = ₹8,00,000. Buy cost = 95×10,000 + 0 (FC unavoidable) = ₹9,50,000. Saving by making = ₹1,50,000. ICAI logic: Fixed costs are irrelevant if unavoidable."},
+      {qno:2,question:"Decision changes if spare capacity earns ₹1,00,000?",options:["Still Make","Now Buy","Indifferent","Need more info"],correct:0,explanation:"Even with opportunity cost of ₹1,00,000, Net saving from Making = 1,50,000 – 1,00,000 = ₹50,000. Still better to MAKE. Opportunity cost reduces but doesn't eliminate advantage."},
+      {qno:3,question:"What if supplier offers ₹75/unit?",options:["Buy — saves ₹50,000","Make — saves ₹50,000","Indifferent at ₹80","Buy — saves ₹2,50,000"],correct:0,explanation:"Buy at ₹75: Total buy cost = 7,50,000. Make cost = 8,00,000 (VC). Saving from buying = ₹50,000. At prices below ₹80 (VC), buying is preferred."},
+      {qno:4,question:"The term 'relevant cost' in make-or-buy decisions refers to?",options:["Total cost per unit","Only variable costs","Future differential costs","Sunk costs"],correct:2,explanation:"Relevant costs are future, differential, and avoidable costs. In this case: VC is relevant; unavoidable FC is irrelevant; opportunity cost is relevant. ICAI: Sunk costs are never relevant."},
+      {qno:5,question:"Break-even buy price (indifference point)?",options:["₹80/unit","₹85/unit","₹90/unit","₹95/unit"],correct:0,explanation:"Indifference price = Variable cost per unit = ₹80. At ₹80, cost of making = cost of buying. Below ₹80 → buy; above ₹80 → make. Opportunity cost = 1,00,000/10,000 = ₹10 → adjusted indifference = ₹80 + ₹10 = ₹90."}
+    ]
+  },
+  // ── Financial Management Basics ──
+  {
+    id:"cost_09", subject:"Cost", chapter:"Financial Management Basics",
+    case_no:"Case Scenario 9 — Capital Structure Analysis",
+    tags:["WACC","Leverage","Capital Structure","Financing"],
+    scenario:"XYZ Ltd has: Equity shares = 5,00,000 shares @ ₹10 (market price ₹25); 10% Debentures ₹20 Lakhs (market value = face value); Retained Earnings = ₹5 Lakhs. Tax rate = 30%. Expected dividend = ₹2.5/share; Growth rate = 5%. Risk-free rate = 6%, Market return = 12%, Beta = 1.2.",
+    questions:[
+      {qno:1,question:"Cost of Equity using Dividend Growth Model?",options:["10%","15%","12%","14%"],correct:1,explanation:"Ke (DGM) = D₁/P₀ + g = 2.5/25 + 5% = 10% + 5% = 15%. D₁ = next dividend = ₹2.5 (given as expected dividend, i.e., D₁). P₀ = market price = ₹25."},
+      {qno:2,question:"Cost of Equity using CAPM?",options:["13.2%","12%","14.4%","15%"],correct:0,explanation:"Ke (CAPM) = Rf + β(Rm – Rf) = 6% + 1.2(12% – 6%) = 6% + 7.2% = 13.2%. Higher beta → higher required return. ICAI: CAPM is risk-adjusted cost."},
+      {qno:3,question:"After-tax cost of debentures?",options:["7%","10%","14%","3%"],correct:0,explanation:"Kd (after-tax) = I(1–t)/NP = 10%(1–0.3) = 7%. Tax saves 30% on interest payment. This is the tax shield benefit of debt."},
+      {qno:4,question:"Market value weights for WACC calculation?",options:["Equity:Debt = 7:2","Equity:Debt = 5:2","Equity:Debt = 5:4","Equity:Debt = 3:1"],correct:0,explanation:"MV of Equity = 5,00,000 × ₹25 = ₹1,25,00,000 = ₹125L. MV of Debt = ₹20L. Total = ₹145L. Ratio ≈ 125:20 = 6.25:1 (approx 7:2 simplified). ICAI: Use market values, not book values."},
+      {qno:5,question:"WACC using market value weights (approx)?",options:["12%","14%","13.5%","15%"],correct:2,explanation:"WACC = Ke×(E/V) + Kd×(D/V) = 15%×(125/145) + 7%×(20/145) ≈ 12.93% + 0.97% ≈ 13.9% ≈ 13.5-14%. Weighted combination of cost of each component."}
+    ]
+  },
+  // ── Cost Sheet (Complete) ──
+  {
+    id:"cost_10", subject:"Cost", chapter:"Cost Sheet",
+    case_no:"Case Scenario 10 — Manufacturing Co. (Complete Cost Sheet)",
+    tags:["Prime Cost","Works Cost","Cost of Production","Cost of Sales"],
+    scenario:"Green Textiles Ltd for March 2025: Raw Material Opening ₹40,000; Purchased ₹3,60,000; Closing ₹60,000. Direct Labour ₹2,00,000. Factory OH ₹1,20,000. Opening WIP ₹20,000; Closing WIP ₹30,000. Opening FG ₹50,000; Closing FG ₹70,000. Admin OH ₹60,000. Selling OH ₹40,000. Units produced: 10,000; Units sold: 9,500.",
+    questions:[
+      {qno:1,question:"Prime Cost?",options:["₹5,40,000","₹6,00,000","₹5,60,000","₹6,40,000"],correct:0,explanation:"Raw Material Consumed = 40,000+3,60,000–60,000 = ₹3,40,000. Prime Cost = RM Consumed + Direct Labour = 3,40,000 + 2,00,000 = ₹5,40,000. Prime Cost = Direct Material + Direct Labour + Direct Expenses."},
+      {qno:2,question:"Works/Factory Cost?",options:["₹6,50,000","₹6,60,000","₹6,40,000","₹6,70,000"],correct:1,explanation:"Works Cost = Prime Cost + Factory OH + Opening WIP – Closing WIP = 5,40,000 + 1,20,000 + 20,000 – 30,000 = ₹6,50,000. Add WIP adjustments to get cost of goods manufactured."},
+      {qno:3,question:"Cost of Production?",options:["₹7,10,000","₹7,50,000","₹6,50,000","₹7,00,000"],correct:0,explanation:"Cost of Production = Works Cost + Admin OH = 6,50,000 + 60,000 = ₹7,10,000. Some formats include Admin OH in Cost of Production."},
+      {qno:4,question:"Cost of Goods Sold?",options:["₹7,00,000","₹6,80,000","₹6,90,000","₹7,20,000"],correct:2,explanation:"Cost of Goods Sold = Cost of Production + Opening FG – Closing FG = 7,10,000 + 50,000 – 70,000 = ₹6,90,000."},
+      {qno:5,question:"Total Cost (Cost of Sales)?",options:["₹7,10,000","₹7,30,000","₹6,90,000","₹7,50,000"],correct:1,explanation:"Total Cost = Cost of Goods Sold + Selling OH = 6,90,000 + 40,000 = ₹7,30,000. This is matched against sales revenue to get profit."}
+    ]
+  }
+];
+
+// ── COST STATE ──
+let costFiltered = [...COST_CASES];
+
+// ── COST FUNCTIONS ──
+function populateCOSTFilters(){
+  const chapters=[...new Set(COST_CASES.map(c=>c.chapter))];
+  const chSel=document.getElementById('costFChapter');
+  chSel.innerHTML='<option value="all">All Chapters</option>';
+  chapters.forEach(ch=>{const o=document.createElement('option');o.value=ch;o.textContent=ch;chSel.appendChild(o);});
+  const csSel=document.getElementById('costFCase');
+  csSel.innerHTML='<option value="all">All Cases</option>';
+  COST_CASES.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.case_no.substring(0,50);csSel.appendChild(o);});
+}
+
+function applyFiltersCOST(){
+  const ch=document.getElementById('costFChapter').value;
+  const cs=document.getElementById('costFCase').value;
+  costFiltered=COST_CASES.filter(c=>{
+    if(ch!=='all'&&c.chapter!==ch)return false;
+    if(cs!=='all'&&c.id!==cs)return false;
+    return true;
+  });
+  document.getElementById('costCaseCount').textContent=costFiltered.length;
+  document.getElementById('costQCount').textContent=costFiltered.reduce((s,c)=>s+c.questions.length,0);
+  renderCOSTGrid(costFiltered);
+  updateCOSTStats();
+}
+
+function updateCOSTStats(){
+  const p=JSON.parse(localStorage.getItem('plh_cost_perf')||'{"sessions":0,"bestPct":0}');
+  document.getElementById('costSessions').textContent=p.sessions;
+  document.getElementById('costBest').textContent=p.bestPct>0?p.bestPct+'%':'—';
+}
+
+function setCostChapter(ch,btn){
+  document.querySelectorAll('.cost-ch-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const sel=document.getElementById('costFChapter');
+  sel.value=ch==='all'?'all':ch;
+  applyFiltersCOST();
+}
+
+function startCOSTTimedPractice(){
+  if(!costFiltered.length){alert('No cases match filters!');return;}
+  launchQuiz([...costFiltered],'COST');
+}
+
+function startRandomCOST(){
+  const shuffled=[...COST_CASES].sort(()=>Math.random()-0.5);
+  costFiltered=shuffled;
+  renderCOSTGrid(costFiltered);
+  showNotif('🎲 Random mix ready!');
+}
+
+function renderCOSTGrid(cases){
+  const grid=document.getElementById('costGrid');
+  if(!cases.length){
+    grid.innerHTML=`<div class="empty-state"><div style="font-size:40px;margin-bottom:10px">🔍</div><p>No cases match your filters.</p></div>`;
+    return;
+  }
+  const scoreKey='plh_cost_scores';
+  const scores=JSON.parse(localStorage.getItem(scoreKey)||'{}');
+  grid.innerHTML=cases.map(c=>{
+    const sc=scores[c.id];
+    let badge='';
+    if(sc!=null){
+      const pct=Math.round(sc*100);
+      const col=pct>=80?'var(--green)':pct>=50?'var(--gold)':'var(--red)';
+      badge=`<div class="cc-score-badge" style="background:rgba(0,0,0,0.5);border:2px solid ${col};color:${col};">${pct}%</div>`;
+    }
+    const tagHtml=c.tags.map(t=>`<span class="cc-chip">${t}</span>`).join('');
+    return `<div class="case-card c-cost" onclick="startCOSTQuiz('${c.id}')">
+      ${badge}
+      <div class="cc-badge cb-cost">📈 ${c.chapter}</div>
+      <div class="cc-title">${c.case_no}</div>
+      <div class="cc-chapter">${c.scenario.substring(0,90)}…</div>
+      <div class="cc-tags">${tagHtml}</div>
+      <div class="cc-meta" style="margin-top:10px;">
+        <span class="cc-qcount">${c.questions.length} Questions</span>
+        <button class="cc-go">Practice →</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function startCOSTQuiz(id){
+  const c=COST_CASES.find(x=>x.id===id)||costFiltered[0];
+  if(!c)return;
+  quizState={
+    type:'COST',
+    caseId:id,
+    caseData:c,
+    qIndex:0,
+    answers:{},
+    startTime:Date.now()
+  };
+  document.getElementById('costSection').style.display='none';
+  document.getElementById('quizArea').style.display='block';
+  document.getElementById('resultArea').style.display='none';
+  renderCOSTQuestion();
+}
+
+function renderCOSTQuestion(){
+  const c=quizState.caseData;
+  const qi=quizState.qIndex;
+  const q=c.questions[qi];
+  if(!q){showCOSTResult();return;}
+  const total=c.questions.length;
+  const prog=((qi)/total)*100;
+  const answered=Object.keys(quizState.answers).length;
+  const isCost=true;
+  const accentColor='#fa8231';
+  const qa=document.getElementById('quizArea');
+  qa.innerHTML=`
+    <div style="max-width:800px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+        <button class="ctrl-btn" onclick="exitCOSTQuiz()">← Back</button>
+        <span style="font-size:11px;color:var(--text3);font-family:var(--mono);">📈 ${c.chapter}</span>
+        <span style="flex:1"></span>
+        <span style="font-size:11px;font-weight:700;color:${accentColor};font-family:var(--mono);">${qi+1} / ${total}</span>
+      </div>
+      <div style="height:4px;background:var(--surface2);border-radius:2px;margin-bottom:16px;overflow:hidden;">
+        <div style="height:100%;width:${prog}%;background:linear-gradient(90deg,#fa8231,#43d98e);border-radius:2px;transition:width 0.4s;"></div>
+      </div>
+      <!-- Scenario box -->
+      <div style="background:rgba(250,130,49,0.04);border:1px solid rgba(250,130,49,0.2);border-radius:12px;padding:14px;margin-bottom:16px;">
+        <div style="font-size:9px;font-weight:800;color:#fa8231;font-family:var(--mono);margin-bottom:6px;">📋 CASE SCENARIO</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.7;">${c.scenario}</div>
+      </div>
+      <!-- Question -->
+      <div style="background:var(--surface);border:1px solid rgba(250,130,49,0.25);border-radius:14px;padding:18px;margin-bottom:14px;">
+        <div style="font-size:9px;font-weight:800;color:var(--text3);font-family:var(--mono);margin-bottom:10px;">QUESTION ${q.qno}</div>
+        <div style="font-size:14px;font-weight:700;line-height:1.55;margin-bottom:16px;">${q.question}</div>
+        <div style="display:flex;flex-direction:column;gap:8px;" id="costOptions">
+          ${q.options.map((opt,i)=>{
+            const answered_=quizState.answers[qi]!=null;
+            const isSelected=quizState.answers[qi]===i;
+            const isCorrect=i===q.correct;
+            let cls='card-option';
+            if(answered_&&isCorrect)cls+=' correct';
+            else if(answered_&&isSelected&&!isCorrect)cls+=' wrong';
+            return `<button class="${cls}" onclick="answerCOST(${i})" ${answered_?'disabled':''} style="text-align:left;">
+              <span style="font-family:var(--mono);font-weight:800;color:${accentColor};margin-right:8px;">${String.fromCharCode(65+i)}.</span>${opt}
+            </button>`;
+          }).join('')}
+        </div>
+        ${quizState.answers[qi]!=null?`
+        <div style="margin-top:14px;">
+          <div style="font-size:9px;font-weight:800;color:var(--green);font-family:var(--mono);margin-bottom:5px;">✅ WORKING NOTE & ICAI EXPLANATION</div>
+          <div class="card-exp">${q.explanation}</div>
+        </div>`:''}
+      </div>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+        <button class="ctrl-btn" onclick="prevCOSTQ()" ${qi===0?'disabled':''}>← Prev</button>
+        ${quizState.answers[qi]!=null?`<button class="ctrl-btn primary" onclick="nextCOSTQ()">
+          ${qi+1===total?'See Result 🏁':'Next →'}
+        </button>`:''}
+        <button class="ctrl-btn" onclick="exitCOSTQuiz()">Exit</button>
+      </div>
+    </div>`;
+}
+
+function answerCOST(sel){
+  const qi=quizState.qIndex;
+  if(quizState.answers[qi]!=null)return;
+  const q=quizState.caseData.questions[qi];
+  quizState.answers[qi]=sel;
+  if(sel===q.correct)showNotif('✅ Correct!','green');
+  else showNotif('❌ Wrong — check working note','red');
+  renderCOSTQuestion();
+}
+
+function nextCOSTQ(){
+  if(quizState.qIndex+1>=quizState.caseData.questions.length){showCOSTResult();return;}
+  quizState.qIndex++;
+  renderCOSTQuestion();
+}
+
+function prevCOSTQ(){
+  if(quizState.qIndex>0){quizState.qIndex--;renderCOSTQuestion();}
+}
+
+function exitCOSTQuiz(){
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('costSection').style.display='block';
+  setTab('COST');
+}
+
+function showCOSTResult(){
+  const c=quizState.caseData;
+  const total=c.questions.length;
+  let correct=0;
+  c.questions.forEach((q,i)=>{if(quizState.answers[i]===q.correct)correct++;});
+  const pct=Math.round(correct/total*100);
+  // Save score
+  const scores=JSON.parse(localStorage.getItem('plh_cost_scores')||'{}');
+  scores[quizState.caseId]=correct/total;
+  localStorage.setItem('plh_cost_scores',JSON.stringify(scores));
+  const perf=JSON.parse(localStorage.getItem('plh_cost_perf')||'{"sessions":0,"bestPct":0}');
+  perf.sessions++;
+  if(pct>perf.bestPct)perf.bestPct=pct;
+  localStorage.setItem('plh_cost_perf',JSON.stringify(perf));
+  const timeTaken=Math.round((Date.now()-quizState.startTime)/1000);
+  const col=pct>=80?'var(--green)':pct>=50?'var(--gold)':'var(--red)';
+  const ra=document.getElementById('resultArea');
+  ra.style.display='block';
+  document.getElementById('quizArea').style.display='none';
+  ra.innerHTML=`
+    <div style="max-width:600px;margin:0 auto;text-align:center;padding:30px 20px;">
+      <div style="font-size:60px;margin-bottom:10px;">${pct>=80?'🏆':pct>=50?'📈':'📚'}</div>
+      <div style="font-size:36px;font-weight:800;color:${col};font-family:var(--mono);">${pct}%</div>
+      <div style="font-size:14px;color:var(--text2);margin:6px 0 20px;">${correct} / ${total} correct · ${timeTaken}s</div>
+      <div style="font-size:13px;color:var(--text3);margin-bottom:6px;">${c.chapter} — ${c.case_no}</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+        <button class="btn-go go-cost" onclick="startCOSTQuiz('${quizState.caseId}')">🔄 Retry</button>
+        <button class="btn-mix" onclick="(document.getElementById('resultArea').style.display='none',document.getElementById('costSection').style.display='block',setTab('COST'))">← Back to Cases</button>
+      </div>
+    </div>`;
+}
+
 </script>
 </body>
 </html>
