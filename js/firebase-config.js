@@ -14,12 +14,13 @@ import { getFirestore, doc, setDoc, getDoc, updateDoc,
 
 // ─── DETECT PLACEHOLDER CREDENTIALS ───
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+apiKey: "AIzaSyCWVs8Ef3sV4KkEDAtgC2wXfvCoVNjKNt4",
+  authDomain: "royceprince-5195f.firebaseapp.com",
+  projectId: "royceprince-5195f",
+  storageBucket: "royceprince-5195f.firebasestorage.app",
+  messagingSenderId: "1054326658292",
+  appId: "1:1054326658292:web:536474d70f0ac4bb2cbaa1",
+  measurementId: "G-C19RHBRCK3"
 };
 
 const isConfigured = !Object.values(firebaseConfig).some(v => v.startsWith("YOUR_"));
