@@ -6,6 +6,329 @@
 <title>Prince Learning Hub — CA Inter May 2026</title>
 <meta name="description" content="Smart flashcards, PYQ finder, AI study planner, MCQ practice for CA Inter May 2026">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════ ACCESS GATE STYLES ═══════════════ */
+#access-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: linear-gradient(135deg, #07070f 0%, #0d0b1e 40%, #080f1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+#access-gate.gate-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+.gate-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gate-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,106,247,0.25), transparent);
+  animation: gateFloat linear infinite;
+}
+@keyframes gateFloat {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+}
+.gate-card {
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,106,247,0.2);
+  backdrop-filter: blur(24px);
+  border-radius: 24px;
+  padding: 44px 40px 38px;
+  width: 100%;
+  max-width: 430px;
+  margin: 16px;
+  box-shadow: 0 0 80px rgba(124,106,247,0.08), 0 32px 64px rgba(0,0,0,0.6);
+  animation: gateCardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes gateCardIn {
+  from { opacity: 0; transform: translateY(32px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.gate-logo {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.gate-logo .logo-ring {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #7c6af7, #4fc3f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 12px;
+  box-shadow: 0 0 40px rgba(124,106,247,0.35);
+  animation: logoGlow 4s ease-in-out infinite;
+}
+@keyframes logoGlow {
+  0%,100% { box-shadow: 0 0 40px rgba(124,106,247,0.35); }
+  50%      { box-shadow: 0 0 60px rgba(79,195,247,0.45); }
+}
+.gate-logo h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 3px;
+}
+.gate-logo p {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.gate-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+}
+.gate-divider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.gate-divider span {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  font-family: 'Sora', sans-serif;
+}
+.gate-tabs {
+  display: flex;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.gate-tab {
+  flex: 1;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all 0.25s ease;
+}
+.gate-tab.active {
+  background: linear-gradient(135deg, rgba(124,106,247,0.2), rgba(79,195,247,0.12));
+  color: #7c6af7;
+  border: 1px solid rgba(124,106,247,0.25);
+}
+.gate-form { display: flex; flex-direction: column; gap: 12px; }
+.gate-form.hidden { display: none; }
+.gate-input {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  box-sizing: border-box;
+}
+.gate-input::placeholder { color: rgba(255,255,255,0.25); }
+.gate-input:focus {
+  border-color: rgba(124,106,247,0.5);
+  box-shadow: 0 0 0 3px rgba(124,106,247,0.1);
+}
+.gate-btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #7c6af7, #4fc3f7);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(124,106,247,0.3);
+}
+.gate-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(124,106,247,0.45);
+}
+.gate-btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+.gate-btn-google {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.gate-btn-google:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+}
+.google-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%23FBBC05' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%2334A853' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.gate-remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Sora', sans-serif;
+}
+.gate-remember label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.gate-remember input[type="checkbox"] { accent-color: #7c6af7; }
+.gate-remember a { color: #7c6af7; text-decoration: none; }
+.gate-remember a:hover { text-decoration: underline; }
+.gate-status {
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 9px;
+  border-radius: 8px;
+  display: none;
+  font-family: 'Sora', sans-serif;
+}
+.gate-status.error  { display:block; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.2); color:#f87171; }
+.gate-status.success{ display:block; background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2);  color:#4ade80; }
+.gate-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.18);
+  font-family: 'JetBrains Mono', monospace;
+}
+.spinner-sm {
+  width: 15px; height: 15px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Success overlay inside gate card */
+.gate-success-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(124,106,247,0.04);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+.gate-success-overlay.show { opacity: 1; pointer-events: auto; }
+.gate-success-check {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c6af7, #4ade80);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #fff;
+  animation: checkPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes checkPop { from{transform:scale(0)} to{transform:scale(1)} }
+.gate-success-text {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem; font-weight: 600; color: #fff; text-align: center;
+}
+
+/* Blur main content while gate open */
+#main-content { transition: filter 0.5s ease; }
+#main-content.blurred { filter: blur(8px); pointer-events: none; user-select: none; }
+
+/* Logged-in nav user widget */
+.hub-nav-user {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: rgba(124,106,247,0.1);
+  border: 1px solid rgba(124,106,247,0.2); border-radius: 20px;
+  font-size: 13px; font-weight: 500; color: #7c6af7;
+  cursor: pointer; position: relative;
+}
+.hub-nav-avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(135deg, #7c6af7, #4fc3f7);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; color: #fff;
+  overflow: hidden; flex-shrink: 0;
+}
+.hub-nav-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.hub-nav-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: rgba(10,10,20,0.97);
+  border: 1px solid rgba(124,106,247,0.2);
+  border-radius: 12px; padding: 8px; min-width: 180px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  opacity: 0; pointer-events: none;
+  transform: translateY(-6px); transition: all 0.22s ease; z-index: 1000;
+}
+.hub-nav-user:hover .hub-nav-dropdown,
+.hub-nav-user.open .hub-nav-dropdown { opacity:1; pointer-events:auto; transform:translateY(0); }
+.hub-nav-email {
+  padding: 7px 10px; font-size: 0.72rem; color: rgba(255,255,255,0.35);
+  font-family: 'JetBrains Mono', monospace;
+  border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 6px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.hub-nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px; border-radius: 8px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.65);
+  font-family: 'Sora', sans-serif; cursor: pointer;
+  transition: all 0.2s ease; text-decoration: none;
+}
+.hub-nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.hub-nav-item.danger { color: #f87171; }
+.hub-nav-item.danger:hover { background: rgba(248,113,113,0.08); }
+</style>
+
+<!-- ═══════════════ ORIGINAL LEARNING HUB CSS ═══════════════ -->
 <style>
 /* === RESET & ROOT === */
 :root{
@@ -25,8 +348,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:h
 a{color:inherit;text-decoration:none;}
 button{cursor:pointer;font-family:var(--font);}
 img{max-width:100%;}
-
-/* === BACKGROUNDS === */
 .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 60% 40% at 15% 20%,rgba(124,106,247,0.12) 0%,transparent 60%),
              radial-gradient(ellipse 50% 35% at 85% 75%,rgba(79,195,247,0.08) 0%,transparent 60%),
@@ -34,8 +355,6 @@ img{max-width:100%;}
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(rgba(124,106,247,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(124,106,247,0.03) 1px,transparent 1px);
   background-size:50px 50px;}
-
-/* === NAVBAR === */
 nav{position:sticky;top:0;z-index:1000;background:rgba(10,10,15,0.9);backdrop-filter:blur(24px);
   border-bottom:1px solid var(--border);transition:all 0.3s;}
 .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px;}
@@ -60,8 +379,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(10,10,15,0.9);backdrop-fi
   z-index:999;padding:12px;flex-direction:column;gap:4px;}
 .mobile-menu.open{display:flex;}
 .mobile-menu .nav-a{padding:10px 14px;border-radius:8px;}
-
-/* === HERO === */
 .hero{position:relative;z-index:1;text-align:center;padding:90px 24px 70px;max-width:800px;margin:0 auto;}
 .hero-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;
   background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.25);border-radius:20px;
@@ -86,8 +403,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(10,10,15,0.9);backdrop-fi
 .hero-stat .num{font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:var(--mono);}
 .hero-stat .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;}
-
-/* === SECTION === */
 section{position:relative;z-index:1;padding:60px 24px;}
 .section-inner{max-width:1280px;margin:0 auto;}
 .section-header{margin-bottom:36px;}
@@ -99,14 +414,10 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .section-header h2 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .section-header p{color:var(--text2);font-size:15px;max-width:520px;}
-
-/* === CARDS === */
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r20);transition:all 0.25s;}
 .card:hover{border-color:rgba(124,106,247,0.3);box-shadow:var(--shadow-glow);}
 .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
 .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-
-/* === SUBJECT CARDS === */
 .subject-card{padding:24px;display:flex;flex-direction:column;gap:12px;}
 .subject-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;}
 .subject-card h3{font-size:16px;font-weight:600;letter-spacing:-0.2px;}
@@ -115,8 +426,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
   font-size:12px;font-weight:600;transition:all 0.2s;border:1px solid var(--border);
   background:rgba(255,255,255,0.03);}
 .subject-link:hover{background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);}
-
-/* === QUICK NAV CARDS === */
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .quick-card{padding:20px 16px;border-radius:16px;background:var(--card);border:1px solid var(--border);
   text-align:center;transition:all 0.25s;cursor:pointer;}
@@ -124,8 +433,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .quick-icon{font-size:28px;margin-bottom:8px;}
 .quick-label{font-size:12px;font-weight:600;color:var(--text2);}
 .quick-sub{font-size:10px;color:var(--muted);margin-top:3px;font-family:var(--mono);}
-
-/* === EXAM MODE BANNER === */
 .exam-banner{background:linear-gradient(135deg,rgba(124,106,247,0.15),rgba(79,195,247,0.08));
   border:1px solid rgba(124,106,247,0.25);border-radius:16px;padding:16px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
@@ -137,13 +444,9 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .exam-banner .text b{font-size:14px;font-weight:600;}
 .exam-banner .text p{font-size:12px;color:var(--muted);}
 .exam-banner .actions{display:flex;gap:8px;}
-
-/* === USER WELCOME BAR === */
 #userWelcomeBar{display:none;background:rgba(124,106,247,0.08);border-bottom:1px solid rgba(124,106,247,0.15);
   padding:10px 24px;text-align:center;font-size:13px;position:relative;z-index:2;}
 #userWelcomeBar span{color:var(--accent);font-weight:600;}
-
-/* === TIMER === */
 #gstTimer{display:none;position:fixed;top:76px;right:20px;z-index:999;
   background:var(--card);border:1px solid rgba(247,201,72,0.3);border-radius:14px;
   padding:12px 18px;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.4);}
@@ -155,8 +458,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .timer-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:2px;transition:width 1s linear;}
 .timer-stop{width:100%;margin-top:8px;padding:6px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.2);
   border-radius:8px;color:#f87171;font-size:11px;font-weight:600;}
-
-/* === PRACTICE MCQ === */
 .mcq-container{background:var(--card);border:1px solid var(--border);border-radius:var(--r20);padding:32px;max-width:700px;}
 .mcq-progress-wrap{margin-bottom:20px;}
 .mcq-progress-bar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
@@ -187,8 +488,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .result-item .val.green{color:var(--green);}
 .result-item .val.red{color:#f87171;}
 .result-item .key{font-size:11px;color:var(--muted);font-family:var(--mono);}
-
-/* === FLASHCARD MCQ MODE === */
 .fc-mcq-wrap{max-width:680px;}
 .fc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r20);padding:28px;margin-bottom:16px;}
 .fc-q{font-size:15px;font-weight:500;margin-bottom:20px;line-height:1.6;}
@@ -198,8 +497,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .fc-opt.correct{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4);color:var(--green);}
 .fc-opt.wrong{background:rgba(248,113,113,0.1);border-color:rgba(248,113,113,0.3);color:#f87171;}
 .fc-nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-
-/* === FLASHCARD (existing) === */
 .flashcard-scene{perspective:1000px;height:200px;}
 .flashcard-wrap{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.5s;}
 .flashcard-wrap.flipped{transform:rotateY(180deg);}
@@ -209,8 +506,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .fc-hint{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
 .fc-question{font-size:15px;font-weight:500;line-height:1.5;}
 .fc-answer{font-size:14px;line-height:1.6;}
-
-/* === PLANNER / DASHBOARD === */
 .planner-form{background:var(--card);border:1px solid var(--border);border-radius:var(--r20);padding:28px;}
 .form-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:20px;}
 .form-field label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;}
@@ -236,8 +531,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .streak-dot{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;font-family:var(--mono);}
 .streak-dot.done{background:rgba(74,222,128,0.15);color:var(--green);border:1px solid rgba(74,222,128,0.3);}
 .streak-dot.miss{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border);}
-
-/* === RATES TABLE === */
 .rates-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
 .rate-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
 .rate-card-header{padding:14px 18px;background:rgba(124,106,247,0.06);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
@@ -251,8 +544,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .rate-table td:first-child{color:var(--text2);}
 .rate-table td:last-child{color:var(--text);font-family:var(--mono);font-weight:500;text-align:right;}
 .rate-table tr:hover td{background:rgba(255,255,255,0.02);}
-
-/* === REVISION === */
 .revision-tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap;}
 .rtab{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border);
   background:transparent;color:var(--muted);transition:all 0.2s;}
@@ -268,8 +559,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .rev-card h4{font-size:14px;font-weight:600;margin-bottom:6px;}
 .rev-card p{font-size:13px;color:var(--text2);line-height:1.5;}
 .rev-meta{font-size:10px;color:var(--muted);font-family:var(--mono);margin-top:8px;}
-
-/* === SEARCH === */
 .search-section{background:var(--card);border:1px solid var(--border);border-radius:var(--r20);padding:28px;}
 .global-search-wrap{position:relative;}
 .global-search-wrap input{width:100%;padding:15px 20px 15px 52px;background:var(--surface);
@@ -284,8 +573,6 @@ section{position:relative;z-index:1;padding:60px 24px;}
 .search-result-item:hover{border-color:rgba(124,106,247,0.3);}
 .sr-title{font-size:14px;font-weight:500;margin-bottom:4px;}
 .sr-meta{font-size:11px;color:var(--muted);font-family:var(--mono);}
-
-/* === FOOTER === */
 footer{position:relative;z-index:1;background:var(--surface);border-top:1px solid var(--border);padding:48px 24px 24px;}
 .footer-inner{max-width:1280px;margin:0 auto;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:32px;}
@@ -298,8 +585,6 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
 .footer-bottom p{font-size:12px;color:var(--muted);}
 .footer-logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));
   display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:12px;}
-
-/* === MOBILE === */
 @media(max-width:900px){.quick-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:768px){
   .nav-links{display:none;}
@@ -309,32 +594,93 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   section{padding:40px 16px;}
 }
 @media(max-width:480px){.quick-grid{grid-template-columns:repeat(2,1fr);}.hero{padding:60px 16px 50px;}}
-
-/* === ANIMATIONS === */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .fade-up{animation:fadeUp 0.5s ease forwards;}
 .fade-up-2{animation:fadeUp 0.5s 0.1s ease forwards;opacity:0;}
 .fade-up-3{animation:fadeUp 0.5s 0.2s ease forwards;opacity:0;}
-
-/* === MISC === */
 .pill-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;font-family:var(--mono);}
 .pt-blue{background:rgba(79,195,247,0.12);color:var(--accent2);}
 .pt-gold{background:rgba(247,201,72,0.12);color:var(--gold);}
 .pt-green{background:rgba(74,222,128,0.12);color:var(--green);}
 .pt-accent{background:rgba(124,106,247,0.12);color:var(--accent);}
 .spacer{height:1px;background:var(--border);margin:0;}
-
-/* Live dot */
 .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:4px;
   box-shadow:0 0 0 2px rgba(74,222,128,0.2);animation:pulse 2s infinite;}
 </style>
 </head>
 <body>
+
+<!-- ═══════════════ ACCESS GATE ═══════════════ -->
+<div id="access-gate">
+  <div class="gate-particles" id="gate-particles"></div>
+  <div class="gate-card" id="gate-card">
+
+    <!-- Success overlay -->
+    <div class="gate-success-overlay" id="gate-success">
+      <div class="gate-success-check">✓</div>
+      <div class="gate-success-text">Welcome, CA Warrior!<br><span style="font-size:0.85rem;opacity:0.7">Loading your study hub...</span></div>
+    </div>
+
+    <!-- Logo -->
+    <div class="gate-logo">
+      <div class="logo-ring">◈</div>
+      <h2>Prince Learning Hub</h2>
+      <p>CA INTER · MAY 2026 · Sign in to study</p>
+    </div>
+
+    <!-- Google (prominent) -->
+    <button class="gate-btn-google" id="gate-google-btn" onclick="gateGoogleLogin()">
+      <span class="google-icon"></span>
+      Continue with Google
+    </button>
+
+    <div class="gate-divider"><hr /><span>or use email</span><hr /></div>
+
+    <!-- Tabs -->
+    <div class="gate-tabs">
+      <button class="gate-tab active" id="gate-tab-login" onclick="gateSwitch('login')">Sign In</button>
+      <button class="gate-tab" id="gate-tab-signup" onclick="gateSwitch('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <div class="gate-form" id="gate-login-form">
+      <input type="email" class="gate-input" id="gate-email" placeholder="Email address" />
+      <input type="password" class="gate-input" id="gate-password" placeholder="Password" />
+      <div class="gate-remember">
+        <label><input type="checkbox" id="gate-remember" /> Remember me</label>
+        <a href="#" onclick="gateForgotPassword(event)">Forgot password?</a>
+      </div>
+      <button class="gate-btn-primary" id="gate-login-btn" onclick="gateEmailLogin()">
+        <span id="gate-login-text">Sign In</span>
+        <span class="spinner-sm" id="gate-login-spinner"></span>
+      </button>
+      <div class="gate-status" id="gate-login-status"></div>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="gate-form hidden" id="gate-signup-form">
+      <input type="text" class="gate-input" id="gate-name" placeholder="Full Name" />
+      <input type="email" class="gate-input" id="gate-signup-email" placeholder="Email address" />
+      <input type="password" class="gate-input" id="gate-signup-password" placeholder="Password (min 6 chars)" />
+      <button class="gate-btn-primary" id="gate-signup-btn" onclick="gateEmailSignup()">
+        <span id="gate-signup-text">Create Account</span>
+        <span class="spinner-sm" id="gate-signup-spinner"></span>
+      </button>
+      <div class="gate-status" id="gate-signup-status"></div>
+    </div>
+
+    <div class="gate-footer">🔒 Secured by Firebase · Free for CA Warriors</div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<div id="main-content" class="blurred">
+
 <div class="bg-glow"></div>
 <div class="grid-bg"></div>
 
 <!-- User Welcome Bar -->
-<div id="userWelcomeBar">🎓 Welcome back, <span id="navUserName">Student</span>! Ready to study? <a href="login.html" id="navLogoutBtn" style="color:var(--muted);margin-left:8px;font-size:12px;">Sign Out</a></div>
+<div id="userWelcomeBar">🎓 Welcome back, <span id="navUserName">Student</span>! Ready to study? <a href="#" onclick="hubSignOut()" style="color:var(--muted);margin-left:8px;font-size:12px;">Sign Out</a></div>
 
 <!-- NAVBAR -->
 <nav>
@@ -354,12 +700,25 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <a href="#dashboard" class="nav-a">Dashboard</a>
       <a href="#revision" class="nav-a">Revision</a>
       <a href="ca_rtp_questionbank.html" class="nav-a">📚 RTP Bank</a>
-     <a href="login.html" class="nav-a" id="navLoginLink">Login</a>
+      <!-- Login link shown when logged out, hidden when logged in -->
+      <a href="#" class="nav-a" id="navLoginLink" onclick="showGateAgain()" style="display:none">Login</a>
+      <!-- User widget shown when logged in -->
+      <div class="hub-nav-user" id="hub-nav-user" style="display:none" onclick="toggleHubDropdown()">
+        <div class="hub-nav-avatar" id="hub-nav-avatar">?</div>
+        <span id="hub-nav-name">Student</span>
+        <div class="hub-nav-dropdown">
+          <div class="hub-nav-email" id="hub-nav-email">student@email.com</div>
+          <div class="hub-nav-item danger" onclick="hubSignOut()">
+            ⬡ Sign Out
+          </div>
+        </div>
+      </div>
       <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="nav-cta"><span class="live-dot"></span> Join Virtual Library</a>
     </div>
     <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="#subjects" class="nav-a" onclick="closeMobileMenu()">📚 Subjects</a>
   <a href="pyq.html" class="nav-a">📋 PYQ Finder</a>
@@ -367,7 +726,6 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   <a href="#planner" class="nav-a" onclick="closeMobileMenu()">📅 Planner</a>
   <a href="#dashboard" class="nav-a" onclick="closeMobileMenu()">📊 Dashboard</a>
   <a href="#revision" class="nav-a" onclick="closeMobileMenu()">⚡ Revision</a>
-  <a href="login.html" class="nav-a">👤 Login</a>
   <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="nav-a">🟢 Join Virtual Library Session</a>
 </div>
 
@@ -412,18 +770,17 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       </div>
       <div class="actions">
         <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="btn-primary" style="padding:9px 18px;font-size:13px;">🟢 Join Virtual Library</a>
-    
       </div>
     </div>
     <div class="quick-grid">
       <a href="pyq.html" class="quick-card"><div class="quick-icon">📋</div><div class="quick-label">PYQ Finder</div><div class="quick-sub">10 Year Bank</div></a>
-     <a href="ca_rtp_questionbank.html" class="quick-card"><div class="quick-icon">📰</div> <div class="quick-label">RTP</div></a>
+      <a href="ca_rtp_questionbank.html" class="quick-card"><div class="quick-icon">📰</div><div class="quick-label">RTP</div></a>
       <a href="#practice" class="quick-card"><div class="quick-icon">🎯</div><div class="quick-label">Practice MCQ</div><div class="quick-sub">Timer Mode</div></a>
       <a href="#flashcard-mcq" class="quick-card"><div class="quick-icon">🃏</div><div class="quick-label">Flashcard MCQ</div><div class="quick-sub">Convert & Practice</div></a>
       <a href="#planner" class="quick-card"><div class="quick-icon">📅</div><div class="quick-label">AI Planner</div><div class="quick-sub">May 2026</div></a>
       <a href="#dashboard" class="quick-card"><div class="quick-icon">📊</div><div class="quick-label">Dashboard</div><div class="quick-sub">Track Progress</div></a>
       <a href="#revision" class="quick-card"><div class="quick-icon">⚡</div><div class="quick-label">7-Day Revision</div><div class="quick-sub">Last Minute</div></a>
-       <a href="#search" class="quick-card"><div class="quick-icon">🔍</div><div class="quick-label">Smart Search</div><div class="quick-sub">Any Topic</div></a>
+      <a href="#search" class="quick-card"><div class="quick-icon">🔍</div><div class="quick-label">Smart Search</div><div class="quick-sub">Any Topic</div></a>
     </div>
   </div>
 </section>
@@ -437,54 +794,19 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <p>Chapter-wise flashcards built from ICAI study material with mnemonics and exam tables.</p>
     </div>
     <div class="grid-2">
-      <div class="card subject-card">
-        <div class="subject-icon" style="background:rgba(247,201,72,0.12);">💰</div>
-        <h3>Direct Tax</h3>
-        <p>Income Tax Act, TDS, Capital Gains, Deductions u/s 80C–80U, Return Filing</p>
-        <a href="https://royceprince.github.io/tax-flashcard.html" class="subject-link">Open Flashcards →</a>
-      </div>
-      <div class="card subject-card">
-        <div class="subject-icon" style="background:rgba(74,222,128,0.12);">🧾</div>
-        <h3>GST</h3>
-        <p>14 chapters — Supply, ITC, Registration, Returns, Valuation, Place of Supply</p>
-        <a href="https://royceprince.github.io/gst-flashcard.html" class="subject-link">Open Flashcards →</a>
-      </div>
-      <div class="card subject-card">
-        <div class="subject-icon" style="background:rgba(167,139,250,0.12);">⚖️</div>
-        <h3>Corporate & Other Laws</h3>
-        <p>Companies Act 2013, LLP, Negotiable Instruments Act, IBC, SCRA</p>
-        <a href="https://royceprince.github.io/law-flashcard.html" class="subject-link">Open Flashcards →</a>
-      </div>
-      <div class="card subject-card">
-        <div class="subject-icon" style="background:rgba(79,195,247,0.12);">📚</div>
-        <h3>Advanced Accounts</h3>
-        <p>AS 1–29, Amalgamation (AS-14), Branch Accounting, Internal Reconstruction</p>
-        <a href="https://royceprince.github.io/accounts-flashcard.html" class="subject-link">Open Flashcards →</a>
-      </div>
-      <div class="card subject-card">
-        <div class="subject-icon" style="background:rgba(251,146,60,0.12);">🔍</div>
-        <h3>Audit</h3>
-        <p>SA 200–SA 710, Audit Planning, Risk Assessment, CARO 2020</p>
-        <a href="https://royceprince.github.io/audit-flashcard.html" class="subject-link">Open Flashcards →</a>
-      </div>
-      <div class="card subject-card" style="background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(79,195,247,0.04));border-color:rgba(124,106,247,0.2);">
-        <div class="subject-icon" style="background:rgba(124,106,247,0.15);">🎯</div>
-        <h3>GST MCQ Practice</h3>
-        <p>Chapter-wise MCQs and case-based questions with section citations and timer</p>
-        <a href="https://royceprince.github.io/gst-practice.html" onclick="startGstTimer()" class="subject-link" style="background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);">Start Practice + Timer →</a>
-      </div>
-       <div class="card subject-card" style="background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(79,195,247,0.04));border-color:rgba(124,106,247,0.2);"><div class="subject-icon" style="background:rgba(124,106,247,0.15);">🎯</div>
-    <h3>Advance Accounting Practice</h3><p>Chapter-wise MCQs and case-based questions with section citations and timer</p><a href="https://royceprince.github.io/Adv_Accounting.html"  onclick="startAdvAccTimer()" class="subject-link" 
-     style="background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);"> Start Practice + Timer → </a>
-   </div>
-   <div class="card subject-card" style="background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(79,195,247,0.04));border-color:rgba(124,106,247,0.2);"><div class="subject-icon" style="background:rgba(124,106,247,0.15);">🎯</div><h3>Oneshot Corporate & Other Laws</h3>
-  <p>Chapter-wise trick and case-based questions with section citations and timer</p> <a href="https://royceprince.github.io/all_in_LAW.html" onclick="startLawTimer()"   class="subject-link"style="background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);"> Start Learning →</a>
-</div>>
+      <div class="card subject-card"><div class="subject-icon" style="background:rgba(247,201,72,0.12);">💰</div><h3>Direct Tax</h3><p>Income Tax Act, TDS, Capital Gains, Deductions u/s 80C–80U, Return Filing</p><a href="https://royceprince.github.io/tax-flashcard.html" class="subject-link">Open Flashcards →</a></div>
+      <div class="card subject-card"><div class="subject-icon" style="background:rgba(74,222,128,0.12);">🧾</div><h3>GST</h3><p>14 chapters — Supply, ITC, Registration, Returns, Valuation, Place of Supply</p><a href="https://royceprince.github.io/gst-flashcard.html" class="subject-link">Open Flashcards →</a></div>
+      <div class="card subject-card"><div class="subject-icon" style="background:rgba(167,139,250,0.12);">⚖️</div><h3>Corporate & Other Laws</h3><p>Companies Act 2013, LLP, Negotiable Instruments Act, IBC, SCRA</p><a href="https://royceprince.github.io/law-flashcard.html" class="subject-link">Open Flashcards →</a></div>
+      <div class="card subject-card"><div class="subject-icon" style="background:rgba(79,195,247,0.12);">📚</div><h3>Advanced Accounts</h3><p>AS 1–29, Amalgamation (AS-14), Branch Accounting, Internal Reconstruction</p><a href="https://royceprince.github.io/accounts-flashcard.html" class="subject-link">Open Flashcards →</a></div>
+      <div class="card subject-card"><div class="subject-icon" style="background:rgba(251,146,60,0.12);">🔍</div><h3>Audit</h3><p>SA 200–SA 710, Audit Planning, Risk Assessment, CARO 2020</p><a href="https://royceprince.github.io/audit-flashcard.html" class="subject-link">Open Flashcards →</a></div>
+      <div class="card subject-card" style="background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(79,195,247,0.04));border-color:rgba(124,106,247,0.2);"><div class="subject-icon" style="background:rgba(124,106,247,0.15);">🎯</div><h3>GST MCQ Practice</h3><p>Chapter-wise MCQs and case-based questions with section citations and timer</p><a href="https://royceprince.github.io/gst-practice.html" onclick="startGstTimer()" class="subject-link" style="background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);">Start Practice + Timer →</a></div>
+      <div class="card subject-card" style="background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(79,195,247,0.04));border-color:rgba(124,106,247,0.2);"><div class="subject-icon" style="background:rgba(124,106,247,0.15);">🎯</div><h3>Advance Accounting Practice</h3><p>Chapter-wise MCQs and case-based questions with section citations and timer</p><a href="https://royceprince.github.io/Adv_Accounting.html" onclick="startAdvAccTimer()" class="subject-link" style="background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);">Start Practice + Timer →</a></div>
+      <div class="card subject-card" style="background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(79,195,247,0.04));border-color:rgba(124,106,247,0.2);"><div class="subject-icon" style="background:rgba(124,106,247,0.15);">🎯</div><h3>Oneshot Corporate & Other Laws</h3><p>Chapter-wise trick and case-based questions with section citations and timer</p><a href="https://royceprince.github.io/all_in_LAW.html" onclick="startLawTimer()" class="subject-link" style="background:rgba(124,106,247,0.1);border-color:rgba(124,106,247,0.3);color:var(--accent);">Start Learning →</a></div>
     </div>
   </div>
 </section>
 
-<!-- PRACTICE MCQ (UPGRADED) -->
+<!-- PRACTICE MCQ -->
 <section id="practice">
   <div class="section-inner">
     <div class="section-header">
@@ -492,29 +814,22 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <h2>MCQ <em>Practice Mode</em></h2>
       <p>ICAI exam-level questions with instant explanations. Now with Case Scenario Mode!</p>
     </div>
-
-    <!-- Case Scenario Card (NEW) -->
     <div style="margin-bottom:20px;background:linear-gradient(135deg,rgba(124,106,247,0.12),rgba(79,195,247,0.06));border:1px solid rgba(124,106,247,0.3);border-radius:18px;padding:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
       <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span style="font-size:22px;"></span>
-          <span style="font-size:11px;font-weight:700;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;">NEW — ICAI Booklet</span>
-        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:11px;font-weight:700;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;">NEW — ICAI Booklet</span></div>
         <h3 style="font-size:17px;font-weight:700;margin-bottom:4px;">Case Scenario Practice</h3>
         <p style="font-size:13px;color:var(--text2);">10 Case Scenarios from ICAI Advanced Accounting booklet — with timer, detailed solutions, and chapter-wise filtering.</p>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
           <span style="padding:3px 10px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.2);border-radius:20px;font-size:10px;color:var(--green);font-family:var(--mono);">ICAI Case Scenario 100+</span>
           <span style="padding:3px 10px;background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.2);border-radius:20px;font-size:10px;color:var(--gold);font-family:var(--mono);">MCQ 100+s</span>
           <span style="padding:3px 10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);border-radius:20px;font-size:10px;color:var(--accent);font-family:var(--mono);">Adv. Accounting</span>
-           <span style="padding:3px 10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);border-radius:20px;font-size:10px;color:var(--accent);font-family:var(--mono);">Corporate & Other Laws</span>
-           <span style="padding:3px 10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);border-radius:20px;font-size:10px;color:var(--accent);font-family:var(--mono);">Income tax</span>
+          <span style="padding:3px 10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);border-radius:20px;font-size:10px;color:var(--accent);font-family:var(--mono);">Corporate & Other Laws</span>
+          <span style="padding:3px 10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);border-radius:20px;font-size:10px;color:var(--accent);font-family:var(--mono);">Income tax</span>
           <span style="padding:3px 10px;background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.2);border-radius:20px;font-size:10px;color:var(--accent2);font-family:var(--mono);">Timer Mode</span>
         </div>
       </div>
-      <a href="case_practice.html" class="btn-primary" style="padding:13px 28px;white-space:nowrap;"> Open Case Practice →</a>
+      <a href="case_practice.html" class="btn-primary" style="padding:13px 28px;white-space:nowrap;">Open Case Practice →</a>
     </div>
-
-    <!-- Existing MCQ Box -->
     <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;flex-wrap:wrap;">
       <div class="mcq-container" id="mcqBox">
         <div id="mcqContent">
@@ -533,9 +848,8 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
 </section>
 
 <!-- FLASHCARD MCQ MODE -->
- <div id="mcq-container" style="display:none; padding:20px;"></div>
+<div id="mcq-container" style="display:none; padding:20px;"></div>
 <section id="flashcard-mcq">
-  
   <div class="section-inner">
     <div class="section-header">
       <div class="tag">🃏 Flashcard → MCQ</div>
@@ -547,10 +861,8 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
         <div style="text-align:center;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r20);">
           <div style="font-size:40px;margin-bottom:12px;">🃏</div>
           <p style="color:var(--muted);margin-bottom:20px;">Convert flashcard knowledge into MCQ practice with 4 options per question.</p>
-         <button onclick="startFlashcardMCQ()" class="btn-primary">
-         Start Flashcard MCQ →
-         </button>
-           <script src="mcq_generator.js"></script>
+          <button onclick="startFlashcardMCQ()" class="btn-primary">Start Flashcard MCQ →</button>
+          <script src="mcq_generator.js"></script>
         </div>
       </div>
     </div>
@@ -567,25 +879,10 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
     </div>
     <div class="planner-form">
       <div class="form-row">
-        <div class="form-field"><label>Group</label>
-          <select id="planGroup">
-            <option>Group 1 (Tax + Law + Accounts + Audit)</option>
-            <option>Group 2 (Costing + FM + SM)</option>
-            <option>Both Groups</option>
-          </select></div>
-        <div class="form-field"><label>Daily Hours</label>
-          <select id="planHours">
-            <option>4 hours/day</option><option>6 hours/day</option><option>8 hours/day</option><option>10+ hours/day</option>
-          </select></div>
-        <div class="form-field"><label>Weak Subject</label>
-          <select id="planWeak">
-            <option>Advanced Accounts</option><option>Corporate Law</option><option>Direct Tax</option>
-            <option>GST</option><option>Audit</option><option>Costing</option><option>FM</option>
-          </select></div>
-        <div class="form-field"><label>Days to Exam</label>
-          <select id="planDays">
-            <option>30 days</option><option>21 days</option><option>14 days</option><option>7 days</option>
-          </select></div>
+        <div class="form-field"><label>Group</label><select id="planGroup"><option>Group 1 (Tax + Law + Accounts + Audit)</option><option>Group 2 (Costing + FM + SM)</option><option>Both Groups</option></select></div>
+        <div class="form-field"><label>Daily Hours</label><select id="planHours"><option>4 hours/day</option><option>6 hours/day</option><option>8 hours/day</option><option>10+ hours/day</option></select></div>
+        <div class="form-field"><label>Weak Subject</label><select id="planWeak"><option>Advanced Accounts</option><option>Corporate Law</option><option>Direct Tax</option><option>GST</option><option>Audit</option><option>Costing</option><option>FM</option></select></div>
+        <div class="form-field"><label>Days to Exam</label><select id="planDays"><option>30 days</option><option>21 days</option><option>14 days</option><option>7 days</option></select></div>
       </div>
       <button class="btn-primary" onclick="generatePlan()">📅 Generate My Study Plan</button>
       <div class="plan-output" id="planOutput"></div>
@@ -602,24 +899,10 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <p>Track accuracy, weak chapters, practice scores, and your study streak.</p>
     </div>
     <div class="dash-grid">
-      <div class="dash-card">
-        <div class="label">Overall Accuracy</div>
-        <div class="value" style="color:var(--accent);" id="dashAccuracy">—</div>
-        <div class="desc" id="dashAttempted">Complete some MCQs to see stats</div>
-      </div>
-      <div class="dash-card">
-        <div class="label">Practice Score</div>
-        <div class="value" style="color:var(--green);" id="dashScore">—</div>
-        <div class="desc" id="dashCorrect">Correct / Wrong</div>
-      </div>
-      <div class="dash-card">
-        <div class="label">🔥 Study Streak</div>
-        <div class="value" id="dashStreak" style="color:var(--orange);">0</div>
-        <div class="desc">Days in a row</div>
-        <div class="streak-dots" id="streakDots"></div>
-      </div>
-      <div class="dash-card" style="grid-column:auto;">
-        <div class="label">⚠️ Focus Areas</div>
+      <div class="dash-card"><div class="label">Overall Accuracy</div><div class="value" style="color:var(--accent);" id="dashAccuracy">—</div><div class="desc" id="dashAttempted">Complete some MCQs to see stats</div></div>
+      <div class="dash-card"><div class="label">Practice Score</div><div class="value" style="color:var(--green);" id="dashScore">—</div><div class="desc" id="dashCorrect">Correct / Wrong</div></div>
+      <div class="dash-card"><div class="label">🔥 Study Streak</div><div class="value" id="dashStreak" style="color:var(--orange);">0</div><div class="desc">Days in a row</div><div class="streak-dots" id="streakDots"></div></div>
+      <div class="dash-card" style="grid-column:auto;"><div class="label">⚠️ Focus Areas</div>
         <ul class="weak-list">
           <li><span>Amalgamation</span><div class="bar-wrap"><div class="bar-fill" style="width:35%"></div></div><span style="font-family:var(--mono);font-size:12px;color:#f87171;">35%</span></li>
           <li><span>LLP Act</span><div class="bar-wrap"><div class="bar-fill" style="width:48%"></div></div><span style="font-family:var(--mono);font-size:12px;color:var(--gold);">48%</span></li>
@@ -640,88 +923,15 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <p>Latest ICAI revision test papers, past year papers, and Finance Act amendments.</p>
     </div>
     <div class="grid-2">
-      <div class="card" style="padding:22px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">
-          <div style="font-size:24px;">💰</div>
-          <div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
-              <span class="pill-tag pt-gold">RTP May 2026</span><span class="pill-tag pt-accent">Tax</span>
-            </div>
-            <h3 style="font-size:15px;font-weight:600;">RTP — Income Tax (May 2026)</h3>
-          </div>
-        </div>
-        <ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;">
-          <li>Finance Act 2025 — New regime slabs updated</li>
-          <li>Section 115BAC — Default regime for individuals</li>
-          <li>Capital Gains amendments — LTCG indexation removed</li>
-          <li>TDS on virtual digital assets — Sec 194S</li>
-        </ul>
-        <a href="https://drive.google.com/file/d/1thIKTbGErvCGsbsWgD2uluMdlvur5RYq/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download RTP →</a>
-      </div>
-      <div class="card" style="padding:22px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">
-          <div style="font-size:24px;">🧾</div>
-          <div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
-              <span class="pill-tag pt-green">RTP May 2026</span><span class="pill-tag pt-accent">GST</span>
-            </div>
-            <h3 style="font-size:15px;font-weight:600;">RTP — GST (May 2026)</h3>
-          </div>
-        </div>
-        <ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;">
-          <li>ISD — Input Service Distributor amendments</li>
-          <li>GSTR-1A — New return form introduced</li>
-          <li>Composition scheme — Latest amendments</li>
-          <li>Place of supply — Services special rules</li>
-        </ul>
-        <a href="https://drive.google.com/file/d/1thIKTbGErvCGsbsWgD2uluMdlvur5RYq/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download RTP →</a>
-      </div>
-      <div class="card" style="padding:22px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">
-          <div style="font-size:24px;">⚖️</div>
-          <div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
-              <span class="pill-tag" style="background:rgba(167,139,250,0.12);color:#a78bfa;">LATEST MAY 26</span><span class="pill-tag pt-accent">Law</span>
-            </div>
-            <h3 style="font-size:15px;font-weight:600;">RTP LAST 10 YEAR — Law</h3>
-          </div>
-        </div>
-        <ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;">
-          <li>Company — Meetings and resolutions</li>
-          <li>Director — Appointment, removal, DIN</li>
-          <li>LLP — Provisions and differences</li>
-          <li>Negotiable Instruments Act — Cheque dishonour</li>
-        </ul>
-        <a href="https://drive.google.com/file/d/1JxR6OlXmFXFe25oxPove5JSJSwYK_LKe/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download MTP →</a>
-      </div>
-      <div class="card" style="padding:22px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">
-          <div style="font-size:24px;">📚</div>
-          <div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
-              <span class="pill-tag pt-blue">ICAI LATEST</span><span class="pill-tag pt-accent">Accounts</span>
-            </div>
-            <h3 style="font-size:15px;font-weight:600;">Adv. Accounts — RTP LAST 10 YEAR</h3>
-          </div>
-        </div>
-        <ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;">
-          <li>AS-14 — Amalgamation problems updated</li>
-          <li>AS-22 — Deferred tax practice questions</li>
-          <li>Branch Accounts — Foreign branch conversion</li>
-          <li>Insurance claims — New case problems</li>
-        </ul>
-        <a href="https://drive.google.com/file/d/1j0OQCIwwfqXSBfRJuNamBVnmH67tV9HT/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download MTP →</a>
-      </div>
+      <div class="card" style="padding:22px;"><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;"><div style="font-size:24px;">💰</div><div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;"><span class="pill-tag pt-gold">RTP May 2026</span><span class="pill-tag pt-accent">Tax</span></div><h3 style="font-size:15px;font-weight:600;">RTP — Income Tax (May 2026)</h3></div></div><ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;"><li>Finance Act 2025 — New regime slabs updated</li><li>Section 115BAC — Default regime for individuals</li><li>Capital Gains amendments — LTCG indexation removed</li><li>TDS on virtual digital assets — Sec 194S</li></ul><a href="https://drive.google.com/file/d/1thIKTbGErvCGsbsWgD2uluMdlvur5RYq/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download RTP →</a></div>
+      <div class="card" style="padding:22px;"><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;"><div style="font-size:24px;">🧾</div><div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;"><span class="pill-tag pt-green">RTP May 2026</span><span class="pill-tag pt-accent">GST</span></div><h3 style="font-size:15px;font-weight:600;">RTP — GST (May 2026)</h3></div></div><ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;"><li>ISD — Input Service Distributor amendments</li><li>GSTR-1A — New return form introduced</li><li>Composition scheme — Latest amendments</li><li>Place of supply — Services special rules</li></ul><a href="https://drive.google.com/file/d/1thIKTbGErvCGsbsWgD2uluMdlvur5RYq/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download RTP →</a></div>
+      <div class="card" style="padding:22px;"><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;"><div style="font-size:24px;">⚖️</div><div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;"><span class="pill-tag" style="background:rgba(167,139,250,0.12);color:#a78bfa;">LATEST MAY 26</span><span class="pill-tag pt-accent">Law</span></div><h3 style="font-size:15px;font-weight:600;">RTP LAST 10 YEAR — Law</h3></div></div><ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;"><li>Company — Meetings and resolutions</li><li>Director — Appointment, removal, DIN</li><li>LLP — Provisions and differences</li><li>Negotiable Instruments Act — Cheque dishonour</li></ul><a href="https://drive.google.com/file/d/1JxR6OlXmFXFe25oxPove5JSJSwYK_LKe/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download MTP →</a></div>
+      <div class="card" style="padding:22px;"><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;"><div style="font-size:24px;">📚</div><div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;"><span class="pill-tag pt-blue">ICAI LATEST</span><span class="pill-tag pt-accent">Accounts</span></div><h3 style="font-size:15px;font-weight:600;">Adv. Accounts — RTP LAST 10 YEAR</h3></div></div><ul style="padding-left:18px;font-size:13px;color:var(--text2);line-height:2;"><li>AS-14 — Amalgamation problems updated</li><li>AS-22 — Deferred tax practice questions</li><li>Branch Accounts — Foreign branch conversion</li><li>Insurance claims — New case problems</li></ul><a href="https://drive.google.com/file/d/1j0OQCIwwfqXSBfRJuNamBVnmH67tV9HT/view?usp=sharing" target="_blank" class="subject-link" style="margin-top:14px;display:inline-flex;">Download MTP →</a></div>
     </div>
   </div>
 </section>
 
-  <!-- rtp_section_to_inject.html -->
-
 <!-- REVISION -->
-<section id="revision">
-<!-- REVISION -->
-
 <section id="revision">
   <div class="section-inner">
     <div class="section-header">
@@ -747,51 +957,10 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <p>Memorise these cold — tested every exam.</p>
     </div>
     <div class="rates-grid">
-      <div class="rate-card">
-        <div class="rate-card-header"><div class="icon">💰</div><div><h3>IT Slabs — New Regime</h3><p>AY 2026-27 · Individual</p></div></div>
-        <table class="rate-table">
-          <tr><td>Up to ₹4,00,000</td><td>NIL</td></tr>
-          <tr><td>₹4L – ₹8L</td><td>5%</td></tr>
-          <tr><td>₹8L – ₹12L</td><td>10%</td></tr>
-          <tr><td>₹12L – ₹16L</td><td>15%</td></tr>
-          <tr><td>₹16L – ₹20L</td><td>20%</td></tr>
-          <tr><td>₹20L – ₹24L</td><td>20%</td></tr>
-          <tr><td>Above ₹24L</td><td>30%</td></tr>
-        </table>
-      </div>
-      <div class="rate-card">
-        <div class="rate-card-header"><div class="icon">🧾</div><div><h3>GST Key Limits</h3><p>Registration & Composition</p></div></div>
-        <table class="rate-table">
-          <tr><td>Goods Registration</td><td>₹40L</td></tr>
-          <tr><td>Services Registration</td><td>₹20L</td></tr>
-          <tr><td>Composition Limit</td><td>₹1.5 Cr</td></tr>
-          <tr><td>Composition (Mfr)</td><td>1%</td></tr>
-          <tr><td>Composition (Restaurant)</td><td>5%</td></tr>
-          <tr><td>GSTR-3B Due</td><td>20th</td></tr>
-        </table>
-      </div>
-      <div class="rate-card">
-        <div class="rate-card-header"><div class="icon">📋</div><div><h3>TDS Key Sections</h3><p>Common TDS Rates</p></div></div>
-        <table class="rate-table">
-          <tr><td>Sec 192 · Salary</td><td>Slab Rate</td></tr>
-          <tr><td>Sec 194A · Interest</td><td>10%</td></tr>
-          <tr><td>Sec 194C · Contractor</td><td>1%/2%</td></tr>
-          <tr><td>Sec 194H · Commission</td><td>5%</td></tr>
-          <tr><td>Sec 194I · Rent</td><td>10%</td></tr>
-          <tr><td>Sec 194J · Prof. Fees</td><td>10%</td></tr>
-        </table>
-      </div>
-      <div class="rate-card">
-        <div class="rate-card-header"><div class="icon">⚖️</div><div><h3>Company Law Limits</h3><p>Companies Act 2013</p></div></div>
-        <table class="rate-table">
-          <tr><td>Pvt Ltd Min Members</td><td>2</td></tr>
-          <tr><td>Pvt Ltd Max Members</td><td>200</td></tr>
-          <tr><td>Public Ltd Min</td><td>7</td></tr>
-          <tr><td>First AGM</td><td>9 months</td></tr>
-          <tr><td>AGM Gap (max)</td><td>15 months</td></tr>
-          <tr><td>Board Meeting (1st)</td><td>30 days</td></tr>
-        </table>
-      </div>
+      <div class="rate-card"><div class="rate-card-header"><div class="icon">💰</div><div><h3>IT Slabs — New Regime</h3><p>AY 2026-27 · Individual</p></div></div><table class="rate-table"><tr><td>Up to ₹4,00,000</td><td>NIL</td></tr><tr><td>₹4L – ₹8L</td><td>5%</td></tr><tr><td>₹8L – ₹12L</td><td>10%</td></tr><tr><td>₹12L – ₹16L</td><td>15%</td></tr><tr><td>₹16L – ₹20L</td><td>20%</td></tr><tr><td>₹20L – ₹24L</td><td>20%</td></tr><tr><td>Above ₹24L</td><td>30%</td></tr></table></div>
+      <div class="rate-card"><div class="rate-card-header"><div class="icon">🧾</div><div><h3>GST Key Limits</h3><p>Registration & Composition</p></div></div><table class="rate-table"><tr><td>Goods Registration</td><td>₹40L</td></tr><tr><td>Services Registration</td><td>₹20L</td></tr><tr><td>Composition Limit</td><td>₹1.5 Cr</td></tr><tr><td>Composition (Mfr)</td><td>1%</td></tr><tr><td>Composition (Restaurant)</td><td>5%</td></tr><tr><td>GSTR-3B Due</td><td>20th</td></tr></table></div>
+      <div class="rate-card"><div class="rate-card-header"><div class="icon">📋</div><div><h3>TDS Key Sections</h3><p>Common TDS Rates</p></div></div><table class="rate-table"><tr><td>Sec 192 · Salary</td><td>Slab Rate</td></tr><tr><td>Sec 194A · Interest</td><td>10%</td></tr><tr><td>Sec 194C · Contractor</td><td>1%/2%</td></tr><tr><td>Sec 194H · Commission</td><td>5%</td></tr><tr><td>Sec 194I · Rent</td><td>10%</td></tr><tr><td>Sec 194J · Prof. Fees</td><td>10%</td></tr></table></div>
+      <div class="rate-card"><div class="rate-card-header"><div class="icon">⚖️</div><div><h3>Company Law Limits</h3><p>Companies Act 2013</p></div></div><table class="rate-table"><tr><td>Pvt Ltd Min Members</td><td>2</td></tr><tr><td>Pvt Ltd Max Members</td><td>200</td></tr><tr><td>Public Ltd Min</td><td>7</td></tr><tr><td>First AGM</td><td>9 months</td></tr><tr><td>AGM Gap (max)</td><td>15 months</td></tr><tr><td>Board Meeting (1st)</td><td>30 days</td></tr></table></div>
     </div>
   </div>
 </section>
@@ -835,7 +1004,7 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
       <div class="footer-col">
         <h4>Resources</h4>
         <a href="pyq.html">PYQ Finder</a>
-        <a href="login.html">Student Login</a>
+        <a href="#" onclick="showGateAgain()">Student Login</a>
         <a href="#practice">Practice Mode</a>
         <a href="#planner">AI Study Planner</a>
         <a href="#revision">7-Day Revision</a>
@@ -850,303 +1019,252 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   </div>
 </footer>
 
-<script>
+</div><!-- end #main-content -->
 
+<!-- ═══════════════ FIREBASE SDK ═══════════════ -->
+<script type="module" src="js/firebase-config.js"></script>
+
+<!-- ═══════════════ GATE SCRIPT ═══════════════ -->
+<script>
+function runGate() {
+
+  // Generate particles
+  const pc = document.getElementById('gate-particles');
+  for (let i = 0; i < 16; i++) {
+    const p = document.createElement('div');
+    p.className = 'gate-particle';
+    const size = Math.random() * 100 + 30;
+    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:-${size}px;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*0.35+0.05};`;
+    pc.appendChild(p);
+  }
+
+  // Auth state
+  window.FB.onAuthChange(async (user) => {
+    if (user) {
+      await handleAuthSuccess(user);
+    }
+  });
+
+  async function handleAuthSuccess(user) {
+    try { await window.FB.logVisitor(); } catch(e) {}
+    document.getElementById('gate-success').classList.add('show');
+    updateHubNavbar(user);
+    setTimeout(() => {
+      const gate = document.getElementById('access-gate');
+      const main = document.getElementById('main-content');
+      gate.classList.add('gate-hidden');
+      main.classList.remove('blurred');
+      setTimeout(() => { gate.style.display = 'none'; }, 700);
+    }, 1500);
+  }
+
+  function updateHubNavbar(user) {
+    const widget = document.getElementById('hub-nav-user');
+    const avatar = document.getElementById('hub-nav-avatar');
+    const nameEl = document.getElementById('hub-nav-name');
+    const emailEl = document.getElementById('hub-nav-email');
+    const bar = document.getElementById('userWelcomeBar');
+    const barName = document.getElementById('navUserName');
+
+    const displayName = user.displayName || user.email.split('@')[0];
+    const initials = displayName.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+
+    if (widget) widget.style.display = 'flex';
+    if (nameEl) nameEl.textContent = displayName;
+    if (emailEl) emailEl.textContent = user.email;
+    if (bar) bar.style.display = 'block';
+    if (barName) barName.textContent = displayName;
+    if (avatar) {
+      if (user.photoURL) {
+        avatar.innerHTML = `<img src="${user.photoURL}" alt="avatar"/>`;
+      } else {
+        avatar.textContent = initials;
+      }
+    }
+  }
+
+  // Tab switch
+  window.gateSwitch = function(tab) {
+    document.getElementById('gate-login-form').classList.toggle('hidden', tab !== 'login');
+    document.getElementById('gate-signup-form').classList.toggle('hidden', tab !== 'signup');
+    document.getElementById('gate-tab-login').classList.toggle('active', tab === 'login');
+    document.getElementById('gate-tab-signup').classList.toggle('active', tab === 'signup');
+  };
+
+  // Email login
+  window.gateEmailLogin = async function() {
+    const email = document.getElementById('gate-email').value.trim();
+    const password = document.getElementById('gate-password').value;
+    const btn = document.getElementById('gate-login-btn');
+    const txt = document.getElementById('gate-login-text');
+    const sp  = document.getElementById('gate-login-spinner');
+    const st  = document.getElementById('gate-login-status');
+    if (!email || !password) { showGS(st,'Please fill in all fields','error'); return; }
+    btn.disabled=true; txt.style.display='none'; sp.style.display='block'; st.className='gate-status';
+    try {
+      await window.FB.signInUser(email, password);
+      showGS(st,'✓ Signed in!','success');
+    } catch(err) {
+      btn.disabled=false; txt.style.display='inline'; sp.style.display='none';
+      showGS(st, getAuthErr(err.code), 'error');
+    }
+  };
+
+  // Email signup
+  window.gateEmailSignup = async function() {
+    const name = document.getElementById('gate-name').value.trim();
+    const email = document.getElementById('gate-signup-email').value.trim();
+    const pass  = document.getElementById('gate-signup-password').value;
+    const btn = document.getElementById('gate-signup-btn');
+    const txt = document.getElementById('gate-signup-text');
+    const sp  = document.getElementById('gate-signup-spinner');
+    const st  = document.getElementById('gate-signup-status');
+    if (!name||!email||!pass) { showGS(st,'Please fill in all fields','error'); return; }
+    if (pass.length<6) { showGS(st,'Password must be 6+ characters','error'); return; }
+    btn.disabled=true; txt.style.display='none'; sp.style.display='block'; st.className='gate-status';
+    try {
+      await window.FB.signUpUser(name, email, pass);
+      showGS(st,'✓ Account created!','success');
+    } catch(err) {
+      btn.disabled=false; txt.style.display='inline'; sp.style.display='none';
+      showGS(st, getAuthErr(err.code), 'error');
+    }
+  };
+
+  // Google login
+  window.gateGoogleLogin = async function() {
+    const btn = document.getElementById('gate-google-btn');
+    btn.disabled=true;
+    btn.innerHTML='<span class="google-icon"></span> Signing in...';
+    try {
+      await window.FB.signInWithGoogle();
+    } catch(err) {
+      btn.disabled=false;
+      btn.innerHTML='<span class="google-icon"></span> Continue with Google';
+      if (err.code !== 'auth/popup-closed-by-user') {
+        showGS(document.getElementById('gate-login-status'), getAuthErr(err.code), 'error');
+      }
+    }
+  };
+
+  // Forgot password
+  window.gateForgotPassword = async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('gate-email').value.trim();
+    if (!email) { showGS(document.getElementById('gate-login-status'),'Enter your email first','error'); return; }
+    try {
+      await window.FB.resetPassword(email);
+      showGS(document.getElementById('gate-login-status'),'✓ Reset email sent!','success');
+    } catch(err) {
+      showGS(document.getElementById('gate-login-status'), getAuthErr(err.code), 'error');
+    }
+  };
+
+  // Sign out
+  window.hubSignOut = async function() {
+    await window.FB.signOutUser();
+    const gate = document.getElementById('access-gate');
+    const main = document.getElementById('main-content');
+    gate.style.display='flex'; gate.classList.remove('gate-hidden');
+    main.classList.add('blurred');
+    document.getElementById('hub-nav-user').style.display='none';
+    document.getElementById('userWelcomeBar').style.display='none';
+    document.getElementById('gate-success').classList.remove('show');
+    document.getElementById('gate-login-btn').disabled=false;
+    document.getElementById('gate-login-text').style.display='inline';
+    document.getElementById('gate-login-spinner').style.display='none';
+  };
+
+  // Show gate again
+  window.showGateAgain = function(e) {
+    if(e) e.preventDefault();
+    document.getElementById('access-gate').style.display='flex';
+    document.getElementById('access-gate').classList.remove('gate-hidden');
+    document.getElementById('main-content').classList.add('blurred');
+  };
+
+  window.toggleHubDropdown = function() {
+    document.getElementById('hub-nav-user').classList.toggle('open');
+  };
+
+  function showGS(el, msg, type) { el.textContent=msg; el.className='gate-status '+type; }
+
+  function getAuthErr(code) {
+    const e = {
+      'auth/user-not-found':'No account found with this email.',
+      'auth/wrong-password':'Incorrect password. Try again.',
+      'auth/email-already-in-use':'This email is already registered.',
+      'auth/invalid-email':'Please enter a valid email.',
+      'auth/weak-password':'Password too weak. Use 6+ characters.',
+      'auth/too-many-requests':'Too many attempts. Please wait.',
+      'auth/invalid-credential':'Invalid credentials. Try again.',
+      'auth/popup-blocked':'Popup blocked. Allow popups and retry.',
+    };
+    return e[code] || 'Authentication failed. Please try again.';
+  }
+
+} // end runGate
+
+if (window.FB) { runGate(); }
+else { window.addEventListener('fb-ready', runGate, { once: true }); }
+</script>
+
+<!-- ═══════════════ ORIGINAL LEARNING HUB SCRIPTS ═══════════════ -->
+<script>
 // ===================== TIMER =====================
-let timerInterval=null, timerSeconds=1800, timerTotal=1800;
-function startGstTimer(){
-  if(timerInterval)clearInterval(timerInterval);
-  timerSeconds=1800; timerTotal=1800;
-  document.getElementById('gstTimer').style.display='block';
-  timerInterval=setInterval(()=>{
-    timerSeconds--;
-    if(timerSeconds<=0){clearInterval(timerInterval);document.getElementById('timerDisplay').textContent='TIME UP!';return;}
-    const m=Math.floor(timerSeconds/60).toString().padStart(2,'0');
-    const s=(timerSeconds%60).toString().padStart(2,'0');
-    const disp=document.getElementById('timerDisplay');
-    disp.textContent=`${m}:${s}`;
-    disp.className='timer-display'+(timerSeconds<=300?' danger':timerSeconds<=600?' warning':'');
-    document.getElementById('timerBar').style.width=(timerSeconds/timerTotal*100)+'%';
-  },1000);
-}
+let timerInterval=null,timerSeconds=1800,timerTotal=1800;
+function startGstTimer(){if(timerInterval)clearInterval(timerInterval);timerSeconds=1800;timerTotal=1800;document.getElementById('gstTimer').style.display='block';timerInterval=setInterval(()=>{timerSeconds--;if(timerSeconds<=0){clearInterval(timerInterval);document.getElementById('timerDisplay').textContent='TIME UP!';return;}const m=Math.floor(timerSeconds/60).toString().padStart(2,'0');const s=(timerSeconds%60).toString().padStart(2,'0');const disp=document.getElementById('timerDisplay');disp.textContent=`${m}:${s}`;disp.className='timer-display'+(timerSeconds<=300?' danger':timerSeconds<=600?' warning':'');document.getElementById('timerBar').style.width=(timerSeconds/timerTotal*100)+'%';},1000);}
+function startAdvAccTimer(){startGstTimer();}
+function startLawTimer(){startGstTimer();}
 function stopTimer(){clearInterval(timerInterval);document.getElementById('gstTimer').style.display='none';}
 
-// ===================== MCQ PRACTICE =====================
-const MCQ_QUESTIONS=[
-  {q:'What is the maximum deduction under Section 80C?',opts:['₹1,00,000','₹1,50,000','₹2,00,000','₹50,000'],ans:1,exp:'Section 80C allows deduction of up to ₹1,50,000 per year for investments in PPF, ELSS, LIC, etc.'},
-  {q:'Under GST, the standard rate for most goods and services is:',opts:['5%','12%','18%','28%'],ans:2,exp:'18% is the standard GST rate. Other rates are 0%, 5%, 12%, and 28% (luxury/sin goods).'},
-  {q:'Section 161 of Companies Act 2013 deals with:',opts:['Removal of Director','Appointment of Additional Director','Board Meetings','Share Capital'],ans:1,exp:'Section 161 empowers the Board to appoint Additional Directors, who hold office till next AGM.'},
-  {q:'BEP in units = ?',opts:['FC ÷ Contribution per unit','VC ÷ SP','FC ÷ SP','Total Cost ÷ Units'],ans:0,exp:'Break Even Point (units) = Fixed Cost ÷ Contribution per unit. Contribution = Selling Price − Variable Cost.'},
-  {q:'SA-315 deals with:',opts:['Audit Documentation','Identifying Risks of Material Misstatement','Written Representations','Analytical Procedures'],ans:1,exp:'SA-315 requires auditors to identify and assess risks of material misstatement at FS and assertion level.'},
-  {q:'Under AS-14, Amalgamation in the nature of merger must transfer:',opts:['Only assets','All assets and liabilities','Only goodwill','Net assets only'],ans:1,exp:'AS-14 Merger: All assets AND liabilities of transferor company must be transferred to transferee company.'},
-  {q:'Speculation loss can be carried forward for:',opts:['8 years','4 years','6 years','10 years'],ans:1,exp:'Speculation loss can be carried forward for 4 years and set off only against speculation profits.'},
-  {q:'GSTR-3B is due on:',opts:['10th','15th','20th','25th'],ans:2,exp:'GSTR-3B (Monthly summary return) is due on the 20th of the following month.'},
-  {q:'Walter\'s Model: If r > Ke, the firm should:',opts:['Pay all dividends','Retain all earnings','Pay 50% dividend','Distribute equal to EPS'],ans:1,exp:'If ROI (r) > Cost of Equity (Ke), retained earnings earn more, so firm should retain (zero dividend).'},
-  {q:'CARO 2020 is NOT applicable to:',opts:['Public companies','Listed companies','Section 8 companies','Large private companies'],ans:2,exp:'CARO 2020 is NOT applicable to Section 8 companies (charitable companies), OPC, Small companies, Banking/Insurance companies.'},
-];
+// ===================== MCQ =====================
+const MCQ_QUESTIONS=[{q:'What is the maximum deduction under Section 80C?',opts:['₹1,00,000','₹1,50,000','₹2,00,000','₹50,000'],ans:1,exp:'Section 80C allows deduction of up to ₹1,50,000 per year.'},{q:'Under GST, the standard rate for most goods and services is:',opts:['5%','12%','18%','28%'],ans:2,exp:'18% is the standard GST rate.'},{q:'Section 161 of Companies Act 2013 deals with:',opts:['Removal of Director','Appointment of Additional Director','Board Meetings','Share Capital'],ans:1,exp:'Section 161 empowers the Board to appoint Additional Directors.'},{q:'BEP in units = ?',opts:['FC ÷ Contribution per unit','VC ÷ SP','FC ÷ SP','Total Cost ÷ Units'],ans:0,exp:'BEP (units) = Fixed Cost ÷ Contribution per unit.'},{q:'SA-315 deals with:',opts:['Audit Documentation','Identifying Risks of Material Misstatement','Written Representations','Analytical Procedures'],ans:1,exp:'SA-315 requires auditors to identify and assess risks of material misstatement.'},{q:'Under AS-14, Amalgamation in the nature of merger must transfer:',opts:['Only assets','All assets and liabilities','Only goodwill','Net assets only'],ans:1,exp:'AS-14 Merger: All assets AND liabilities must be transferred.'},{q:'Speculation loss can be carried forward for:',opts:['8 years','4 years','6 years','10 years'],ans:1,exp:'Speculation loss can be carried forward for 4 years.'},{q:'GSTR-3B is due on:',opts:['10th','15th','20th','25th'],ans:2,exp:'GSTR-3B is due on the 20th of the following month.'},{q:"Walter's Model: If r > Ke, the firm should:",opts:['Pay all dividends','Retain all earnings','Pay 50% dividend','Distribute equal to EPS'],ans:1,exp:'If ROI (r) > Ke, firm should retain all earnings.'},{q:'CARO 2020 is NOT applicable to:',opts:['Public companies','Listed companies','Section 8 companies','Large private companies'],ans:2,exp:'CARO 2020 is NOT applicable to Section 8 companies.'},];
 let mcqState={questions:[],currentIdx:0,score:0,answered:false};
 function shuffle(arr){return arr.map(v=>({v,r:Math.random()})).sort((a,b)=>a.r-b.r).map(x=>x.v);}
-function startMCQ(){
-  mcqState.questions=shuffle([...MCQ_QUESTIONS]);
-  mcqState.currentIdx=0;mcqState.score=0;
-  renderMCQ();
-}
-function renderMCQ(){
-  const {questions,currentIdx,score}=mcqState;
-  if(currentIdx>=questions.length){showMCQResult();return;}
-  const q=questions[currentIdx];
-  const pct=Math.round(currentIdx/questions.length*100);
-  document.getElementById('mcqContent').innerHTML=`
-    <div class="mcq-progress-wrap">
-      <div class="mcq-meta"><span>Q ${currentIdx+1} / ${questions.length}</span><span>Score: <b style="color:var(--green)">${score}</b></span></div>
-      <div class="mcq-progress-bar"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
-    </div>
-    <div class="mcq-question">${q.q}</div>
-    <div class="mcq-options">
-      ${q.opts.map((o,i)=>`<button class="mcq-option" onclick="answerMCQ(${i})" id="mcqOpt${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}
-    </div>
-    <div class="mcq-explain" id="mcqExplain">💡 ${q.exp}</div>
-    <div class="mcq-footer">
-      <div class="mcq-score">Answered: ${currentIdx} | Correct: <b>${score}</b></div>
-      <button class="btn-mcq" onclick="nextMCQ()" id="nextBtn" style="display:none">Next →</button>
-    </div>
-  `;
-}
-function answerMCQ(i){
-  if(mcqState.answered)return;
-  mcqState.answered=true;
-  const q=mcqState.questions[mcqState.currentIdx];
-  if(i===q.ans)mcqState.score++;
-  document.querySelectorAll('.mcq-option').forEach((el,idx)=>{
-    el.classList.add(idx===q.ans?'correct':(idx===i&&i!==q.ans?'wrong':''));
-  });
-  document.getElementById('mcqExplain').style.display='block';
-  document.getElementById('nextBtn').style.display='block';
-  // Save stats
-  const stats=JSON.parse(localStorage.getItem('plh_mcq_stats')||'{"attempted":0,"correct":0}');
-  stats.attempted++;if(i===q.ans)stats.correct++;
-  localStorage.setItem('plh_mcq_stats',JSON.stringify(stats));
-  updateDashboard();
-}
+function startMCQ(){mcqState.questions=shuffle([...MCQ_QUESTIONS]);mcqState.currentIdx=0;mcqState.score=0;renderMCQ();}
+function renderMCQ(){const{questions,currentIdx,score}=mcqState;if(currentIdx>=questions.length){showMCQResult();return;}const q=questions[currentIdx];const pct=Math.round(currentIdx/questions.length*100);document.getElementById('mcqContent').innerHTML=`<div class="mcq-progress-wrap"><div class="mcq-meta"><span>Q ${currentIdx+1} / ${questions.length}</span><span>Score: <b style="color:var(--green)">${score}</b></span></div><div class="mcq-progress-bar"><div class="mcq-progress-fill" style="width:${pct}%"></div></div></div><div class="mcq-question">${q.q}</div><div class="mcq-options">${q.opts.map((o,i)=>`<button class="mcq-option" onclick="answerMCQ(${i})" id="mcqOpt${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div><div class="mcq-explain" id="mcqExplain">💡 ${q.exp}</div><div class="mcq-footer"><div class="mcq-score">Answered: ${currentIdx} | Correct: <b>${score}</b></div><button class="btn-mcq" onclick="nextMCQ()" id="nextBtn" style="display:none">Next →</button></div>`;}
+function answerMCQ(i){if(mcqState.answered)return;mcqState.answered=true;const q=mcqState.questions[mcqState.currentIdx];if(i===q.ans)mcqState.score++;document.querySelectorAll('.mcq-option').forEach((el,idx)=>{el.classList.add(idx===q.ans?'correct':(idx===i&&i!==q.ans?'wrong':''));});document.getElementById('mcqExplain').style.display='block';document.getElementById('nextBtn').style.display='block';const stats=JSON.parse(localStorage.getItem('plh_mcq_stats')||'{"attempted":0,"correct":0}');stats.attempted++;if(i===q.ans)stats.correct++;localStorage.setItem('plh_mcq_stats',JSON.stringify(stats));updateDashboard();}
 function nextMCQ(){mcqState.currentIdx++;mcqState.answered=false;renderMCQ();}
-function showMCQResult(){
-  const {score,questions}=mcqState;
-  const pct=Math.round(score/questions.length*100);
-  const emoji=pct>=80?'🏆':pct>=60?'👍':pct>=40?'😐':'📚';
-  document.getElementById('mcqContent').innerHTML=`
-    <div class="mcq-result">
-      <div class="result-emoji">${emoji}</div>
-      <div class="result-score">${score}/${questions.length}</div>
-      <div class="result-label">${pct}% accuracy — ${pct>=80?'Excellent! Keep it up!':pct>=60?'Good effort! Revise weak topics.':'Keep practicing!'}</div>
-      <div class="result-breakdown">
-        <div class="result-item"><div class="val green">${score}</div><div class="key">CORRECT</div></div>
-        <div class="result-item"><div class="val red">${questions.length-score}</div><div class="key">WRONG</div></div>
-        <div class="result-item"><div class="val">${pct}%</div><div class="key">ACCURACY</div></div>
-      </div>
-      <button class="btn-primary" onclick="startMCQ()">🔄 Try Again</button>
-      <button class="btn-secondary" onclick="document.getElementById('mcqContent').innerHTML='<div style=\\'text-align:center;padding:20px\\'>Practice finished!</div>'" style="margin-left:8px">✓ Done</button>
-    </div>
-  `;
-}
+function showMCQResult(){const{score,questions}=mcqState;const pct=Math.round(score/questions.length*100);const emoji=pct>=80?'🏆':pct>=60?'👍':pct>=40?'😐':'📚';document.getElementById('mcqContent').innerHTML=`<div class="mcq-result"><div class="result-emoji">${emoji}</div><div class="result-score">${score}/${questions.length}</div><div class="result-label">${pct}% accuracy</div><div class="result-breakdown"><div class="result-item"><div class="val green">${score}</div><div class="key">CORRECT</div></div><div class="result-item"><div class="val red">${questions.length-score}</div><div class="key">WRONG</div></div><div class="result-item"><div class="val">${pct}%</div><div class="key">ACCURACY</div></div></div><button class="btn-primary" onclick="startMCQ()">🔄 Try Again</button></div>`;}
 
 // ===================== FLASHCARD MCQ =====================
-const FC_QUESTIONS=[
-  {q:'Section 80C maximum deduction limit?',opts:['₹1,00,000','₹1,50,000','₹2,00,000','₹75,000'],ans:1},
-  {q:'HRA Exemption — for metro cities, what % of Basic+DA is exempt?',opts:['40%','50%','60%','70%'],ans:1},
-  {q:'GST registration threshold for Services?',opts:['₹20 Lakhs','₹40 Lakhs','₹10 Lakhs','₹50 Lakhs'],ans:0},
-  {q:'Normal loss in Process Costing is valued at?',opts:['Cost Price','Scrap Value','Zero','Market Price'],ans:1},
-  {q:'AS-11 requires FCTR to be shown in?',opts:['P&L Account','Balance Sheet Equity','Current Liabilities','Notes to Accounts'],ans:1},
-  {q:'Doctrine of Indoor Management protects whom?',opts:['Company directors','Third parties dealing in good faith','Shareholders','Auditors'],ans:1},
-  {q:'Operating Cycle = RM days + WIP days + FG days + Debtor days − ?',opts:['Salary days','Creditor days','Dividend days','Interest days'],ans:1},
-  {q:'SA-580 requires Written Representations from?',opts:['Shareholders','Auditors','Management','Regulators'],ans:2},
-  {q:'Speculation loss carry forward period?',opts:['8 years','6 years','4 years','2 years'],ans:2},
-  {q:'BEP formula: Fixed Cost ÷ ?',opts:['Selling Price','Variable Cost','Contribution per unit','Total Cost'],ans:2},
-];
+const FC_QUESTIONS=[{q:'Section 80C maximum deduction limit?',opts:['₹1,00,000','₹1,50,000','₹2,00,000','₹75,000'],ans:1},{q:'HRA Exemption — for metro cities, what % of Basic+DA is exempt?',opts:['40%','50%','60%','70%'],ans:1},{q:'GST registration threshold for Services?',opts:['₹20 Lakhs','₹40 Lakhs','₹10 Lakhs','₹50 Lakhs'],ans:0},{q:'Normal loss in Process Costing is valued at?',opts:['Cost Price','Scrap Value','Zero','Market Price'],ans:1},{q:'AS-11 requires FCTR to be shown in?',opts:['P&L Account','Balance Sheet Equity','Current Liabilities','Notes to Accounts'],ans:1},{q:'Doctrine of Indoor Management protects whom?',opts:['Company directors','Third parties dealing in good faith','Shareholders','Auditors'],ans:1},{q:'Operating Cycle = RM days + WIP days + FG days + Debtor days − ?',opts:['Salary days','Creditor days','Dividend days','Interest days'],ans:1},{q:'SA-580 requires Written Representations from?',opts:['Shareholders','Auditors','Management','Regulators'],ans:2},{q:'Speculation loss carry forward period?',opts:['8 years','6 years','4 years','2 years'],ans:2},{q:'BEP formula: Fixed Cost ÷ ?',opts:['Selling Price','Variable Cost','Contribution per unit','Total Cost'],ans:2},];
 let fcState={questions:[],idx:0,score:0,answered:false};
-function startFcMcq(){
-  fcState.questions=shuffle([...FC_QUESTIONS]);fcState.idx=0;fcState.score=0;
-  renderFcMcq();
-}
-function renderFcMcq(){
-  const {questions,idx,score}=fcState;
-  if(idx>=questions.length){
-    const pct=Math.round(score/questions.length*100);
-    document.getElementById('fcMcqBox').innerHTML=`
-      <div class="fc-card" style="text-align:center;">
-        <div style="font-size:48px;margin-bottom:10px;">${pct>=80?'🏆':pct>=60?'👍':'📚'}</div>
-        <div style="font-size:36px;font-weight:700;font-family:var(--mono);">${score}/${questions.length}</div>
-        <div style="color:var(--muted);margin:8px 0 20px;">Flashcard MCQ Score — ${pct}%</div>
-        <button class="btn-primary" onclick="startFcMcq()">🔄 Try Again</button>
-      </div>`;
-    return;
-  }
-  const q=questions[idx];
-  const pct=Math.round(idx/questions.length*100);
-  document.getElementById('fcMcqBox').innerHTML=`
-    <div class="fc-card">
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:14px;">
-        <span>Q ${idx+1}/${questions.length}</span><span>Score: ${score}</span>
-      </div>
-      <div class="mcq-progress-bar" style="margin-bottom:16px;"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
-      <div class="fc-q">${q.q}</div>
-      <div class="fc-options">
-        ${q.opts.map((o,i)=>`<button class="fc-opt" onclick="answerFc(${i})" id="fcOpt${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}
-      </div>
-    </div>
-    <div class="fc-nav">
-      <div style="font-size:13px;color:var(--muted);">Correct: <b style="color:var(--green)">${score}</b></div>
-      <button class="btn-mcq" id="fcNextBtn" style="display:none" onclick="nextFc()">Next →</button>
-    </div>
-  `;
-}
-function answerFc(i){
-  if(fcState.answered)return;
-  fcState.answered=true;
-  const q=fcState.questions[fcState.idx];
-  if(i===q.ans)fcState.score++;
-  document.querySelectorAll('.fc-opt').forEach((el,idx)=>{el.classList.add('answered');if(idx===q.ans)el.classList.add('correct');else if(idx===i)el.classList.add('wrong');});
-  document.getElementById('fcNextBtn').style.display='block';
-}
+function startFcMcq(){fcState.questions=shuffle([...FC_QUESTIONS]);fcState.idx=0;fcState.score=0;renderFcMcq();}
+function renderFcMcq(){const{questions,idx,score}=fcState;if(idx>=questions.length){const pct=Math.round(score/questions.length*100);document.getElementById('fcMcqBox').innerHTML=`<div class="fc-card" style="text-align:center;"><div style="font-size:48px;margin-bottom:10px;">${pct>=80?'🏆':pct>=60?'👍':'📚'}</div><div style="font-size:36px;font-weight:700;font-family:var(--mono);">${score}/${questions.length}</div><div style="color:var(--muted);margin:8px 0 20px;">Flashcard MCQ Score — ${pct}%</div><button class="btn-primary" onclick="startFcMcq()">🔄 Try Again</button></div>`;return;}const q=questions[idx];const pct=Math.round(idx/questions.length*100);document.getElementById('fcMcqBox').innerHTML=`<div class="fc-card"><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:14px;"><span>Q ${idx+1}/${questions.length}</span><span>Score: ${score}</span></div><div class="mcq-progress-bar" style="margin-bottom:16px;"><div class="mcq-progress-fill" style="width:${pct}%"></div></div><div class="fc-q">${q.q}</div><div class="fc-options">${q.opts.map((o,i)=>`<button class="fc-opt" onclick="answerFc(${i})" id="fcOpt${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div></div><div class="fc-nav"><div style="font-size:13px;color:var(--muted);">Correct: <b style="color:var(--green)">${score}</b></div><button class="btn-mcq" id="fcNextBtn" style="display:none" onclick="nextFc()">Next →</button></div>`;}
+function answerFc(i){if(fcState.answered)return;fcState.answered=true;const q=fcState.questions[fcState.idx];if(i===q.ans)fcState.score++;document.querySelectorAll('.fc-opt').forEach((el,idx)=>{el.classList.add('answered');if(idx===q.ans)el.classList.add('correct');else if(idx===i)el.classList.add('wrong');});document.getElementById('fcNextBtn').style.display='block';}
 function nextFc(){fcState.idx++;fcState.answered=false;renderFcMcq();}
 
 // ===================== PLANNER =====================
-function generatePlan(){
-  const group=document.getElementById('planGroup').value;
-  const hours=parseInt(document.getElementById('planHours').value);
-  const weak=document.getElementById('planWeak').value;
-  const days=document.getElementById('planDays').value;
-  const subjects=group.includes('Group 1')?['Direct Tax','GST','Corporate Law','Advanced Accounts','Audit']:
-                  group.includes('Group 2')?['Costing','FM','SM']:
-                  ['Direct Tax','GST','Corporate Law','Advanced Accounts','Audit','Costing','FM'];
-  const plan=[];
-  for(let d=1;d<=7;d++){
-    const subj=subjects[(d-1)%subjects.length];
-    const isWeak=subj.toLowerCase().includes(weak.toLowerCase().split(' ')[0]);
-    plan.push({
-      day:'Day '+d,
-      topics:[
-        (isWeak?'⚠️ ':'')+subj+': Theory revision — ICAI material',
-        subj+': Solve 20 MCQs',
-        d%3===0?'Quick test — all subjects (30 min)':'PYQ practice — '+subj,
-        hours>=6?subj+': Numerical/case studies':null,
-      ].filter(Boolean)
-    });
-  }
-  const html=plan.map(d=>`
-    <div class="plan-day">
-      <h4>${d.day}</h4>
-      <ul>${d.topics.map(t=>`<li>${t}</li>`).join('')}</ul>
-    </div>
-  `).join('');
-  const out=document.getElementById('planOutput');
-  out.innerHTML=`<div style="margin-bottom:12px;font-size:12px;color:var(--muted);">📅 Personalized Plan — ${group} · ${hours}hr/day · Focus: ${weak}</div>`+html;
-  out.style.display='block';
-}
+function generatePlan(){const group=document.getElementById('planGroup').value;const hours=parseInt(document.getElementById('planHours').value);const weak=document.getElementById('planWeak').value;const subjects=group.includes('Group 1')?['Direct Tax','GST','Corporate Law','Advanced Accounts','Audit']:group.includes('Group 2')?['Costing','FM','SM']:['Direct Tax','GST','Corporate Law','Advanced Accounts','Audit','Costing','FM'];const plan=[];for(let d=1;d<=7;d++){const subj=subjects[(d-1)%subjects.length];const isWeak=subj.toLowerCase().includes(weak.toLowerCase().split(' ')[0]);plan.push({day:'Day '+d,topics:[(isWeak?'⚠️ ':'')+subj+': Theory revision — ICAI material',subj+': Solve 20 MCQs',d%3===0?'Quick test — all subjects (30 min)':'PYQ practice — '+subj,hours>=6?subj+': Numerical/case studies':null].filter(Boolean)});}const html=plan.map(d=>`<div class="plan-day"><h4>${d.day}</h4><ul>${d.topics.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('');const out=document.getElementById('planOutput');out.innerHTML=`<div style="margin-bottom:12px;font-size:12px;color:var(--muted);">📅 Personalized Plan — ${group} · ${hours}hr/day · Focus: ${weak}</div>`+html;out.style.display='block';}
 
 // ===================== DASHBOARD =====================
-function updateDashboard(){
-  const stats=JSON.parse(localStorage.getItem('plh_mcq_stats')||'{"attempted":0,"correct":0}');
-  if(stats.attempted>0){
-    const acc=Math.round(stats.correct/stats.attempted*100);
-    document.getElementById('dashAccuracy').textContent=acc+'%';
-    document.getElementById('dashAttempted').textContent='Based on '+stats.attempted+' MCQs attempted';
-    document.getElementById('dashScore').textContent=stats.correct+'/'+stats.attempted;
-    document.getElementById('dashCorrect').textContent='Correct: '+stats.correct+' · Wrong: '+(stats.attempted-stats.correct);
-  }
-}
+function updateDashboard(){const stats=JSON.parse(localStorage.getItem('plh_mcq_stats')||'{"attempted":0,"correct":0}');if(stats.attempted>0){const acc=Math.round(stats.correct/stats.attempted*100);document.getElementById('dashAccuracy').textContent=acc+'%';document.getElementById('dashAttempted').textContent='Based on '+stats.attempted+' MCQs attempted';document.getElementById('dashScore').textContent=stats.correct+'/'+stats.attempted;document.getElementById('dashCorrect').textContent='Correct: '+stats.correct+' · Wrong: '+(stats.attempted-stats.correct);}}
 
-// ===================== REVISION DATA =====================
-const REVISION_DATA={
-  hot:[
-    {badge:'hot',badgeText:'🔥 Must Do · Tax',title:'Section 80C to 80U — Full Summary',desc:'All deductions, limits, conditions. Asked every attempt. Review all sub-sections with examples.',meta:'Tax · Ch 9 · 15–20 marks weightage'},
-    {badge:'hot',badgeText:'🔥 Must Do · Accounts',title:'AS-14 Amalgamation — Full Chapter',desc:'Merger vs Acquisition treatment. Net Assets method, Purchase Consideration. Asked in all recent exams — 16 marks.',meta:'Accounts · Ch 11 · 16 marks'},
-    {badge:'hot',badgeText:'🔥 Must Do · GST',title:'ITC — Input Tax Credit Conditions',desc:'Section 16 conditions asked in last 6 exams. Blocked credits (Sec 17(5)) — full list with exceptions.',meta:'GST · Ch 7 · 8–10 marks weightage'},
-    {badge:'hot',badgeText:'🔥 Must Do · Law',title:'Director Provisions — Full Coverage',desc:'DIN, appointment, removal, disqualification. Section 149–169. Key numbers: min age 21, max 15 directors.',meta:'Law · Ch 5 · 8–12 marks weightage'},
-    {badge:'hot',badgeText:'⚡ Quick · Audit',title:'SA 300 — Audit Planning Memorandum',desc:'Contents, purpose, overall audit strategy vs audit plan, documentation requirements.',meta:'Audit · Ch 5 · 6–8 marks weightage'},
-  ],
-  repeat:[
-    {badge:'repeat',badgeText:'🔁 Repeated · Tax',title:'Capital Gains Computation',desc:'LTCG/STCG, indexation (pre-2024), exemptions u/s 54, 54F, 54EC. Asked in 8 of last 10 exams.',meta:'Tax · Repeated every attempt'},
-    {badge:'repeat',badgeText:'🔁 Repeated · Accounts',title:'Branch Accounts — Foreign Branch',desc:'AS-11 conversion, FCTR treatment. Regularly appears in exams. Full numerical expected.',meta:'Accounts · Repeated · 10–12 marks'},
-    {badge:'repeat',badgeText:'🔁 Repeated · Law',title:'Company Meetings — Provisions',desc:'AGM, EGM, Board meeting — notice, quorum, proxy, chairman, resolution types.',meta:'Law · Repeated · 6–8 marks'},
-    {badge:'repeat',badgeText:'🔁 Repeated · GST',title:'Place of Supply — Services',desc:'Complex service-specific rules. Repeated in every exam. Make a table — location + rule.',meta:'GST · Repeated · 5–6 marks'},
-  ],
-  amend:[
-    {badge:'amend',badgeText:'📌 Amendment · Tax',title:'Finance Act 2025 — New Tax Regime',desc:'Default regime from FY 2025-26. New slabs, rebate under Sec 87A revised to ₹60,000. Standard deduction ₹75,000.',meta:'Tax Amendment · High Priority'},
-    {badge:'amend',badgeText:'📌 Amendment · GST',title:'ISD — Input Service Distributor',desc:'Major GST amendment. ISD mechanism revised. Now mandatory for certain taxpayers. New rules from Oct 2023.',meta:'GST Amendment · High Priority'},
-    {badge:'amend',badgeText:'📌 Amendment · Tax',title:'LTCG — Indexation Removed',desc:'From FY 2024-25, indexation removed for property LTCG. New rate 12.5% without indexation.',meta:'Capital Gains Amendment'},
-    {badge:'amend',badgeText:'📌 Amendment · Law',title:'Companies Act Amendments 2024',desc:'CSR provisions updated. Independent director training mandatory. Secretarial audit threshold revised.',meta:'Law Amendment'},
-  ]
-};
+// ===================== REVISION =====================
+const REVISION_DATA={hot:[{badge:'hot',badgeText:'🔥 Must Do · Tax',title:'Section 80C to 80U — Full Summary',desc:'All deductions, limits, conditions. Asked every attempt.',meta:'Tax · Ch 9 · 15–20 marks'},{badge:'hot',badgeText:'🔥 Must Do · Accounts',title:'AS-14 Amalgamation — Full Chapter',desc:'Merger vs Acquisition treatment. Asked in all recent exams.',meta:'Accounts · Ch 11 · 16 marks'},{badge:'hot',badgeText:'🔥 Must Do · GST',title:'ITC — Input Tax Credit Conditions',desc:'Section 16 conditions asked in last 6 exams. Blocked credits (Sec 17(5)).',meta:'GST · Ch 7 · 8–10 marks'},{badge:'hot',badgeText:'🔥 Must Do · Law',title:'Director Provisions — Full Coverage',desc:'DIN, appointment, removal, disqualification. Section 149–169.',meta:'Law · Ch 5 · 8–12 marks'},{badge:'hot',badgeText:'⚡ Quick · Audit',title:'SA 300 — Audit Planning Memorandum',desc:'Contents, purpose, overall audit strategy vs audit plan.',meta:'Audit · Ch 5 · 6–8 marks'},],repeat:[{badge:'repeat',badgeText:'🔁 Repeated · Tax',title:'Capital Gains Computation',desc:'LTCG/STCG, indexation, exemptions u/s 54, 54F, 54EC.',meta:'Tax · Repeated every attempt'},{badge:'repeat',badgeText:'🔁 Repeated · Accounts',title:'Branch Accounts — Foreign Branch',desc:'AS-11 conversion, FCTR treatment. Full numerical expected.',meta:'Accounts · Repeated · 10–12 marks'},{badge:'repeat',badgeText:'🔁 Repeated · Law',title:'Company Meetings — Provisions',desc:'AGM, EGM, Board meeting — notice, quorum, proxy.',meta:'Law · Repeated · 6–8 marks'},{badge:'repeat',badgeText:'🔁 Repeated · GST',title:'Place of Supply — Services',desc:'Complex service-specific rules. Repeated in every exam.',meta:'GST · Repeated · 5–6 marks'},],amend:[{badge:'amend',badgeText:'📌 Amendment · Tax',title:'Finance Act 2025 — New Tax Regime',desc:'Default regime from FY 2025-26. New slabs, rebate revised to ₹60,000.',meta:'Tax Amendment · High Priority'},{badge:'amend',badgeText:'📌 Amendment · GST',title:'ISD — Input Service Distributor',desc:'ISD mechanism revised. Now mandatory for certain taxpayers.',meta:'GST Amendment · High Priority'},{badge:'amend',badgeText:'📌 Amendment · Tax',title:'LTCG — Indexation Removed',desc:'From FY 2024-25, indexation removed. New rate 12.5% without indexation.',meta:'Capital Gains Amendment'},{badge:'amend',badgeText:'📌 Amendment · Law',title:'Companies Act Amendments 2024',desc:'CSR provisions updated. Independent director training mandatory.',meta:'Law Amendment'},]};
 let activeRevTab='hot';
-function setRevTab(tab){
-  activeRevTab=tab;
-  document.querySelectorAll('.rtab').forEach((b,i)=>{
-    const tabs=['hot','repeat','amend'];
-    b.classList.toggle('active',tabs[i]===tab);
-  });
-  renderRevision();
-}
-function renderRevision(){
-  const data=REVISION_DATA[activeRevTab];
-  document.getElementById('revisionCards').innerHTML=data.map(item=>`
-    <div class="rev-card">
-      <div class="rev-card-top">
-        <span class="rev-badge ${item.badge}">${item.badgeText}</span>
-      </div>
-      <h4>${item.title}</h4>
-      <p>${item.desc}</p>
-      <div class="rev-meta">${item.meta}</div>
-    </div>
-  `).join('');
-}
+function setRevTab(tab){activeRevTab=tab;document.querySelectorAll('.rtab').forEach((b,i)=>{const tabs=['hot','repeat','amend'];b.classList.toggle('active',tabs[i]===tab);});renderRevision();}
+function renderRevision(){const data=REVISION_DATA[activeRevTab];document.getElementById('revisionCards').innerHTML=data.map(item=>`<div class="rev-card"><div class="rev-card-top"><span class="rev-badge ${item.badge}">${item.badgeText}</span></div><h4>${item.title}</h4><p>${item.desc}</p><div class="rev-meta">${item.meta}</div></div>`).join('');}
 
-// ===================== GLOBAL SEARCH =====================
-const SEARCH_INDEX=[
-  {title:'Section 80C — Deductions',meta:'Tax · Ch 9',link:'#subjects'},
-  {title:'HRA Exemption Calculation',meta:'Tax · Salary Income',link:'#subjects'},
-  {title:'AS-14 Amalgamation',meta:'Accounts · Ch 11',link:'https://royceprince.github.io/accounts-flashcard.html'},
-  {title:'GST Registration Threshold',meta:'GST · Ch 3',link:'https://royceprince.github.io/gst-flashcard.html'},
-  {title:'Doctrine of Indoor Management',meta:'Law · Ch 2',link:'https://royceprince.github.io/law-flashcard.html'},
-  {title:'BEP — Break Even Point',meta:'Costing · Marginal Costing',link:'#practice'},
-  {title:'SA-315 Risk Assessment',meta:'Audit · SA Standards',link:'https://royceprince.github.io/audit-flashcard.html'},
-  {title:'Capital Gains LTCG STCG',meta:'Tax · Capital Gains',link:'pyq.html'},
-  {title:'Section 194C TDS Contractor',meta:'Tax · TDS',link:'pyq.html'},
-  {title:'Director Appointment Removal',meta:'Law · Companies Act',link:'pyq.html'},
-  {title:'Working Capital Operating Cycle',meta:'FM · Working Capital',link:'pyq.html'},
-  {title:'NPV IRR Capital Budgeting',meta:'FM · Capital Budgeting',link:'pyq.html'},
-  {title:'CARO 2020 Reporting',meta:'Audit · CARO',link:'pyq.html'},
-  {title:'ITC Blocked Credits Section 17(5)',meta:'GST · ITC',link:'https://royceprince.github.io/gst-flashcard.html'},
-  {title:'Standard Costing Variances',meta:'Costing · Standard Costing',link:'pyq.html'},
-];
-function globalSearchFn(){
-  const q=document.getElementById('globalSearch').value.toLowerCase().trim();
-  const out=document.getElementById('searchResults');
-  if(!q){out.innerHTML='';return;}
-  const results=SEARCH_INDEX.filter(r=>(r.title+r.meta).toLowerCase().includes(q));
-  if(!results.length){out.innerHTML='<p style="color:var(--muted);font-size:13px;padding:12px 0;">No results found. Try different keywords.</p>';return;}
-  out.innerHTML=results.map(r=>`
-    <a href="${r.link}" class="search-result-item">
-      <div class="sr-title">${r.title}</div>
-      <div class="sr-meta">${r.meta}</div>
-    </a>
-  `).join('');
-}
+// ===================== SEARCH =====================
+const SEARCH_INDEX=[{title:'Section 80C — Deductions',meta:'Tax · Ch 9',link:'#subjects'},{title:'HRA Exemption Calculation',meta:'Tax · Salary Income',link:'#subjects'},{title:'AS-14 Amalgamation',meta:'Accounts · Ch 11',link:'https://royceprince.github.io/accounts-flashcard.html'},{title:'GST Registration Threshold',meta:'GST · Ch 3',link:'https://royceprince.github.io/gst-flashcard.html'},{title:'Doctrine of Indoor Management',meta:'Law · Ch 2',link:'https://royceprince.github.io/law-flashcard.html'},{title:'BEP — Break Even Point',meta:'Costing · Marginal Costing',link:'#practice'},{title:'SA-315 Risk Assessment',meta:'Audit · SA Standards',link:'https://royceprince.github.io/audit-flashcard.html'},{title:'Capital Gains LTCG STCG',meta:'Tax · Capital Gains',link:'pyq.html'},{title:'Section 194C TDS Contractor',meta:'Tax · TDS',link:'pyq.html'},{title:'Director Appointment Removal',meta:'Law · Companies Act',link:'pyq.html'},{title:'Working Capital Operating Cycle',meta:'FM · Working Capital',link:'pyq.html'},{title:'CARO 2020 Reporting',meta:'Audit · CARO',link:'pyq.html'},{title:'ITC Blocked Credits Section 17(5)',meta:'GST · ITC',link:'https://royceprince.github.io/gst-flashcard.html'},{title:'Standard Costing Variances',meta:'Costing · Standard Costing',link:'pyq.html'},];
+function globalSearchFn(){const q=document.getElementById('globalSearch').value.toLowerCase().trim();const out=document.getElementById('searchResults');if(!q){out.innerHTML='';return;}const results=SEARCH_INDEX.filter(r=>(r.title+r.meta).toLowerCase().includes(q));if(!results.length){out.innerHTML='<p style="color:var(--muted);font-size:13px;padding:12px 0;">No results found.</p>';return;}out.innerHTML=results.map(r=>`<a href="${r.link}" class="search-result-item"><div class="sr-title">${r.title}</div><div class="sr-meta">${r.meta}</div></a>`).join('');}
 
 // ===================== MOBILE MENU =====================
 function toggleMobileMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');}
 
+// Old initUserBar stub (now replaced by gate)
+function initUserBar() {}
+
 // ===================== INIT =====================
-initUserBar();
 updateDashboard();
 setRevTab('hot');
-
-// Smooth active nav on scroll
 const sections=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)current=s.id;});
-  document.querySelectorAll('.nav-a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
-},{passive:true});
+window.addEventListener('scroll',()=>{let current='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)current=s.id;});document.querySelectorAll('.nav-a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});},{passive:true});
 </script>
-</body></html>
+
+</body>
+</html>
