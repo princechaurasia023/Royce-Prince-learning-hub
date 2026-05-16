@@ -949,55 +949,10 @@
   <script defer src="js/app.js"></script>
 
   <!-- ═══════════════ ACCESS GATE SCRIPT ═══════════════ -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      signInWithPopup,
-      GoogleAuthProvider,
-      sendPasswordResetEmail,
-      signOut,
-      setPersistence,
-      browserLocalPersistence,
-      browserSessionPersistence,
-      updateProfile
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import {
-      getFirestore,
-      doc,
-      setDoc,
-      getDoc,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    // ── IMPORTANT: Replace with your actual Firebase config ──
-    // This reads from your existing firebase-config.js window export,
-    // or you can paste your config directly here:
-    let firebaseConfig = window.__FIREBASE_CONFIG__;
-
-    // Fallback: if config not injected by firebase-config.js, try to read it
-    if (!firebaseConfig) {
-      // Paste your Firebase config object here as fallback:
-      firebaseConfig = {
-      apiKey: "AIzaSyCWVs8Ef3sV4KkEDAtgC2wXfvCoVNjKNt4",
-  authDomain: "royceprince-5195f.firebaseapp.com",
-  projectId: "royceprince-5195f",
-  storageBucket: "royceprince-5195f.firebasestorage.app",
-  messagingSenderId: "1054326658292",
-  appId: "1:1054326658292:web:536474d70f0ac4bb2cbaa1",
-  measurementId: "G-C19RHBRCK3"
-};
-    }
-
-    const app = initializeApp(firebaseConfig, "gate-app");
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const provider = new GoogleAuthProvider();
-
-    const ADMIN_EMAIL = "princechaurasia023@gmail.com"; // ← change to your admin email
+  <!-- Uses window.FB already initialized by firebase-config.js -->
+  <script>
+    // ── Wait for window.FB to be ready (set by firebase-config.js) ──
+    function runGate() {
 
     // ── Generate gate particles ──
     const particleContainer = document.getElementById('gate-particles');
@@ -1016,27 +971,18 @@
       particleContainer.appendChild(p);
     }
 
-    // ── Auth state listener ──
-    onAuthStateChanged(auth, async (user) => {
+    // ── Auth state listener using window.FB ──
+    window.FB.onAuthChange(async (user) => {
       if (user) {
         await handleAuthSuccess(user);
       }
-      // If no user → gate stays visible (default state)
+      // If no user → gate stays visible
     });
 
     // ── Handle successful auth ──
     async function handleAuthSuccess(user) {
-      // Save user to Firestore (visitors log)
-      try {
-        await setDoc(doc(db, "visitors", user.uid), {
-          uid: user.uid,
-          name: user.displayName || "Anonymous",
-          email: user.email,
-          photoURL: user.photoURL || null,
-          lastVisit: serverTimestamp(),
-          provider: user.providerData[0]?.providerId || "email"
-        }, { merge: true });
-      } catch (e) { /* Firestore optional */ }
+      // Log visitor via window.FB (already set up in firebase-config.js)
+      try { await window.FB.logVisitor(); } catch(e) {}
 
       // Show success animation
       const successOverlay = document.getElementById('gate-success');
@@ -1056,7 +1002,7 @@
     }
 
     // ── Update navbar with user info ──
-    function updateNavbar(user) {
+    async function updateNavbar(user) {
       const widget = document.getElementById('nav-user-widget');
       const avatar = document.getElementById('nav-user-avatar');
       const nameEl = document.getElementById('nav-user-name');
@@ -1082,11 +1028,14 @@
         }
       }
 
-      // Show admin button if admin
-      if (user.email === ADMIN_EMAIL) {
-        if (adminLink) adminLink.style.display = 'flex';
-        if (adminBtn) adminBtn.style.display = 'flex';
-      }
+      // Check admin via Firestore role
+      try {
+        const admin = await window.FB.isAdmin(user.uid);
+        if (admin) {
+          if (adminLink) adminLink.style.display = 'flex';
+          if (adminBtn) adminBtn.style.display = 'flex';
+        }
+      } catch(e) {}
     }
 
     // ── Tab switching ──
@@ -1101,7 +1050,6 @@
     window.gateEmailLogin = async function() {
       const email = document.getElementById('gate-email').value.trim();
       const password = document.getElementById('gate-password').value;
-      const remember = document.getElementById('gate-remember').checked;
       const btn = document.getElementById('gate-login-btn');
       const txt = document.getElementById('gate-login-text');
       const spinner = document.getElementById('gate-login-spinner');
@@ -1118,16 +1066,13 @@
       status.className = 'gate-status';
 
       try {
-        const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
-        await setPersistence(auth, persistence);
-        await signInWithEmailAndPassword(auth, email, password);
+        await window.FB.signInUser(email, password);
         showGateStatus(status, '✓ Signed in successfully!', 'success');
       } catch (err) {
         btn.disabled = false;
         txt.style.display = 'inline';
         spinner.style.display = 'none';
-        const msg = getAuthError(err.code);
-        showGateStatus(status, msg, 'error');
+        showGateStatus(status, getAuthError(err.code), 'error');
       }
     };
 
@@ -1156,8 +1101,7 @@
       status.className = 'gate-status';
 
       try {
-        const cred = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(cred.user, { displayName: name });
+        await window.FB.signUpUser(name, email, password);
         showGateStatus(status, '✓ Account created!', 'success');
       } catch (err) {
         btn.disabled = false;
@@ -1173,7 +1117,7 @@
       btn.disabled = true;
       btn.innerHTML = '<span class="google-icon"></span> Signing in...';
       try {
-        await signInWithPopup(auth, provider);
+        await window.FB.signInWithGoogle();
       } catch (err) {
         btn.disabled = false;
         btn.innerHTML = '<span class="google-icon"></span> Continue with Google';
@@ -1193,7 +1137,7 @@
         return;
       }
       try {
-        await sendPasswordResetEmail(auth, email);
+        await window.FB.resetPassword(email);
         showGateStatus(document.getElementById('gate-login-status'), '✓ Reset email sent! Check your inbox.', 'success');
       } catch (err) {
         showGateStatus(document.getElementById('gate-login-status'), getAuthError(err.code), 'error');
@@ -1202,8 +1146,7 @@
 
     // ── Sign Out ──
     window.gateSignOut = async function() {
-      await signOut(auth);
-      // Show gate again
+      await window.FB.signOutUser();
       const gate = document.getElementById('access-gate');
       const mainContent = document.getElementById('main-content');
       gate.style.display = 'flex';
@@ -1241,6 +1184,15 @@
         'auth/popup-blocked': 'Popup blocked by browser. Allow popups and retry.',
       };
       return errors[code] || 'Authentication failed. Please try again.';
+    }
+
+    } // end runGate()
+
+    // Wait for firebase-config.js to fire "fb-ready", then start the gate
+    if (window.FB) {
+      runGate(); // FB already ready
+    } else {
+      window.addEventListener('fb-ready', runGate, { once: true });
     }
   </script>
 
