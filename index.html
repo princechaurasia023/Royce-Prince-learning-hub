@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Royce Prince | Portfolio</title>
   <meta name="description" content="Premium futuristic portfolio of Royce Prince — Developer, Designer, Innovator." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-
 <body class="dark-mode" id="body">
 
-  <!-- ═══════════════ INTRO OVERLAY (first-time visitors) ═══════════════ -->
+  <!-- ═══ INTRO OVERLAY (first-time visitors) ═══ -->
   <div id="intro-overlay" class="intro-overlay">
     <div class="intro-content">
       <div class="intro-logo">RP</div>
       <div class="intro-line"></div>
       <p class="intro-tagline">Loading Experience...</p>
-      <div class="intro-progress">
-        <div class="intro-bar" id="intro-bar"></div>
-      </div>
+      <div class="intro-progress"><div class="intro-bar" id="intro-bar"></div></div>
     </div>
   </div>
 
-  <!-- ═══════════════ PARTICLE BACKGROUND ═══════════════ -->
+  <!-- ═══ PARTICLE BACKGROUND ═══ -->
   <canvas id="particle-canvas"></canvas>
 
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <!-- ═══ NAVBAR ═══ -->
   <nav class="navbar" id="navbar">
     <div class="nav-brand">
       <span class="brand-dot"></span>
@@ -58,7 +52,7 @@
     </div>
   </nav>
 
-  <!-- ═══════════════ HERO SECTION ═══════════════ -->
+  <!-- ═══ HERO ═══ -->
   <section class="hero" id="hero">
     <div class="hero-content">
       <div class="hero-badge glass-card">
@@ -75,23 +69,13 @@
         sleek design, and a passion for innovation.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn-primary glow-btn">
-          <i class="fa fa-rocket"></i> View Projects
-        </a>
-        <a href="#contact" class="btn-outline">
-          <i class="fa fa-envelope"></i> Contact Me
-        </a>
+        <a href="#projects" class="btn-primary glow-btn"><i class="fa fa-rocket"></i> View Projects</a>
+        <a href="#contact" class="btn-outline"><i class="fa fa-envelope"></i> Contact Me</a>
       </div>
       <div class="hero-socials">
-        <a href="https://github.com/royceprince" target="_blank" class="social-icon" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/" target="_blank" class="social-icon" title="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://twitter.com/" target="_blank" class="social-icon" title="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
+        <a href="https://github.com/royceprince" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/" target="_blank" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
     <div class="hero-visual">
@@ -99,9 +83,7 @@
         <div class="avatar-ring ring-1"></div>
         <div class="avatar-ring ring-2"></div>
         <div class="avatar-ring ring-3"></div>
-        <div class="avatar-inner">
-          <span class="avatar-initials">RP</span>
-        </div>
+        <div class="avatar-inner"><span class="avatar-initials">RP</span></div>
         <div class="orbit-dot dot-1"><i class="fab fa-js"></i></div>
         <div class="orbit-dot dot-2"><i class="fab fa-react"></i></div>
         <div class="orbit-dot dot-3"><i class="fab fa-python"></i></div>
@@ -114,7 +96,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════ ABOUT SECTION ═══════════════ -->
+  <!-- ═══ ABOUT ═══ -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-header">
@@ -126,14 +108,12 @@
         <div class="about-card glass-card reveal">
           <div class="about-icon"><i class="fa fa-code"></i></div>
           <h3>Developer</h3>
-          <p>Full-stack engineer building scalable, performant applications with modern frameworks and cloud
-            technologies.</p>
+          <p>Full-stack engineer building scalable, performant applications with modern frameworks and cloud technologies.</p>
         </div>
         <div class="about-card glass-card reveal">
           <div class="about-icon"><i class="fa fa-palette"></i></div>
           <h3>Designer</h3>
-          <p>UI/UX designer crafting pixel-perfect interfaces with a focus on user experience and aesthetic excellence.
-          </p>
+          <p>UI/UX designer crafting pixel-perfect interfaces with a focus on user experience and aesthetic excellence.</p>
         </div>
         <div class="about-card glass-card reveal">
           <div class="about-icon"><i class="fa fa-brain"></i></div>
@@ -162,7 +142,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════ SKILLS SECTION ═══════════════ -->
+  <!-- ═══ SKILLS ═══ -->
   <section class="section section-alt" id="skills">
     <div class="container">
       <div class="section-header">
@@ -171,59 +151,47 @@
         <div class="section-line"></div>
       </div>
       <div class="skills-grid">
-        <div class="skill-card glass-card reveal" data-skill="JavaScript" data-level="90">
+        <div class="skill-card glass-card reveal">
           <i class="fab fa-js skill-icon"></i>
           <span class="skill-name">JavaScript</span>
-          <div class="skill-bar">
-            <div class="skill-fill" style="--target:90%"></div>
-          </div>
+          <div class="skill-bar"><div class="skill-fill" style="--target:90%"></div></div>
           <span class="skill-pct">90%</span>
         </div>
-        <div class="skill-card glass-card reveal" data-skill="React" data-level="85">
+        <div class="skill-card glass-card reveal">
           <i class="fab fa-react skill-icon"></i>
           <span class="skill-name">React</span>
-          <div class="skill-bar">
-            <div class="skill-fill" style="--target:85%"></div>
-          </div>
+          <div class="skill-bar"><div class="skill-fill" style="--target:85%"></div></div>
           <span class="skill-pct">85%</span>
         </div>
-        <div class="skill-card glass-card reveal" data-skill="Python" data-level="80">
+        <div class="skill-card glass-card reveal">
           <i class="fab fa-python skill-icon"></i>
           <span class="skill-name">Python</span>
-          <div class="skill-bar">
-            <div class="skill-fill" style="--target:80%"></div>
-          </div>
+          <div class="skill-bar"><div class="skill-fill" style="--target:80%"></div></div>
           <span class="skill-pct">80%</span>
         </div>
-        <div class="skill-card glass-card reveal" data-skill="Node.js" data-level="78">
+        <div class="skill-card glass-card reveal">
           <i class="fab fa-node skill-icon"></i>
           <span class="skill-name">Node.js</span>
-          <div class="skill-bar">
-            <div class="skill-fill" style="--target:78%"></div>
-          </div>
+          <div class="skill-bar"><div class="skill-fill" style="--target:78%"></div></div>
           <span class="skill-pct">78%</span>
         </div>
-        <div class="skill-card glass-card reveal" data-skill="Firebase" data-level="88">
+        <div class="skill-card glass-card reveal">
           <i class="fa fa-fire skill-icon"></i>
           <span class="skill-name">Firebase</span>
-          <div class="skill-bar">
-            <div class="skill-fill" style="--target:88%"></div>
-          </div>
+          <div class="skill-bar"><div class="skill-fill" style="--target:88%"></div></div>
           <span class="skill-pct">88%</span>
         </div>
-        <div class="skill-card glass-card reveal" data-skill="CSS / Design" data-level="92">
+        <div class="skill-card glass-card reveal">
           <i class="fab fa-css3 skill-icon"></i>
           <span class="skill-name">CSS / Design</span>
-          <div class="skill-bar">
-            <div class="skill-fill" style="--target:92%"></div>
-          </div>
+          <div class="skill-bar"><div class="skill-fill" style="--target:92%"></div></div>
           <span class="skill-pct">92%</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ PROJECTS SECTION ═══════════════ -->
+  <!-- ═══ PROJECTS ═══ -->
   <section class="section" id="projects">
     <div class="container">
       <div class="section-header">
@@ -243,7 +211,7 @@
           <h3>Prince Learning Hub</h3>
           <p>Premium CA study platform with flashcards, MCQs, timers, and AI study planner for 6 CA subjects.</p>
           <div class="project-links">
-            <a href="#" class="btn-sm-glass"><i class="fa fa-external-link-alt"></i> Live</a>
+            <a href="https://royceprince.github.io" class="btn-sm-glass"><i class="fa fa-external-link-alt"></i> Live</a>
             <a href="https://github.com/royceprince" class="btn-sm-glass"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
@@ -281,7 +249,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════ CONTACT SECTION ═══════════════ -->
+  <!-- ═══ CONTACT ═══ -->
   <section class="section section-alt" id="contact">
     <div class="container">
       <div class="section-header">
@@ -317,11 +285,11 @@
     </div>
   </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <!-- ═══ FOOTER ═══ -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">Royce<span class="accent">Prince</span></div>
-      <p class="footer-copy">© 2026 Royce Prince. Crafted with ❤️ & Code.</p>
+      <p class="footer-copy">© 2026 Royce Prince. Crafted with ❤️ &amp; Code.</p>
       <div class="footer-socials">
         <a href="https://github.com/royceprince" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -330,7 +298,7 @@
     </div>
   </footer>
 
-  <!-- ═══════════════ LOGIN MODAL ═══════════════ -->
+  <!-- ═══ LOGIN MODAL ═══ -->
   <div class="modal-overlay" id="modal-overlay" onclick="closeLoginModal()"></div>
   <div class="modal glass-card" id="login-modal">
     <button class="modal-close" onclick="closeLoginModal()"><i class="fa fa-times"></i></button>
@@ -338,7 +306,6 @@
       <button class="modal-tab active" id="tab-login" onclick="switchTab('login')">Login</button>
       <button class="modal-tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
     </div>
-    <!-- Login Form -->
     <form id="login-form" class="modal-form" onsubmit="handleLogin(event)">
       <div class="modal-header">
         <div class="modal-icon"><i class="fa fa-user-circle"></i></div>
@@ -361,7 +328,6 @@
       </button>
       <div id="login-msg" class="form-status"></div>
     </form>
-    <!-- Signup Form -->
     <form id="signup-form" class="modal-form hidden" onsubmit="handleSignup(event)">
       <div class="modal-header">
         <div class="modal-icon"><i class="fa fa-user-plus"></i></div>
@@ -370,8 +336,7 @@
       </div>
       <input type="text" class="form-input" placeholder="Full Name" id="signup-name" required />
       <input type="email" class="form-input" placeholder="Email Address" id="signup-email" required />
-      <input type="password" class="form-input" placeholder="Password (min 6 chars)" id="signup-password" required
-        minlength="6" />
+      <input type="password" class="form-input" placeholder="Password (min 6 chars)" id="signup-password" required minlength="6"/>
       <button type="submit" class="btn-primary glow-btn full-width" id="signup-btn">
         <span id="signup-btn-text"><i class="fa fa-user-plus"></i> Create Account</span>
         <span id="signup-spinner" class="spinner" style="display:none"></span>
@@ -380,16 +345,13 @@
     </form>
   </div>
 
-  <!-- ═══════════════ TOAST NOTIFICATION ═══════════════ -->
+  <!-- ═══ TOAST ═══ -->
   <div id="toast" class="toast"></div>
 
-  <!-- ═══════════════ SCRIPTS ═══════════════ -->
-  <!-- Firebase SDK -->
+  <!-- ═══ SCRIPTS ═══ -->
   <script type="module" src="js/firebase-config.js"></script>
   <script src="js/particles.js"></script>
   <script defer src="js/animations.js"></script>
   <script defer src="js/app.js"></script>
-  <script type="module" src="assets/js/firebase.js"></script>
 </body>
-
 </html>
