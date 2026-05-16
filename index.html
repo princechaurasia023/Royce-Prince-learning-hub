@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royce Prince | Portfolio</title>
+  <meta name="description" content="Premium futuristic portfolio of Royce Prince — Developer, Designer, Innovator." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ═══════════════ ACCESS GATE STYLES ═══════════════ */
+    #access-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg, #0a0a1a 0%, #0d0d2b 40%, #0a1628 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    #access-gate.gate-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.04);
+    }
+
+    .gate-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .gate-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
+      animation: gateFloat linear infinite;
+    }
+
+    @keyframes gateFloat {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.5; }
+      100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+    }
+
+    .gate-card {
+      position: relative;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0, 255, 200, 0.15);
+      backdrop-filter: blur(24px);
+      border-radius: 24px;
+      padding: 48px 44px 40px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 0 80px rgba(0, 255, 200, 0.06), 0 32px 64px rgba(0,0,0,0.5);
+      animation: gateCardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes gateCardIn {
+      from { opacity: 0; transform: translateY(32px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .gate-logo {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .gate-logo .logo-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffc8, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #0a0a1a;
+      font-family: 'Outfit', sans-serif;
+      margin: 0 auto 14px;
+      box-shadow: 0 0 40px rgba(0,255,200,0.3);
+      animation: logoSpin 6s linear infinite;
+    }
+
+    @keyframes logoSpin {
+      0% { box-shadow: 0 0 40px rgba(0,255,200,0.3); }
+      50% { box-shadow: 0 0 60px rgba(124,58,237,0.4); }
+      100% { box-shadow: 0 0 40px rgba(0,255,200,0.3); }
+    }
+
+    .gate-logo h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 4px;
+    }
+
+    .gate-logo p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin: 0;
+    }
+
+    .gate-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .gate-divider hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .gate-divider span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .gate-tabs {
+      display: flex;
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .gate-tab {
+      flex: 1;
+      padding: 9px 16px;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 7px;
+      transition: all 0.3s ease;
+    }
+
+    .gate-tab.active {
+      background: linear-gradient(135deg, rgba(0,255,200,0.15), rgba(124,58,237,0.15));
+      color: #00ffc8;
+      border: 1px solid rgba(0,255,200,0.2);
+    }
+
+    .gate-form { display: flex; flex-direction: column; gap: 14px; }
+    .gate-form.hidden { display: none; }
+
+    .gate-input {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      box-sizing: border-box;
+    }
+
+    .gate-input::placeholder { color: rgba(255,255,255,0.3); }
+    .gate-input:focus {
+      border-color: rgba(0,255,200,0.4);
+      box-shadow: 0 0 0 3px rgba(0,255,200,0.08);
+    }
+
+    .gate-btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #00ffc8, #7c3aed);
+      border: none;
+      border-radius: 10px;
+      color: #0a0a1a;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 24px rgba(0,255,200,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gate-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,255,200,0.35);
+    }
+
+    .gate-btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .gate-btn-google {
+      width: 100%;
+      padding: 13px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .gate-btn-google:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+
+    .google-icon {
+      width: 18px;
+      height: 18px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%23FBBC05' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%2334A853' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3Cpath fill='none' d='M0 0h48v48H0z'/%3E%3C/svg%3E") center/contain no-repeat;
+      flex-shrink: 0;
+    }
+
+    .gate-status {
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      display: none;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .gate-status.error {
+      display: block;
+      background: rgba(255, 60, 60, 0.1);
+      border: 1px solid rgba(255, 60, 60, 0.2);
+      color: #ff6b6b;
+    }
+
+    .gate-status.success {
+      display: block;
+      background: rgba(0, 255, 200, 0.08);
+      border: 1px solid rgba(0, 255, 200, 0.2);
+      color: #00ffc8;
+    }
+
+    .gate-remember {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .gate-remember label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .gate-remember input[type="checkbox"] { accent-color: #00ffc8; }
+
+    .gate-remember a {
+      color: #00ffc8;
+      text-decoration: none;
+      font-size: 0.82rem;
+    }
+
+    .gate-remember a:hover { text-decoration: underline; }
+
+    .gate-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.2);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .spinner-sm {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(10,10,26,0.3);
+      border-top-color: #0a0a1a;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ═══ USER AVATAR IN NAVBAR ═══ */
+    .nav-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,255,200,0.06);
+      border: 1px solid rgba(0,255,200,0.15);
+      border-radius: 50px;
+      padding: 6px 14px 6px 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-user:hover { background: rgba(0,255,200,0.12); }
+
+    .nav-user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffc8, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0a0a1a;
+      font-family: 'Outfit', sans-serif;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-user-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+    .nav-user-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav-user-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: rgba(10,10,26,0.95);
+      border: 1px solid rgba(0,255,200,0.15);
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 180px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: all 0.25s ease;
+      z-index: 1000;
+    }
+
+    .nav-user:hover .nav-user-dropdown,
+    .nav-user.open .nav-user-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .nav-user-email {
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Outfit', sans-serif;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav-user-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .nav-user-menu-item:hover {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+
+    .nav-user-menu-item.danger { color: #ff6b6b; }
+    .nav-user-menu-item.danger:hover { background: rgba(255,60,60,0.1); }
+
+    /* ═══ MAIN CONTENT BLUR WHILE GATE IS VISIBLE ═══ */
+    #main-content {
+      transition: filter 0.5s ease;
+    }
+
+    #main-content.blurred {
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ═══ SUCCESS ANIMATION ═══ */
+    .gate-success-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,255,200,0.05);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 10;
+    }
+
+    .gate-success-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gate-success-check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffc8, #00d4aa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #0a0a1a;
+      animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    @keyframes checkPop {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .gate-success-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="dark-mode" id="body">
+
+  <!-- ═══════════════ ACCESS GATE (Login Wall) ═══════════════ -->
+  <div id="access-gate">
+    <!-- Floating particles -->
+    <div class="gate-particles" id="gate-particles"></div>
+
+    <div class="gate-card" id="gate-card">
+
+      <!-- Success overlay -->
+      <div class="gate-success-overlay" id="gate-success">
+        <div class="gate-success-check">✓</div>
+        <div class="gate-success-text">Welcome! Loading portfolio...</div>
+      </div>
+
+      <!-- Logo -->
+      <div class="gate-logo">
+        <div class="logo-ring">RP</div>
+        <h2>Royce Prince</h2>
+        <p>Sign in to access the portfolio</p>
+      </div>
+
+      <!-- Google Sign-In (prominent) -->
+      <button class="gate-btn-google" id="gate-google-btn" onclick="gateGoogleLogin()">
+        <span class="google-icon"></span>
+        Continue with Google
+      </button>
+
+      <div class="gate-divider">
+        <hr /><span>or use email</span><hr />
+      </div>
+
+      <!-- Tabs -->
+      <div class="gate-tabs">
+        <button class="gate-tab active" id="gate-tab-login" onclick="gateSwitch('login')">Sign In</button>
+        <button class="gate-tab" id="gate-tab-signup" onclick="gateSwitch('signup')">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <div class="gate-form" id="gate-login-form">
+        <input type="email" class="gate-input" id="gate-email" placeholder="Email address" />
+        <input type="password" class="gate-input" id="gate-password" placeholder="Password" />
+        <div class="gate-remember">
+          <label><input type="checkbox" id="gate-remember" /> Remember me</label>
+          <a href="#" onclick="gateForgotPassword(event)">Forgot password?</a>
+        </div>
+        <button class="gate-btn-primary" id="gate-login-btn" onclick="gateEmailLogin()">
+          <i class="fa fa-sign-in-alt"></i>
+          <span id="gate-login-text">Sign In</span>
+          <span class="spinner-sm" id="gate-login-spinner"></span>
+        </button>
+        <div class="gate-status" id="gate-login-status"></div>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="gate-form hidden" id="gate-signup-form">
+        <input type="text" class="gate-input" id="gate-name" placeholder="Full Name" />
+        <input type="email" class="gate-input" id="gate-signup-email" placeholder="Email address" />
+        <input type="password" class="gate-input" id="gate-signup-password" placeholder="Password (min 6 chars)" />
+        <button class="gate-btn-primary" id="gate-signup-btn" onclick="gateEmailSignup()">
+          <i class="fa fa-user-plus"></i>
+          <span id="gate-signup-text">Create Account</span>
+          <span class="spinner-sm" id="gate-signup-spinner"></span>
+        </button>
+        <div class="gate-status" id="gate-signup-status"></div>
+      </div>
+
+      <div class="gate-footer">🔒 Secured by Firebase Authentication</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MAIN CONTENT (wrapped for blur effect) ═══════════════ -->
+  <div id="main-content" class="blurred">
+
+    <!-- ═══════════════ INTRO OVERLAY (first-time visitors) ═══════════════ -->
+    <div id="intro-overlay" class="intro-overlay">
+      <div class="intro-content">
+        <div class="intro-logo">RP</div>
+        <div class="intro-line"></div>
+        <p class="intro-tagline">Loading Experience...</p>
+        <div class="intro-progress">
+          <div class="intro-bar" id="intro-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ PARTICLE BACKGROUND ═══════════════ -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-brand">
+        <span class="brand-dot"></span>
+        <span class="brand-text">Royce<span class="accent">Prince</span></span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <!-- Logged-out state: Login button -->
+        <button class="btn-glass" id="open-login-btn" onclick="openLoginModal()" style="display:none">
+          <i class="fa fa-user"></i> <span>Login</span>
+        </button>
+        <!-- Logged-in state: User avatar -->
+        <div class="nav-user" id="nav-user-widget" style="display:none" onclick="toggleUserDropdown()">
+          <div class="nav-user-avatar" id="nav-user-avatar">?</div>
+          <span class="nav-user-name" id="nav-user-name">User</span>
+          <i class="fa fa-chevron-down" style="font-size:0.65rem;color:rgba(255,255,255,0.4)"></i>
+          <div class="nav-user-dropdown">
+            <div class="nav-user-email" id="nav-user-email">user@example.com</div>
+            <a href="admin.html" class="nav-user-menu-item" id="nav-admin-link" style="display:none">
+              <i class="fa fa-chart-bar"></i> Dashboard
+            </a>
+            <div class="nav-user-menu-item danger" onclick="gateSignOut()">
+              <i class="fa fa-sign-out-alt"></i> Sign Out
+            </div>
+          </div>
+        </div>
+        <a href="admin.html" class="btn-neon" id="admin-btn" style="display:none">
+          <i class="fa fa-chart-bar"></i> Dashboard
+        </a>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══════════════ HERO SECTION ═══════════════ -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge glass-card">
+          <span class="badge-dot"></span> Available for Work
+        </div>
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text">Royce Prince</span>
+        </h1>
+        <h2 class="hero-sub">
+          I'm a <span id="typed-text" class="typed-accent"></span><span class="cursor-blink">|</span>
+        </h2>
+        <p class="hero-desc">
+          Crafting next-generation digital experiences with cutting-edge technology,
+          sleek design, and a passion for innovation.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary glow-btn">
+            <i class="fa fa-rocket"></i> View Projects
+          </a>
+          <a href="#contact" class="btn-outline">
+            <i class="fa fa-envelope"></i> Contact Me
+          </a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/royceprince" target="_blank" class="social-icon" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" class="social-icon" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/" target="_blank" class="social-icon" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-container">
+          <div class="avatar-ring ring-1"></div>
+          <div class="avatar-ring ring-2"></div>
+          <div class="avatar-ring ring-3"></div>
+          <div class="avatar-inner">
+            <span class="avatar-initials">RP</span>
+          </div>
+          <div class="orbit-dot dot-1"><i class="fab fa-js"></i></div>
+          <div class="orbit-dot dot-2"><i class="fab fa-react"></i></div>
+          <div class="orbit-dot dot-3"><i class="fab fa-python"></i></div>
+          <div class="orbit-dot dot-4"><i class="fab fa-node"></i></div>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll Down</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ ABOUT SECTION ═══════════════ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Who I Am</span>
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+          <div class="about-card glass-card reveal">
+            <div class="about-icon"><i class="fa fa-code"></i></div>
+            <h3>Developer</h3>
+            <p>Full-stack engineer building scalable, performant applications with modern frameworks and cloud
+              technologies.</p>
+          </div>
+          <div class="about-card glass-card reveal">
+            <div class="about-icon"><i class="fa fa-palette"></i></div>
+            <h3>Designer</h3>
+            <p>UI/UX designer crafting pixel-perfect interfaces with a focus on user experience and aesthetic excellence.
+            </p>
+          </div>
+          <div class="about-card glass-card reveal">
+            <div class="about-icon"><i class="fa fa-brain"></i></div>
+            <h3>Innovator</h3>
+            <p>Problem-solver who bridges technology and creativity to build solutions that make a real difference.</p>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item glass-card">
+            <span class="stat-number" data-target="50">0</span><span class="stat-plus">+</span>
+            <p>Projects</p>
+          </div>
+          <div class="stat-item glass-card">
+            <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
+            <p>Years Exp</p>
+          </div>
+          <div class="stat-item glass-card">
+            <span class="stat-number" data-target="20">0</span><span class="stat-plus">+</span>
+            <p>Clients</p>
+          </div>
+          <div class="stat-item glass-card">
+            <span class="stat-number" data-target="100">0</span><span class="stat-plus">%</span>
+            <p>Dedication</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ SKILLS SECTION ═══════════════ -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Expertise</span>
+          <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card glass-card reveal" data-skill="JavaScript" data-level="90">
+            <i class="fab fa-js skill-icon"></i>
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--target:90%"></div>
+            </div>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-card glass-card reveal" data-skill="React" data-level="85">
+            <i class="fab fa-react skill-icon"></i>
+            <span class="skill-name">React</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--target:85%"></div>
+            </div>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="skill-card glass-card reveal" data-skill="Python" data-level="80">
+            <i class="fab fa-python skill-icon"></i>
+            <span class="skill-name">Python</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--target:80%"></div>
+            </div>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-card glass-card reveal" data-skill="Node.js" data-level="78">
+            <i class="fab fa-node skill-icon"></i>
+            <span class="skill-name">Node.js</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--target:78%"></div>
+            </div>
+            <span class="skill-pct">78%</span>
+          </div>
+          <div class="skill-card glass-card reveal" data-skill="Firebase" data-level="88">
+            <i class="fa fa-fire skill-icon"></i>
+            <span class="skill-name">Firebase</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--target:88%"></div>
+            </div>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-card glass-card reveal" data-skill="CSS / Design" data-level="92">
+            <i class="fab fa-css3 skill-icon"></i>
+            <span class="skill-name">CSS / Design</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--target:92%"></div>
+            </div>
+            <span class="skill-pct">92%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ PROJECTS SECTION ═══════════════ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Work</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card glass-card reveal">
+            <div class="project-glow"></div>
+            <div class="project-header">
+              <div class="project-icon"><i class="fa fa-graduation-cap"></i></div>
+              <div class="project-tags">
+                <span class="tag">HTML</span><span class="tag">Firebase</span><span class="tag">JS</span>
+              </div>
+            </div>
+            <h3>Prince Learning Hub</h3>
+            <p>Premium CA study platform with flashcards, MCQs, timers, and AI study planner for 6 CA subjects.</p>
+            <div class="project-links">
+              <a href="#" class="btn-sm-glass"><i class="fa fa-external-link-alt"></i> Live</a>
+              <a href="https://github.com/royceprince" class="btn-sm-glass"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+          <div class="project-card glass-card reveal">
+            <div class="project-glow glow-purple"></div>
+            <div class="project-header">
+              <div class="project-icon"><i class="fa fa-chart-line"></i></div>
+              <div class="project-tags">
+                <span class="tag">React</span><span class="tag">Node</span><span class="tag">MongoDB</span>
+              </div>
+            </div>
+            <h3>Analytics Dashboard</h3>
+            <p>Real-time analytics dashboard with live data visualization, user tracking, and export capabilities.</p>
+            <div class="project-links">
+              <a href="#" class="btn-sm-glass"><i class="fa fa-external-link-alt"></i> Live</a>
+              <a href="https://github.com/royceprince" class="btn-sm-glass"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+          <div class="project-card glass-card reveal">
+            <div class="project-glow glow-cyan"></div>
+            <div class="project-header">
+              <div class="project-icon"><i class="fa fa-robot"></i></div>
+              <div class="project-tags">
+                <span class="tag">Python</span><span class="tag">AI</span><span class="tag">API</span>
+              </div>
+            </div>
+            <h3>AI Study Planner</h3>
+            <p>Intelligent study scheduling system powered by AI to generate personalized 7-day revision plans.</p>
+            <div class="project-links">
+              <a href="#" class="btn-sm-glass"><i class="fa fa-external-link-alt"></i> Live</a>
+              <a href="https://github.com/royceprince" class="btn-sm-glass"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CONTACT SECTION ═══════════════ -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Contact <span class="gradient-text">Me</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info glass-card reveal">
+            <h3>Let's Build Something Amazing</h3>
+            <p>Have a project in mind? Let's connect and turn your vision into reality.</p>
+            <div class="contact-items">
+              <div class="contact-item">
+                <i class="fa fa-envelope"></i>
+                <span>royceprince@example.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fa fa-map-marker-alt"></i>
+                <span>India</span>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form glass-card reveal" id="contact-form" onsubmit="submitContact(event)">
+            <input type="text" class="form-input" placeholder="Your Name" id="c-name" required />
+            <input type="email" class="form-input" placeholder="Your Email" id="c-email" required />
+            <textarea class="form-input form-textarea" placeholder="Your Message" id="c-msg" required></textarea>
+            <button type="submit" class="btn-primary glow-btn full-width">
+              <i class="fa fa-paper-plane"></i> Send Message
+            </button>
+            <div id="contact-status" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">Royce<span class="accent">Prince</span></div>
+        <p class="footer-copy">© 2026 Royce Prince. Crafted with ❤️ & Code.</p>
+        <div class="footer-socials">
+          <a href="https://github.com/royceprince" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════ LOGIN MODAL (for re-login after session) ═══════════════ -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeLoginModal()"></div>
+    <div class="modal glass-card" id="login-modal">
+      <button class="modal-close" onclick="closeLoginModal()"><i class="fa fa-times"></i></button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tab-login" onclick="switchTab('login')">Login</button>
+        <button class="modal-tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+      <!-- Login Form -->
+      <form id="login-form" class="modal-form" onsubmit="handleLogin(event)">
+        <div class="modal-header">
+          <div class="modal-icon"><i class="fa fa-user-circle"></i></div>
+          <h2>Welcome Back</h2>
+          <p>Sign in to your account</p>
+        </div>
+        <input type="email" class="form-input" placeholder="Email Address" id="login-email" required />
+        <input type="password" class="form-input" placeholder="Password" id="login-password" required />
+        <div class="remember-row">
+          <label><input type="checkbox" id="remember-me" /> Remember me</label>
+          <a href="#" class="link-accent" onclick="handleForgotPassword()">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-primary glow-btn full-width" id="login-btn">
+          <span id="login-btn-text"><i class="fa fa-sign-in-alt"></i> Sign In</span>
+          <span id="login-spinner" class="spinner" style="display:none"></span>
+        </button>
+        <div class="divider"><span>or</span></div>
+        <button type="button" class="btn-google" onclick="handleGoogleLogin()">
+          <i class="fab fa-google"></i> Continue with Google
+        </button>
+        <div id="login-msg" class="form-status"></div>
+      </form>
+      <!-- Signup Form -->
+      <form id="signup-form" class="modal-form hidden" onsubmit="handleSignup(event)">
+        <div class="modal-header">
+          <div class="modal-icon"><i class="fa fa-user-plus"></i></div>
+          <h2>Create Account</h2>
+          <p>Join the community</p>
+        </div>
+        <input type="text" class="form-input" placeholder="Full Name" id="signup-name" required />
+        <input type="email" class="form-input" placeholder="Email Address" id="signup-email" required />
+        <input type="password" class="form-input" placeholder="Password (min 6 chars)" id="signup-password" required
+          minlength="6" />
+        <button type="submit" class="btn-primary glow-btn full-width" id="signup-btn">
+          <span id="signup-btn-text"><i class="fa fa-user-plus"></i> Create Account</span>
+          <span id="signup-spinner" class="spinner" style="display:none"></span>
+        </button>
+        <div id="signup-msg" class="form-status"></div>
+      </form>
+    </div>
+
+    <!-- ═══════════════ TOAST NOTIFICATION ═══════════════ -->
+    <div id="toast" class="toast"></div>
+
+  </div><!-- end #main-content -->
+
+  <!-- ═══════════════ SCRIPTS ═══════════════ -->
+  <!-- Firebase SDK -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script src="js/particles.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/app.js"></script>
+
+  <!-- ═══════════════ ACCESS GATE SCRIPT ═══════════════ -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      signInWithPopup,
+      GoogleAuthProvider,
+      sendPasswordResetEmail,
+      signOut,
+      setPersistence,
+      browserLocalPersistence,
+      browserSessionPersistence,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // ── IMPORTANT: Replace with your actual Firebase config ──
+    // This reads from your existing firebase-config.js window export,
+    // or you can paste your config directly here:
+    let firebaseConfig = window.__FIREBASE_CONFIG__;
+
+    // Fallback: if config not injected by firebase-config.js, try to read it
+    if (!firebaseConfig) {
+      // Paste your Firebase config object here as fallback:
+      firebaseConfig = {
+      apiKey: "AIzaSyCWVs8Ef3sV4KkEDAtgC2wXfvCoVNjKNt4",
+  authDomain: "royceprince-5195f.firebaseapp.com",
+  projectId: "royceprince-5195f",
+  storageBucket: "royceprince-5195f.firebasestorage.app",
+  messagingSenderId: "1054326658292",
+  appId: "1:1054326658292:web:536474d70f0ac4bb2cbaa1",
+  measurementId: "G-C19RHBRCK3"
+};
+    }
+
+    const app = initializeApp(firebaseConfig, "gate-app");
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    const ADMIN_EMAIL = "princechaurasia023@gmail.com"; // ← change to your admin email
+
+    // ── Generate gate particles ──
+    const particleContainer = document.getElementById('gate-particles');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'gate-particle';
+      const size = Math.random() * 120 + 30;
+      p.style.cssText = `
+        width: ${size}px; height: ${size}px;
+        left: ${Math.random() * 100}%;
+        bottom: -${size}px;
+        animation-duration: ${Math.random() * 12 + 8}s;
+        animation-delay: ${Math.random() * 8}s;
+        opacity: ${Math.random() * 0.4 + 0.05};
+      `;
+      particleContainer.appendChild(p);
+    }
+
+    // ── Auth state listener ──
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        await handleAuthSuccess(user);
+      }
+      // If no user → gate stays visible (default state)
+    });
+
+    // ── Handle successful auth ──
+    async function handleAuthSuccess(user) {
+      // Save user to Firestore (visitors log)
+      try {
+        await setDoc(doc(db, "visitors", user.uid), {
+          uid: user.uid,
+          name: user.displayName || "Anonymous",
+          email: user.email,
+          photoURL: user.photoURL || null,
+          lastVisit: serverTimestamp(),
+          provider: user.providerData[0]?.providerId || "email"
+        }, { merge: true });
+      } catch (e) { /* Firestore optional */ }
+
+      // Show success animation
+      const successOverlay = document.getElementById('gate-success');
+      successOverlay.classList.add('show');
+
+      // Update navbar
+      updateNavbar(user);
+
+      // Hide gate after animation
+      setTimeout(() => {
+        const gate = document.getElementById('access-gate');
+        const mainContent = document.getElementById('main-content');
+        gate.classList.add('gate-hidden');
+        mainContent.classList.remove('blurred');
+        setTimeout(() => { gate.style.display = 'none'; }, 700);
+      }, 1400);
+    }
+
+    // ── Update navbar with user info ──
+    function updateNavbar(user) {
+      const widget = document.getElementById('nav-user-widget');
+      const avatar = document.getElementById('nav-user-avatar');
+      const nameEl = document.getElementById('nav-user-name');
+      const emailEl = document.getElementById('nav-user-email');
+      const loginBtn = document.getElementById('open-login-btn');
+      const adminLink = document.getElementById('nav-admin-link');
+      const adminBtn = document.getElementById('admin-btn');
+
+      if (widget) widget.style.display = 'flex';
+      if (loginBtn) loginBtn.style.display = 'none';
+
+      const displayName = user.displayName || user.email.split('@')[0];
+      const initials = displayName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+
+      if (nameEl) nameEl.textContent = displayName;
+      if (emailEl) emailEl.textContent = user.email;
+
+      if (avatar) {
+        if (user.photoURL) {
+          avatar.innerHTML = `<img src="${user.photoURL}" alt="avatar" />`;
+        } else {
+          avatar.textContent = initials;
+        }
+      }
+
+      // Show admin button if admin
+      if (user.email === ADMIN_EMAIL) {
+        if (adminLink) adminLink.style.display = 'flex';
+        if (adminBtn) adminBtn.style.display = 'flex';
+      }
+    }
+
+    // ── Tab switching ──
+    window.gateSwitch = function(tab) {
+      document.getElementById('gate-login-form').classList.toggle('hidden', tab !== 'login');
+      document.getElementById('gate-signup-form').classList.toggle('hidden', tab !== 'signup');
+      document.getElementById('gate-tab-login').classList.toggle('active', tab === 'login');
+      document.getElementById('gate-tab-signup').classList.toggle('active', tab === 'signup');
+    };
+
+    // ── Email Login ──
+    window.gateEmailLogin = async function() {
+      const email = document.getElementById('gate-email').value.trim();
+      const password = document.getElementById('gate-password').value;
+      const remember = document.getElementById('gate-remember').checked;
+      const btn = document.getElementById('gate-login-btn');
+      const txt = document.getElementById('gate-login-text');
+      const spinner = document.getElementById('gate-login-spinner');
+      const status = document.getElementById('gate-login-status');
+
+      if (!email || !password) {
+        showGateStatus(status, 'Please fill in all fields', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      txt.style.display = 'none';
+      spinner.style.display = 'block';
+      status.className = 'gate-status';
+
+      try {
+        const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
+        await setPersistence(auth, persistence);
+        await signInWithEmailAndPassword(auth, email, password);
+        showGateStatus(status, '✓ Signed in successfully!', 'success');
+      } catch (err) {
+        btn.disabled = false;
+        txt.style.display = 'inline';
+        spinner.style.display = 'none';
+        const msg = getAuthError(err.code);
+        showGateStatus(status, msg, 'error');
+      }
+    };
+
+    // ── Email Signup ──
+    window.gateEmailSignup = async function() {
+      const name = document.getElementById('gate-name').value.trim();
+      const email = document.getElementById('gate-signup-email').value.trim();
+      const password = document.getElementById('gate-signup-password').value;
+      const btn = document.getElementById('gate-signup-btn');
+      const txt = document.getElementById('gate-signup-text');
+      const spinner = document.getElementById('gate-signup-spinner');
+      const status = document.getElementById('gate-signup-status');
+
+      if (!name || !email || !password) {
+        showGateStatus(status, 'Please fill in all fields', 'error');
+        return;
+      }
+      if (password.length < 6) {
+        showGateStatus(status, 'Password must be at least 6 characters', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      txt.style.display = 'none';
+      spinner.style.display = 'block';
+      status.className = 'gate-status';
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(cred.user, { displayName: name });
+        showGateStatus(status, '✓ Account created!', 'success');
+      } catch (err) {
+        btn.disabled = false;
+        txt.style.display = 'inline';
+        spinner.style.display = 'none';
+        showGateStatus(status, getAuthError(err.code), 'error');
+      }
+    };
+
+    // ── Google Login ──
+    window.gateGoogleLogin = async function() {
+      const btn = document.getElementById('gate-google-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="google-icon"></span> Signing in...';
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '<span class="google-icon"></span> Continue with Google';
+        if (err.code !== 'auth/popup-closed-by-user') {
+          const status = document.getElementById('gate-login-status');
+          showGateStatus(status, getAuthError(err.code), 'error');
+        }
+      }
+    };
+
+    // ── Forgot Password ──
+    window.gateForgotPassword = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('gate-email').value.trim();
+      if (!email) {
+        showGateStatus(document.getElementById('gate-login-status'), 'Enter your email first', 'error');
+        return;
+      }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showGateStatus(document.getElementById('gate-login-status'), '✓ Reset email sent! Check your inbox.', 'success');
+      } catch (err) {
+        showGateStatus(document.getElementById('gate-login-status'), getAuthError(err.code), 'error');
+      }
+    };
+
+    // ── Sign Out ──
+    window.gateSignOut = async function() {
+      await signOut(auth);
+      // Show gate again
+      const gate = document.getElementById('access-gate');
+      const mainContent = document.getElementById('main-content');
+      gate.style.display = 'flex';
+      gate.classList.remove('gate-hidden');
+      mainContent.classList.add('blurred');
+      document.getElementById('nav-user-widget').style.display = 'none';
+      document.getElementById('admin-btn').style.display = 'none';
+      document.getElementById('gate-success').classList.remove('show');
+      document.getElementById('gate-login-btn').disabled = false;
+      document.getElementById('gate-login-text').style.display = 'inline';
+      document.getElementById('gate-login-spinner').style.display = 'none';
+    };
+
+    // ── Toggle dropdown ──
+    window.toggleUserDropdown = function() {
+      document.getElementById('nav-user-widget').classList.toggle('open');
+    };
+
+    // ── Helpers ──
+    function showGateStatus(el, msg, type) {
+      el.textContent = msg;
+      el.className = `gate-status ${type}`;
+    }
+
+    function getAuthError(code) {
+      const errors = {
+        'auth/user-not-found': 'No account found with this email.',
+        'auth/wrong-password': 'Incorrect password. Try again.',
+        'auth/email-already-in-use': 'This email is already registered.',
+        'auth/invalid-email': 'Please enter a valid email address.',
+        'auth/weak-password': 'Password is too weak. Use 6+ characters.',
+        'auth/too-many-requests': 'Too many attempts. Please wait a moment.',
+        'auth/network-request-failed': 'Network error. Check your connection.',
+        'auth/invalid-credential': 'Invalid credentials. Please try again.',
+        'auth/popup-blocked': 'Popup blocked by browser. Allow popups and retry.',
+      };
+      return errors[code] || 'Authentication failed. Please try again.';
+    }
+  </script>
+
+</body>
+</html>
