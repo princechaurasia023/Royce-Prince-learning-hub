@@ -1,0 +1,46 @@
+/* ═══ KEYFRAMES ═══ */
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes scrollPulse { 0% { opacity: 1; } 100% { opacity: 0; transform: scaleY(0); transform-origin: top; } }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+@keyframes slideInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(0,245,255,0.3); } 50% { box-shadow: 0 0 40px rgba(0,245,255,0.6), 0 0 60px rgba(168,85,247,0.3); } }
+@keyframes barFill { from { width: 0; } to { width: var(--target); } }
+@keyframes orbitRotate { from { transform: rotate(0deg) translateX(120px) rotate(0deg); } to { transform: rotate(360deg) translateX(120px) rotate(-360deg); } }
+
+/* ═══ HERO ANIMATIONS ═══ */
+.hero-badge { animation: slideInDown 0.8s ease 0.3s both; }
+.hero-title { animation: slideInUp 0.8s ease 0.5s both; }
+.hero-sub { animation: slideInUp 0.8s ease 0.65s both; }
+.hero-desc { animation: slideInUp 0.8s ease 0.8s both; }
+.hero-cta { animation: slideInUp 0.8s ease 0.95s both; }
+.hero-socials { animation: slideInUp 0.8s ease 1.1s both; }
+.hero-visual { animation: fadeIn 1.2s ease 0.5s both; }
+.avatar-inner { animation: float 4s ease-in-out infinite; }
+.navbar { animation: slideInDown 0.6s ease both; }
+
+/* ═══ SHIMMER ═══ */
+.shimmer-text { background: linear-gradient(90deg, var(--neon) 0%, var(--purple) 25%, var(--pink) 50%, var(--neon) 75%, var(--purple) 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 4s linear infinite; }
+
+/* ═══ SKILL BARS ═══ */
+.skill-fill.animated { animation: barFill 1.2s cubic-bezier(.25,.46,.45,.94) forwards; }
+
+/* ═══ ORBIT DOTS ═══ */
+.dot-1 { animation: orbitRotate 6s linear infinite; transform-origin: center; }
+.dot-2 { animation: orbitRotate 8s linear infinite reverse; transform-origin: center; }
+.dot-3 { animation: orbitRotate 10s linear infinite; transform-origin: center; }
+.dot-4 { animation: orbitRotate 7s linear infinite reverse; transform-origin: center; }
+
+/* ═══ SCROLL PROGRESS ═══ */
+#scroll-progress { position: fixed; top: 0; left: 0; height: 3px; z-index: 999; background: linear-gradient(90deg, var(--neon), var(--purple), var(--pink)); width: 0%; transition: width 0.1s; }
+
+/* ═══ ADMIN ANIMATIONS ═══ */
+.dash-card { animation: slideInUp 0.5s ease both; }
+.dash-card:nth-child(2) { animation-delay: 0.1s; }
+.dash-card:nth-child(3) { animation-delay: 0.2s; }
+.dash-card:nth-child(4) { animation-delay: 0.3s; }
